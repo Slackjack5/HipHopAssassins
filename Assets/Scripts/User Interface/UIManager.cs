@@ -27,6 +27,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         menuNavigation = 0;
+        
     }
 
     protected void ChangeState(State state)
