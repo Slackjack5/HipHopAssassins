@@ -7,13 +7,12 @@ public class MonsterDictionary : MonoBehaviour
 {
     public GameObject monsterTemplate;
     private MonsterData[] monsterArray;
-    private LimbData[] limbArray;
-    [SerializeField] private Sprite[] spriteArray;
+    String[] tempLimbNames;
+    [SerializeField] private GameObject[] monsterObjectArray;
 
     private void Start()
     {
-        monsterArray = new MonsterData[50];
-        limbArray = new LimbData[50];
+        monsterArray = new MonsterData[1];
         BuildMonsterDictionary();
         //BuildLimbDictionary();
     }
@@ -26,10 +25,11 @@ public class MonsterDictionary : MonoBehaviour
         for (int i = 0; i < monsterArray.Length; i++)
         {
             temp = Instantiate(monsterTemplate);
-            monsterArray[i].gameObject.SetActive(false);
+            //monsterArray[i].gameObject.SetActive(false);
             monsterArray[i] = temp.GetComponent<MonsterData>();
         }
-        monsterArray[0].SetMonsterData(0,"Target Dummy");
+
+        monsterArray[0].SetMonsterData(0,"Target Dummy",monsterObjectArray[0]);
     }
     
 }
