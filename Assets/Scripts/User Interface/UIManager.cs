@@ -1,19 +1,27 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events;
-using Vector2 = System.Numerics.Vector2;
+using TMPro;
+
 
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private GameObject userInterface;
+    [SerializeField] public GameObject combatManager;
     private GameObject actionBlock;
     protected State currentMenu;
     protected int menuNumber;
     private int menuNavigation;
+    
+    //Callable Objects
+    private GameObject limbCanvas;
+    private GameObject selectedMonster;
+    private GameObject encounteredEnemies;
+    
+    //bools
+    private bool limbsGenerated;
     protected enum State
     {
         Home,
@@ -27,7 +35,8 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         menuNavigation = 0;
-        
+        limbCanvas = userInterface.transform.GetChild(1).gameObject;
+        encounteredEnemies = combatManager.transform.GetChild(0).gameObject;
     }
 
     protected void ChangeState(State state)
@@ -47,7 +56,7 @@ public class UIManager : MonoBehaviour
                 HomeButtons();
                 break;
             case State.Attack:
-                actionBlock = userInterface.transform.GetChild(1).GetChild(0).gameObject;
+                actionBlock = userInterface.transform.GetChild(1).gameObject;
                 menuNumber = 2;
                 maneuverMenu();
                 AttackButtons();
@@ -172,28 +181,9 @@ public class UIManager : MonoBehaviour
 
     private void AttackButtons()
     {
-        //Current Menu Player is Hovering Over
-        if (menuNavigation == 0) //Attack
-        {
-            resetBlocks();
-            if (Input.GetKeyDown("space")) 
-            {
-                //Send Attack Data to combat Manager
-            }
-            actionBlock.transform.GetChild(0).GetComponent<Image>().color=Color.red;
-            
-        }
-        //Current Menu Player is Hovering Over
-        if (menuNavigation == 1) //Attack
-        {
-            resetBlocks();
-            if (Input.GetKeyDown("space")) 
-            {
-                //Send Attack Data to combat Manager
-            }
-            actionBlock.transform.GetChild(0).GetComponent<Image>().color=Color.red;
-            
-        }
+        SelectMonster();
+        UpdateLimbData();
+
     }
     
     private void resetBlocks()
@@ -202,6 +192,39 @@ public class UIManager : MonoBehaviour
         {
             child.GetComponent<Image>().color=Color.white;
         }
+    }
+
+    private void SelectMonster()
+    {
+        if (CombatManager.enemyCount <= 1)
+        {
+            selectedMonster = encounteredEnemies.transform.GetChild(0).gameObject;
+            Debug.Log(selectedMonster.name);
+        }
+        else
+        {
+
+
+        }
+    }
+
+    private void UpdateLimbData()
+    {
+        Debug.Log(("Updating Limb Data"));
+        MonsterData selectedData = selectedMonster.GetComponent<MonsterData>();
+        int limbCount = selectedData.limbHealth.Length;
+        if (!limbsGenerated)
+        {
+            for (int i = 0; i < limbCount; i++)
+            {
+                GameObject tempLimb = limbCanvas.transform.GetChild(i).gameObject;
+                tempLimb.SetActive(true);
+                tempLimb.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = selectedData.limbName[i];
+            }
+
+            limbsGenerated = true;
+        }
+        limbCanvas.SetActive(true);
     }
 
     private void FixedUpdate()

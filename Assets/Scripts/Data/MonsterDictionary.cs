@@ -12,9 +12,9 @@ public class MonsterDictionary : MonoBehaviour
 
     private void Start()
     {
+        //Amount of Monsters in the Game
         monsterArray = new MonsterData[1];
         BuildMonsterDictionary();
-        //BuildLimbDictionary();
     }
     
     
@@ -25,11 +25,12 @@ public class MonsterDictionary : MonoBehaviour
         for (int i = 0; i < monsterArray.Length; i++)
         {
             temp = Instantiate(monsterTemplate);
-            //monsterArray[i].gameObject.SetActive(false);
+            temp.transform.SetParent(gameObject.transform);
             monsterArray[i] = temp.GetComponent<MonsterData>();
         }
-
+        //Training Dummy Enemy
         monsterArray[0].SetMonsterData(0,"Target Dummy",monsterObjectArray[0]);
+        monsterArray[0].gameObject.SetActive(false);
     }
     
 }
