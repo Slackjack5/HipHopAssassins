@@ -93,7 +93,7 @@ public class CombatManager : MonoBehaviour
         // suspend execution for 5 seconds
         yield return new WaitForSeconds(2);
         print("Skipping Monster Turn " + Time.time);
-        ourUI.resetALLMenus();
+        ourUI.RestartMenu();
         testStarted = false;
         ChangeState(State.PlayerTurn);
     }

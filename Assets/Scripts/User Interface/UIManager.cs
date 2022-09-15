@@ -9,20 +9,25 @@ using UnityEngine.PlayerLoop;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private GameObject userInterface;
-    [SerializeField] public GameObject combatManager;
+    protected GameObject userInterface;
+    protected GameObject combatManager;
     private GameObject actionBlock;
     private Vector2 NavigationLimit;
     protected State currentMenu;
-    private Vector2 menuNavigation;
+    protected Vector2 menuNavigation;
     
     //Callable Objects
-    private GameObject limbCanvas;
-    private GameObject selectedMonster;
-    private GameObject encounteredEnemies;
+    protected GameObject limbCanvas;
+    protected GameObject selectedMonster;
+    protected GameObject encounteredEnemies;
     
     //bools
-    private bool limbsGenerated;
+    protected bool limbsGenerated;
+    
+    //Scripts
+    protected AttackMenu ourAttackMenu;
+    
+
     protected enum State
     {
         Home,
@@ -31,13 +36,25 @@ public class UIManager : MonoBehaviour
         Items,
         Flee,
         EnemyTurn,
+        SelectMonster,
     }
 
-    private void Start()
+    protected virtual void Start()
     {
-        menuNavigation.x = 0;
+        
+        //GameObjects
+        userInterface = GameObject.Find("UserInterface");
+        combatManager = GameObject.Find("CombatManager");
         limbCanvas = userInterface.transform.GetChild(1).gameObject;
         encounteredEnemies = combatManager.transform.GetChild(0).gameObject;
+
+        
+        //Scripts
+        ourAttackMenu = gameObject.GetComponent<AttackMenu>();
+        
+        //Variables
+        menuNavigation.x = 0;
+
     }
 
     protected void ChangeState(State state)
@@ -81,31 +98,7 @@ public class UIManager : MonoBehaviour
         else if (menuNavigation.y < 0) { menuNavigation.y = 0; }
     }
 
-    private void AttackButtons()
-    {
-        SelectMonster();
-        GenerateLimbs();
-        if (menuNavigation.y == 0) //Limb #1
-        {
-            selectedMonster.GetComponent<MonsterData>().ShowLimb(0);
-        }
-        else if (menuNavigation.y == 1) //Limb #1
-        {
-            selectedMonster.GetComponent<MonsterData>().ShowLimb(1);
-        }
-
-        if (Input.GetKeyDown("space")) 
-        {
-            CombatManager.DamageMonsterLimb(selectedMonster.GetComponent<MonsterData>(),(int) menuNavigation.y,20);
-            resetBlocks();
-            HideAllMenus();
-            ChangeState(State.Home);
-        }
-        actionBlock.transform.GetChild((int) menuNavigation.y).GetComponent<Image>().color=Color.red;
-
-    }
-    
-    private void resetBlocks()
+    public void resetBlocks()
     {
         foreach (Transform child in actionBlock.transform)
         {
@@ -117,17 +110,6 @@ public class UIManager : MonoBehaviour
     private void SelectMonster()
     {
 
-        if (CombatManager.enemyCount <= 1)
-        {
-            selectedMonster = encounteredEnemies.transform.GetChild(0).gameObject;
-            Debug.Log(selectedMonster.name);
-            NavigationLimit = new Vector2(0, CombatManager.enemyCount);
-        }
-        else
-        {
-            
-            NavigationLimit = new Vector2(0, CombatManager.enemyCount);
-        }
     }
 
     public void UpdateUI()
@@ -140,20 +122,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private void GenerateLimbs()
-    {
-        MonsterData selectedData = selectedMonster.GetComponent<MonsterData>();
-        int limbCount = selectedData.limbHealth.Length;
-        
-        for (int i = 0; i < limbCount; i++)
-        {
-            GameObject tempLimb = limbCanvas.transform.GetChild(i).gameObject;
-            tempLimb.SetActive(true);
-            tempLimb.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = selectedData.limbName[i];
-        }
-        
-        limbCanvas.SetActive(true);
-    }
+
 
     public void HideAllMenus()
     {
@@ -173,7 +142,7 @@ public class UIManager : MonoBehaviour
         userInterface.transform.GetChild(1).gameObject.SetActive(false);
     }
 
-    public void resetALLMenus()
+    public void RestartMenu()
     {
         menuNavigation = new Vector2(0, 0);
         userInterface.transform.GetChild(0).gameObject.SetActive(true); //Enable Home UI
@@ -188,7 +157,7 @@ public class UIManager : MonoBehaviour
         {
             if (Input.GetKeyDown("space")) 
             {
-                ChangeState(State.Attack);
+                ChangeState(State.SelectMonster);
             }
         }
         else if (menuNavigation.x==1) //Magic
@@ -221,7 +190,12 @@ public class UIManager : MonoBehaviour
 
     }
 
-    void Update()
+    public virtual void DeployMenu()
+    {
+        Debug.Log(("No Menu Available"));
+    }
+
+    protected virtual void Update()
     {
         switch (currentMenu)
         {
@@ -234,7 +208,9 @@ public class UIManager : MonoBehaviour
             case State.Attack:
                 actionBlock = userInterface.transform.GetChild(1).gameObject;
                 maneuverMenu();
-                AttackButtons();
+                //ourAttackMenu.AttackButtons();
+                DeployMenu();
+                actionBlock.transform.GetChild((int) menuNavigation.y).GetComponent<Image>().color = Color.red;
                 break;
             case State.Magic:
                 Debug.Log("In Magic State");
@@ -247,6 +223,21 @@ public class UIManager : MonoBehaviour
                 break;
             case State.EnemyTurn:
 
+                break;
+            case State.SelectMonster:
+
+                if (CombatManager.enemyCount <= 1)
+                {
+                    selectedMonster = encounteredEnemies.transform.GetChild(0).gameObject;
+                    Debug.Log(selectedMonster.name);
+                    NavigationLimit = new Vector2(0, CombatManager.enemyCount);
+                    ChangeState(State.Attack);
+                }
+                else
+                {
+            
+                    NavigationLimit = new Vector2(0, CombatManager.enemyCount);
+                }
                 break;
         }
         
