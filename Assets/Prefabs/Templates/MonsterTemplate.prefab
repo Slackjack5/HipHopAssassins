@@ -72,6 +72,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7575955040715007104}
     m_Modifications:
+    - target: {fileID: 1034382900046979212, guid: 48beaefbcc10b5d429677a06c2db77da, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1913371258804133015, guid: 48beaefbcc10b5d429677a06c2db77da, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -116,9 +120,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5037002743039302499, guid: 48beaefbcc10b5d429677a06c2db77da, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5120150769494284410, guid: 48beaefbcc10b5d429677a06c2db77da, type: 3}
       propertyPath: m_Name
       value: MonsterGFXTemplate
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949278102729989956, guid: 48beaefbcc10b5d429677a06c2db77da, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48beaefbcc10b5d429677a06c2db77da, type: 3}

@@ -52,6 +52,26 @@ public class MonsterData : MonoBehaviour
         limb.GetComponent<TextMeshProUGUI>().text = health.ToString();
     }
 
+    public void UpdateHealthUI()
+    {
+        for (int i = 0; i < monsterCanvas.transform.childCount; i++)
+        {
+            monsterCanvas.transform.GetChild(i).GetComponent<TextMeshProUGUI>().text = limbHealth[i].ToString();
+        }
+    }
+
+    public void ShowLimb(int LimbNumber)
+    {
+        monsterCanvas.transform.GetChild(LimbNumber).gameObject.SetActive(true);
+    }
+    public void HideLimbs()
+    {
+        for (int i = 0; i < monsterCanvas.transform.childCount; i++)
+        {
+            monsterCanvas.transform.GetChild(i).gameObject.SetActive(false);
+        }
+    }
+
 
     
     // Start is called before the first frame update
