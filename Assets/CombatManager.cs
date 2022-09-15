@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -13,6 +14,7 @@ public class CombatManager : MonoBehaviour
     protected static State currentTurn;
 
     private static UIManager ourUI;
+    private SpawnPoints ourSpawnPoints;
     private bool testStarted = false;
     
     protected enum State
@@ -30,7 +32,7 @@ public class CombatManager : MonoBehaviour
         encounterEnemies = gameObject.transform.GetChild(0).gameObject;
         enemyDictionary = gameObject.transform.GetChild(1).gameObject;
         ourUI = transform.parent.GetChild(0).GetComponent<UIManager>();
-        
+        ourSpawnPoints = gameObject.transform.GetChild(2).gameObject.GetComponent<SpawnPoints>();
     }
 
     // Update is called once per frame
@@ -42,8 +44,7 @@ public class CombatManager : MonoBehaviour
                 
                 //Generate Encounter
                 Debug.Log("In Pre-Fight Turn");
-                if (!enemiesSpawned) { SpawnEnemies(0);} //Spawn our enemies
-                enemyCount = encounterEnemies.transform.childCount;
+                SpawnEnemies(0, 1); //Spawn our enemies
                 ChangeState(State.PlayerTurn);
                 break;
             case State.PlayerTurn:
@@ -62,12 +63,28 @@ public class CombatManager : MonoBehaviour
 
     }
 
-    public void SpawnEnemies(int id)
+    private void LateUpdate()
     {
-        GameObject temp = Instantiate(enemyDictionary.transform.GetChild(id).gameObject);
-        temp.transform.parent = encounterEnemies.transform;
-        temp.SetActive(true);
-        enemiesSpawned = true; 
+        //Check How Many Enemies We Have On Screen
+        enemyCount = encounterEnemies.transform.childCount;
+    }
+
+    public void SpawnEnemies(int id, int amount)
+    {
+
+            
+            for (int i = 0; i < amount; i++)
+            {
+                GameObject temp = Instantiate(enemyDictionary.transform.GetChild(id).gameObject);
+                temp.transform.position = ourSpawnPoints.getSpawnPoint(1, 0).transform.position;
+                ourSpawnPoints.AssignHolder(temp);
+                temp.transform.parent = encounterEnemies.transform;
+                temp.SetActive(true);
+                
+            }
+ 
+            //Debug.Log("Too Many Enemies On Screen");
+            enemiesSpawned = true; 
     }
 
     public static void DamageMonsterHealth(MonsterData ourMonster)
@@ -95,6 +112,7 @@ public class CombatManager : MonoBehaviour
         print("Skipping Monster Turn " + Time.time);
         ourUI.RestartMenu();
         testStarted = false;
+        SpawnEnemies(0, 1);
         ChangeState(State.PlayerTurn);
     }
 
