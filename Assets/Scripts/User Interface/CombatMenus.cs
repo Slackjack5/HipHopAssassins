@@ -4,17 +4,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class AttackMenu : UIManager
+public class CombatMenus : UIManager
 {
     private UIManager ourUI;
     protected override void Start()
     {
         base.Start();
     }
-
-    public override void DeployMenu()
+    
+    public override void DeployAttackMenu()
     {
-        GenerateLimbs(selectedMonster);
+        GenerateLimbs();
         if (menuNavigation.y == 0) //Limb #1
         {
             selectedMonster.GetComponent<MonsterData>().ShowLimb(0);
@@ -31,9 +31,11 @@ public class AttackMenu : UIManager
             HideAllMenus();
             ChangeState(State.Home);
         }
+        
+        
     }
-
-    private void GenerateLimbs(GameObject selectedMonster)
+    
+    private void GenerateLimbs()
     {
         MonsterData selectedData = selectedMonster.GetComponent<MonsterData>();
         int limbCount = selectedData.limbHealth.Length;
@@ -47,5 +49,46 @@ public class AttackMenu : UIManager
         
         limbCanvas.SetActive(true);
     }
+    
+    //Home
+    public override void DeployHomeMenu()
+    {
+        //Current Menu Player is Hovering Over
+        if (menuNavigation.x == 0) //Attack
+        {
+            if (Input.GetKeyDown("space")) 
+            {
+                ChangeState(State.SelectMonster);
+            }
+        }
+        else if (menuNavigation.x==1) //Magic
+        {
+            if (Input.GetKeyDown("space")) 
+            {
+                ChangeState(State.Magic);
+            }
+        }
+        else if (menuNavigation.x==2) //Items
+        {
+            if (Input.GetKeyDown("space")) 
+            {
+                ChangeState(State.Items);
+            }
+        }
+        else if (menuNavigation.x==3) //Flee
+        {
+            if (Input.GetKeyDown("space")) 
+            {
+                ChangeState(State.Flee);
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            menuNavigation.x = 0;
+            ChangeState(State.Home);
+        }
+
+    }
+
 
 }

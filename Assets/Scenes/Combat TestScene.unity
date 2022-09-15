@@ -457,6 +457,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa82ea8983bb4acbb50f93b0e90be1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NavigationLimit: {x: 0, y: 0}
+  menuNavigation: {x: 0, y: 0}
 --- !u!114 &225162139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -469,6 +471,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 519d53ca420e9304b9d41ce366573c79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NavigationLimit: {x: 0, y: 0}
+  menuNavigation: {x: 0, y: 0}
 --- !u!1 &227574075
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,25 +9,20 @@ using UnityEngine.PlayerLoop;
 
 public class UIManager : MonoBehaviour
 {
-    protected GameObject userInterface;
-    protected GameObject combatManager;
-    private GameObject actionBlock;
-    private Vector2 NavigationLimit;
+    //State
     protected State currentMenu;
-    protected Vector2 menuNavigation;
-    
+    //Vector2
+    public Vector2 NavigationLimit;
+    public Vector2 menuNavigation;
     //Callable Objects
     protected GameObject limbCanvas;
-    protected GameObject selectedMonster;
     protected GameObject encounteredEnemies;
+    protected GameObject userInterface;
+    protected GameObject combatManager;
+    protected GameObject actionBlock;
+    //static
+    protected static GameObject selectedMonster;
     
-    //bools
-    protected bool limbsGenerated;
-    
-    //Scripts
-    protected AttackMenu ourAttackMenu;
-    
-
     protected enum State
     {
         Home,
@@ -41,20 +36,14 @@ public class UIManager : MonoBehaviour
 
     protected virtual void Start()
     {
-        
         //GameObjects
         userInterface = GameObject.Find("UserInterface");
         combatManager = GameObject.Find("CombatManager");
         limbCanvas = userInterface.transform.GetChild(1).gameObject;
         encounteredEnemies = combatManager.transform.GetChild(0).gameObject;
 
-        
-        //Scripts
-        ourAttackMenu = gameObject.GetComponent<AttackMenu>();
-        
         //Variables
         menuNavigation.x = 0;
-
     }
 
     protected void ChangeState(State state)
@@ -64,8 +53,6 @@ public class UIManager : MonoBehaviour
         menuNavigation.y = 0;
         //Hide UI
     }
-    // Update is called once per frame
-
 
     private void maneuverMenu()
     {
@@ -107,11 +94,6 @@ public class UIManager : MonoBehaviour
         if (selectedMonster!=null){selectedMonster.GetComponent<MonsterData>().HideLimbs();}
     }
 
-    private void SelectMonster()
-    {
-
-    }
-
     public void UpdateUI()
     {
         GameObject ourEnemies = encounteredEnemies.transform.gameObject;
@@ -149,48 +131,11 @@ public class UIManager : MonoBehaviour
         ChangeState(State.Home);
     }
 
-    private void HomeButtons()
+    public virtual void DeployAttackMenu()
     {
-        
-        //Current Menu Player is Hovering Over
-        if (menuNavigation.x == 0) //Attack
-        {
-            if (Input.GetKeyDown("space")) 
-            {
-                ChangeState(State.SelectMonster);
-            }
-        }
-        else if (menuNavigation.x==1) //Magic
-        {
-            if (Input.GetKeyDown("space")) 
-            {
-                ChangeState(State.Magic);
-            }
-        }
-        else if (menuNavigation.x==2) //Items
-        {
-            if (Input.GetKeyDown("space")) 
-            {
-                ChangeState(State.Items);
-            }
-        }
-        else if (menuNavigation.x==3) //Flee
-        {
-            if (Input.GetKeyDown("space")) 
-            {
-                ChangeState(State.Flee);
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            menuNavigation.x = 0;
-            ChangeState(State.Home);
-        }
-        actionBlock.transform.GetChild((int) menuNavigation.x).GetComponent<Image>().color=Color.red;
-
+        Debug.Log(("No Menu Available"));
     }
-
-    public virtual void DeployMenu()
+    public virtual void DeployHomeMenu()
     {
         Debug.Log(("No Menu Available"));
     }
@@ -202,14 +147,14 @@ public class UIManager : MonoBehaviour
             case State.Home:
                 actionBlock = userInterface.transform.GetChild(0).gameObject;
                 maneuverMenu();
-                HomeButtons();
+                DeployHomeMenu();
                 NavigationLimit = new Vector2(3, 0);
+                actionBlock.transform.GetChild((int) menuNavigation.x).GetComponent<Image>().color=Color.red;
                 break;
             case State.Attack:
                 actionBlock = userInterface.transform.GetChild(1).gameObject;
                 maneuverMenu();
-                //ourAttackMenu.AttackButtons();
-                DeployMenu();
+                DeployAttackMenu();
                 actionBlock.transform.GetChild((int) menuNavigation.y).GetComponent<Image>().color = Color.red;
                 break;
             case State.Magic:
@@ -242,8 +187,5 @@ public class UIManager : MonoBehaviour
         }
         
     }
-    
-    private void FixedUpdate()
-    {
-    }
+
 }
