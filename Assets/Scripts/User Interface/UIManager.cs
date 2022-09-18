@@ -10,10 +10,10 @@ using UnityEngine.PlayerLoop;
 public class UIManager : MonoBehaviour
 {
     //State
-    protected State currentMenu;
+    [SerializeField] protected State currentMenu;
     //Vector2
-    public Vector2 NavigationLimit;
-    public Vector2 menuNavigation;
+    [SerializeField] protected Vector2 NavigationLimit;
+    [SerializeField] protected Vector2 menuNavigation;
     //Callable Objects
     protected GameObject limbCanvas;
     protected GameObject encounteredEnemies;
@@ -131,28 +131,22 @@ public class UIManager : MonoBehaviour
         ChangeState(State.Home);
     }
 
-    public virtual void DeployAttackMenu()
-    {
-        Debug.Log(("No Menu Available"));
-    }
-    public virtual void DeployHomeMenu()
-    {
-        Debug.Log(("No Menu Available"));
-    }
-
     protected virtual void Update()
     {
         switch (currentMenu)
         {
             case State.Home:
+                
                 actionBlock = userInterface.transform.GetChild(0).gameObject;
                 maneuverMenu();
+                ResetMonsters();
                 DeployHomeMenu();
                 NavigationLimit = new Vector2(3, 0);
                 actionBlock.transform.GetChild((int) menuNavigation.x).GetComponent<Image>().color=Color.red;
                 break;
             case State.Attack:
                 actionBlock = userInterface.transform.GetChild(1).gameObject;
+                NavigationLimit = new Vector2(0, selectedMonster.GetComponent<MonsterData>().limbHealth.Length-1);
                 maneuverMenu();
                 DeployAttackMenu();
                 actionBlock.transform.GetChild((int) menuNavigation.y).GetComponent<Image>().color = Color.red;
@@ -170,22 +164,148 @@ public class UIManager : MonoBehaviour
 
                 break;
             case State.SelectMonster:
-
+                NavigationLimit = new Vector2(CombatManager.enemyCount-1, 0);
+                maneuverMenu();
                 if (CombatManager.enemyCount <= 1)
                 {
                     selectedMonster = encounteredEnemies.transform.GetChild(0).gameObject;
                     Debug.Log(selectedMonster.name);
-                    NavigationLimit = new Vector2(0, CombatManager.enemyCount);
                     ChangeState(State.Attack);
                 }
                 else
                 {
-            
-                    NavigationLimit = new Vector2(0, CombatManager.enemyCount);
+                    if (menuNavigation.x == 0)
+                    {
+                        encounteredEnemies.transform.GetChild(0).transform.localScale = new Vector3(2,2,1);
+                        encounteredEnemies.transform.GetChild(1).transform.localScale = new Vector3(1,1,1);
+                        if (Input.GetKeyDown("space"))
+                        {
+                            selectedMonster = encounteredEnemies.transform.GetChild(0).gameObject;
+                            ResetMonsters();
+                            ChangeState(State.Attack);
+                        }
+                    }
+                    else
+                    {
+                        encounteredEnemies.transform.GetChild(0).transform.localScale = new Vector3(1,1,1);
+                        encounteredEnemies.transform.GetChild(1).transform.localScale = new Vector3(2,2,1);
+                        if (Input.GetKeyDown("space"))
+                        {
+                            selectedMonster = encounteredEnemies.transform.GetChild(0).gameObject;
+                            ResetMonsters();
+                            ChangeState(State.Attack);
+                        }
+                    }
                 }
                 break;
         }
         
+    }
+/////////////////////////////////////////Combat Manager///////////////////////////////////////////////////////
+
+    public void DeployAttackMenu()
+    {
+        GenerateLimbs();
+        if (menuNavigation.y == 0) //Limb #1
+        {
+            selectedMonster.GetComponent<MonsterData>().ShowLimb(0);
+        }
+        else if (menuNavigation.y == 1) //Limb #1
+        {
+            selectedMonster.GetComponent<MonsterData>().ShowLimb(1);
+        }
+
+        if (Input.GetKeyDown("space")) 
+        {
+            CombatManager.DamageMonsterLimb(selectedMonster.GetComponent<MonsterData>(),(int) menuNavigation.y,20);
+            resetBlocks();
+            HideAllMenus();
+            ChangeState(State.Home);
+        }
+        
+        
+    }
+    
+    private void GenerateLimbs()
+    {
+        MonsterData selectedData = selectedMonster.GetComponent<MonsterData>();
+        int limbCount = selectedData.limbHealth.Length;
+        
+        for (int i = 0; i < limbCount; i++)
+        {
+            GameObject tempLimb = limbCanvas.transform.GetChild(i).gameObject;
+            tempLimb.SetActive(true);
+            tempLimb.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = selectedData.limbName[i];
+        }
+        
+        limbCanvas.SetActive(true);
+    }
+
+    private void ResetMonsters()
+    {
+        for (int i = 0; i < encounteredEnemies.transform.childCount; i++)
+        {
+            GameObject ourEnemy = encounteredEnemies.transform.GetChild(i).gameObject;
+            ourEnemy.transform.localScale = new Vector3(1, 1, 1);
+        }
+            
+    }
+    
+    //Home
+    public void DeployHomeMenu()
+    {
+        //Current Menu Player is Hovering Over
+        if (menuNavigation.x == 0) //Attack
+        {
+            if (Input.GetKeyDown("space"))
+            {
+                MenuStartingPoint();
+                ChangeState(State.SelectMonster);
+            }
+        }
+        else if (menuNavigation.x==1) //Magic
+        {
+            if (Input.GetKeyDown("space")) 
+            {
+                ChangeState(State.Magic);
+            }
+        }
+        else if (menuNavigation.x==2) //Items
+        {
+            if (Input.GetKeyDown("space")) 
+            {
+                ChangeState(State.Items);
+            }
+        }
+        else if (menuNavigation.x==3) //Flee
+        {
+            if (Input.GetKeyDown("space")) 
+            {
+                ChangeState(State.Flee);
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            menuNavigation.x = 0;
+            ChangeState(State.Home);
+        }
+
+    }
+
+    private void MenuStartingPoint()
+    {
+        if (CombatManager.enemyCount <= 1)
+        {
+            menuNavigation = new Vector2(0, 0);
+        }
+        else if (CombatManager.enemyCount == 2)
+        {
+            menuNavigation = new Vector2(1, 0);
+        }
+        else if (CombatManager.enemyCount == 3)
+        {
+            menuNavigation = new Vector2(1, 0);
+        }
     }
 
 }
