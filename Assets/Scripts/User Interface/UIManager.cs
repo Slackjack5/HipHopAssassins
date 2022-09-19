@@ -172,7 +172,7 @@ public class UIManager : MonoBehaviour
                     Debug.Log(selectedMonster.name);
                     ChangeState(State.Attack);
                 }
-                else
+                else if (CombatManager.enemyCount == 2)
                 {
                     if (menuNavigation.x == 0)
                     {
@@ -191,7 +191,46 @@ public class UIManager : MonoBehaviour
                         encounteredEnemies.transform.GetChild(1).transform.localScale = new Vector3(2,2,1);
                         if (Input.GetKeyDown("space"))
                         {
+                            selectedMonster = encounteredEnemies.transform.GetChild(1).gameObject;
+                            ResetMonsters();
+                            ChangeState(State.Attack);
+                        }
+                    }
+                }               
+                else if (CombatManager.enemyCount == 3)
+                {
+                    if (menuNavigation.x == 1)
+                    {
+                        encounteredEnemies.transform.GetChild(0).transform.localScale = new Vector3(2,2,1);
+                        encounteredEnemies.transform.GetChild(1).transform.localScale = new Vector3(1,1,1);
+                        encounteredEnemies.transform.GetChild(2).transform.localScale = new Vector3(1,1,1);
+                        if (Input.GetKeyDown("space"))
+                        {
                             selectedMonster = encounteredEnemies.transform.GetChild(0).gameObject;
+                            ResetMonsters();
+                            ChangeState(State.Attack);
+                        }
+                    }
+                    else if (menuNavigation.x == 2)
+                    {
+                        encounteredEnemies.transform.GetChild(0).transform.localScale = new Vector3(1,1,1);
+                        encounteredEnemies.transform.GetChild(2).transform.localScale = new Vector3(2,2,1);
+                        encounteredEnemies.transform.GetChild(1).transform.localScale = new Vector3(1,1,1);
+                        if (Input.GetKeyDown("space"))
+                        {
+                            selectedMonster = encounteredEnemies.transform.GetChild(2).gameObject;
+                            ResetMonsters();
+                            ChangeState(State.Attack);
+                        }
+                    }
+                    else if (menuNavigation.x == 0)
+                    {
+                        encounteredEnemies.transform.GetChild(0).transform.localScale = new Vector3(1,1,1);
+                        encounteredEnemies.transform.GetChild(2).transform.localScale = new Vector3(1,1,1);
+                        encounteredEnemies.transform.GetChild(1).transform.localScale = new Vector3(2,2,1);
+                        if (Input.GetKeyDown("space"))
+                        {
+                            selectedMonster = encounteredEnemies.transform.GetChild(1).gameObject;
                             ResetMonsters();
                             ChangeState(State.Attack);
                         }
@@ -259,8 +298,8 @@ public class UIManager : MonoBehaviour
         {
             if (Input.GetKeyDown("space"))
             {
-                MenuStartingPoint();
                 ChangeState(State.SelectMonster);
+                MenuStartingPoint();
             }
         }
         else if (menuNavigation.x==1) //Magic
