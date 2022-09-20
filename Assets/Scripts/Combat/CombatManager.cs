@@ -87,13 +87,14 @@ public class CombatManager : MonoBehaviour
             enemiesSpawned = true; 
     }
 
-    public static void DamageMonsterHealth(MonsterData ourMonster)
+    public static void DamageMonsterHealth(MonsterData ourMonster, String DamageType, int damage)
     {
       
     }
     public static void DamageMonsterLimb(MonsterData ourMonster, int limbNumber,int damage)
     {
-        ourMonster.limbHealth[limbNumber] -= damage;
+        int newLimbNumber = (int) MathF.Abs(limbNumber);
+        ourMonster.limbHealth[newLimbNumber] -= damage;
         ourUI.HideAllMenus();
         ourUI.UpdateUI();
         //End Player Turn

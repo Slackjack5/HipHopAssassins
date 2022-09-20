@@ -11,8 +11,9 @@ public class UIManager : MonoBehaviour
 {
     //State
     [SerializeField] protected State currentMenu;
+    [SerializeField] protected State previousMenu;
     //Vector2
-    [SerializeField] protected Vector2 NavigationLimit;
+    [SerializeField] protected Vector3 NavigationLimit;
     [SerializeField] protected Vector2 menuNavigation;
     //Callable Objects
     protected GameObject limbCanvas;
@@ -21,9 +22,24 @@ public class UIManager : MonoBehaviour
     protected GameObject combatManager;
     protected GameObject actionBlock;
     //static
-    protected static GameObject selectedMonster;
+    public static GameObject selectedMonster;
+    private GameObject ourPlayer;
+    //Spells
+    private SpellDictionary ourSpellDictionary;
+    private Spell selectedSpell;
+    
     
     protected enum State
+    {
+        Home,
+        Attack,
+        Magic,
+        Items,
+        Flee,
+        EnemyTurn,
+        SelectMonster,
+    }
+    protected enum PreviousState
     {
         Home,
         Attack,
@@ -39,6 +55,8 @@ public class UIManager : MonoBehaviour
         //GameObjects
         userInterface = GameObject.Find("UserInterface");
         combatManager = GameObject.Find("CombatManager");
+        ourPlayer = GameObject.Find("Player");
+        ourSpellDictionary = GameObject.Find("SpellDictionary").GetComponent<SpellDictionary>();
         limbCanvas = userInterface.transform.GetChild(1).gameObject;
         encounteredEnemies = combatManager.transform.GetChild(0).gameObject;
 
@@ -51,6 +69,11 @@ public class UIManager : MonoBehaviour
         currentMenu = state;
         menuNavigation.x = 0;
         menuNavigation.y = 0;
+        //Hide UI
+    }
+    protected void ChangePreviousState(State previousState)
+    {
+        previousMenu = previousState;
         //Hide UI
     }
 
@@ -68,12 +91,12 @@ public class UIManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            menuNavigation.y -= 1;
+            menuNavigation.y += 1;
             resetBlocks();
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            menuNavigation.y += 1;
+            menuNavigation.y -= 1;
             resetBlocks();
         }
         
@@ -82,7 +105,8 @@ public class UIManager : MonoBehaviour
         else if (menuNavigation.x < 0) { menuNavigation.x = 0; }
         
         if (menuNavigation.y > NavigationLimit.y) { menuNavigation.y = NavigationLimit.y; }
-        else if (menuNavigation.y < 0) { menuNavigation.y = 0; }
+        else if (menuNavigation.y < NavigationLimit.z) { menuNavigation.y = NavigationLimit.z; }
+        
     }
 
     public void resetBlocks()
@@ -126,7 +150,7 @@ public class UIManager : MonoBehaviour
 
     public void RestartMenu()
     {
-        menuNavigation = new Vector2(0, 0);
+        menuNavigation = new Vector3(0, 0,0);
         userInterface.transform.GetChild(0).gameObject.SetActive(true); //Enable Home UI
         ChangeState(State.Home);
     }
@@ -136,25 +160,31 @@ public class UIManager : MonoBehaviour
         switch (currentMenu)
         {
             case State.Home:
-                
+                ChangePreviousState(State.Home);
                 actionBlock = userInterface.transform.GetChild(0).gameObject;
                 maneuverMenu();
                 ResetMonsters();
                 DeployHomeMenu();
-                NavigationLimit = new Vector2(3, 0);
+                NavigationLimit = new Vector3(3, 0,0);
                 actionBlock.transform.GetChild((int) menuNavigation.x).GetComponent<Image>().color=Color.red;
                 break;
             case State.Attack:
+                ChangePreviousState(State.SelectMonster);
                 actionBlock = userInterface.transform.GetChild(1).gameObject;
-                NavigationLimit = new Vector2(0, selectedMonster.GetComponent<MonsterData>().limbHealth.Length-1);
+                NavigationLimit = new Vector3(0, 0,-1*(selectedMonster.GetComponent<MonsterData>().limbHealth.Length-1));
                 maneuverMenu();
                 DeployAttackMenu();
-                actionBlock.transform.GetChild((int) menuNavigation.y).GetComponent<Image>().color = Color.red;
                 break;
             case State.Magic:
-                Debug.Log("In Magic State");
+                ChangePreviousState(State.Magic);
+                actionBlock = userInterface.transform.GetChild(2).gameObject;
+                userInterface.transform.GetChild(0).gameObject.SetActive(false);
+                maneuverMenu();
+                DeployMagicMenu();
+                NavigationLimit = new Vector3(3, 0,-1);
                 break;
             case State.Items:
+                ChangePreviousState(State.Items);
                 Debug.Log("In Items State");
                 break;
             case State.Flee:
@@ -164,6 +194,7 @@ public class UIManager : MonoBehaviour
 
                 break;
             case State.SelectMonster:
+                ChangePreviousState(State.Home);
                 NavigationLimit = new Vector2(CombatManager.enemyCount-1, 0);
                 maneuverMenu();
                 if (CombatManager.enemyCount <= 1)
@@ -236,6 +267,14 @@ public class UIManager : MonoBehaviour
                         }
                     }
                 }
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    menuNavigation.x = 0;
+                    HideAllMenus();
+                    RestartMenu();
+                    ChangeState(previousMenu);
+                    resetBlocks();
+                }
                 break;
         }
         
@@ -248,10 +287,27 @@ public class UIManager : MonoBehaviour
         if (menuNavigation.y == 0) //Limb #1
         {
             selectedMonster.GetComponent<MonsterData>().ShowLimb(0);
+            actionBlock.transform.GetChild(0).GetComponent<Image>().color = Color.red;
         }
-        else if (menuNavigation.y == 1) //Limb #1
+        else if (menuNavigation.y == -1) //Limb #1
         {
             selectedMonster.GetComponent<MonsterData>().ShowLimb(1);
+            actionBlock.transform.GetChild(1).GetComponent<Image>().color = Color.red;
+        }
+        else if (menuNavigation.y == -2) //Limb #1
+        {
+            selectedMonster.GetComponent<MonsterData>().ShowLimb(2);
+            actionBlock.transform.GetChild(2).GetComponent<Image>().color = Color.red;
+        }
+        else if (menuNavigation.y == -3) //Limb #1
+        {
+            selectedMonster.GetComponent<MonsterData>().ShowLimb(3);
+            actionBlock.transform.GetChild(3).GetComponent<Image>().color = Color.red;
+        }
+        else if (menuNavigation.y == -4) //Limb #1
+        {
+            selectedMonster.GetComponent<MonsterData>().ShowLimb(4);
+            actionBlock.transform.GetChild(4).GetComponent<Image>().color = Color.red;
         }
 
         if (Input.GetKeyDown("space")) 
@@ -261,7 +317,14 @@ public class UIManager : MonoBehaviour
             HideAllMenus();
             ChangeState(State.Home);
         }
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            menuNavigation.x = 0;
+            HideAllMenus();
+            RestartMenu();
+            ChangeState(previousMenu);
+            resetBlocks();
+        }
         
     }
     
@@ -278,6 +341,25 @@ public class UIManager : MonoBehaviour
         }
         
         limbCanvas.SetActive(true);
+    }
+    
+    private void GenerateSpells()
+    {
+        int[] playerSpells = ourPlayer.GetComponent<PlayerScript>().allocatedSpells;
+
+        for (int i = 0; i < playerSpells.Length; i++)
+        {
+            GameObject tempSpell = actionBlock.transform.GetChild(i).gameObject;
+            tempSpell.SetActive(true);
+            if (ourSpellDictionary.spellPool[playerSpells[i]] == null)
+            {
+                tempSpell.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = "Empty Slot";
+            }
+            else
+            {
+                tempSpell.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = ourSpellDictionary.spellPool[playerSpells[i]].GetComponent<Spell>().spellName;
+            }
+        }
     }
 
     private void ResetMonsters()
@@ -298,6 +380,7 @@ public class UIManager : MonoBehaviour
         {
             if (Input.GetKeyDown("space"))
             {
+                ChangePreviousState(State.Home);
                 ChangeState(State.SelectMonster);
                 MenuStartingPoint();
             }
@@ -306,6 +389,7 @@ public class UIManager : MonoBehaviour
         {
             if (Input.GetKeyDown("space")) 
             {
+                ChangePreviousState(State.Home);
                 ChangeState(State.Magic);
             }
         }
@@ -313,6 +397,7 @@ public class UIManager : MonoBehaviour
         {
             if (Input.GetKeyDown("space")) 
             {
+                ChangePreviousState(State.Home);
                 ChangeState(State.Items);
             }
         }
@@ -320,13 +405,9 @@ public class UIManager : MonoBehaviour
         {
             if (Input.GetKeyDown("space")) 
             {
+                ChangePreviousState(State.Home);
                 ChangeState(State.Flee);
             }
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            menuNavigation.x = 0;
-            ChangeState(State.Home);
         }
 
     }
@@ -335,16 +416,171 @@ public class UIManager : MonoBehaviour
     {
         if (CombatManager.enemyCount <= 1)
         {
-            menuNavigation = new Vector2(0, 0);
+            menuNavigation = new Vector3(0, 0,0);
         }
         else if (CombatManager.enemyCount == 2)
         {
-            menuNavigation = new Vector2(1, 0);
+            menuNavigation = new Vector3(1, 0,0);
         }
         else if (CombatManager.enemyCount == 3)
         {
-            menuNavigation = new Vector2(1, 0);
+            menuNavigation = new Vector3(1, 0,0);
         }
+    }
+    
+    //Home
+    public void DeployMagicMenu()
+    {
+        GenerateSpells();
+        int[] playerSpells = ourPlayer.GetComponent<PlayerScript>().allocatedSpells;
+        
+        //Current Menu Player is Hovering Over
+        if (menuNavigation.x == 0 && menuNavigation.y == 0) //Attack
+        {
+            actionBlock.transform.GetChild(0).GetComponent<Image>().color = Color.red;
+            if (Input.GetKeyDown("space"))
+            {
+                if (playerSpells[0] != 0)
+                {
+                    selectedSpell = ourSpellDictionary.spellPool[playerSpells[0]].GetComponent<Spell>();
+                    Debug.Log("Casting: "+selectedSpell.name);
+                }
+                else
+                { 
+                    Debug.Log("No Spell Allocated");
+                }
+
+            }
+        }
+        else if (menuNavigation.x==1 && menuNavigation.y == 0) //Magic
+        {
+            actionBlock.transform.GetChild(1).GetComponent<Image>().color = Color.red;
+            if (Input.GetKeyDown("space")) 
+            {
+                if (playerSpells[1] != 0)
+                {
+                    selectedSpell = ourSpellDictionary.spellPool[playerSpells[1]].GetComponent<Spell>();
+                    Debug.Log("Casting: "+selectedSpell.name);
+                }               
+                else
+                { 
+                    Debug.Log("No Spell Allocated");
+                }
+
+            }
+
+        }
+        else if (menuNavigation.x==2 && menuNavigation.y == 0) //Items
+        {
+            actionBlock.transform.GetChild(2).GetComponent<Image>().color = Color.red;
+            if (Input.GetKeyDown("space")) 
+            {
+                if (playerSpells[2] != 0)
+                {
+                    selectedSpell = ourSpellDictionary.spellPool[playerSpells[2]].GetComponent<Spell>();
+                    Debug.Log("Casting: "+selectedSpell.name);
+                }
+                else
+                { 
+                    Debug.Log("No Spell Allocated");
+                }
+            }
+        }
+        else if (menuNavigation.x==3 && menuNavigation.y == 0) //Flee
+        {
+            actionBlock.transform.GetChild(3).GetComponent<Image>().color = Color.red;
+            if (Input.GetKeyDown("space")) 
+            {
+                if (playerSpells[3] != 0)
+                {
+                    selectedSpell = ourSpellDictionary.spellPool[playerSpells[3]].GetComponent<Spell>();
+                    Debug.Log("Casting: "+selectedSpell.name);
+                }
+                else
+                { 
+                    Debug.Log("No Spell Allocated");
+                }
+            }
+        }        
+        else if (menuNavigation.x==0 && menuNavigation.y == -1) //Magic
+        {
+            actionBlock.transform.GetChild(4).GetComponent<Image>().color = Color.red;
+            if (Input.GetKeyDown("space")) 
+            {
+                if (playerSpells[4] != 0)
+                {
+                    selectedSpell = ourSpellDictionary.spellPool[playerSpells[4]].GetComponent<Spell>();
+                    Debug.Log("Casting: "+selectedSpell.name);
+                }
+                else
+                { 
+                    Debug.Log("No Spell Allocated");
+                }
+            }
+
+        }
+        else if (menuNavigation.x==1 && menuNavigation.y == -1) //Items
+        {
+            actionBlock.transform.GetChild(5).GetComponent<Image>().color = Color.red;
+            if (Input.GetKeyDown("space")) 
+            {
+                if (playerSpells[5] != 0)
+                {
+                    selectedSpell = ourSpellDictionary.spellPool[playerSpells[5]].GetComponent<Spell>();
+                    Debug.Log("Casting: "+selectedSpell.name);
+                }
+                else
+                { 
+                    Debug.Log("No Spell Allocated");
+                }
+            }
+        }
+        else if (menuNavigation.x==2 && menuNavigation.y == -1) //Flee
+        {
+            actionBlock.transform.GetChild(6).GetComponent<Image>().color = Color.red;
+            if (Input.GetKeyDown("space")) 
+            {
+                if (playerSpells[6] != 0)
+                {
+                    selectedSpell = ourSpellDictionary.spellPool[playerSpells[6]].GetComponent<Spell>();
+                    Debug.Log("Casting: "+selectedSpell.name);
+                }
+                else
+                { 
+                    Debug.Log("No Spell Allocated");
+                }
+            }
+        }
+        else if (menuNavigation.x==3 && menuNavigation.y == -1) //Flee
+        {
+            actionBlock.transform.GetChild(7).GetComponent<Image>().color = Color.red;
+            if (Input.GetKeyDown("space")) 
+            {
+                if (playerSpells[7] != 0)
+                {
+                    selectedSpell = ourSpellDictionary.spellPool[playerSpells[7]].GetComponent<Spell>();
+                    Debug.Log("Casting: "+selectedSpell.name);
+                }
+                else
+                { 
+                    Debug.Log("No Spell Allocated");
+                }
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            HideAllMenus();
+            RestartMenu();
+            ChangeState(State.Home);
+            menuNavigation.x = 0;
+            for (int i = 0; i < actionBlock.transform.childCount; i++)
+            {
+                GameObject tempSpell = actionBlock.transform.GetChild(i).gameObject;
+                tempSpell.SetActive(false);
+            }
+            resetBlocks();
+        }
+
     }
 
 }
