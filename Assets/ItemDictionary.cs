@@ -2,12 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerScript : MonoBehaviour
+public class ItemDictionary : MonoBehaviour
 {
-    [SerializeField] private int Level;
-    [SerializeField] public int Health;
-    public int[] allocatedSpells;
-    public int[] allocatedItems;
+    public GameObject[] itemPool;
     // Start is called before the first frame update
     void Start()
     {

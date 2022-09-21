@@ -10,6 +10,7 @@ public class CombatManager : MonoBehaviour
 
     private GameObject encounterEnemies;
     private GameObject enemyDictionary;
+    private static PlayerScript ourPlayer;
     private bool enemiesSpawned;
     protected static State currentTurn;
 
@@ -33,6 +34,7 @@ public class CombatManager : MonoBehaviour
         enemyDictionary = gameObject.transform.GetChild(1).gameObject;
         ourUI = transform.parent.GetChild(0).GetComponent<UIManager>();
         ourSpawnPoints = gameObject.transform.GetChild(2).gameObject.GetComponent<SpawnPoints>();
+        ourPlayer = GameObject.Find("Player").GetComponent<PlayerScript>();
     }
 
     // Update is called once per frame
@@ -90,6 +92,15 @@ public class CombatManager : MonoBehaviour
     public static void DamageMonsterHealth(MonsterData ourMonster, String DamageType, int damage)
     {
       
+    }
+    
+    public static void HealPlayer(int healAmount)
+    {
+        ourPlayer.Health += healAmount;
+        ourUI.HideAllMenus();
+        ourUI.UpdateUI();
+        //End Player Turn
+        ChangeState(State.MonsterTurn);
     }
     public static void DamageMonsterLimb(MonsterData ourMonster, int limbNumber,int damage)
     {

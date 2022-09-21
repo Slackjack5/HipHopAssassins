@@ -27,6 +27,10 @@ public class UIManager : MonoBehaviour
     //Spells
     private SpellDictionary ourSpellDictionary;
     private Spell selectedSpell;
+    //items
+    private ItemDictionary ourItemDictionary;
+    private Item selectedItem;
+    
     
     
     protected enum State
@@ -57,6 +61,7 @@ public class UIManager : MonoBehaviour
         combatManager = GameObject.Find("CombatManager");
         ourPlayer = GameObject.Find("Player");
         ourSpellDictionary = GameObject.Find("SpellDictionary").GetComponent<SpellDictionary>();
+        ourItemDictionary = GameObject.Find("ItemDictionary").GetComponent<ItemDictionary>();
         limbCanvas = userInterface.transform.GetChild(1).gameObject;
         encounteredEnemies = combatManager.transform.GetChild(0).gameObject;
 
@@ -111,10 +116,14 @@ public class UIManager : MonoBehaviour
 
     public void resetBlocks()
     {
-        foreach (Transform child in actionBlock.transform)
+        for (int i = 0; i < userInterface.transform.childCount; i++)
         {
-            child.GetComponent<Image>().color=Color.white;
+            foreach (Transform child in userInterface.transform.GetChild(i).transform)
+            {
+                child.GetComponent<Image>().color = Color.white;
+            }
         }
+
         if (selectedMonster!=null){selectedMonster.GetComponent<MonsterData>().HideLimbs();}
     }
 
@@ -132,20 +141,25 @@ public class UIManager : MonoBehaviour
 
     public void HideAllMenus()
     {
-        
         //Hide Limb Menu
-        MonsterData selectedData = selectedMonster.GetComponent<MonsterData>();
-        
-        int limbCount = selectedData.limbHealth.Length;
-        //Disable Limb Selection
-        for (int i = 0; i < limbCount; i++)
+        if (selectedMonster != null)
         {
-            GameObject tempLimb = limbCanvas.transform.GetChild(i).gameObject;
-            tempLimb.SetActive(false);
+            MonsterData selectedData = selectedMonster.GetComponent<MonsterData>();
+        
+            int limbCount = selectedData.limbHealth.Length;
+            //Disable Limb Selection
+            for (int i = 0; i < limbCount; i++)
+            {
+                GameObject tempLimb = limbCanvas.transform.GetChild(i).gameObject;
+                tempLimb.SetActive(false);
+            }
+            selectedData.HideLimbs();
         }
-        selectedData.HideLimbs();
+        
         userInterface.transform.GetChild(0).gameObject.SetActive(false);
         userInterface.transform.GetChild(1).gameObject.SetActive(false);
+        userInterface.transform.GetChild(2).gameObject.SetActive(false);
+        userInterface.transform.GetChild(3).gameObject.SetActive(false);
     }
 
     public void RestartMenu()
@@ -167,6 +181,7 @@ public class UIManager : MonoBehaviour
                 DeployHomeMenu();
                 NavigationLimit = new Vector3(3, 0,0);
                 actionBlock.transform.GetChild((int) menuNavigation.x).GetComponent<Image>().color=Color.red;
+                userInterface.transform.GetChild(0).gameObject.SetActive(true);
                 break;
             case State.Attack:
                 ChangePreviousState(State.SelectMonster);
@@ -174,18 +189,25 @@ public class UIManager : MonoBehaviour
                 NavigationLimit = new Vector3(0, 0,-1*(selectedMonster.GetComponent<MonsterData>().limbHealth.Length-1));
                 maneuverMenu();
                 DeployAttackMenu();
+                userInterface.transform.GetChild(1).gameObject.SetActive(true);
                 break;
             case State.Magic:
-                ChangePreviousState(State.Magic);
+                ChangePreviousState(State.Home);
                 actionBlock = userInterface.transform.GetChild(2).gameObject;
                 userInterface.transform.GetChild(0).gameObject.SetActive(false);
                 maneuverMenu();
                 DeployMagicMenu();
                 NavigationLimit = new Vector3(3, 0,-1);
+                userInterface.transform.GetChild(2).gameObject.SetActive(true);
                 break;
             case State.Items:
-                ChangePreviousState(State.Items);
-                Debug.Log("In Items State");
+                actionBlock = userInterface.transform.GetChild(3).gameObject;
+                userInterface.transform.GetChild(0).gameObject.SetActive(false);
+                ChangePreviousState(State.Home);
+                maneuverMenu();
+                DeployItemMenu();
+                NavigationLimit = new Vector3(3, 0,-1);
+                userInterface.transform.GetChild(3).gameObject.SetActive(true);
                 break;
             case State.Flee:
                 Debug.Log("In Flee State");
@@ -346,7 +368,6 @@ public class UIManager : MonoBehaviour
     private void GenerateSpells()
     {
         int[] playerSpells = ourPlayer.GetComponent<PlayerScript>().allocatedSpells;
-
         for (int i = 0; i < playerSpells.Length; i++)
         {
             GameObject tempSpell = actionBlock.transform.GetChild(i).gameObject;
@@ -358,6 +379,25 @@ public class UIManager : MonoBehaviour
             else
             {
                 tempSpell.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = ourSpellDictionary.spellPool[playerSpells[i]].GetComponent<Spell>().spellName;
+            }
+        }
+    }
+    
+    private void GenerateItems()
+    {
+        int[] playerItems = ourPlayer.GetComponent<PlayerScript>().allocatedItems;
+        actionBlock.gameObject.SetActive(true);
+        for (int i = 0; i < playerItems.Length; i++)
+        {
+            GameObject tempItem = actionBlock.transform.GetChild(i).gameObject;
+            tempItem.SetActive(true);
+            if (ourItemDictionary.itemPool[playerItems[i]] == null)
+            {
+                tempItem.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = "Empty Slot";
+            }
+            else
+            {
+                tempItem.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = ourItemDictionary.itemPool[playerItems[i]].GetComponent<Item>().itemName;
             }
         }
     }
@@ -572,6 +612,168 @@ public class UIManager : MonoBehaviour
             HideAllMenus();
             RestartMenu();
             ChangeState(State.Home);
+            menuNavigation.x = 0;
+            for (int i = 0; i < actionBlock.transform.childCount; i++)
+            {
+                GameObject tempSpell = actionBlock.transform.GetChild(i).gameObject;
+                tempSpell.SetActive(false);
+            }
+            resetBlocks();
+        }
+
+    }
+    
+      public void DeployItemMenu()
+    {
+        GenerateItems();
+        int[] playerItems = ourPlayer.GetComponent<PlayerScript>().allocatedItems;
+        
+        //Current Menu Player is Hovering Over
+        if (menuNavigation.x == 0 && menuNavigation.y == 0) //Attack
+        {
+            actionBlock.transform.GetChild(0).GetComponent<Image>().color = Color.red;
+            if (Input.GetKeyDown("space"))
+            {
+                if (playerItems[0] != 0)
+                {
+                    selectedItem = ourItemDictionary.itemPool[playerItems[0]].GetComponent<Item>();
+                    Instantiate( ourItemDictionary.itemPool[playerItems[0]]);
+                    playerItems[0] = 0;
+                }
+                else
+                { 
+                    Debug.Log("No Item Allocated");
+                }
+
+            }
+        }
+        else if (menuNavigation.x==1 && menuNavigation.y == 0) //Magic
+        {
+            actionBlock.transform.GetChild(1).GetComponent<Image>().color = Color.red;
+            if (Input.GetKeyDown("space")) 
+            {
+                if (playerItems[1] != 0)
+                {
+                    selectedItem = ourItemDictionary.itemPool[playerItems[1]].GetComponent<Item>();
+                    Instantiate( ourItemDictionary.itemPool[playerItems[1]]);
+                    playerItems[1] = 0;
+                }               
+                else
+                { 
+                    Debug.Log("No Item Allocated");
+                }
+
+            }
+
+        }
+        else if (menuNavigation.x==2 && menuNavigation.y == 0) //Items
+        {
+            actionBlock.transform.GetChild(2).GetComponent<Image>().color = Color.red;
+            if (Input.GetKeyDown("space")) 
+            {
+                if (playerItems[2] != 0)
+                {
+                    selectedItem = ourItemDictionary.itemPool[playerItems[2]].GetComponent<Item>();
+                    Instantiate( ourItemDictionary.itemPool[playerItems[2]]);
+                    playerItems[2] = 0;
+                }
+                else
+                { 
+                    Debug.Log("No Item Allocated");
+                }
+            }
+        }
+        else if (menuNavigation.x==3 && menuNavigation.y == 0) //Flee
+        {
+            actionBlock.transform.GetChild(3).GetComponent<Image>().color = Color.red;
+            if (Input.GetKeyDown("space")) 
+            {
+                if (playerItems[3] != 0)
+                {
+                    selectedItem = ourItemDictionary.itemPool[playerItems[3]].GetComponent<Item>();
+                    Instantiate( ourItemDictionary.itemPool[playerItems[3]]);
+                    playerItems[3] = 0;
+                }
+                else
+                { 
+                    Debug.Log("No Item Allocated");
+                }
+            }
+        }        
+        else if (menuNavigation.x==0 && menuNavigation.y == -1) //Magic
+        {
+            actionBlock.transform.GetChild(4).GetComponent<Image>().color = Color.red;
+            if (Input.GetKeyDown("space")) 
+            {
+                if (playerItems[4] != 0)
+                {
+                    selectedItem = ourItemDictionary.itemPool[playerItems[4]].GetComponent<Item>();
+                    Instantiate( ourItemDictionary.itemPool[playerItems[4]]);
+                    playerItems[4] = 0;
+                }
+                else
+                { 
+                    Debug.Log("No Item Allocated");
+                }
+            }
+
+        }
+        else if (menuNavigation.x==1 && menuNavigation.y == -1) //Items
+        {
+            actionBlock.transform.GetChild(5).GetComponent<Image>().color = Color.red;
+            if (Input.GetKeyDown("space")) 
+            {
+                if (playerItems[5] != 0)
+                {
+                    selectedItem = ourItemDictionary.itemPool[playerItems[5]].GetComponent<Item>();
+                    Instantiate( ourItemDictionary.itemPool[playerItems[5]]);
+                    playerItems[5] = 0;
+                }
+                else
+                { 
+                    Debug.Log("No Item Allocated");
+                }
+            }
+        }
+        else if (menuNavigation.x==2 && menuNavigation.y == -1) //Flee
+        {
+            actionBlock.transform.GetChild(6).GetComponent<Image>().color = Color.red;
+            if (Input.GetKeyDown("space")) 
+            {
+                if (playerItems[6] != 0)
+                {
+                    selectedItem = ourItemDictionary.itemPool[playerItems[6]].GetComponent<Item>();
+                    Instantiate( ourItemDictionary.itemPool[playerItems[6]]);
+                    playerItems[6] = 0;
+                }
+                else
+                { 
+                    Debug.Log("No Item Allocated");
+                }
+            }
+        }
+        else if (menuNavigation.x==3 && menuNavigation.y == -1) //Flee
+        {
+            actionBlock.transform.GetChild(7).GetComponent<Image>().color = Color.red;
+            if (Input.GetKeyDown("space")) 
+            {
+                if (playerItems[7] != 0)
+                {
+                    selectedItem = ourItemDictionary.itemPool[playerItems[7]].GetComponent<Item>();
+                    Instantiate( ourItemDictionary.itemPool[playerItems[7]]);
+                    playerItems[7] = 0;
+                }
+                else
+                { 
+                    Debug.Log("No Item Allocated");
+                }
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            HideAllMenus();
+            RestartMenu();
+            ChangeState(previousMenu);
             menuNavigation.x = 0;
             for (int i = 0; i < actionBlock.transform.childCount; i++)
             {
