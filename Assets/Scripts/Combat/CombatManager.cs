@@ -112,6 +112,15 @@ public class CombatManager : MonoBehaviour
         ChangeState(State.MonsterTurn);
 
     }
+    public static void CastSpell(MonsterData ourMonster,int damage)
+    {
+        ourMonster.monsterHealth -= damage;
+        ourUI.HideAllMenus();
+        ourUI.UpdateUI();
+        //End Player Turn
+        ChangeState(State.MonsterTurn);
+
+    }
     protected static void ChangeState(State state)
     {
         currentTurn = state;

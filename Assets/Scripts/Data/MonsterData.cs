@@ -8,7 +8,7 @@ using TMPro;
 public class MonsterData : MonoBehaviour
 {
     private int id;
-    private int monsterHealth;
+    public int monsterHealth;
     private string monsterName;
     public GameObject monsterGFX;
     public GameObject monsterCanvas;
