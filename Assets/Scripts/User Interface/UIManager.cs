@@ -15,14 +15,15 @@ public class UIManager : MonoBehaviour
     //Vector2
     [SerializeField] public Vector3 NavigationLimit;
     [SerializeField] public Vector2 menuNavigation;
-    //Callable Objects
-    protected GameObject limbCanvas;
+    [SerializeField] public Vector2 lastMenuNavigation;
+
     public GameObject encounteredEnemies;
     protected GameObject userInterface;
     protected GameObject combatManager;
     public GameObject actionBlock;
-
+    protected GameObject limbCanvas;
     private MagicMenu ourMagicMenu;
+    private AttackMenu ourAttackMenu;
     //static
     public static GameObject selectedMonster;
     public static GameObject ourPlayer;
@@ -65,7 +66,7 @@ public class UIManager : MonoBehaviour
         ourPlayer = GameObject.Find("Player");
         ourItemDictionary = GameObject.Find("ItemDictionary").GetComponent<ItemDictionary>();
         ourMagicMenu = gameObject.GetComponent<MagicMenu>();
-        limbCanvas = userInterface.transform.GetChild(1).gameObject;
+        ourAttackMenu = gameObject.GetComponent<AttackMenu>();
         encounteredEnemies = combatManager.transform.GetChild(0).gameObject;
         actionBlock = gameObject;
         
@@ -77,9 +78,6 @@ public class UIManager : MonoBehaviour
     public void ChangeState(State state)
     {
         currentMenu = state;
-        menuNavigation.x = 0;
-        menuNavigation.y = 0;
-        //Hide UI
     }
     protected void ChangePreviousState(State previousState)
     {
@@ -111,11 +109,11 @@ public class UIManager : MonoBehaviour
         }
         
         //Set for a Max size of 2
-        if (menuNavigation.x > NavigationLimit.x) { menuNavigation.x = NavigationLimit.x; }
-        else if (menuNavigation.x < 0) { menuNavigation.x = 0; }
+        if (menuNavigation.x > NavigationLimit.x) { menuNavigation.x = NavigationLimit.x; Debug.Log("Breached Navigation Limit");}
+        else if (menuNavigation.x < 0) { menuNavigation.x = 0; Debug.Log("Breached Navigation Limit");}
         
-        if (menuNavigation.y > NavigationLimit.y) { menuNavigation.y = NavigationLimit.y; }
-        else if (menuNavigation.y < NavigationLimit.z) { menuNavigation.y = NavigationLimit.z; }
+        if (menuNavigation.y > NavigationLimit.y) { menuNavigation.y = NavigationLimit.y; Debug.Log("Breached Navigation Limit");}
+        else if (menuNavigation.y < NavigationLimit.z) { menuNavigation.y = NavigationLimit.z; Debug.Log("Breached Navigation Limit");}
         
     }
 
@@ -146,25 +144,10 @@ public class UIManager : MonoBehaviour
 
     public void HideAllMenus()
     {
-        //Hide Limb Menu
-        if (selectedMonster != null)
-        {
-            MonsterData selectedData = selectedMonster.GetComponent<MonsterData>();
-        
-            int limbCount = selectedData.limbHealth.Length;
-            //Disable Limb Selection
-            for (int i = 0; i < limbCount; i++)
-            {
-                GameObject tempLimb = limbCanvas.transform.GetChild(i).gameObject;
-                tempLimb.SetActive(false);
-            }
-            selectedData.HideLimbs();
-        }
-        
-        userInterface.transform.GetChild(0).gameObject.SetActive(false);
-        userInterface.transform.GetChild(1).gameObject.SetActive(false);
-        userInterface.transform.GetChild(2).gameObject.SetActive(false);
-        userInterface.transform.GetChild(3).gameObject.SetActive(false);
+        //userInterface.transform.GetChild(0).gameObject.SetActive(false);
+        //userInterface.transform.GetChild(1).gameObject.SetActive(false);
+        //userInterface.transform.GetChild(2).gameObject.SetActive(false);
+        //userInterface.transform.GetChild(3).gameObject.SetActive(false);
     }
 
     public void RestartMenu()
@@ -189,15 +172,10 @@ public class UIManager : MonoBehaviour
                 userInterface.transform.GetChild(0).gameObject.SetActive(true);
                 break;
             case State.Attack:
-                ChangePreviousState(State.SelectMonster);
-                actionBlock = userInterface.transform.GetChild(1).gameObject;
-                NavigationLimit = new Vector3(0, 0,-1*(selectedMonster.GetComponent<MonsterData>().limbHealth.Length-1));
                 maneuverMenu();
-                DeployAttackMenu();
-                userInterface.transform.GetChild(1).gameObject.SetActive(true);
+                userInterface.transform.GetChild(0).gameObject.SetActive(false);
                 break;
             case State.Magic:
-                ChangePreviousState(State.Home);
                 userInterface.transform.GetChild(0).gameObject.SetActive(false);
                 maneuverMenu();
                 break;
@@ -225,68 +203,6 @@ public class UIManager : MonoBehaviour
     }
 /////////////////////////////////////////Combat Manager///////////////////////////////////////////////////////
 
-    public void DeployAttackMenu()
-    {
-        GenerateLimbs();
-        if (menuNavigation.y == 0) //Limb #1
-        {
-            selectedMonster.GetComponent<MonsterData>().ShowLimb(0);
-            actionBlock.transform.GetChild(0).GetComponent<Image>().color = Color.red;
-        }
-        else if (menuNavigation.y == -1) //Limb #1
-        {
-            selectedMonster.GetComponent<MonsterData>().ShowLimb(1);
-            actionBlock.transform.GetChild(1).GetComponent<Image>().color = Color.red;
-        }
-        else if (menuNavigation.y == -2) //Limb #1
-        {
-            selectedMonster.GetComponent<MonsterData>().ShowLimb(2);
-            actionBlock.transform.GetChild(2).GetComponent<Image>().color = Color.red;
-        }
-        else if (menuNavigation.y == -3) //Limb #1
-        {
-            selectedMonster.GetComponent<MonsterData>().ShowLimb(3);
-            actionBlock.transform.GetChild(3).GetComponent<Image>().color = Color.red;
-        }
-        else if (menuNavigation.y == -4) //Limb #1
-        {
-            selectedMonster.GetComponent<MonsterData>().ShowLimb(4);
-            actionBlock.transform.GetChild(4).GetComponent<Image>().color = Color.red;
-        }
-
-        if (Input.GetKeyDown("space")) 
-        {
-            CombatManager.DamageMonsterLimb(selectedMonster.GetComponent<MonsterData>(),(int) menuNavigation.y,20);
-            resetBlocks();
-            HideAllMenus();
-            ChangeState(State.Home);
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            menuNavigation.x = 0;
-            HideAllMenus();
-            RestartMenu();
-            ChangeState(previousMenu);
-            resetBlocks();
-        }
-        
-    }
-    
-    private void GenerateLimbs()
-    {
-        MonsterData selectedData = selectedMonster.GetComponent<MonsterData>();
-        int limbCount = selectedData.limbHealth.Length;
-        
-        for (int i = 0; i < limbCount; i++)
-        {
-            GameObject tempLimb = limbCanvas.transform.GetChild(i).gameObject;
-            tempLimb.SetActive(true);
-            tempLimb.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = selectedData.limbName[i];
-        }
-        
-        limbCanvas.SetActive(true);
-    }
-    
 
     private void GenerateItems()
     {
@@ -325,8 +241,14 @@ public class UIManager : MonoBehaviour
         {
             if (Input.GetKeyDown("space"))
             {
+                //Change States
                 ChangePreviousState(State.Home);
-                ChangeState(State.SelectMonster);
+                ChangeState(State.Attack);
+                //Change Navigation
+                lastMenuNavigation = menuNavigation;
+                userInterface.transform.GetChild(1).gameObject.SetActive(true);
+                actionBlock = userInterface.transform.GetChild(1).gameObject;
+                ourAttackMenu.ChangeState(AttackMenu.State.SelectMonster);
                 MenuStartingPoint();
             }
         }
@@ -335,6 +257,8 @@ public class UIManager : MonoBehaviour
             if (Input.GetKeyDown("space")) 
             {
                 ChangePreviousState(State.Home);
+                //Change Navigation
+                lastMenuNavigation = menuNavigation;
                 actionBlock = userInterface.transform.GetChild(2).gameObject;
                 ourMagicMenu.ChangeState(MagicMenu.State.SpellList);
                 userInterface.transform.GetChild(2).gameObject.SetActive(true);
@@ -368,7 +292,7 @@ public class UIManager : MonoBehaviour
         }
         else if (CombatManager.enemyCount == 2)
         {
-            menuNavigation = new Vector3(1, 0,0);
+            menuNavigation = new Vector3(0, 0,0);
         }
         else if (CombatManager.enemyCount == 3)
         {

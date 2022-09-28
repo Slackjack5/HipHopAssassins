@@ -46,7 +46,7 @@ public class CombatManager : MonoBehaviour
                 
                 //Generate Encounter
                 Debug.Log("In Pre-Fight Turn");
-                SpawnEnemies(0, 3); //Spawn our enemies
+                SpawnEnemies(0, 2); //Spawn our enemies
                 ChangeState(State.PlayerTurn);
                 break;
             case State.PlayerTurn:
@@ -106,7 +106,6 @@ public class CombatManager : MonoBehaviour
     {
         int newLimbNumber = (int) MathF.Abs(limbNumber);
         ourMonster.limbHealth[newLimbNumber] -= damage;
-        ourUI.HideAllMenus();
         ourUI.UpdateUI();
         //End Player Turn
         ChangeState(State.MonsterTurn);

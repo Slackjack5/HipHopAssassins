@@ -11,13 +11,14 @@ public class MagicMenu : MonoBehaviour
     //State
     [SerializeField] public State MenuState;
     private UIManager ourUI;
-    private GameObject combatManager;
     //Spells
     private SpellDictionary ourSpellDictionary;
     private Spell selectedSpell;
-    public Vector2 newMenuNavigation;
     //GameObjects
     private GameObject ourMagicMenu;
+    //Bool
+    private bool stateGate;
+
 
     public enum State
     {
@@ -30,18 +31,27 @@ public class MagicMenu : MonoBehaviour
     void Start()
     {
         ourUI = gameObject.GetComponent<UIManager>();
-        combatManager = GameObject.Find("CombatManager");
         ourSpellDictionary = GameObject.Find("SpellDictionary").GetComponent<SpellDictionary>();
         ourMagicMenu = GameObject.Find("UserInterface").transform.GetChild(2).GameObject();
     }
+
+    
     private void Update()
     {
         switch (MenuState)
         {
             case State.Inactive:
+                stateGate = false;
                 break;
             case State.SpellList:
-                DeployMagicMenu();
+                if (stateGate == true)
+                {
+                    DeployMagicMenu();
+                }
+                else
+                {
+                    stateGate = true;
+                }
                 break;
             case State.SelectMonster:
                 magicSelectMonster();
@@ -49,11 +59,6 @@ public class MagicMenu : MonoBehaviour
         }
     }
 
-    public void ChangeState(State state)
-    {
-        MenuState = state;
-    }
-    
     //State Magic List
     private void GenerateSpells() //Generate the List of Player Spells
     {
@@ -224,7 +229,7 @@ public class MagicMenu : MonoBehaviour
             ourUI.RestartMenu();
             ourUI.ChangeState(UIManager.State.Home);
             ChangeState(State.Inactive);
-            ourUI.menuNavigation.x = 0;
+            ourUI.menuNavigation.x = ourUI.lastMenuNavigation.x;
             ourUI.resetBlocks();
         }
         
@@ -363,6 +368,14 @@ public class MagicMenu : MonoBehaviour
             //Return to previous state
             ChangeState(State.SpellList);
         }
+        
     }
     
+    
+    public void ChangeState(State state)
+    {
+        MenuState = state;
+        Debug.Log("Going to State: "+state);
+    }
+
 }
