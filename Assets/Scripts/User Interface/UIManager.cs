@@ -21,18 +21,17 @@ public class UIManager : MonoBehaviour
     protected GameObject userInterface;
     protected GameObject combatManager;
     public GameObject actionBlock;
-    protected GameObject limbCanvas;
     private MagicMenu ourMagicMenu;
     private AttackMenu ourAttackMenu;
+    private ItemMenu ourItemMenu;
     //static
     public static GameObject selectedMonster;
-    public static GameObject ourPlayer;
+
     //Spells
     private SpellDictionary ourSpellDictionary;
     private Spell selectedSpell;
-    //items
-    private ItemDictionary ourItemDictionary;
-    private Item selectedItem;
+
+
 
     
     
@@ -63,10 +62,9 @@ public class UIManager : MonoBehaviour
         //GameObjects
         userInterface = GameObject.Find("UserInterface");
         combatManager = GameObject.Find("CombatManager");
-        ourPlayer = GameObject.Find("Player");
-        ourItemDictionary = GameObject.Find("ItemDictionary").GetComponent<ItemDictionary>();
         ourMagicMenu = gameObject.GetComponent<MagicMenu>();
         ourAttackMenu = gameObject.GetComponent<AttackMenu>();
+        ourItemMenu = gameObject.GetComponent<ItemMenu>();
         encounteredEnemies = combatManager.transform.GetChild(0).gameObject;
         actionBlock = gameObject;
         
@@ -82,7 +80,6 @@ public class UIManager : MonoBehaviour
     protected void ChangePreviousState(State previousState)
     {
         previousMenu = previousState;
-        //Hide UI
     }
 
     private void maneuverMenu()
@@ -139,20 +136,9 @@ public class UIManager : MonoBehaviour
             currentEnemy.GetComponent<MonsterData>().UpdateHealthUI();
         }
     }
-
-
-
-    public void HideAllMenus()
-    {
-        //userInterface.transform.GetChild(0).gameObject.SetActive(false);
-        //userInterface.transform.GetChild(1).gameObject.SetActive(false);
-        //userInterface.transform.GetChild(2).gameObject.SetActive(false);
-        //userInterface.transform.GetChild(3).gameObject.SetActive(false);
-    }
-
+    
     public void RestartMenu()
     {
-        menuNavigation = new Vector3(0, 0,0);
         userInterface.transform.GetChild(0).gameObject.SetActive(true); //Enable Home UI
         ChangeState(State.Home);
     }
@@ -180,13 +166,8 @@ public class UIManager : MonoBehaviour
                 maneuverMenu();
                 break;
             case State.Items:
-                actionBlock = userInterface.transform.GetChild(3).gameObject;
                 userInterface.transform.GetChild(0).gameObject.SetActive(false);
-                ChangePreviousState(State.Home);
                 maneuverMenu();
-                DeployItemMenu();
-                NavigationLimit = new Vector3(3, 0,-1);
-                userInterface.transform.GetChild(3).gameObject.SetActive(true);
                 break;
             case State.Flee:
                 Debug.Log("In Flee State");
@@ -201,27 +182,6 @@ public class UIManager : MonoBehaviour
         }
         
     }
-/////////////////////////////////////////Combat Manager///////////////////////////////////////////////////////
-
-
-    private void GenerateItems()
-    {
-        int[] playerItems = ourPlayer.GetComponent<PlayerScript>().allocatedItems;
-        actionBlock.gameObject.SetActive(true);
-        for (int i = 0; i < playerItems.Length; i++)
-        {
-            GameObject tempItem = actionBlock.transform.GetChild(i).gameObject;
-            tempItem.SetActive(true);
-            if (ourItemDictionary.itemPool[playerItems[i]] == null)
-            {
-                tempItem.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = "Empty Slot";
-            }
-            else
-            {
-                tempItem.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = ourItemDictionary.itemPool[playerItems[i]].GetComponent<Item>().itemName;
-            }
-        }
-    }
 
     public void ResetMonsters()
     {
@@ -232,8 +192,7 @@ public class UIManager : MonoBehaviour
         }
             
     }
-    
-    //Home
+
     public void DeployHomeMenu()
     {
         //Current Menu Player is Hovering Over
@@ -259,6 +218,7 @@ public class UIManager : MonoBehaviour
                 ChangePreviousState(State.Home);
                 //Change Navigation
                 lastMenuNavigation = menuNavigation;
+                menuNavigation.x = 0;
                 actionBlock = userInterface.transform.GetChild(2).gameObject;
                 ourMagicMenu.ChangeState(MagicMenu.State.SpellList);
                 userInterface.transform.GetChild(2).gameObject.SetActive(true);
@@ -271,6 +231,12 @@ public class UIManager : MonoBehaviour
             {
                 ChangePreviousState(State.Home);
                 ChangeState(State.Items);
+                //Change Navigation
+                lastMenuNavigation = menuNavigation;
+                menuNavigation.x = 0;
+                actionBlock = userInterface.transform.GetChild(3).gameObject;
+                ourItemMenu.ChangeState(ItemMenu.State.ItemList);
+                userInterface.transform.GetChild(3).gameObject.SetActive(true);
             }
         }
         else if (menuNavigation.x==3) //Flee
@@ -284,7 +250,7 @@ public class UIManager : MonoBehaviour
 
     }
 
-    private void MenuStartingPoint()
+    public void MenuStartingPoint()
     {
         if (CombatManager.enemyCount <= 1)
         {
@@ -301,166 +267,5 @@ public class UIManager : MonoBehaviour
     }
 
     
-    public void DeployItemMenu()
-    {
-        GenerateItems();
-        int[] playerItems = ourPlayer.GetComponent<PlayerScript>().allocatedItems;
-        
-        //Current Menu Player is Hovering Over
-        if (menuNavigation.x == 0 && menuNavigation.y == 0) //Attack
-        {
-            actionBlock.transform.GetChild(0).GetComponent<Image>().color = Color.red;
-            if (Input.GetKeyDown("space"))
-            {
-                if (playerItems[0] != 0)
-                {
-                    selectedItem = ourItemDictionary.itemPool[playerItems[0]].GetComponent<Item>();
-                    Instantiate( ourItemDictionary.itemPool[playerItems[0]]);
-                    playerItems[0] = 0;
-                }
-                else
-                { 
-                    Debug.Log("No Item Allocated");
-                }
-
-            }
-        }
-        else if (menuNavigation.x==1 && menuNavigation.y == 0) //Magic
-        {
-            actionBlock.transform.GetChild(1).GetComponent<Image>().color = Color.red;
-            if (Input.GetKeyDown("space")) 
-            {
-                if (playerItems[1] != 0)
-                {
-                    selectedItem = ourItemDictionary.itemPool[playerItems[1]].GetComponent<Item>();
-                    Instantiate( ourItemDictionary.itemPool[playerItems[1]]);
-                    playerItems[1] = 0;
-                }               
-                else
-                { 
-                    Debug.Log("No Item Allocated");
-                }
-
-            }
-
-        }
-        else if (menuNavigation.x==2 && menuNavigation.y == 0) //Items
-        {
-            actionBlock.transform.GetChild(2).GetComponent<Image>().color = Color.red;
-            if (Input.GetKeyDown("space")) 
-            {
-                if (playerItems[2] != 0)
-                {
-                    selectedItem = ourItemDictionary.itemPool[playerItems[2]].GetComponent<Item>();
-                    Instantiate( ourItemDictionary.itemPool[playerItems[2]]);
-                    playerItems[2] = 0;
-                }
-                else
-                { 
-                    Debug.Log("No Item Allocated");
-                }
-            }
-        }
-        else if (menuNavigation.x==3 && menuNavigation.y == 0) //Flee
-        {
-            actionBlock.transform.GetChild(3).GetComponent<Image>().color = Color.red;
-            if (Input.GetKeyDown("space")) 
-            {
-                if (playerItems[3] != 0)
-                {
-                    selectedItem = ourItemDictionary.itemPool[playerItems[3]].GetComponent<Item>();
-                    Instantiate( ourItemDictionary.itemPool[playerItems[3]]);
-                    playerItems[3] = 0;
-                }
-                else
-                { 
-                    Debug.Log("No Item Allocated");
-                }
-            }
-        }        
-        else if (menuNavigation.x==0 && menuNavigation.y == -1) //Magic
-        {
-            actionBlock.transform.GetChild(4).GetComponent<Image>().color = Color.red;
-            if (Input.GetKeyDown("space")) 
-            {
-                if (playerItems[4] != 0)
-                {
-                    selectedItem = ourItemDictionary.itemPool[playerItems[4]].GetComponent<Item>();
-                    Instantiate( ourItemDictionary.itemPool[playerItems[4]]);
-                    playerItems[4] = 0;
-                }
-                else
-                { 
-                    Debug.Log("No Item Allocated");
-                }
-            }
-
-        }
-        else if (menuNavigation.x==1 && menuNavigation.y == -1) //Items
-        {
-            actionBlock.transform.GetChild(5).GetComponent<Image>().color = Color.red;
-            if (Input.GetKeyDown("space")) 
-            {
-                if (playerItems[5] != 0)
-                {
-                    selectedItem = ourItemDictionary.itemPool[playerItems[5]].GetComponent<Item>();
-                    Instantiate( ourItemDictionary.itemPool[playerItems[5]]);
-                    playerItems[5] = 0;
-                }
-                else
-                { 
-                    Debug.Log("No Item Allocated");
-                }
-            }
-        }
-        else if (menuNavigation.x==2 && menuNavigation.y == -1) //Flee
-        {
-            actionBlock.transform.GetChild(6).GetComponent<Image>().color = Color.red;
-            if (Input.GetKeyDown("space")) 
-            {
-                if (playerItems[6] != 0)
-                {
-                    selectedItem = ourItemDictionary.itemPool[playerItems[6]].GetComponent<Item>();
-                    Instantiate( ourItemDictionary.itemPool[playerItems[6]]);
-                    playerItems[6] = 0;
-                }
-                else
-                { 
-                    Debug.Log("No Item Allocated");
-                }
-            }
-        }
-        else if (menuNavigation.x==3 && menuNavigation.y == -1) //Flee
-        {
-            actionBlock.transform.GetChild(7).GetComponent<Image>().color = Color.red;
-            if (Input.GetKeyDown("space")) 
-            {
-                if (playerItems[7] != 0)
-                {
-                    selectedItem = ourItemDictionary.itemPool[playerItems[7]].GetComponent<Item>();
-                    Instantiate( ourItemDictionary.itemPool[playerItems[7]]);
-                    playerItems[7] = 0;
-                }
-                else
-                { 
-                    Debug.Log("No Item Allocated");
-                }
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            HideAllMenus();
-            RestartMenu();
-            ChangeState(previousMenu);
-            menuNavigation.x = 0;
-            for (int i = 0; i < actionBlock.transform.childCount; i++)
-            {
-                GameObject tempSpell = actionBlock.transform.GetChild(i).gameObject;
-                tempSpell.SetActive(false);
-            }
-            resetBlocks();
-        }
-
-    }
-
+  
 }

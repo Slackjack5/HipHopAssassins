@@ -962,6 +962,7 @@ GameObject:
   - component: {fileID: 225162138}
   - component: {fileID: 225162139}
   - component: {fileID: 225162140}
+  - component: {fileID: 225162141}
   m_Layer: 0
   m_Name: UI Manager
   m_TagString: Untagged
@@ -1000,6 +1001,7 @@ MonoBehaviour:
   previousMenu: 0
   NavigationLimit: {x: 0, y: 0, z: 0}
   menuNavigation: {x: 0, y: 0}
+  lastMenuNavigation: {x: 0, y: 0}
   encounteredEnemies: {fileID: 0}
   actionBlock: {fileID: 0}
 --- !u!114 &225162139
@@ -1025,6 +1027,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1dcd6ecd6df524442b232756a472dc86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MenuState: 0
+--- !u!114 &225162141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225162136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf3a1822ce6dcf34cb97bf04b2129228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MenuState: 0

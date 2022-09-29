@@ -17,6 +17,7 @@ public class CombatManager : MonoBehaviour
     private static UIManager ourUI;
     private SpawnPoints ourSpawnPoints;
     private bool testStarted = false;
+    private ItemDictionary ourItemDictionary;
     
     protected enum State
     {
@@ -36,6 +37,7 @@ public class CombatManager : MonoBehaviour
         ourSpawnPoints = gameObject.transform.GetChild(2).gameObject.GetComponent<SpawnPoints>();
         ourPlayer = GameObject.Find("Player").GetComponent<PlayerScript>();
     }
+    
 
     // Update is called once per frame
     void Update()
@@ -46,7 +48,7 @@ public class CombatManager : MonoBehaviour
                 
                 //Generate Encounter
                 Debug.Log("In Pre-Fight Turn");
-                SpawnEnemies(0, 2); //Spawn our enemies
+                SpawnEnemies(0, 1); //Spawn our enemies
                 ChangeState(State.PlayerTurn);
                 break;
             case State.PlayerTurn:
@@ -97,10 +99,14 @@ public class CombatManager : MonoBehaviour
     public static void HealPlayer(int healAmount)
     {
         ourPlayer.Health += healAmount;
-        ourUI.HideAllMenus();
         ourUI.UpdateUI();
         //End Player Turn
         ChangeState(State.MonsterTurn);
+    }
+
+    public static void UseItem(GameObject item)
+    {
+        Instantiate(item);
     }
     public static void DamageMonsterLimb(MonsterData ourMonster, int limbNumber,int damage)
     {
@@ -114,7 +120,6 @@ public class CombatManager : MonoBehaviour
     public static void CastSpell(MonsterData ourMonster,int damage)
     {
         ourMonster.monsterHealth -= damage;
-        ourUI.HideAllMenus();
         ourUI.UpdateUI();
         //End Player Turn
         ChangeState(State.MonsterTurn);

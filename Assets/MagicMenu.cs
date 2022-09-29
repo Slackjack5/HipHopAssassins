@@ -18,6 +18,8 @@ public class MagicMenu : MonoBehaviour
     private GameObject ourMagicMenu;
     //Bool
     private bool stateGate;
+    
+    private GameObject ourPlayer;
 
 
     public enum State
@@ -33,6 +35,7 @@ public class MagicMenu : MonoBehaviour
         ourUI = gameObject.GetComponent<UIManager>();
         ourSpellDictionary = GameObject.Find("SpellDictionary").GetComponent<SpellDictionary>();
         ourMagicMenu = GameObject.Find("UserInterface").transform.GetChild(2).GameObject();
+        ourPlayer = GameObject.Find("Player");
     }
 
     
@@ -62,7 +65,7 @@ public class MagicMenu : MonoBehaviour
     //State Magic List
     private void GenerateSpells() //Generate the List of Player Spells
     {
-        int[] playerSpells = UIManager.ourPlayer.GetComponent<PlayerScript>().allocatedSpells;
+        int[] playerSpells = ourPlayer.GetComponent<PlayerScript>().allocatedSpells;
         for (int i = 0; i < playerSpells.Length; i++)
         {
             GameObject tempSpell = ourUI.actionBlock.transform.GetChild(i).gameObject;
@@ -87,140 +90,48 @@ public class MagicMenu : MonoBehaviour
         //Set our navigation limits
         ourUI.NavigationLimit = new Vector3(3, 0,-1);
         ourUI.previousMenu = UIManager.State.Home;
-        int[] playerSpells = UIManager.ourPlayer.GetComponent<PlayerScript>().allocatedSpells;
+        int hoveredItem = 0;
 
         //Current Menu Player is Hovering Over
         if (ourUI.menuNavigation.x == 0 && ourUI.menuNavigation.y == 0) //Attack
         {
-            ourUI.actionBlock.transform.GetChild(0).GetComponent<Image>().color = Color.red;
-            if (Input.GetKeyDown("space"))
-            {
-                if (playerSpells[0] != 0)
-                {
-                    selectedSpell = ourSpellDictionary.spellPool[playerSpells[0]].GetComponent<Spell>();
-                    ChangeState(State.SelectMonster);
-                }
-                else
-                {
-                    Debug.Log("No Spell Allocated");
-                }
-
-            }
+            hoveredItem = 0;
+            PrepareSpell(hoveredItem);
         }
         else if (ourUI.menuNavigation.x == 1 && ourUI.menuNavigation.y == 0) //Magic
         {
-            ourUI.actionBlock.transform.GetChild(1).GetComponent<Image>().color = Color.red;
-            if (Input.GetKeyDown("space"))
-            {
-                if (playerSpells[1] != 0)
-                {
-                    selectedSpell = ourSpellDictionary.spellPool[playerSpells[1]].GetComponent<Spell>();
-                    ChangeState(State.SelectMonster);
-                }
-                else
-                {
-                    Debug.Log("No Spell Allocated");
-                }
-
-            }
-
+            hoveredItem = 1;
+            PrepareSpell(hoveredItem);
         }
         else if (ourUI.menuNavigation.x == 2 && ourUI.menuNavigation.y == 0) //Items
         {
-            ourUI.actionBlock.transform.GetChild(2).GetComponent<Image>().color = Color.red;
-            if (Input.GetKeyDown("space"))
-            {
-                if (playerSpells[2] != 0)
-                {
-                    selectedSpell = ourSpellDictionary.spellPool[playerSpells[2]].GetComponent<Spell>();
-                    ChangeState(State.SelectMonster);
-                }
-                else
-                {
-                    Debug.Log("No Spell Allocated");
-                }
-            }
+            hoveredItem = 2;
+            PrepareSpell(hoveredItem);
         }
         else if (ourUI.menuNavigation.x == 3 && ourUI.menuNavigation.y == 0) //Flee
         {
-            ourUI.actionBlock.transform.GetChild(3).GetComponent<Image>().color = Color.red;
-            if (Input.GetKeyDown("space"))
-            {
-                if (playerSpells[3] != 0)
-                {
-                    selectedSpell = ourSpellDictionary.spellPool[playerSpells[3]].GetComponent<Spell>();
-                    ChangeState(State.SelectMonster);
-                }
-                else
-                {
-                    Debug.Log("No Spell Allocated");
-                }
-            }
+            hoveredItem = 3;
+            PrepareSpell(hoveredItem);
         }
         else if (ourUI.menuNavigation.x == 0 && ourUI.menuNavigation.y == -1) //Magic
         {
-            ourUI.actionBlock.transform.GetChild(4).GetComponent<Image>().color = Color.red;
-            if (Input.GetKeyDown("space"))
-            {
-                if (playerSpells[4] != 0)
-                {
-                    selectedSpell = ourSpellDictionary.spellPool[playerSpells[4]].GetComponent<Spell>();
-                    ChangeState(State.SelectMonster);
-                }
-                else
-                {
-                    Debug.Log("No Spell Allocated");
-                }
-            }
-
+            hoveredItem = 4;
+            PrepareSpell(hoveredItem);
         }
         else if (ourUI.menuNavigation.x == 1 && ourUI.menuNavigation.y == -1) //Items
         {
-            ourUI.actionBlock.transform.GetChild(5).GetComponent<Image>().color = Color.red;
-            if (Input.GetKeyDown("space"))
-            {
-                if (playerSpells[5] != 0)
-                {
-                    selectedSpell = ourSpellDictionary.spellPool[playerSpells[5]].GetComponent<Spell>();
-                    ChangeState(State.SelectMonster);
-                }
-                else
-                {
-                    Debug.Log("No Spell Allocated");
-                }
-            }
+            hoveredItem = 5;
+            PrepareSpell(hoveredItem);
         }
         else if (ourUI.menuNavigation.x == 2 && ourUI.menuNavigation.y == -1) //Flee
         {
-            ourUI.actionBlock.transform.GetChild(6).GetComponent<Image>().color = Color.red;
-            if (Input.GetKeyDown("space"))
-            {
-                if (playerSpells[6] != 0)
-                {
-                    selectedSpell = ourSpellDictionary.spellPool[playerSpells[6]].GetComponent<Spell>();
-                    ChangeState(State.SelectMonster);
-                }
-                else
-                {
-                    Debug.Log("No Spell Allocated");
-                }
-            }
+            hoveredItem = 6;
+            PrepareSpell(hoveredItem);
         }
         else if (ourUI.menuNavigation.x == 3 && ourUI.menuNavigation.y == -1) //Flee
         {
-            ourUI.actionBlock.transform.GetChild(7).GetComponent<Image>().color = Color.red;
-            if (Input.GetKeyDown("space"))
-            {
-                if (playerSpells[7] != 0)
-                {
-                    selectedSpell = ourSpellDictionary.spellPool[playerSpells[7]].GetComponent<Spell>();
-                    ChangeState(State.SelectMonster);
-                }
-                else
-                {
-                    Debug.Log("No Spell Allocated");
-                }
-            }
+            hoveredItem = 7;
+            PrepareSpell(hoveredItem);
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -232,8 +143,28 @@ public class MagicMenu : MonoBehaviour
             ourUI.menuNavigation.x = ourUI.lastMenuNavigation.x;
             ourUI.resetBlocks();
         }
+    }
+
+    private void PrepareSpell(int hoveredItem)
+    {
+        //Hover Effect
+        ourUI.actionBlock.transform.GetChild(hoveredItem).GetComponent<Image>().color = Color.red;
+        //State Variables
+        int[] playerSpells = ourPlayer.GetComponent<PlayerScript>().allocatedSpells;
         
-        
+        if (Input.GetKeyDown("space"))
+        {
+            if (playerSpells[hoveredItem] != 0)
+            {
+                selectedSpell = ourSpellDictionary.spellPool[playerSpells[hoveredItem]].GetComponent<Spell>();
+                ourUI.MenuStartingPoint();
+                ChangeState(State.SelectMonster);
+            }
+            else
+            {
+                Debug.Log("No Spell Allocated");
+            }
+        }
     }
 
     public void HideMagicMenu()
@@ -248,23 +179,11 @@ public class MagicMenu : MonoBehaviour
 
     public void magicSelectMonster()
     {
+        int hoveredMonster = 0;
         if (CombatManager.enemyCount <= 1)
         {
             //Hide Menu
             HideMagicMenu();
-            //Hovering Over
-            ourUI.NavigationLimit = new Vector3(0, 0,0);
-            ourUI.encounteredEnemies.transform.GetChild(0).transform.localScale = new Vector3(2, 2, 1);
-            if (Input.GetKeyDown("space"))
-            {
-                UIManager.selectedMonster = ourUI.encounteredEnemies.transform.GetChild(0).gameObject;
-                ourUI.ResetMonsters();
-                //Cast Magic Damage
-                CombatManager.CastSpell(UIManager.selectedMonster.GetComponent<MonsterData>(),selectedSpell.Damage);
-                //Change State
-                ChangeState(State.Inactive);
-            }
-
         }
         else if (CombatManager.enemyCount == 2)
         {
@@ -274,31 +193,11 @@ public class MagicMenu : MonoBehaviour
             ourUI.NavigationLimit = new Vector3(1, 0,0);
             if (ourUI.menuNavigation.x == 0)
             {
-                ourUI.encounteredEnemies.transform.GetChild(0).transform.localScale = new Vector3(2, 2, 1);
-                ourUI.encounteredEnemies.transform.GetChild(1).transform.localScale = new Vector3(1, 1, 1);
-                if (Input.GetKeyDown("space"))
-                {
-                    UIManager.selectedMonster = ourUI.encounteredEnemies.transform.GetChild(0).gameObject;
-                    ourUI.ResetMonsters();
-                    //Cast Magic Damage
-                    CombatManager.CastSpell(UIManager.selectedMonster.GetComponent<MonsterData>(),selectedSpell.Damage);
-                    //Change State
-                    ChangeState(State.Inactive);
-                }
+                hoveredMonster = 0;
             }
             else
             {
-                ourUI.encounteredEnemies.transform.GetChild(0).transform.localScale = new Vector3(1, 1, 1);
-                ourUI.encounteredEnemies.transform.GetChild(1).transform.localScale = new Vector3(2, 2, 1);
-                if (Input.GetKeyDown("space"))
-                {
-                    UIManager.selectedMonster = ourUI.encounteredEnemies.transform.GetChild(1).gameObject;
-                    ourUI.ResetMonsters();
-                    //Cast Magic Damage
-                    CombatManager.CastSpell(UIManager.selectedMonster.GetComponent<MonsterData>(),selectedSpell.Damage);
-                    //Change State
-                    ChangeState(State.Inactive);
-                }
+                hoveredMonster = 1;
             }
         }
         else if (CombatManager.enemyCount == 3)
@@ -309,52 +208,20 @@ public class MagicMenu : MonoBehaviour
             ourUI.NavigationLimit = new Vector3(2, 0,0);
             if (ourUI.menuNavigation.x == 1)
             {
-                ourUI.encounteredEnemies.transform.GetChild(0).transform.localScale = new Vector3(2, 2, 1);
-                ourUI.encounteredEnemies.transform.GetChild(1).transform.localScale = new Vector3(1, 1, 1);
-                ourUI.encounteredEnemies.transform.GetChild(2).transform.localScale = new Vector3(1, 1, 1);
-                if (Input.GetKeyDown("space"))
-                {
-                    UIManager.selectedMonster = ourUI.encounteredEnemies.transform.GetChild(0).gameObject;
-                    ourUI.ResetMonsters();
-                    //Cast Magic Damage
-                    CombatManager.CastSpell(UIManager.selectedMonster.GetComponent<MonsterData>(),selectedSpell.Damage);
-                    //Change State
-                    ChangeState(State.Inactive);
-                }
+                hoveredMonster = 0;
             }
             else if (ourUI.menuNavigation.x == 2)
             {
-                ourUI.encounteredEnemies.transform.GetChild(0).transform.localScale = new Vector3(1, 1, 1);
-                ourUI.encounteredEnemies.transform.GetChild(2).transform.localScale = new Vector3(2, 2, 1);
-                ourUI.encounteredEnemies.transform.GetChild(1).transform.localScale = new Vector3(1, 1, 1);
-                if (Input.GetKeyDown("space"))
-                {
-                    UIManager.selectedMonster = ourUI.encounteredEnemies.transform.GetChild(2).gameObject;
-                    ourUI.ResetMonsters();
-                    //Cast Magic Damage
-                    CombatManager.CastSpell(UIManager.selectedMonster.GetComponent<MonsterData>(),selectedSpell.Damage);
-                    //Change State
-                    ChangeState(State.Inactive);
-                }
+                hoveredMonster = 2;
             }
             else if (ourUI.menuNavigation.x == 0)
             {
-                ourUI.encounteredEnemies.transform.GetChild(0).transform.localScale = new Vector3(1, 1, 1);
-                ourUI.encounteredEnemies.transform.GetChild(2).transform.localScale = new Vector3(1, 1, 1);
-                ourUI.encounteredEnemies.transform.GetChild(1).transform.localScale = new Vector3(2, 2, 1);
-                if (Input.GetKeyDown("space"))
-                {
-                    UIManager.selectedMonster = ourUI.encounteredEnemies.transform.GetChild(1).gameObject;
-                    ourUI.ResetMonsters();
-                    //Cast Magic Damage
-                    CombatManager.CastSpell(UIManager.selectedMonster.GetComponent<MonsterData>(),selectedSpell.Damage);
-                    //Change State
-                    ChangeState(State.Inactive);
-                }
+                hoveredMonster = 1;
             }
         }
         
-
+        PrepareMonster(hoveredMonster);
+        
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             //Reset Enemy Size
@@ -368,8 +235,39 @@ public class MagicMenu : MonoBehaviour
             //Return to previous state
             ChangeState(State.SpellList);
         }
-        
+
     }
+    
+    
+    private void PrepareMonster(int hoveredMonster)
+    {
+        ourUI.NavigationLimit = new Vector3(ourUI.encounteredEnemies.transform.childCount-1, 0,-1);
+        for (int i = 0; i < ourUI.encounteredEnemies.transform.childCount; i++)
+        {
+            if (i != hoveredMonster)
+            {
+                ourUI.encounteredEnemies.transform.GetChild(i).transform.localScale = new Vector3(1, 1, 1);
+            }
+            else
+            {
+                ourUI.encounteredEnemies.transform.GetChild(i).transform.localScale = new Vector3(2, 2, 1);
+            }
+        }
+            
+        if (hoveredMonster == ourUI.menuNavigation.x)
+        {
+            if (Input.GetKeyDown("space"))
+            {
+                UIManager.selectedMonster = ourUI.encounteredEnemies.transform.GetChild(hoveredMonster).gameObject;
+                ourUI.ResetMonsters();
+                //Cast Magic Damage
+                CombatManager.CastSpell(UIManager.selectedMonster.GetComponent<MonsterData>(),selectedSpell.Damage);
+                //Change State
+                ChangeState(State.Inactive);
+            }
+        }
+    }
+
     
     
     public void ChangeState(State state)
