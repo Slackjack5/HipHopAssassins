@@ -165,10 +165,14 @@ public class ItemMenu : MonoBehaviour
 
       private void ConfirmWindow(int hoveredItem)
       {
-          //Action Block
-          ourUI.actionBlock = userInterface.transform.GetChild(4).gameObject;
           //State Variables
           int[] playerItems = ourPlayer.GetComponent<PlayerScript>().allocatedItems;
+          //Action Block
+          ourUI.actionBlock = userInterface.transform.GetChild(4).gameObject;
+          //Chosen Item
+          selectedItem = ourItemDictionary.itemPool[playerItems[hoveredItem]].GetComponent<Item>();
+          //Confirm Text
+          ourUI.actionBlock.transform.GetChild(0).transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = "Consume " + selectedItem.itemName+" ?";
           ourUI.NavigationLimit = new Vector3(1, 0,0);
           //Hover Effect
           ourUI.actionBlock.transform.GetChild((int)ourUI.menuNavigation.x).GetComponent<Image>().color = Color.red;
@@ -179,7 +183,6 @@ public class ItemMenu : MonoBehaviour
               if (ourUI.menuNavigation.x == 0) //Yes?
               {
                   //Ask for Conformation
-                  selectedItem = ourItemDictionary.itemPool[playerItems[hoveredItem]].GetComponent<Item>();
                   CombatManager.UseItem(ourItemDictionary.itemPool[playerItems[hoveredItem]]);
                   playerItems[hoveredItem] = 0;
                   HideItemMenu();

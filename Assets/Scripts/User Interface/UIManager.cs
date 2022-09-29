@@ -24,6 +24,8 @@ public class UIManager : MonoBehaviour
     private MagicMenu ourMagicMenu;
     private AttackMenu ourAttackMenu;
     private ItemMenu ourItemMenu;
+
+    private FleeMenu ourFleeMenu;
     //static
     public static GameObject selectedMonster;
 
@@ -65,6 +67,7 @@ public class UIManager : MonoBehaviour
         ourMagicMenu = gameObject.GetComponent<MagicMenu>();
         ourAttackMenu = gameObject.GetComponent<AttackMenu>();
         ourItemMenu = gameObject.GetComponent<ItemMenu>();
+        ourFleeMenu = gameObject.GetComponent<FleeMenu>();
         encounteredEnemies = combatManager.transform.GetChild(0).gameObject;
         actionBlock = gameObject;
         
@@ -170,7 +173,8 @@ public class UIManager : MonoBehaviour
                 maneuverMenu();
                 break;
             case State.Flee:
-                Debug.Log("In Flee State");
+                userInterface.transform.GetChild(0).gameObject.SetActive(false);
+                maneuverMenu();
                 break;
             case State.EnemyTurn:
 
@@ -245,6 +249,10 @@ public class UIManager : MonoBehaviour
             {
                 ChangePreviousState(State.Home);
                 ChangeState(State.Flee);
+                lastMenuNavigation = menuNavigation;
+                menuNavigation.x = 0;
+                ourFleeMenu.ChangeState(FleeMenu.State.Confirm);
+                userInterface.transform.GetChild(4).gameObject.SetActive(true);
             }
         }
 
