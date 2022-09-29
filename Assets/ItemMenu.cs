@@ -18,12 +18,14 @@ public class ItemMenu : MonoBehaviour
     private Item selectedItem;
     //Player
     private GameObject ourPlayer;
-    
+    //Ints
+    int hoveredItem = 0;
     public enum State
     {
         Inactive,
         ItemList,
         SelectMonster,
+        Confirm,
     }
 
     // Start is called before the first frame update
@@ -58,6 +60,9 @@ public class ItemMenu : MonoBehaviour
 
 
                 break;
+            case State.Confirm:
+                ConfirmWindow(hoveredItem);
+                break;
         }
     }
     
@@ -85,8 +90,7 @@ public class ItemMenu : MonoBehaviour
     {
         GenerateItems();
         ourUI.NavigationLimit = new Vector3(3, 0,-1);
-        int hoveredItem = 0;
-        
+        ourUI.lastMenuNavigation.x = ourUI.menuNavigation.x;
         //Current Menu Player is Hovering Over
         if (ourUI.menuNavigation.x == 0 && ourUI.menuNavigation.y == 0) //Attack
         {
@@ -148,10 +152,9 @@ public class ItemMenu : MonoBehaviour
           {
               if (playerItems[hoveredItem] != 0)
               {
-                  selectedItem = ourItemDictionary.itemPool[playerItems[hoveredItem]].GetComponent<Item>();
-                  CombatManager.UseItem(ourItemDictionary.itemPool[playerItems[hoveredItem]]);
-                  playerItems[hoveredItem] = 0;
                   HideItemMenu();
+                  ourUI.menuNavigation.x = 0;
+                  ChangeState(State.Confirm);
               }
               else
               { 
@@ -160,10 +163,50 @@ public class ItemMenu : MonoBehaviour
           }
       }
 
+      private void ConfirmWindow(int hoveredItem)
+      {
+          //Action Block
+          ourUI.actionBlock = userInterface.transform.GetChild(4).gameObject;
+          //State Variables
+          int[] playerItems = ourPlayer.GetComponent<PlayerScript>().allocatedItems;
+          ourUI.NavigationLimit = new Vector3(1, 0,0);
+          //Hover Effect
+          ourUI.actionBlock.transform.GetChild((int)ourUI.menuNavigation.x).GetComponent<Image>().color = Color.red;
+          //Enable Window
+          userInterface.transform.GetChild(4).gameObject.SetActive(true);
+          if (Input.GetKeyDown(KeyCode.Space))
+          {
+              if (ourUI.menuNavigation.x == 0) //Yes?
+              {
+                  //Ask for Conformation
+                  selectedItem = ourItemDictionary.itemPool[playerItems[hoveredItem]].GetComponent<Item>();
+                  CombatManager.UseItem(ourItemDictionary.itemPool[playerItems[hoveredItem]]);
+                  playerItems[hoveredItem] = 0;
+                  HideItemMenu();
+              }
+              else //No?
+              {
+                  HideItemMenu();
+                  ourUI.menuNavigation.x = ourUI.lastMenuNavigation.x;
+                  ourUI.actionBlock = userInterface.transform.GetChild(3).gameObject;
+                  ChangeState(State.ItemList);
+              }
+          }
+          else if (Input.GetKeyDown(KeyCode.Escape)) //Default No on Escape
+          {
+              HideItemMenu();
+              ourUI.menuNavigation.x = ourUI.lastMenuNavigation.x;
+              ourUI.actionBlock = userInterface.transform.GetChild(3).gameObject;
+              ChangeState(State.ItemList);
+          }
+      }
+
       private void HideItemMenu()
       {
           ChangeState(State.Inactive);
           ourItemMenu.SetActive(false);
+          //Disable Confirmation Window
+          userInterface.transform.GetChild(4).gameObject.SetActive(false);
       }
 
           
