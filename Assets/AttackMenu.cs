@@ -162,110 +162,42 @@ public class AttackMenu : MonoBehaviour
     
     public void SelectMonster()
     {
+        int hoveredMonster = 0;
         if (CombatManager.enemyCount <= 1)
         {
-            //Hide Menu
-            //HideMagicMenu();
-            //Hovering Over
             ourUI.NavigationLimit = new Vector3(0, 0,0);
-            ourUI.encounteredEnemies.transform.GetChild(0).transform.localScale = new Vector3(2, 2, 1);
-            if (Input.GetKeyDown("space"))
-            {
-                UIManager.selectedMonster = ourUI.encounteredEnemies.transform.GetChild(0).gameObject;
-                ourUI.ResetMonsters();
-                ////Change State
-                ChangeState(State.LimbList);
-            }
-
+            hoveredMonster = 0;
         }
         else if (CombatManager.enemyCount == 2)
         {
-            //Hide Menu
-            //HideMagicMenu();
-            //Set Menu Limits
             ourUI.NavigationLimit = new Vector3(1, 0,0);
             if (ourUI.menuNavigation.x == 0)
             {
-                ourUI.encounteredEnemies.transform.GetChild(0).transform.localScale = new Vector3(2, 2, 1);
-                ourUI.encounteredEnemies.transform.GetChild(1).transform.localScale = new Vector3(1, 1, 1);
-                if (Input.GetKeyDown("space"))
-                {
-                    UIManager.selectedMonster = ourUI.encounteredEnemies.transform.GetChild(0).gameObject;
-                    ourUI.ResetMonsters();
-                    //Change State
-                    ChangeState(State.LimbList);
-                    //Change Previous Navigation
-                    ourUI.lastMenuNavigation = ourUI.menuNavigation;
-                }
+                hoveredMonster = 0;
             }
             else
             {
-                ourUI.encounteredEnemies.transform.GetChild(0).transform.localScale = new Vector3(1, 1, 1);
-                ourUI.encounteredEnemies.transform.GetChild(1).transform.localScale = new Vector3(2, 2, 1);
-                if (Input.GetKeyDown("space"))
-                {
-                    UIManager.selectedMonster = ourUI.encounteredEnemies.transform.GetChild(1).gameObject;
-                    ourUI.ResetMonsters();
-                    //Change State
-                    ChangeState(State.LimbList);
-                    //Change Previous Navigation
-                    ourUI.lastMenuNavigation = ourUI.menuNavigation;
-                }
-                }
+                hoveredMonster = 1;
+            }
         }
         else if (CombatManager.enemyCount == 3)
         {
-            //Hide Menu
-            //HideMagicMenu();
-            //Set Menu Limits
             ourUI.NavigationLimit = new Vector3(2, 0,0);
             if (ourUI.menuNavigation.x == 1)
             {
-                ourUI.encounteredEnemies.transform.GetChild(0).transform.localScale = new Vector3(2, 2, 1);
-                ourUI.encounteredEnemies.transform.GetChild(1).transform.localScale = new Vector3(1, 1, 1);
-                ourUI.encounteredEnemies.transform.GetChild(2).transform.localScale = new Vector3(1, 1, 1);
-                if (Input.GetKeyDown("space"))
-                {
-                    UIManager.selectedMonster = ourUI.encounteredEnemies.transform.GetChild(0).gameObject;
-                    ourUI.ResetMonsters();
-                    //Change State
-                    ChangeState(State.LimbList);
-                    //Change Previous Navigation
-                    ourUI.lastMenuNavigation = ourUI.menuNavigation;
-                }
+                hoveredMonster = 0;
             }
             else if (ourUI.menuNavigation.x == 2)
             {
-                ourUI.encounteredEnemies.transform.GetChild(0).transform.localScale = new Vector3(1, 1, 1);
-                ourUI.encounteredEnemies.transform.GetChild(2).transform.localScale = new Vector3(2, 2, 1);
-                ourUI.encounteredEnemies.transform.GetChild(1).transform.localScale = new Vector3(1, 1, 1);
-                if (Input.GetKeyDown("space"))
-                {
-                    UIManager.selectedMonster = ourUI.encounteredEnemies.transform.GetChild(2).gameObject;
-                    ourUI.ResetMonsters();
-                    //Change State
-                    ChangeState(State.LimbList);
-                    //Change Previous Navigation
-                    ourUI.lastMenuNavigation = ourUI.menuNavigation;
-                }
+                hoveredMonster = 2;
             }
             else if (ourUI.menuNavigation.x == 0)
             {
-                ourUI.encounteredEnemies.transform.GetChild(0).transform.localScale = new Vector3(1, 1, 1);
-                ourUI.encounteredEnemies.transform.GetChild(2).transform.localScale = new Vector3(1, 1, 1);
-                ourUI.encounteredEnemies.transform.GetChild(1).transform.localScale = new Vector3(2, 2, 1);
-                if (Input.GetKeyDown("space"))
-                {
-                    UIManager.selectedMonster = ourUI.encounteredEnemies.transform.GetChild(1).gameObject;
-                    ourUI.ResetMonsters();
-                    //Change State
-                    ChangeState(State.LimbList);
-                    //Change Previous Navigation
-                    ourUI.lastMenuNavigation = ourUI.menuNavigation;
-                }
+                hoveredMonster = 1;
             }
         }
-        
+
+        PrepareMonster(hoveredMonster);
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -283,6 +215,32 @@ public class AttackMenu : MonoBehaviour
             ourUI.resetBlocks();
         }
         
+    }
+    
+        
+    private void PrepareMonster(int hoveredMonster)
+    {
+        ourUI.NavigationLimit = new Vector3(ourUI.encounteredEnemies.transform.childCount-1, 0,-1);
+        for (int i = 0; i < ourUI.encounteredEnemies.transform.childCount; i++)
+        {
+            if (i != hoveredMonster)
+            {
+                ourUI.encounteredEnemies.transform.GetChild(i).transform.localScale = new Vector3(1, 1, 1);
+            }
+            else
+            {
+                ourUI.encounteredEnemies.transform.GetChild(i).transform.localScale = new Vector3(2, 2, 1);
+            }
+        }
+        if (Input.GetKeyDown("space"))
+        {
+            UIManager.selectedMonster = ourUI.encounteredEnemies.transform.GetChild(hoveredMonster).gameObject;
+            ourUI.ResetMonsters();
+            //Change State
+            ChangeState(State.LimbList);
+            //Change Previous Navigation
+            ourUI.lastMenuNavigation = ourUI.menuNavigation;
+        }
     }
 
     public void ChangeState(State state)

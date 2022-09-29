@@ -253,18 +253,15 @@ public class MagicMenu : MonoBehaviour
                 ourUI.encounteredEnemies.transform.GetChild(i).transform.localScale = new Vector3(2, 2, 1);
             }
         }
-            
-        if (hoveredMonster == ourUI.menuNavigation.x)
+
+        if (Input.GetKeyDown("space"))
         {
-            if (Input.GetKeyDown("space"))
-            {
-                UIManager.selectedMonster = ourUI.encounteredEnemies.transform.GetChild(hoveredMonster).gameObject;
-                ourUI.ResetMonsters();
-                //Cast Magic Damage
-                CombatManager.CastSpell(UIManager.selectedMonster.GetComponent<MonsterData>(),selectedSpell.Damage);
-                //Change State
-                ChangeState(State.Inactive);
-            }
+            UIManager.selectedMonster = ourUI.encounteredEnemies.transform.GetChild(hoveredMonster).gameObject;
+            ourUI.ResetMonsters();
+            //Cast Magic Damage
+            CombatManager.CastSpell(UIManager.selectedMonster.GetComponent<MonsterData>(),selectedSpell.Damage);
+            //Change State
+            ChangeState(State.Inactive);
         }
     }
 
