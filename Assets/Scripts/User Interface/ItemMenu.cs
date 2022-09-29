@@ -67,11 +67,12 @@ public class ItemMenu : MonoBehaviour
     }
     
     
-    private void GenerateItems()
+    private void GenerateItems() //Generate the List of Player Items
     {
+        //Look at our player Items
         int[] playerItems = ourPlayer.GetComponent<PlayerScript>().allocatedItems;
         ourUI.actionBlock.gameObject.SetActive(true);
-        for (int i = 0; i < playerItems.Length; i++)
+        for (int i = 0; i < playerItems.Length; i++) //Throw each item into a slot in our menu
         {
             GameObject tempItem = ourUI.actionBlock.transform.GetChild(i).gameObject;
             tempItem.SetActive(true);
@@ -87,52 +88,48 @@ public class ItemMenu : MonoBehaviour
     }
     
       public void DeployItemMenu()
-    {
+    {        
+        //Generate player items
         GenerateItems();
+        //Set Navigation Limit and Previous Menu Navigation
         ourUI.NavigationLimit = new Vector3(3, 0,-1);
         ourUI.lastMenuNavigation.x = ourUI.menuNavigation.x;
         //Current Menu Player is Hovering Over
-        if (ourUI.menuNavigation.x == 0 && ourUI.menuNavigation.y == 0) //Attack
+        if (ourUI.menuNavigation.x == 0 && ourUI.menuNavigation.y == 0) 
         {
             hoveredItem = 0;
-            prepareItem(hoveredItem);
         }
-        else if (ourUI.menuNavigation.x==1 && ourUI.menuNavigation.y == 0) //Magic
+        else if (ourUI.menuNavigation.x==1 && ourUI.menuNavigation.y == 0) 
         {
             hoveredItem = 1;
-            prepareItem(hoveredItem);
         }
-        else if (ourUI.menuNavigation.x==2 && ourUI.menuNavigation.y == 0) //Items
+        else if (ourUI.menuNavigation.x==2 && ourUI.menuNavigation.y == 0) 
         {
             hoveredItem = 2;
-            prepareItem(hoveredItem);
         }
-        else if (ourUI.menuNavigation.x==3 && ourUI.menuNavigation.y == 0) //Flee
+        else if (ourUI.menuNavigation.x==3 && ourUI.menuNavigation.y == 0) 
         {
             hoveredItem = 3;
-            prepareItem(hoveredItem);
         }        
-        else if (ourUI.menuNavigation.x==0 && ourUI.menuNavigation.y == -1) //Magic
+        else if (ourUI.menuNavigation.x==0 && ourUI.menuNavigation.y == -1) 
         {
             hoveredItem = 4;
-            prepareItem(hoveredItem);
         }
-        else if (ourUI.menuNavigation.x==1 && ourUI.menuNavigation.y == -1) //Items
+        else if (ourUI.menuNavigation.x==1 && ourUI.menuNavigation.y == -1) 
         {
             hoveredItem = 5;
-            prepareItem(hoveredItem);
         }
-        else if (ourUI.menuNavigation.x==2 && ourUI.menuNavigation.y == -1) //Flee
+        else if (ourUI.menuNavigation.x==2 && ourUI.menuNavigation.y == -1) 
         {
             hoveredItem = 6;
-            prepareItem(hoveredItem);
         }
-        else if (ourUI.menuNavigation.x==3 && ourUI.menuNavigation.y == -1) //Flee
+        else if (ourUI.menuNavigation.x==3 && ourUI.menuNavigation.y == -1) 
         {
             hoveredItem = 7;
-            prepareItem(hoveredItem);
         }
-        if (Input.GetKeyDown(KeyCode.Escape))
+        //Prepare our Item
+        prepareItem(hoveredItem); 
+        if (Input.GetKeyDown(KeyCode.Escape)) //Return to the home menu on escape
         {
             ourUI.RestartMenu();
             ourUI.menuNavigation.x = 2;
@@ -142,13 +139,13 @@ public class ItemMenu : MonoBehaviour
 
     }
 
-      public void prepareItem(int hoveredItem)
+      public void prepareItem(int hoveredItem) //If player is hovering item
       {
           //State Variables
           int[] playerItems = ourPlayer.GetComponent<PlayerScript>().allocatedItems;
           //Hover Effect
           ourUI.actionBlock.transform.GetChild(hoveredItem).GetComponent<Image>().color = Color.red;
-          if (Input.GetKeyDown(KeyCode.Space))
+          if (Input.GetKeyDown(KeyCode.Space)) //Select item on pressing space
           {
               if (playerItems[hoveredItem] != 0)
               {
@@ -163,7 +160,7 @@ public class ItemMenu : MonoBehaviour
           }
       }
 
-      private void ConfirmWindow(int hoveredItem)
+      private void ConfirmWindow(int hoveredItem) //Confirm your choice
       {
           //State Variables
           int[] playerItems = ourPlayer.GetComponent<PlayerScript>().allocatedItems;
@@ -204,7 +201,7 @@ public class ItemMenu : MonoBehaviour
           }
       }
 
-      private void HideItemMenu()
+      private void HideItemMenu() //Hide the Item Menu
       {
           ChangeState(State.Inactive);
           ourItemMenu.SetActive(false);
@@ -213,7 +210,7 @@ public class ItemMenu : MonoBehaviour
       }
 
           
-      public void ChangeState(State state)
+      public void ChangeState(State state) //Change States
       {
           MenuState = state;
           Debug.Log("Going to State: "+state);

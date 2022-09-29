@@ -16,27 +16,21 @@ public class UIManager : MonoBehaviour
     [SerializeField] public Vector3 NavigationLimit;
     [SerializeField] public Vector2 menuNavigation;
     [SerializeField] public Vector2 lastMenuNavigation;
-
+    //Callable Game Objects
     public GameObject encounteredEnemies;
     protected GameObject userInterface;
     protected GameObject combatManager;
     public GameObject actionBlock;
+    //Menus
     private MagicMenu ourMagicMenu;
     private AttackMenu ourAttackMenu;
     private ItemMenu ourItemMenu;
-
     private FleeMenu ourFleeMenu;
     //static
     public static GameObject selectedMonster;
-
     //Spells
     private SpellDictionary ourSpellDictionary;
     private Spell selectedSpell;
-
-
-
-    
-    
     
     public enum State
     {
@@ -151,14 +145,21 @@ public class UIManager : MonoBehaviour
         switch (currentMenu)
         {
             case State.Home:
+                //Change Previous State
                 ChangePreviousState(State.Home);
+                //Set our Action Block to our Home Menu and SetActive
                 actionBlock = userInterface.transform.GetChild(0).gameObject;
-                maneuverMenu();
-                ResetMonsters();
-                DeployHomeMenu();
-                NavigationLimit = new Vector3(3, 0,0);
-                actionBlock.transform.GetChild((int) menuNavigation.x).GetComponent<Image>().color=Color.red;
                 userInterface.transform.GetChild(0).gameObject.SetActive(true);
+                //Allow Player to Maneuver the menu
+                maneuverMenu();
+                //Reset Size on All Monsters
+                ResetMonsters();
+                //Call Home Menu Function
+                DeployHomeMenu();
+                //Change our Navigation Limit
+                NavigationLimit = new Vector3(3, 0,0);
+                //On Hover Effect
+                actionBlock.transform.GetChild((int) menuNavigation.x).GetComponent<Image>().color=Color.red;
                 break;
             case State.Attack:
                 maneuverMenu();
@@ -180,6 +181,7 @@ public class UIManager : MonoBehaviour
 
                 break;
             case State.SelectMonster:
+                //Set Navigation Limit to the amount of monsters on Screen
                 NavigationLimit = new Vector2(CombatManager.enemyCount-1, 0);
                 maneuverMenu();
                 break;
@@ -187,14 +189,13 @@ public class UIManager : MonoBehaviour
         
     }
 
-    public void ResetMonsters()
+    public void ResetMonsters() //Resets the Scale for all monsters in the Encountered Enemies Object
     {
         for (int i = 0; i < encounteredEnemies.transform.childCount; i++)
         {
             GameObject ourEnemy = encounteredEnemies.transform.GetChild(i).gameObject;
             ourEnemy.transform.localScale = new Vector3(1, 1, 1);
         }
-            
     }
 
     public void DeployHomeMenu()
@@ -209,9 +210,12 @@ public class UIManager : MonoBehaviour
                 ChangeState(State.Attack);
                 //Change Navigation
                 lastMenuNavigation = menuNavigation;
+                //Set the action block to our Attack Menu & set it active
                 userInterface.transform.GetChild(1).gameObject.SetActive(true);
                 actionBlock = userInterface.transform.GetChild(1).gameObject;
+                //Change the state of our Attack Menu Script
                 ourAttackMenu.ChangeState(AttackMenu.State.SelectMonster);
+                //Change our menu navigation starting point dependent on how many enemies are on screen
                 MenuStartingPoint();
             }
         }
@@ -219,46 +223,56 @@ public class UIManager : MonoBehaviour
         {
             if (Input.GetKeyDown("space")) 
             {
+                //Change States
                 ChangePreviousState(State.Home);
+                ChangeState(State.Magic);
                 //Change Navigation
                 lastMenuNavigation = menuNavigation;
                 menuNavigation.x = 0;
+                //Set the action block to our Magic Menu & set it active
                 actionBlock = userInterface.transform.GetChild(2).gameObject;
-                ourMagicMenu.ChangeState(MagicMenu.State.SpellList);
                 userInterface.transform.GetChild(2).gameObject.SetActive(true);
-                ChangeState(State.Magic);
+                //Change the state of our Attack Menu Script
+                ourMagicMenu.ChangeState(MagicMenu.State.SpellList);
             }
         }
         else if (menuNavigation.x==2) //Items
         {
             if (Input.GetKeyDown("space")) 
             {
+                //Change States
                 ChangePreviousState(State.Home);
                 ChangeState(State.Items);
                 //Change Navigation
                 lastMenuNavigation = menuNavigation;
                 menuNavigation.x = 0;
+                //Set the action block to our Item Menu & set it active
                 actionBlock = userInterface.transform.GetChild(3).gameObject;
-                ourItemMenu.ChangeState(ItemMenu.State.ItemList);
                 userInterface.transform.GetChild(3).gameObject.SetActive(true);
+                //Change the state of our Item Menu Script
+                ourItemMenu.ChangeState(ItemMenu.State.ItemList);
+
             }
         }
         else if (menuNavigation.x==3) //Flee
         {
             if (Input.GetKeyDown("space")) 
             {
+                //Change States
                 ChangePreviousState(State.Home);
                 ChangeState(State.Flee);
+                //Change Navigation
                 lastMenuNavigation = menuNavigation;
                 menuNavigation.x = 0;
-                ourFleeMenu.ChangeState(FleeMenu.State.Confirm);
+                //Set our new action block as active
                 userInterface.transform.GetChild(4).gameObject.SetActive(true);
+                //Change the state of our Item Menu Script
+                ourFleeMenu.ChangeState(FleeMenu.State.Confirm);
             }
         }
 
     }
-
-    public void MenuStartingPoint()
+    public void MenuStartingPoint() //Changes menu navigation dependent on enemy count
     {
         if (CombatManager.enemyCount <= 1)
         {
@@ -273,7 +287,4 @@ public class UIManager : MonoBehaviour
             menuNavigation = new Vector3(1, 0,0);
         }
     }
-
-    
-  
 }

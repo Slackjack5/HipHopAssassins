@@ -18,10 +18,8 @@ public class MagicMenu : MonoBehaviour
     private GameObject ourMagicMenu;
     //Bool
     private bool stateGate;
-    
     private GameObject ourPlayer;
-
-
+    
     public enum State
     {
         Inactive,
@@ -65,8 +63,9 @@ public class MagicMenu : MonoBehaviour
     //State Magic List
     private void GenerateSpells() //Generate the List of Player Spells
     {
+        //Look at our player spells
         int[] playerSpells = ourPlayer.GetComponent<PlayerScript>().allocatedSpells;
-        for (int i = 0; i < playerSpells.Length; i++)
+        for (int i = 0; i < playerSpells.Length; i++) //Throw each spell into a slot in our menu
         {
             GameObject tempSpell = ourUI.actionBlock.transform.GetChild(i).gameObject;
             tempSpell.SetActive(true);
@@ -86,55 +85,58 @@ public class MagicMenu : MonoBehaviour
     //Home
     public void DeployMagicMenu() //Display the list to the player
     {
+        //Generate player spells
         GenerateSpells();
         //Set our navigation limits
         ourUI.NavigationLimit = new Vector3(3, 0,-1);
+        //Change UI manager State
         ourUI.previousMenu = UIManager.State.Home;
+        //Initialize Variables
         int hoveredItem = 0;
 
         //Current Menu Player is Hovering Over
-        if (ourUI.menuNavigation.x == 0 && ourUI.menuNavigation.y == 0) //Attack
+        if (ourUI.menuNavigation.x == 0 && ourUI.menuNavigation.y == 0) 
         {
             hoveredItem = 0;
             PrepareSpell(hoveredItem);
         }
-        else if (ourUI.menuNavigation.x == 1 && ourUI.menuNavigation.y == 0) //Magic
+        else if (ourUI.menuNavigation.x == 1 && ourUI.menuNavigation.y == 0) 
         {
             hoveredItem = 1;
             PrepareSpell(hoveredItem);
         }
-        else if (ourUI.menuNavigation.x == 2 && ourUI.menuNavigation.y == 0) //Items
+        else if (ourUI.menuNavigation.x == 2 && ourUI.menuNavigation.y == 0) 
         {
             hoveredItem = 2;
             PrepareSpell(hoveredItem);
         }
-        else if (ourUI.menuNavigation.x == 3 && ourUI.menuNavigation.y == 0) //Flee
+        else if (ourUI.menuNavigation.x == 3 && ourUI.menuNavigation.y == 0) 
         {
             hoveredItem = 3;
             PrepareSpell(hoveredItem);
         }
-        else if (ourUI.menuNavigation.x == 0 && ourUI.menuNavigation.y == -1) //Magic
+        else if (ourUI.menuNavigation.x == 0 && ourUI.menuNavigation.y == -1) 
         {
             hoveredItem = 4;
             PrepareSpell(hoveredItem);
         }
-        else if (ourUI.menuNavigation.x == 1 && ourUI.menuNavigation.y == -1) //Items
+        else if (ourUI.menuNavigation.x == 1 && ourUI.menuNavigation.y == -1) 
         {
             hoveredItem = 5;
             PrepareSpell(hoveredItem);
         }
-        else if (ourUI.menuNavigation.x == 2 && ourUI.menuNavigation.y == -1) //Flee
+        else if (ourUI.menuNavigation.x == 2 && ourUI.menuNavigation.y == -1) 
         {
             hoveredItem = 6;
             PrepareSpell(hoveredItem);
         }
-        else if (ourUI.menuNavigation.x == 3 && ourUI.menuNavigation.y == -1) //Flee
+        else if (ourUI.menuNavigation.x == 3 && ourUI.menuNavigation.y == -1) 
         {
             hoveredItem = 7;
             PrepareSpell(hoveredItem);
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape)) //Leave menu on Escape
         {
             HideMagicMenu();
             ourUI.RestartMenu();
@@ -145,14 +147,14 @@ public class MagicMenu : MonoBehaviour
         }
     }
 
-    private void PrepareSpell(int hoveredItem)
+    private void PrepareSpell(int hoveredItem) //If player is hovering spell
     {
         //Hover Effect
         ourUI.actionBlock.transform.GetChild(hoveredItem).GetComponent<Image>().color = Color.red;
         //State Variables
         int[] playerSpells = ourPlayer.GetComponent<PlayerScript>().allocatedSpells;
         
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown("space")) //Select spell on pressing space
         {
             if (playerSpells[hoveredItem] != 0)
             {
@@ -167,25 +169,26 @@ public class MagicMenu : MonoBehaviour
         }
     }
 
-    public void HideMagicMenu()
+    public void HideMagicMenu() //Hide our Magic Menu
     {
         ourMagicMenu.SetActive(false);
     }
     
-    public void ShowMagicMenu()
+    public void ShowMagicMenu() //Show our Magic Menu
     {
         ourMagicMenu.SetActive(true);
     }
 
-    public void magicSelectMonster()
+    public void magicSelectMonster() //Monster Select State
     {
+        //Initialize Variables
         int hoveredMonster = 0;
-        if (CombatManager.enemyCount <= 1)
+        if (CombatManager.enemyCount <= 1) //If only one enemy on screen
         {
             //Hide Menu
             HideMagicMenu();
         }
-        else if (CombatManager.enemyCount == 2)
+        else if (CombatManager.enemyCount == 2) //If two ememies on Screen
         {
             //Hide Menu
             HideMagicMenu();
@@ -200,7 +203,7 @@ public class MagicMenu : MonoBehaviour
                 hoveredMonster = 1;
             }
         }
-        else if (CombatManager.enemyCount == 3)
+        else if (CombatManager.enemyCount == 3) //If Three enemies on Screen
         {
             //Hide Menu
             HideMagicMenu();
@@ -219,10 +222,9 @@ public class MagicMenu : MonoBehaviour
                 hoveredMonster = 1;
             }
         }
+        PrepareMonster(hoveredMonster); //On Hover Effects and Selected Monster Changee
         
-        PrepareMonster(hoveredMonster);
-        
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape)) //Return to spell menu on pressing Escape
         {
             //Reset Enemy Size
             for (int i = 0; i < ourUI.encounteredEnemies.transform.childCount; i++)
@@ -239,9 +241,11 @@ public class MagicMenu : MonoBehaviour
     }
     
     
-    private void PrepareMonster(int hoveredMonster)
+    private void PrepareMonster(int hoveredMonster) //If player is hovering monster
     {
+        //Change Navigation Limit to amount of enemies on screen
         ourUI.NavigationLimit = new Vector3(ourUI.encounteredEnemies.transform.childCount-1, 0,-1);
+        //If hovering over a monster do on screen effect (Enlarge Them)
         for (int i = 0; i < ourUI.encounteredEnemies.transform.childCount; i++)
         {
             if (i != hoveredMonster)
@@ -254,9 +258,11 @@ public class MagicMenu : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown("space")) //If player presses space, select that monst
         {
+            //Change Selected Monster
             UIManager.selectedMonster = ourUI.encounteredEnemies.transform.GetChild(hoveredMonster).gameObject;
+            //Reset Monster Sizes
             ourUI.ResetMonsters();
             //Cast Magic Damage
             CombatManager.CastSpell(UIManager.selectedMonster.GetComponent<MonsterData>(),selectedSpell.Damage);

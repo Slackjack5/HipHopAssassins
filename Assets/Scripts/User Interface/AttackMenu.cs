@@ -12,11 +12,8 @@ public class AttackMenu : MonoBehaviour
     //State
     [SerializeField] public State MenuState;
     private UIManager ourUI;
-    
     //Bool
     private bool stateGate;
-    
-    
     public enum State
     {
         Inactive,
@@ -41,6 +38,7 @@ public class AttackMenu : MonoBehaviour
                 stateGate = false;
                 break;
             case State.LimbList:
+                //Set our Navigation limit to the amount of monster Limbs
                 ourUI.NavigationLimit = new Vector3(0, 0,-1*(UIManager.selectedMonster.GetComponent<MonsterData>().limbHealth.Length-1));
                 DeployAttackMenu();
                 break;
@@ -53,7 +51,6 @@ public class AttackMenu : MonoBehaviour
             {
                 stateGate = true;
             }
-
             break;
         }
     }
@@ -160,15 +157,16 @@ public class AttackMenu : MonoBehaviour
         }
     }
     
-    public void SelectMonster()
+    public void SelectMonster() //Have the player select a monster
     {
-        int hoveredMonster = 0;
-        if (CombatManager.enemyCount <= 1)
+        //Declared Variables
+        int hoveredMonster = 0; 
+        if (CombatManager.enemyCount <= 1) //If only 1 enemy on screen
         {
-            ourUI.NavigationLimit = new Vector3(0, 0,0);
-            hoveredMonster = 0;
+            ourUI.NavigationLimit = new Vector3(0, 0,0); //Change our navigation limit
+            hoveredMonster = 0; //Change our hovered monster int
         }
-        else if (CombatManager.enemyCount == 2)
+        else if (CombatManager.enemyCount == 2) //If two enemies on Screen
         {
             ourUI.NavigationLimit = new Vector3(1, 0,0);
             if (ourUI.menuNavigation.x == 0)
@@ -180,7 +178,7 @@ public class AttackMenu : MonoBehaviour
                 hoveredMonster = 1;
             }
         }
-        else if (CombatManager.enemyCount == 3)
+        else if (CombatManager.enemyCount == 3) //If three enemies on Screen
         {
             ourUI.NavigationLimit = new Vector3(2, 0,0);
             if (ourUI.menuNavigation.x == 1)
@@ -208,6 +206,7 @@ public class AttackMenu : MonoBehaviour
             }
             //Return to previous state
             ChangeState(State.Inactive);
+            //Reset values and return to home menu
             ourUI.RestartMenu();
             ourUI.ChangeState(UIManager.State.Home);
             ourUI.NavigationLimit = new Vector3(3, 0,0);
@@ -220,7 +219,9 @@ public class AttackMenu : MonoBehaviour
         
     private void PrepareMonster(int hoveredMonster)
     {
+        //Change Navigation Limit to amount of enemies on screen
         ourUI.NavigationLimit = new Vector3(ourUI.encounteredEnemies.transform.childCount-1, 0,-1);
+        //If hovering over a monster do on screen effect (Enlarge Them)
         for (int i = 0; i < ourUI.encounteredEnemies.transform.childCount; i++)
         {
             if (i != hoveredMonster)
@@ -232,9 +233,11 @@ public class AttackMenu : MonoBehaviour
                 ourUI.encounteredEnemies.transform.GetChild(i).transform.localScale = new Vector3(2, 2, 1);
             }
         }
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown("space")) //If player presses space, select that monster
         {
+            //Change Selected Monster
             UIManager.selectedMonster = ourUI.encounteredEnemies.transform.GetChild(hoveredMonster).gameObject;
+            //Reset Monster Sizes
             ourUI.ResetMonsters();
             //Change State
             ChangeState(State.LimbList);
