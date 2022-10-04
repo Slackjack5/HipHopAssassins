@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using MoreMountains.Feedbacks;
+using MoreMountains.Tools;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -108,10 +110,20 @@ public class CombatManager : MonoBehaviour
     {
         Instantiate(item);
     }
-    public static void DamageMonsterLimb(MonsterData ourMonster, int limbNumber,int damage)
+    public static void DamageMonsterLimb(GameObject Monster, int limbNumber,int damage)
     {
+        //Initialize Variables
+        MonsterData ourMonster = Monster.GetComponent<MonsterData>();
+        GameObject monsterGFX = Monster.transform.GetChild(0).gameObject;
+        //Initialie Feedback
+        MMF_Player targetFeedback = monsterGFX.transform.GetChild(1).GetComponent<MMF_Player>();
+        MMF_FloatingText floatingText = targetFeedback.GetFeedbackOfType<MMF_FloatingText>();
+        floatingText.Value = damage.ToString();
+        //Deal Damage
+        targetFeedback.PlayFeedbacks();
         int newLimbNumber = (int) MathF.Abs(limbNumber);
         ourMonster.limbHealth[newLimbNumber] -= damage;
+        
         ourUI.UpdateUI();
         //End Player Turn
         ChangeState(State.MonsterTurn);
