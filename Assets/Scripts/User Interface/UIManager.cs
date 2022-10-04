@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using MoreMountains.Feedbacks;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -193,8 +194,8 @@ public class UIManager : MonoBehaviour
     {
         for (int i = 0; i < encounteredEnemies.transform.childCount; i++)
         {
-            GameObject ourEnemy = encounteredEnemies.transform.GetChild(i).gameObject;
-            ourEnemy.transform.localScale = new Vector3(1, 1, 1);
+            MMF_Player ourJuice = encounteredEnemies.transform.GetChild(i).transform.GetChild(0).transform.GetChild(3).GetComponent<MMF_Player>();
+            ourJuice.PlayFeedbacks();
         }
     }
 

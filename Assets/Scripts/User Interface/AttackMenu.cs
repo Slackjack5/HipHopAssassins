@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using MoreMountains.Feedbacks;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -14,6 +15,7 @@ public class AttackMenu : MonoBehaviour
     private UIManager ourUI;
     //Bool
     private bool stateGate;
+    private bool hoverEffectPlayed;
     public enum State
     {
         Inactive,
@@ -224,14 +226,22 @@ public class AttackMenu : MonoBehaviour
         //If hovering over a monster do on screen effect (Enlarge Them)
         for (int i = 0; i < ourUI.encounteredEnemies.transform.childCount; i++)
         {
-            if (i != hoveredMonster)
+            if (i != hoveredMonster) //Hover Exit
             {
-                ourUI.encounteredEnemies.transform.GetChild(i).transform.localScale = new Vector3(1, 1, 1);
+                MMF_Player ourJuice = ourUI.encounteredEnemies.transform.GetChild(i).transform.GetChild(0).transform.GetChild(3).GetComponent<MMF_Player>();
+                ourJuice.PlayFeedbacks();
             }
-            else
+            else //Hover Enter
             {
-                ourUI.encounteredEnemies.transform.GetChild(i).transform.localScale = new Vector3(2, 2, 1);
+                MMF_Player ourJuice = ourUI.encounteredEnemies.transform.GetChild(i).transform.GetChild(0).transform.GetChild(2).GetComponent<MMF_Player>();
+                if(!hoverEffectPlayed) { ourJuice.PlayFeedbacks(); hoverEffectPlayed = true;}
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow) ||
+            Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            hoverEffectPlayed = false;
         }
         if (Input.GetKeyDown("space")) //If player presses space, select that monster
         {
@@ -239,6 +249,7 @@ public class AttackMenu : MonoBehaviour
             UIManager.selectedMonster = ourUI.encounteredEnemies.transform.GetChild(hoveredMonster).gameObject;
             //Reset Monster Sizes
             ourUI.ResetMonsters();
+            hoverEffectPlayed = false;
             //Change State
             ChangeState(State.LimbList);
             //Change Previous Navigation
