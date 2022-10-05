@@ -88,7 +88,7 @@ public class AttackMenu : MonoBehaviour
 
         if (Input.GetKeyDown("space")) 
         {
-            CombatManager.DamageMonsterLimb(UIManager.selectedMonster,(int) ourUI.menuNavigation.y,20);
+            CombatManager.AwaitAttack();
             ChangeState(State.Inactive);
             ourUI.resetBlocks();
             HideLimbs();

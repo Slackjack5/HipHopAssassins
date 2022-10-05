@@ -5864,9 +5864,9 @@ MonoBehaviour:
   NestWaitingPool: 1
   MutualizeWaitingPools: 1
   PoolCanExpand: 1
-  Lifetime: {x: 1, y: 1}
-  SpawnOffsetMin: {x: 0, y: 0, z: 0}
-  SpawnOffsetMax: {x: 0, y: 0, z: 0}
+  Lifetime: {x: 1, y: 2}
+  SpawnOffsetMin: {x: 2, y: 2, z: 0}
+  SpawnOffsetMax: {x: -2, y: -2, z: 0}
   AnimateMovement: 1
   AnimateX: 0
   RemapXZero: {x: 0, y: 0}
@@ -5999,11 +5999,11 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  AnimateColor: 0
+  AnimateColor: 1
   AnimateColorGradient:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
-    key1: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 0}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -7531,6 +7531,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Level: 0
   Health: 50
+  hitsMax: 3
+  attackMin: 1
+  attackMax: 7
   allocatedSpells: 0100000000000000000000000000000000000000000000000000000000000000
   allocatedItems: 0000000001000000000000000000000000000000000000000000000000000000
 --- !u!4 &1711365896

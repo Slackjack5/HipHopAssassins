@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.PlayerLoop;
+using Random = System.Random;
 
 
 public class UIManager : MonoBehaviour
@@ -65,7 +66,6 @@ public class UIManager : MonoBehaviour
         ourFleeMenu = gameObject.GetComponent<FleeMenu>();
         encounteredEnemies = combatManager.transform.GetChild(0).gameObject;
         actionBlock = gameObject;
-        
 
         //Variables
         menuNavigation.x = 0;

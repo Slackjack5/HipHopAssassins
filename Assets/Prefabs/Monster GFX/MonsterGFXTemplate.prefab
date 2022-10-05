@@ -1708,7 +1708,7 @@ MonoBehaviour:
           m_DissipationMode: 2
           m_DissipationDistance: 100
           m_PropagationSpeed: 343
-        Velocity: {x: 1, y: 1, z: 0}
+        Velocity: {x: 2, y: 2, z: 0}
         ClearImpulseOnStop: 0
     - rid: 290939681433452553
       type: {class: MMF_ScaleShake, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
@@ -1832,7 +1832,7 @@ MonoBehaviour:
         ZoomMode: 0
         ZoomFieldOfView: 50
         ZoomTransitionDuration: 0.05
-        ZoomDuration: 0.1
+        ZoomDuration: 0.05
         RelativeFieldOfView: 0
     - rid: 290939684231315463
       type: {class: MMF_RotationShake, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}

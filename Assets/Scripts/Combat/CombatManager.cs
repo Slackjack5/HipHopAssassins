@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
+//using System.Collections.Generic;
 using MoreMountains.Feedbacks;
 using MoreMountains.Tools;
+using TreeEditor;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = System.Random;
 
 public class CombatManager : MonoBehaviour
 {
@@ -20,6 +22,8 @@ public class CombatManager : MonoBehaviour
     private SpawnPoints ourSpawnPoints;
     private bool testStarted = false;
     private ItemDictionary ourItemDictionary;
+
+    private static int hitsRemaining;
     
     protected enum State
     {
@@ -27,6 +31,7 @@ public class CombatManager : MonoBehaviour
         PlayerTurn,
         MonsterTurn,
         Defcon,
+        AwaitingAttack,
         Dialogue,
         Special,
     }
@@ -38,12 +43,13 @@ public class CombatManager : MonoBehaviour
         ourUI = transform.parent.GetChild(0).GetComponent<UIManager>();
         ourSpawnPoints = gameObject.transform.GetChild(2).gameObject.GetComponent<SpawnPoints>();
         ourPlayer = GameObject.Find("Player").GetComponent<PlayerScript>();
+        hitsRemaining = ourPlayer.hitsMax;
     }
     
 
     // Update is called once per frame
     void Update()
-    {
+    { 
         switch (currentTurn)
         {
             case State.Prefight:
@@ -64,6 +70,15 @@ public class CombatManager : MonoBehaviour
                 break;
             case State.Defcon:
                 Debug.Log("In Defcon Turn");
+                break;
+            case State.AwaitingAttack:
+                Debug.Log("In Awaiting Attack Turn");
+                if (Input.GetKeyDown("space"))
+                {
+                    int generatedDamage = UnityEngine.Random.Range(ourPlayer.attackMin, ourPlayer.attackMax);
+                    DamageMonsterLimb(UIManager.selectedMonster,(int) ourUI.menuNavigation.y, generatedDamage);
+                    hitsRemaining -= 1;
+                }
                 break;
         }
 
@@ -115,6 +130,7 @@ public class CombatManager : MonoBehaviour
         //Initialize Variables
         MonsterData ourMonster = Monster.GetComponent<MonsterData>();
         GameObject monsterGFX = Monster.transform.GetChild(0).gameObject;
+        
         //Initialie Feedback
         MMF_Player targetFeedback = monsterGFX.transform.GetChild(1).GetComponent<MMF_Player>();
         MMF_FloatingText floatingText = targetFeedback.GetFeedbackOfType<MMF_FloatingText>();
@@ -125,8 +141,18 @@ public class CombatManager : MonoBehaviour
         ourMonster.limbHealth[newLimbNumber] -= damage;
         
         ourUI.UpdateUI();
-        //End Player Turn
-        ChangeState(State.MonsterTurn);
+        if (hitsRemaining <= 0)
+        {
+            //End Player Turn
+            ChangeState(State.MonsterTurn);
+            hitsRemaining = ourPlayer.hitsMax;
+        }
+        else
+        {
+            Debug.Log("Awaiting next hit!");
+            ChangeState(State.AwaitingAttack);
+        }
+
 
     }
     public static void CastSpell(MonsterData ourMonster,int damage)
@@ -136,6 +162,12 @@ public class CombatManager : MonoBehaviour
         //End Player Turn
         ChangeState(State.MonsterTurn);
 
+    }
+
+    public static void AwaitAttack()
+    {
+        //End Player Turn
+        ChangeState(State.AwaitingAttack);
     }
     protected static void ChangeState(State state)
     {

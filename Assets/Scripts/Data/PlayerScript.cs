@@ -6,6 +6,9 @@ public class PlayerScript : MonoBehaviour
 {
     [SerializeField] private int Level;
     [SerializeField] public int Health;
+    public int hitsMax;
+    public int attackMin;
+    public int attackMax;
     public int[] allocatedSpells;
     public int[] allocatedItems;
     // Start is called before the first frame update
