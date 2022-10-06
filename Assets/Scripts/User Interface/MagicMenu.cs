@@ -5,6 +5,8 @@ using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine.UI;
+using MoreMountains.Feedbacks;
+
 
 public class MagicMenu : MonoBehaviour
 {
@@ -19,6 +21,7 @@ public class MagicMenu : MonoBehaviour
     //Bool
     private bool stateGate;
     private GameObject ourPlayer;
+    private bool hoverEffectPlayed;
     
     public enum State
     {
@@ -226,11 +229,9 @@ public class MagicMenu : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Escape)) //Return to spell menu on pressing Escape
         {
-            //Reset Enemy Size
-            for (int i = 0; i < ourUI.encounteredEnemies.transform.childCount; i++)
-            {
-                ourUI.encounteredEnemies.transform.GetChild(i).transform.localScale = new Vector3(1, 1, 1);
-            }
+            //Reset Monster Sizes
+            ourUI.ResetMonsters();
+            hoverEffectPlayed = false;
             //Reset Variables
             ourUI.menuNavigation.x = 0;
             ShowMagicMenu();
@@ -248,14 +249,21 @@ public class MagicMenu : MonoBehaviour
         //If hovering over a monster do on screen effect (Enlarge Them)
         for (int i = 0; i < ourUI.encounteredEnemies.transform.childCount; i++)
         {
-            if (i != hoveredMonster)
+            if (i != hoveredMonster) //HoverExit
             {
-                ourUI.encounteredEnemies.transform.GetChild(i).transform.localScale = new Vector3(1, 1, 1);
-            }
+                MMF_Player ourJuice = ourUI.encounteredEnemies.transform.GetChild(i).transform.GetChild(0).transform.GetChild(3).GetComponent<MMF_Player>();
+                ourJuice.PlayFeedbacks();            }
             else
             {
-                ourUI.encounteredEnemies.transform.GetChild(i).transform.localScale = new Vector3(2, 2, 1);
+                MMF_Player ourJuice = ourUI.encounteredEnemies.transform.GetChild(i).transform.GetChild(0).transform.GetChild(2).GetComponent<MMF_Player>();
+                if(!hoverEffectPlayed) { ourJuice.PlayFeedbacks(); hoverEffectPlayed = true;}
             }
+        }
+        //If the player moves the menu
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow) ||
+            Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            hoverEffectPlayed = false;
         }
 
         if (Input.GetKeyDown("space")) //If player presses space, select that monst
@@ -264,11 +272,14 @@ public class MagicMenu : MonoBehaviour
             UIManager.selectedMonster = ourUI.encounteredEnemies.transform.GetChild(hoveredMonster).gameObject;
             //Reset Monster Sizes
             ourUI.ResetMonsters();
+            hoverEffectPlayed = false;
             //Cast Magic Damage
-            CombatManager.CastSpell(UIManager.selectedMonster.GetComponent<MonsterData>(),selectedSpell.Damage);
+            CombatManager.AwaitMagic();
+            CombatManager.SetTargetAndDamage(UIManager.selectedMonster,selectedSpell.Damage);
             //Change State
             ChangeState(State.Inactive);
         }
+
     }
 
     

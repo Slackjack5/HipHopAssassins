@@ -28,6 +28,7 @@ public class UIManager : MonoBehaviour
     private AttackMenu ourAttackMenu;
     private ItemMenu ourItemMenu;
     private FleeMenu ourFleeMenu;
+    public static GameObject ourButton;
     //static
     public static GameObject selectedMonster;
     //Spells
@@ -66,6 +67,7 @@ public class UIManager : MonoBehaviour
         ourFleeMenu = gameObject.GetComponent<FleeMenu>();
         encounteredEnemies = combatManager.transform.GetChild(0).gameObject;
         actionBlock = gameObject;
+        ourButton = userInterface.transform.GetChild(5).transform.gameObject;
 
         //Variables
         menuNavigation.x = 0;

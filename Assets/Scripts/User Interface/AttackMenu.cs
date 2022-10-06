@@ -201,11 +201,8 @@ public class AttackMenu : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            //Reset Enemy Size
-            for (int i = 0; i < ourUI.encounteredEnemies.transform.childCount; i++)
-            {
-                ourUI.encounteredEnemies.transform.GetChild(i).transform.localScale = new Vector3(1, 1, 1);
-            }
+            //Reset Monsters
+            ourUI.ResetMonsters();
             //Return to previous state
             ChangeState(State.Inactive);
             //Reset values and return to home menu
@@ -214,6 +211,8 @@ public class AttackMenu : MonoBehaviour
             ourUI.NavigationLimit = new Vector3(3, 0,0);
             ourUI.menuNavigation.x = 0;
             ourUI.resetBlocks();
+            hoverEffectPlayed = false;
+
         }
         
     }
@@ -255,6 +254,7 @@ public class AttackMenu : MonoBehaviour
             //Change Previous Navigation
             ourUI.lastMenuNavigation = ourUI.menuNavigation;
         }
+        
     }
 
     public void ChangeState(State state)

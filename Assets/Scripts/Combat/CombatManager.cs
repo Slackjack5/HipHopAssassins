@@ -24,6 +24,12 @@ public class CombatManager : MonoBehaviour
     private ItemDictionary ourItemDictionary;
 
     private static int hitsRemaining;
+
+    private static int ourSetDamage;
+
+    private static GameObject ourSeleectedMonster;
+    //UI
+
     
     protected enum State
     {
@@ -32,6 +38,7 @@ public class CombatManager : MonoBehaviour
         MonsterTurn,
         Defcon,
         AwaitingAttack,
+        AwaitingMagic,
         Dialogue,
         Special,
     }
@@ -73,11 +80,41 @@ public class CombatManager : MonoBehaviour
                 break;
             case State.AwaitingAttack:
                 Debug.Log("In Awaiting Attack Turn");
+                
+                UIManager.ourButton.SetActive(true);
                 if (Input.GetKeyDown("space"))
                 {
                     int generatedDamage = UnityEngine.Random.Range(ourPlayer.attackMin, ourPlayer.attackMax);
                     DamageMonsterLimb(UIManager.selectedMonster,(int) ourUI.menuNavigation.y, generatedDamage);
                     hitsRemaining -= 1;
+                    //Button Down
+                    Animator ourButtonAnim = UIManager.ourButton.transform.GetChild(0).transform.gameObject.GetComponent<Animator>();
+                    ourButtonAnim.Play("ButtonHeld");
+                }
+
+                if (Input.GetKeyUp("space"))
+                {
+                    Animator ourButtonAnim = UIManager.ourButton.transform.GetChild(0).transform.gameObject.GetComponent<Animator>();
+                    ourButtonAnim.Play("ButtonRise");
+                }
+                break;
+            case State.AwaitingMagic:
+                Debug.Log("In Awaiting Attack Turn");
+                
+                UIManager.ourButton.SetActive(true);
+                if (Input.GetKeyDown("space"))
+                {
+                    hitsRemaining -= 1;
+                    //Button Down
+                    Animator ourButtonAnim = UIManager.ourButton.transform.GetChild(0).transform.gameObject.GetComponent<Animator>();
+                    CastSpell(ourSeleectedMonster, ourSetDamage);
+                    ourButtonAnim.Play("ButtonHeld");
+                }
+
+                if (Input.GetKeyUp("space"))
+                {
+                    Animator ourButtonAnim = UIManager.ourButton.transform.GetChild(0).transform.gameObject.GetComponent<Animator>();
+                    ourButtonAnim.Play("ButtonRise");
                 }
                 break;
         }
@@ -131,36 +168,82 @@ public class CombatManager : MonoBehaviour
         MonsterData ourMonster = Monster.GetComponent<MonsterData>();
         GameObject monsterGFX = Monster.transform.GetChild(0).gameObject;
         
-        //Initialie Feedback
-        MMF_Player targetFeedback = monsterGFX.transform.GetChild(1).GetComponent<MMF_Player>();
-        MMF_FloatingText floatingText = targetFeedback.GetFeedbackOfType<MMF_FloatingText>();
-        floatingText.Value = damage.ToString();
-        //Deal Damage
-        targetFeedback.PlayFeedbacks();
-        int newLimbNumber = (int) MathF.Abs(limbNumber);
-        ourMonster.limbHealth[newLimbNumber] -= damage;
+
         
         ourUI.UpdateUI();
         if (hitsRemaining <= 0)
         {
             //End Player Turn
             ChangeState(State.MonsterTurn);
+            UIManager.ourButton.SetActive(false);
             hitsRemaining = ourPlayer.hitsMax;
+            int enhancedDamage = damage * 2;
+            //Initialie Feedback
+            MMF_Player targetFeedback = monsterGFX.transform.GetChild(1).GetComponent<MMF_Player>();
+            MMF_FloatingText floatingText = targetFeedback.GetFeedbackOfType<MMF_FloatingText>();
+            floatingText.Value = enhancedDamage.ToString();
+            targetFeedback.FeedbacksIntensity = 3;
+            
+            //Deal Damage
+            targetFeedback.ResetFeedbacks();
+            targetFeedback.PlayFeedbacks();
+            int newLimbNumber = (int) MathF.Abs(limbNumber);
+            ourMonster.limbHealth[newLimbNumber] -= enhancedDamage;
         }
         else
         {
             Debug.Log("Awaiting next hit!");
             ChangeState(State.AwaitingAttack);
+            
+            //Initialie Feedback
+            MMF_Player targetFeedback = monsterGFX.transform.GetChild(1).GetComponent<MMF_Player>();
+            MMF_FloatingText floatingText = targetFeedback.GetFeedbackOfType<MMF_FloatingText>();
+            targetFeedback.FeedbacksIntensity = 1;
+            floatingText.Value = damage.ToString();
+            //Deal Damage
+            targetFeedback.ResetFeedbacks();
+            targetFeedback.PlayFeedbacks();
+            int newLimbNumber = (int) MathF.Abs(limbNumber);
+            ourMonster.limbHealth[newLimbNumber] -= damage;
         }
 
 
     }
-    public static void CastSpell(MonsterData ourMonster,int damage)
+    public static void CastSpell(GameObject Monster,int damage)
     {
-        ourMonster.monsterHealth -= damage;
+        //Initialize Variables
+        MonsterData ourMonster = Monster.GetComponent<MonsterData>();
+        GameObject monsterGFX = Monster.transform.GetChild(0).gameObject;
+        
         ourUI.UpdateUI();
-        //End Player Turn
-        ChangeState(State.MonsterTurn);
+
+        if (hitsRemaining <= 0)
+        {
+            //End Player Turn
+            ChangeState(State.MonsterTurn);
+            UIManager.ourButton.SetActive(false);
+            hitsRemaining = ourPlayer.hitsMax;
+            ourMonster.monsterHealth -= damage;
+            
+            //Initialie Feedback
+            MMF_Player targetFeedback = monsterGFX.transform.GetChild(4).GetComponent<MMF_Player>();
+            MMF_FloatingText floatingText = targetFeedback.GetFeedbackOfType<MMF_FloatingText>();
+            floatingText.Value = ourSetDamage.ToString();
+            //Deal Damage
+            targetFeedback.ResetFeedbacks();
+            targetFeedback.PlayFeedbacks();
+        }
+        else
+        {
+            Debug.Log("Awaiting next hit!");
+            MMF_Player targetFeedback = monsterGFX.transform.GetChild(5).GetComponent<MMF_Player>();
+            targetFeedback.ResetFeedbacks();
+            targetFeedback.PlayFeedbacks();
+            ourSetDamage = damage;
+            ourSeleectedMonster = Monster;
+            ChangeState(State.AwaitingMagic);
+        }
+
 
     }
 
@@ -168,6 +251,19 @@ public class CombatManager : MonoBehaviour
     {
         //End Player Turn
         ChangeState(State.AwaitingAttack);
+    }
+    
+    public static void AwaitMagic()
+    {
+        //End Player Turn
+        ChangeState(State.AwaitingMagic);
+    }
+    
+    public static void SetTargetAndDamage(GameObject Target, int Damage)
+    {
+        //End Player Turn
+        ourSeleectedMonster = Target;
+        ourSetDamage = Damage;
     }
     protected static void ChangeState(State state)
     {
