@@ -1,20 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="140">
 	<RootPaths>
-		<ProjectRoot>/Users/nycelly/Library/Application Support/Wwise2019/Bottles/Wwise2019x64/dosdevices/z:/Volumes/Not Case Sensitive/Unity Projects/HipHopAssassins/HipHopAssassins_WwiseProject/</ProjectRoot>
-		<SourceFilesRoot>/Users/nycelly/Library/Application Support/Wwise2019/Bottles/Wwise2019x64/dosdevices/z:/Volumes/Not Case Sensitive/Unity Projects/HipHopAssassins/HipHopAssassins_WwiseProject/.cache/Windows/</SourceFilesRoot>
-		<SoundBanksRoot>/Users/nycelly/Library/Application Support/Wwise2019/Bottles/Wwise2019x64/dosdevices/z:/Volumes/Not Case Sensitive/Unity Projects/HipHopAssassins/HipHopAssassins_WwiseProject/GeneratedSoundBanks/Windows/</SoundBanksRoot>
+		<ProjectRoot>G:\HipHopAssassins\AssassinGit2\HipHopAssassins\HipHopAssassins_WwiseProject\</ProjectRoot>
+		<SourceFilesRoot>G:\HipHopAssassins\AssassinGit2\HipHopAssassins\HipHopAssassins_WwiseProject\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>G:\HipHopAssassins\AssassinGit2\HipHopAssassins\HipHopAssassins_WwiseProject\GeneratedSoundBanks\Windows\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>/Users/nycelly/Library/Application Support/Wwise2019/Bottles/Wwise2019x64/dosdevices/z:/Volumes/Not Case Sensitive/Unity Projects/HipHopAssassins/HipHopAssassins_WwiseProject/GeneratedSoundBanks/Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>G:\HipHopAssassins\AssassinGit2\HipHopAssassins\HipHopAssassins_WwiseProject\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1229948536" Language="SFX" Hash="3387212696">
+		<SoundBank Id="1229948536" Language="SFX" Hash="1584297976">
 			<ObjectPath>\SoundBanks\Default Work Unit\Environment</ObjectPath>
 			<ShortName>Environment</ShortName>
 			<Path>Environment.bnk</Path>
+			<IncludedEvents>
+				<Event Id="4281528671" Name="Play_TestTrack" ObjectPath="\Events\Default Work Unit\Play_TestTrack">
+					<IncludedMemoryFiles>
+						<File Id="997630709" Language="SFX">
+							<ShortName>ForFun-Drums NO ACAPELLA.wav</ShortName>
+							<Path>SFX\ForFun-Drums NO ACAPELLA_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+			</IncludedEvents>
 		</SoundBank>
 		<SoundBank Id="1355168291" Language="SFX" Hash="3690994985">
 			<ObjectPath>Init</ObjectPath>

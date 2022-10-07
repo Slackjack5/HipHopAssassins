@@ -54,22 +54,24 @@ public class BeatmapManager : MonoBehaviour
 
   private void Start()
   {
+    //Set Beat UI Menu Off
     track.SetActive(false);
-
+    //Set Hit Leniency
     lateBound = leniency * 2 / 3;
   }
 
   private void Update()
   {
+    //If the song hasn't started do nothing
     if (!GlobalVariables.songStarted) return;
-
+    //Initializing Variables
     AudioEvents.SegmentPosition segmentPosition = AudioEvents.GetCurrentSegmentPosition();
     if (!segmentPosition.isValid) return;
     float currentSegmentPosition = segmentPosition.value;
 
     // AudioEvents.secondsPerBeat is not defined until the first measure starts.
     travelTime = 2 * AudioEvents.secondsPerBeat;
-
+    
     if (isGenerated)
     {
       if (nextHitIndex < notes.Count)

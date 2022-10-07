@@ -1,4 +1,4 @@
-/*
+
 using System;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -73,7 +73,6 @@ public class AudioEvents : MonoBehaviour
     GlobalVariables.songStarted = false;
     isSegmentPositionReady = true;
     Self = gameObject;
-    AkSoundEngine.PostEvent("Set_Switch_Combat", Self);
   }
 
   private void Update()
@@ -140,7 +139,7 @@ public class AudioEvents : MonoBehaviour
         currentBarStartTime = currentSegment.iCurrentPosition;
 
         OnEveryBar.Invoke();
-
+        Debug.Log("Calling Every Bar");
         break;
       case AkCallbackType.AK_MusicSyncGrid:
         IncreaseGrid();
@@ -219,48 +218,13 @@ public class AudioEvents : MonoBehaviour
     {
       case "Example Case":
         break;
+      case "Q":
+        Debug.Log("Found our Q!");
+        break;
+      
       default:
         break;
     }
-  }
-
-  public void Bump()
-  {
-    //Camera Shake
-  }
-
-  public static void PauseMusic()
-  {
-    AkSoundEngine.PostEvent("Pause_Music", Self);
-  }
-
-  public static void ResumeMusic()
-  {
-    AkSoundEngine.PostEvent("Resume_Music", Self);
-  }
-
-  public static void SetSwitchShop()
-  {
-    AkSoundEngine.PostEvent("Set_Switch_Shop", Self);
-    ResetTiming();
-  }
-
-  public static void SetSwitchCombat()
-  {
-    AkSoundEngine.PostEvent("Set_Switch_Combat", Self);
-    ResetTiming();
-  }
-
-  public static void SetSwitchBoss()
-  {
-    AkSoundEngine.PostEvent("Set_Switch_Boss", Self);
-    ResetTiming();
-  }
-
-  public static void SetSwitchBossEntrance()
-  {
-    AkSoundEngine.PostEvent("Set_Switch_BossEntrance", Self);
-    ResetTiming();
   }
 
   private static void ResetTiming()
@@ -279,4 +243,4 @@ public static class GlobalVariables
   public static int currentGrid;
   public static bool songStarted;
 }
-*/
+

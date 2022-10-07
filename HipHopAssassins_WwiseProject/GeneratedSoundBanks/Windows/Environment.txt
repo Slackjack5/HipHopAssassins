@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	4281528671	Play_TestTrack			\Default Work Unit\Play_TestTrack	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	997630709	ForFun-Drums NO ACAPELLA	G:\HipHopAssassins\AssassinGit2\HipHopAssassins\HipHopAssassins_WwiseProject\.cache\Windows\SFX\ForFun-Drums NO ACAPELLA_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\TestTrackContainer\ForFunTrack\ForFun-Drums NO ACAPELLA		13946044
+
