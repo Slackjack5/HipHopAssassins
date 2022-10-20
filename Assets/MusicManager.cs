@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class MusicManager : MonoBehaviour
 {
-    private bool preparingSequence=false;
+    public bool preparingSequence=false;
     private bool sequenceInProgress=false;
     public AK.Wwise.Event OurEvent;
+    public bool attackInProgress;
 
     public int nextBar;
     // Start is called before the first frame update
     void Start()
     {
-        
     }
     
     public void CommenceAttackEvent()
@@ -25,6 +25,7 @@ public class MusicManager : MonoBehaviour
     {
         sequenceInProgress=false;
         preparingSequence = false;
+        attackInProgress = false;
     }
 
     private void AttackMarker()
@@ -42,6 +43,7 @@ public class MusicManager : MonoBehaviour
                 OurEvent.Post(gameObject,(uint) (AkCallbackType.AK_MusicSyncAll | AkCallbackType.AK_EnableGetMusicPlayPosition), MusicCallbackFunction);
                 sequenceInProgress=true;
                 preparingSequence = false;
+                attackInProgress = true; //Let everyone know we are commencing our attack
             }
         }
         if(nextBar == GlobalVariables.currentBar) {nextBar = GlobalVariables.currentBar+1;}
@@ -53,10 +55,14 @@ public class MusicManager : MonoBehaviour
 
     switch (_musicInfo.musicSyncType)
     {
-      case AkCallbackType.AK_MusicSyncUserCue:
+        case AkCallbackType.AK_MusicSyncUserCue:
 
         CustomCues(_musicInfo.userCueName, _musicInfo);
         break;
+        case AkCallbackType.AK_MusicSyncExit:
+            ResetVariables();
+            CombatManager.SkipPlayerTurn();
+            break;
     }
   }
     

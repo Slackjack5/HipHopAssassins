@@ -30,7 +30,7 @@ public class CombatManager : MonoBehaviour
 
     private static GameObject ourSeleectedMonster;
     //Music
-    private bool attackSequenceStarted;
+
 
     
     protected enum State
@@ -84,29 +84,32 @@ public class CombatManager : MonoBehaviour
             case State.AwaitingAttack:
                 Debug.Log("In Awaiting Attack Turn");
                 //Play Stinger
-                if (!attackSequenceStarted)
+                if (!ourMusicManager.preparingSequence)
                 {
                     ourMusicManager.CommenceAttackEvent();
                     Debug.Log("Starting Attack Event");
-                    attackSequenceStarted = true;
                 }
 
-                UIManager.ourButton.SetActive(true);
-                if (Input.GetKeyDown("space"))
+                if (ourMusicManager.attackInProgress == true) //Start once our sequence begins
                 {
-                    int generatedDamage = UnityEngine.Random.Range(ourPlayer.attackMin, ourPlayer.attackMax);
-                    DamageMonsterLimb(UIManager.selectedMonster,(int) ourUI.menuNavigation.y, generatedDamage);
-                    hitsRemaining -= 1;
-                    //Button Down
-                    Animator ourButtonAnim = UIManager.ourButton.transform.GetChild(0).transform.gameObject.GetComponent<Animator>();
-                    ourButtonAnim.Play("ButtonHeld");
+                    UIManager.ourButton.SetActive(true);
+                    if (Input.GetKeyDown("space"))
+                    {
+                        int generatedDamage = UnityEngine.Random.Range(ourPlayer.attackMin, ourPlayer.attackMax);
+                        DamageMonsterLimb(UIManager.selectedMonster,(int) ourUI.menuNavigation.y, generatedDamage);
+                        hitsRemaining -= 1;
+                        //Button Down
+                        Animator ourButtonAnim = UIManager.ourButton.transform.GetChild(0).transform.gameObject.GetComponent<Animator>();
+                        ourButtonAnim.Play("ButtonHeld");
+                    }
+
+                    if (Input.GetKeyUp("space"))
+                    {
+                        Animator ourButtonAnim = UIManager.ourButton.transform.GetChild(0).transform.gameObject.GetComponent<Animator>();
+                        ourButtonAnim.Play("ButtonRise");
+                    }
                 }
 
-                if (Input.GetKeyUp("space"))
-                {
-                    Animator ourButtonAnim = UIManager.ourButton.transform.GetChild(0).transform.gameObject.GetComponent<Animator>();
-                    ourButtonAnim.Play("ButtonRise");
-                }
                 break;
             case State.AwaitingMagic:
                 Debug.Log("In Awaiting Attack Turn");
@@ -268,7 +271,15 @@ public class CombatManager : MonoBehaviour
         //End Player Turn
         ChangeState(State.AwaitingMagic);
     }
-    
+
+    public static void SkipPlayerTurn()
+    {
+        //End Player Turn
+        ChangeState(State.MonsterTurn);
+        UIManager.ourButton.SetActive(false);
+    }
+
+
     public static void SetTargetAndDamage(GameObject Target, int Damage)
     {
         //End Player Turn
