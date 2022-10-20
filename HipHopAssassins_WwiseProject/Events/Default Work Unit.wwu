@@ -3,12 +3,37 @@
 	<Events>
 		<WorkUnit Name="Default Work Unit" ID="{FBA2C6AC-387D-41A9-A320-2BE7B4B7E5CA}" PersistMode="Standalone">
 			<ChildrenList>
-				<Event Name="Play_TestTrack" ID="{703CB925-CDD6-4170-8DE1-78D5709998D8}">
+				<Event Name="Trigger_Attack_85BPM" ID="{E801FEC8-846D-4CA6-8134-8A547D318E67}">
 					<ChildrenList>
-						<Action Name="" ID="{2089632C-CCA2-4B53-9F66-BFB3507267BB}" ShortID="374798590">
+						<Action Name="" ID="{728D0B2C-3772-4EF9-A736-E2983CBDC5F2}" ShortID="1028253937">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="35"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="TestTrackContainer" ID="{DF730F2C-C631-41FB-89DE-F1A922760E89}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
+									<ObjectRef Name="Attack_85BPM" ID="{B02770CC-137E-4A51-BF41-9BE2C9343431}" WorkUnitID="{116963E8-2D69-4746-A4F6-31DA99AE5B58}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Music_Environment" ID="{3EB1B858-66F4-4E6B-917C-AF2D6DCB1A25}">
+					<ChildrenList>
+						<Action Name="" ID="{48DA28A6-7739-49D2-A1B6-6B7E8B3EC4FB}" ShortID="566603674">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Music Environment" ID="{99CFD1FE-E25F-47FB-9EEC-6410EB2ABD62}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_AttackSequences" ID="{10775F3D-CBCB-40BC-BC0C-471704B3EB1F}">
+					<ChildrenList>
+						<Action Name="" ID="{B5638254-02FC-43D0-88A3-65A7EDFC2F69}" ShortID="378954487">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AttackSequences" ID="{8F0A64D4-328D-46E3-8A68-7ABB0B88F517}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

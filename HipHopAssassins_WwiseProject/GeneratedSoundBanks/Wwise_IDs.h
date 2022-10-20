@@ -13,8 +13,15 @@ namespace AK
 {
     namespace EVENTS
     {
-        static const AkUniqueID PLAY_TESTTRACK = 4281528671U;
+        static const AkUniqueID PLAY_ATTACKSEQUENCES = 399042744U;
+        static const AkUniqueID PLAY_MUSIC_ENVIRONMENT = 2261903105U;
+        static const AkUniqueID TRIGGER_ATTACK_85BPM = 992158907U;
     } // namespace EVENTS
+
+    namespace TRIGGERS
+    {
+        static const AkUniqueID ATTACK_85BPM = 925647048U;
+    } // namespace TRIGGERS
 
     namespace BANKS
     {

@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 54153571}
   - component: {fileID: 54153572}
+  - component: {fileID: 54153573}
   m_Layer: 0
   m_Name: CombatManager
   m_TagString: Untagged
@@ -170,6 +171,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fc48af856785b94882320e1848cff85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &54153573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54153570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b52ab4ee3450d4fdf9be72c7e86dd817, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_listeners:
+    initialListenerList: []
+    useDefaultListeners: 1
+  isEnvironmentAware: 0
+  isStaticObject: 0
+  m_positionOffsetData:
+    KeepMe: 0
+    positionOffset: {x: 0, y: 0, z: 0}
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1
 --- !u!1 &65570901
 GameObject:
   m_ObjectHideFlags: 0
@@ -2482,8 +2505,9 @@ GameObject:
   - component: {fileID: 510630692}
   - component: {fileID: 510630695}
   - component: {fileID: 510630696}
-  - component: {fileID: 510630697}
   - component: {fileID: 510630698}
+  - component: {fileID: 510630699}
+  - component: {fileID: 510630700}
   m_Layer: 0
   m_Name: WwiseGlobal
   m_TagString: Untagged
@@ -2546,7 +2570,7 @@ MonoBehaviour:
   m_listeners:
     initialListenerList: []
     useDefaultListeners: 1
-  isEnvironmentAware: 1
+  isEnvironmentAware: 0
   isStaticObject: 0
   m_positionOffsetData:
     KeepMe: 0
@@ -2577,40 +2601,6 @@ MonoBehaviour:
   unloadTriggerList: 958ca0ea
   bankNameInternal: 
   valueGuidInternal: 
---- !u!114 &510630697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 510630691}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 420f7500cf078446bba89227179d15c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerList: f7e1664c
-  useOtherObject: 0
-  actionOnEventType: 0
-  curveInterpolation: 4
-  enableActionOnEvent: 0
-  data:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 4cb2f45051993d64fbc3c2c811861b2c, type: 2}
-  useCallbacks: 0
-  Callbacks: []
-  playingId: 0
-  soundEmitterObject: {fileID: 0}
-  transitionDuration: 0
-  eventIdInternal: 0
-  valueGuidInternal: 
-  m_callbackDataInternal: {fileID: 0}
-  MultiPositionType: 1
-  multiPositionTypeLabel: 0
-  attenuationSphereColor: {r: 1, g: 0, b: 0, a: 0.1}
-  LargeModePositions: []
-  multiPositionArray: []
 --- !u!114 &510630698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2626,7 +2616,7 @@ MonoBehaviour:
   rhythmHeckinEvent:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 4cb2f45051993d64fbc3c2c811861b2c, type: 2}
+    WwiseObjectReference: {fileID: 11400000, guid: ebdeb4e14d0166c4aa1325f76da2197a, type: 2}
   OnLevelEnded:
     m_PersistentCalls:
       m_Calls: []
@@ -2655,6 +2645,35 @@ MonoBehaviour:
   currentBeat: 0
   currentGrid: 0
   gameStarted: 0
+--- !u!114 &510630699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510630691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ad09710c7ed89f4aa90eb176d18b75c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &510630700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510630691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e0e5ee10b2fe694fa656aee510fd77e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OurEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: f40696a0fd9d9274ab7f11f7efb31df1, type: 2}
+  nextBar: 0
 --- !u!1 &530379528
 GameObject:
   m_ObjectHideFlags: 0

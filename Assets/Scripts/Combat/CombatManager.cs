@@ -22,13 +22,15 @@ public class CombatManager : MonoBehaviour
     private SpawnPoints ourSpawnPoints;
     private bool testStarted = false;
     private ItemDictionary ourItemDictionary;
+    private MusicManager ourMusicManager;
 
     private static int hitsRemaining;
 
     private static int ourSetDamage;
 
     private static GameObject ourSeleectedMonster;
-    //UI
+    //Music
+    private bool attackSequenceStarted;
 
     
     protected enum State
@@ -50,6 +52,7 @@ public class CombatManager : MonoBehaviour
         ourUI = transform.parent.GetChild(0).GetComponent<UIManager>();
         ourSpawnPoints = gameObject.transform.GetChild(2).gameObject.GetComponent<SpawnPoints>();
         ourPlayer = GameObject.Find("Player").GetComponent<PlayerScript>();
+        ourMusicManager = GameObject.Find("WwiseGlobal").GetComponent<MusicManager>();
         hitsRemaining = ourPlayer.hitsMax;
     }
     
@@ -80,7 +83,14 @@ public class CombatManager : MonoBehaviour
                 break;
             case State.AwaitingAttack:
                 Debug.Log("In Awaiting Attack Turn");
-                
+                //Play Stinger
+                if (!attackSequenceStarted)
+                {
+                    ourMusicManager.CommenceAttackEvent();
+                    Debug.Log("Starting Attack Event");
+                    attackSequenceStarted = true;
+                }
+
                 UIManager.ourButton.SetActive(true);
                 if (Input.GetKeyDown("space"))
                 {

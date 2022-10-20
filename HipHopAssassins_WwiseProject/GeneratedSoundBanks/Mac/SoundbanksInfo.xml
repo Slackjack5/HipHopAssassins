@@ -11,20 +11,40 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1229948536" Language="SFX" Hash="1584297976">
+		<SoundBank Id="1229948536" Language="SFX" Hash="2665477175">
 			<ObjectPath>\SoundBanks\Default Work Unit\Environment</ObjectPath>
 			<ShortName>Environment</ShortName>
 			<Path>Environment.bnk</Path>
 			<IncludedEvents>
-				<Event Id="4281528671" Name="Play_TestTrack" ObjectPath="\Events\Default Work Unit\Play_TestTrack">
+				<Event Id="399042744" Name="Play_AttackSequences" ObjectPath="\Events\Default Work Unit\Play_AttackSequences">
 					<IncludedMemoryFiles>
+						<File Id="870697266" Language="SFX">
+							<ShortName>Sequence #1 (90 BPM).wav</ShortName>
+							<Path>SFX\Sequence #1 (90 BPM)_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2261903105" Name="Play_Music_Environment" ObjectPath="\Events\Default Work Unit\Play_Music_Environment">
+					<IncludedMemoryFiles>
+						<File Id="870697266" Language="SFX">
+							<ShortName>Sequence #1 (90 BPM).wav</ShortName>
+							<Path>SFX\Sequence #1 (90 BPM)_D79FB2B7.wem</Path>
+						</File>
 						<File Id="997630709" Language="SFX">
 							<ShortName>ForFun-Drums NO ACAPELLA.wav</ShortName>
 							<Path>SFX\ForFun-Drums NO ACAPELLA_D79FB2B7.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="992158907" Name="Trigger_Attack_85BPM" ObjectPath="\Events\Default Work Unit\Trigger_Attack_85BPM">
+					<ActionTrigger>
+						<ActionTriggerEntry Id="925647048" Name="Attack_85BPM" ObjectPath="\Triggers\Default Work Unit\Attack_85BPM"/>
+					</ActionTrigger>
+				</Event>
 			</IncludedEvents>
+			<Triggers>
+				<Trigger Id="925647048" Name="Attack_85BPM" ObjectPath="\Triggers\Default Work Unit\Attack_85BPM"/>
+			</Triggers>
 		</SoundBank>
 		<SoundBank Id="1355168291" Language="SFX" Hash="2754342975">
 			<ObjectPath>Init</ObjectPath>

@@ -66,9 +66,7 @@ public class AudioEvents : MonoBehaviour
 
   private void Start()
   {
-    playingID = rhythmHeckinEvent.Post(gameObject,
-      (uint) (AkCallbackType.AK_MusicSyncAll | AkCallbackType.AK_EnableGetMusicPlayPosition),
-      MusicCallbackFunction);
+    playingID = rhythmHeckinEvent.Post(gameObject,(uint) (AkCallbackType.AK_MusicSyncAll | AkCallbackType.AK_EnableGetMusicPlayPosition), MusicCallbackFunction);
     currentSegment = new AkSegmentInfo();
     GlobalVariables.songStarted = false;
     isSegmentPositionReady = true;
@@ -169,6 +167,11 @@ public class AudioEvents : MonoBehaviour
     }
   }
 
+  private void Listening()
+  {
+    Debug.Log("Stinger Heard");
+  }
+
   private void IncreaseBar()
   {
     GlobalVariables.currentBar += 1;
@@ -196,6 +199,7 @@ public class AudioEvents : MonoBehaviour
     {
       GlobalVariables.currentGrid = 1;
     }
+    
   }
 
   /// <summary>
@@ -211,6 +215,8 @@ public class AudioEvents : MonoBehaviour
       isValid = isSegmentPositionReady
     };
   }
+  
+  
 
   public void CustomCues(string cueName, AkMusicSyncCallbackInfo _musicInfo)
   {

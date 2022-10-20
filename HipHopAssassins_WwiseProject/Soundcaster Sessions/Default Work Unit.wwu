@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{0AF32446-EFE3-4C2B-80F9-A1755428E422}" SchemaVersion="103">
 	<SoundcasterSessions>
-		<WorkUnit Name="Default Work Unit" ID="{0AF32446-EFE3-4C2B-80F9-A1755428E422}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{0AF32446-EFE3-4C2B-80F9-A1755428E422}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundcasterSession Name="SoundCaster" ID="{0509796F-6D1D-4101-A4EF-3C1E8ED5A6AE}">
+					<ModuleList>
+						<Module>
+							<ObjectRef Name="Play_Music_Environment" ID="{3EB1B858-66F4-4E6B-917C-AF2D6DCB1A25}" WorkUnitID="{FBA2C6AC-387D-41A9-A320-2BE7B4B7E5CA}"/>
+							<Position X="0" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Trigger_Attack_85BPM" ID="{E801FEC8-846D-4CA6-8134-8A547D318E67}" WorkUnitID="{FBA2C6AC-387D-41A9-A320-2BE7B4B7E5CA}"/>
+							<Position X="1" Y="0"/>
+						</Module>
+					</ModuleList>
+					<RTPCValueList ShowAll="true"/>
+					<CurrentStateList ShowAll="true"/>
+					<CurrentSwitchList ShowAll="true"/>
+				</SoundcasterSession>
+			</ChildrenList>
+		</WorkUnit>
 	</SoundcasterSessions>
 </WwiseDocument>

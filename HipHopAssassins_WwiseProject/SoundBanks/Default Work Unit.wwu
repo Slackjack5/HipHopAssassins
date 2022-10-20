@@ -5,7 +5,9 @@
 			<ChildrenList>
 				<SoundBank Name="Environment" ID="{54FC3930-DBF4-4FE8-A5EE-BE1EBAD2ABAF}">
 					<ObjectInclusionList>
-						<ObjectRef Name="Play_TestTrack" ID="{703CB925-CDD6-4170-8DE1-78D5709998D8}" WorkUnitID="{FBA2C6AC-387D-41A9-A320-2BE7B4B7E5CA}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_AttackSequences" ID="{10775F3D-CBCB-40BC-BC0C-471704B3EB1F}" WorkUnitID="{FBA2C6AC-387D-41A9-A320-2BE7B4B7E5CA}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Trigger_Attack_85BPM" ID="{E801FEC8-846D-4CA6-8134-8A547D318E67}" WorkUnitID="{FBA2C6AC-387D-41A9-A320-2BE7B4B7E5CA}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Music_Environment" ID="{3EB1B858-66F4-4E6B-917C-AF2D6DCB1A25}" WorkUnitID="{FBA2C6AC-387D-41A9-A320-2BE7B4B7E5CA}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>

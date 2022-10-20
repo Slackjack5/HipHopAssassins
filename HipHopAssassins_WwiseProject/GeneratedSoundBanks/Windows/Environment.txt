@@ -1,6 +1,12 @@
 Event	ID	Name			Wwise Object Path	Notes
-	4281528671	Play_TestTrack			\Default Work Unit\Play_TestTrack	
+	399042744	Play_AttackSequences			\Default Work Unit\Play_AttackSequences	
+	992158907	Trigger_Attack_85BPM			\Default Work Unit\Trigger_Attack_85BPM	
+	2261903105	Play_Music_Environment			\Default Work Unit\Play_Music_Environment	
+
+Trigger	ID	Name			Wwise Object Path	Notes
+	925647048	Attack_85BPM			\Default Work Unit\Attack_85BPM	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	997630709	ForFun-Drums NO ACAPELLA	G:\HipHopAssassins\AssassinGit2\HipHopAssassins\HipHopAssassins_WwiseProject\.cache\Windows\SFX\ForFun-Drums NO ACAPELLA_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\TestTrackContainer\ForFunTrack\ForFun-Drums NO ACAPELLA		13946044
+	870697266	Sequence #1 (90 BPM)	G:\HipHopAssassins\AssassinGit2\HipHopAssassins\HipHopAssassins_WwiseProject\.cache\Windows\SFX\Sequence #1 (90 BPM)_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\AttackSequences\Sequence #1 (85 BPM)\Sequence #1 (90 BPM)		996204
+	997630709	ForFun-Drums NO ACAPELLA	G:\HipHopAssassins\AssassinGit2\HipHopAssassins\HipHopAssassins_WwiseProject\.cache\Windows\SFX\ForFun-Drums NO ACAPELLA_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Music Environment\TrackA\ForFunTrack\ForFun-Drums NO ACAPELLA		13946044
 
