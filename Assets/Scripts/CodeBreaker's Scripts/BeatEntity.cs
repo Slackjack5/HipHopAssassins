@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class BeatEntity : MonoBehaviour
 {
@@ -9,6 +10,11 @@ public class BeatEntity : MonoBehaviour
 
   private float currentTime;
   private bool reachedMiddle;
+
+  private void Start()
+  {
+    Debug.Log(("Entity Travel Time" + travelTime));
+  }
 
   private void Update()
   {

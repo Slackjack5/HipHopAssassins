@@ -80,7 +80,7 @@ public class AudioEvents : MonoBehaviour
     currentGrid = GlobalVariables.currentGrid;
 
     AkSoundEngine.GetPlayingSegmentInfo(playingID, currentSegment);
-
+    Debug.Log(secondsPerBeat);
     if (!isOnEveryOffbeatInvoked && currentSegment.iCurrentPosition >= currentBeatStartTime + secondsPerBeat * 1000 / 2)
     {
       OnEveryOffbeat.Invoke();

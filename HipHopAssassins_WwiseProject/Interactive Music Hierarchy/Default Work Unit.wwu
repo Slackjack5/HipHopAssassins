@@ -480,6 +480,9 @@
 					</EntryList>
 				</MusicSwitchContainer>
 				<MusicPlaylistContainer Name="AttackSequences" ID="{8F0A64D4-328D-46E3-8A68-7ABB0B88F517}" ShortID="291220763">
+					<PropertyList>
+						<Property Name="Tempo" Type="Real64" Value="85"/>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{84503E06-E5E3-4791-90FB-59A960C5BF47}"/>
@@ -578,7 +581,7 @@
 											<MusicCue Name="Q" ID="{66830237-6218-4865-89AB-5D8F1CBA43FE}">
 												<PropertyList>
 													<Property Name="CueType" Type="int16" Value="2"/>
-													<Property Name="TimeMs" Type="Real64" Value="8.48973825292198"/>
+													<Property Name="TimeMs" Type="Real64" Value="7.58804083903018"/>
 												</PropertyList>
 											</MusicCue>
 										</Local>
