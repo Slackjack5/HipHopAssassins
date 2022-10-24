@@ -47,16 +47,19 @@ public class MusicManager : MonoBehaviour
         preparingSequence = false;
         attackInProgress = false;
         cueIndex = 0;
+        playingID = 0;
+        //Wipe List
+        CueTimes.Clear();
     }
     
     // Update is called once per frame
     void Update()
     {
         //Update our Playhead
-        if (playingID != null)
+        if (playingID != 0)
         {
             AkSoundEngine.GetPlayingSegmentInfo(playingID, currentSegment);
-            playheadPosition = (currentSegment.iCurrentPosition);
+            playheadPosition = (currentSegment.iCurrentPosition) / 1000f;
         }
         if (!sequenceInProgress && preparingSequence)
         {
@@ -76,7 +79,11 @@ public class MusicManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-                
+
+        if (cueIndex < CueTimes.Count && playheadPosition >= CueTimes[cueIndex]+(sequenceSecondsPerBar-TravelTime))
+        {
+            NoteSpawner();
+        }
 
     }
 
@@ -111,8 +118,8 @@ public class MusicManager : MonoBehaviour
             case "Q":
                 Debug.Log(playheadPosition); 
                 CueTimes.Add(playheadPosition);
-                NoteSpawner();
-                cueIndex++;
+                
+
                 break;
       
             default:
@@ -128,7 +135,9 @@ public class MusicManager : MonoBehaviour
         ourEntity.spawnerPos = RhythmUI.transform.GetChild(0).GetComponent<RectTransform>().transform;
         ourEntity.centerPos = RhythmUI.transform.GetChild(1).GetComponent<RectTransform>().transform;
         ourEntity.endPos = RhythmUI.transform.GetChild(2).GetComponent<RectTransform>().transform;
-        ourEntity.travelTime = /*((sequenceSecondsPerBar/2)+CueTimes[cueIndex])-*/(sequenceSecondsPerBar)-TravelTime;
+        ourEntity.travelTime = TravelTime;
+        Debug.Log("Spawning Index:"+cueIndex);
+        cueIndex++;
     }
 
 
