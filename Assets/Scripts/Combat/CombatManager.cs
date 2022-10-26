@@ -24,7 +24,7 @@ public class CombatManager : MonoBehaviour
     private ItemDictionary ourItemDictionary;
     private MusicManager ourMusicManager;
 
-    private static int hitsRemaining;
+    public static int hitsRemaining;
 
     private static int ourSetDamage;
 
@@ -95,12 +95,7 @@ public class CombatManager : MonoBehaviour
                     UIManager.ourButton.SetActive(true);
                     if (Input.GetKeyDown("space"))
                     {
-                        int generatedDamage = UnityEngine.Random.Range(ourPlayer.attackMin, ourPlayer.attackMax);
-                        DamageMonsterLimb(UIManager.selectedMonster,(int) ourUI.menuNavigation.y, generatedDamage);
-                        hitsRemaining -= 1;
-                        //Button Down
-                        Animator ourButtonAnim = UIManager.ourButton.transform.GetChild(0).transform.gameObject.GetComponent<Animator>();
-                        ourButtonAnim.Play("ButtonHeld");
+                        playerMeleeAttack(1);
                     }
 
                     if (Input.GetKeyUp("space"))
@@ -138,6 +133,17 @@ public class CombatManager : MonoBehaviour
     {
         //Check How Many Enemies We Have On Screen
         enemyCount = encounterEnemies.transform.childCount;
+    }
+
+    public static void playerMeleeAttack(int damageMultiplier)
+    {
+        Debug.Log("Hits Remaining: "+hitsRemaining);
+        int generatedDamage = UnityEngine.Random.Range(ourPlayer.attackMin, ourPlayer.attackMax) * damageMultiplier;
+        DamageMonsterLimb(UIManager.selectedMonster,(int) ourUI.menuNavigation.y, generatedDamage);
+        hitsRemaining -= 1;
+        //Button Down
+        Animator ourButtonAnim = UIManager.ourButton.transform.GetChild(0).transform.gameObject.GetComponent<Animator>();
+        ourButtonAnim.Play("ButtonHeld");
     }
 
     public void SpawnEnemies(int id, int amount)

@@ -11,13 +11,18 @@ public class MusicManager : MonoBehaviour
     public AK.Wwise.Event OurEvent;
     public bool attackInProgress;
     public int nextBar;
+    private bool playerAttackStarted = false;
     //Sequence Data
     public float sequenceSecondsPerBar;
     public float sequenceSecondsPerBeat;
     private float sequenceDuration;
     public List<float> CueTimes = new List<float>();
-    private int cueIndex;
+    public static int cueIndex;
+    public int hitIndex;
     
+    //Data
+    [SerializeField] [Range(0.00f, 1.2f)] private float leniency = 0.07f;
+    private float lateBound; // The latest, in seconds, that the player can hit the note before it is considered a miss
     //Segment
     private AkSegmentInfo currentSegment;
     public float playheadPosition;
@@ -29,10 +34,16 @@ public class MusicManager : MonoBehaviour
     public GameObject beatCircle;
     public GameObject RhythmUI;
     
+    //Managers
+    private CombatManager ourCombatManager;
+    
     // Start is called before the first frame update
     void Start()
     {
         currentSegment = new AkSegmentInfo();
+        ourCombatManager = GameObject.Find("CombatManager").GetComponent<CombatManager>();
+        //Set Hit Leniency
+        lateBound = leniency * 2 / 3;
     }
     
     public void CommenceAttackEvent()
@@ -60,6 +71,14 @@ public class MusicManager : MonoBehaviour
         {
             AkSoundEngine.GetPlayingSegmentInfo(playingID, currentSegment);
             playheadPosition = (currentSegment.iCurrentPosition) / 1000f;
+            
+            /*//Check for Player Input
+            if (cueIndex < CueTimes.Count && playerAttackStarted)
+            {
+                Debug.Log("Percentage to Reaching End: " + playheadPosition/(CueTimes[cueIndex]+(sequenceSecondsPerBar)) * 100);
+            }
+            */
+            
         }
         if (!sequenceInProgress && preparingSequence)
         {
@@ -74,16 +93,29 @@ public class MusicManager : MonoBehaviour
             }
         }
 
+        if (cueIndex < CueTimes.Count)
+        {
+            Debug.Log(("Looking For:")+ (CueTimes[hitIndex]+(sequenceSecondsPerBar))+"PlayHead Position: "+playheadPosition);
+        }
+        
+        if (hitIndex < CueTimes.Count && playheadPosition >= (CueTimes[hitIndex]+sequenceSecondsPerBar)) //If we go over our next Cue Time
+        {
+            CombatManager.playerMeleeAttack(0);
+            hitIndex++;
+            Debug.Log("Hitting Miss");
+        }
+        
+        if (cueIndex < CueTimes.Count && playheadPosition >= CueTimes[cueIndex]+(sequenceSecondsPerBar-TravelTime)) //Spawn Beat Circle , 1 Beat ahead of time
+        {
+            NoteSpawner();
+        }
         if(nextBar == GlobalVariables.currentBar) {nextBar = GlobalVariables.currentBar+1;}
     }
 
     private void FixedUpdate()
     {
 
-        if (cueIndex < CueTimes.Count && playheadPosition >= CueTimes[cueIndex]+(sequenceSecondsPerBar-TravelTime))
-        {
-            NoteSpawner();
-        }
+
 
     }
 
@@ -108,6 +140,12 @@ public class MusicManager : MonoBehaviour
             break;
     }
   }
+
+    public void PlayerSequenceStart()
+    {
+        CombatManager.hitsRemaining = CueTimes.Count;
+        playerAttackStarted=true;
+    }
     
     public void CustomCues(string cueName, AkMusicSyncCallbackInfo _musicInfo)
     {
@@ -118,10 +156,11 @@ public class MusicManager : MonoBehaviour
             case "Q":
                 Debug.Log(playheadPosition); 
                 CueTimes.Add(playheadPosition);
-                
-
                 break;
-      
+            case "Start":
+                Debug.Log("Player Start!");
+                PlayerSequenceStart();
+                break;
             default:
                 break;
         }
@@ -132,6 +171,7 @@ public class MusicManager : MonoBehaviour
         GameObject ourCircle = Instantiate(beatCircle);
         BeatEntity ourEntity = ourCircle.GetComponent<BeatEntity>();
         ourCircle.transform.SetParent(RhythmUI.transform);
+        ourEntity.indexNumber = cueIndex;
         ourEntity.spawnerPos = RhythmUI.transform.GetChild(0).GetComponent<RectTransform>().transform;
         ourEntity.centerPos = RhythmUI.transform.GetChild(1).GetComponent<RectTransform>().transform;
         ourEntity.endPos = RhythmUI.transform.GetChild(2).GetComponent<RectTransform>().transform;
