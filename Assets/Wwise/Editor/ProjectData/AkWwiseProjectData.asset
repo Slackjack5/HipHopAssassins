@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: d48f69856955d54c95226e947abebbff
     GuidInternal: 
-    m_lastTime: -8585353748382616879
+    m_lastTime: -8585347553450687673
     List:
     - name: Environment
       guid: 3039fc54f4dbe84fa5eebe1ebad2abaf
@@ -94,7 +94,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: acc6a2fb7d38a941a3202be7b4b7e5ca
     GuidInternal: 
-    m_lastTime: -8585353748382786505
+    m_lastTime: -8585347578017610753
     List:
     - name: Play_AttackSequences
       guid: 3d5f7710cbcbbc40bc0c471704b3eb1f
@@ -110,6 +110,23 @@ MonoBehaviour:
         ObjectType: 3
         guid: 3d5f7710cbcbbc40bc0c471704b3eb1f
       Path: Events\Default Work Unit\Play_AttackSequences
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_Hit
+      guid: a9e76a9ac59e7749912ac58629ce4a77
+      id: 2960666077
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: acc6a2fb7d38a941a3202be7b4b7e5ca
+      - ElementName: Play_Hit
+        ObjectType: 3
+        guid: a9e76a9ac59e7749912ac58629ce4a77
+      Path: Events\Default Work Unit\Play_Hit
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -187,8 +204,76 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: 2bc4a09516b87a4db45da706af80c9c5
     GuidInternal: 
-    m_lastTime: -8585387391859156247
-    List: []
+    m_lastTime: -8585347578017479595
+    List:
+    - name: HitMaterial
+      guid: ef4c6be31adf6a48aba800e7ccb0bbaa
+      id: 865309635
+      PathAndIcons:
+      - ElementName: Switches
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 2bc4a09516b87a4db45da706af80c9c5
+      - ElementName: HitMaterial
+        ObjectType: 11
+        guid: ef4c6be31adf6a48aba800e7ccb0bbaa
+      Path: Switches\Default Work Unit\HitMaterial
+      values:
+      - name: Cloth
+        guid: 9279e887b285734696ee0e2863fe3fe7
+        id: 1367384683
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 2bc4a09516b87a4db45da706af80c9c5
+        - ElementName: HitMaterial
+          ObjectType: 11
+          guid: ef4c6be31adf6a48aba800e7ccb0bbaa
+        - ElementName: Cloth
+          ObjectType: 10
+          guid: 9279e887b285734696ee0e2863fe3fe7
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
+    - name: Weapon
+      guid: 48ed78435539a44fa03fb33e280a5134
+      id: 3893417221
+      PathAndIcons:
+      - ElementName: Switches
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 2bc4a09516b87a4db45da706af80c9c5
+      - ElementName: Weapon
+        ObjectType: 11
+        guid: 48ed78435539a44fa03fb33e280a5134
+      Path: Switches\Default Work Unit\Weapon
+      values:
+      - name: Sword
+        guid: 2a06f210cc2e2744a972ecd514263692
+        id: 2454616260
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 2bc4a09516b87a4db45da706af80c9c5
+        - ElementName: Weapon
+          ObjectType: 11
+          guid: 48ed78435539a44fa03fb33e280a5134
+        - ElementName: Sword
+          ObjectType: 10
+          guid: 2a06f210cc2e2744a972ecd514263692
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
     PathAndIcons:

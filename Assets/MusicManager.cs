@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MusicManager : MonoBehaviour
 {
@@ -11,12 +12,12 @@ public class MusicManager : MonoBehaviour
     public AK.Wwise.Event OurEvent;
     public bool attackInProgress;
     public int nextBar;
-    private bool playerAttackStarted = false;
     //Sequence Data
     public float sequenceSecondsPerBar;
     public float sequenceSecondsPerBeat;
     private float sequenceDuration;
     public List<float> CueTimes = new List<float>();
+    public List<GameObject> CueObjects = new List<GameObject>();
     public static int cueIndex;
     public int hitIndex;
     
@@ -59,8 +60,10 @@ public class MusicManager : MonoBehaviour
         attackInProgress = false;
         cueIndex = 0;
         playingID = 0;
+        hitIndex = 0;
         //Wipe List
         CueTimes.Clear();
+        CueObjects.Clear();
     }
     
     // Update is called once per frame
@@ -71,14 +74,6 @@ public class MusicManager : MonoBehaviour
         {
             AkSoundEngine.GetPlayingSegmentInfo(playingID, currentSegment);
             playheadPosition = (currentSegment.iCurrentPosition) / 1000f;
-            
-            /*//Check for Player Input
-            if (cueIndex < CueTimes.Count && playerAttackStarted)
-            {
-                Debug.Log("Percentage to Reaching End: " + playheadPosition/(CueTimes[cueIndex]+(sequenceSecondsPerBar)) * 100);
-            }
-            */
-            
         }
         if (!sequenceInProgress && preparingSequence)
         {
@@ -92,33 +87,90 @@ public class MusicManager : MonoBehaviour
                 attackInProgress = true; //Let everyone know we are commencing our attack
             }
         }
-
-        if (cueIndex < CueTimes.Count)
-        {
-            Debug.Log(("Looking For:")+ (CueTimes[hitIndex]+(sequenceSecondsPerBar))+"PlayHead Position: "+playheadPosition);
-        }
-        
-        if (hitIndex < CueTimes.Count && playheadPosition >= (CueTimes[hitIndex]+sequenceSecondsPerBar)) //If we go over our next Cue Time
-        {
-            CombatManager.playerMeleeAttack(0);
-            hitIndex++;
-            Debug.Log("Hitting Miss");
-        }
-        
         if (cueIndex < CueTimes.Count && playheadPosition >= CueTimes[cueIndex]+(sequenceSecondsPerBar-TravelTime)) //Spawn Beat Circle , 1 Beat ahead of time
         {
             NoteSpawner();
         }
+        
+        if (hitIndex < CueTimes.Count && playheadPosition >= (CueTimes[hitIndex]+sequenceSecondsPerBar)) //If we go over our next Cue Time
+        {
+            if (hitIndex < CueObjects.Count){CueObjects[hitIndex].GetComponent<Image>().color = new Color32(255,255,255,255);}
+            CombatManager.playerMeleeMiss();
+            hitIndex++;
+            Debug.Log("Hitting Miss");
+        }
+        if (hitIndex < CueTimes.Count) // Check if Player Hit In Time
+        {
+            CheckHit(playheadPosition);
+        }
+        
         if(nextBar == GlobalVariables.currentBar) {nextBar = GlobalVariables.currentBar+1;}
     }
 
     private void FixedUpdate()
     {
-
-
+        
 
     }
 
+    private void CheckHit(float currentSegmentPosition)
+    {
+        float error = (CueTimes[hitIndex]+sequenceSecondsPerBar) - currentSegmentPosition;
+        
+
+        if (error >= -lateBound && error <= leniency)
+        {
+            Debug.Log("Awaiting Player Input");
+            if (error <= leniency / 3) //PerfectHit
+                {
+                    if (hitIndex < CueObjects.Count){CueObjects[hitIndex].GetComponent<Image>().color = new Color32(0,255,0,255);}
+                    if (Input.GetKeyDown("space"))
+                    {
+                        Debug.Log("Perfect Hit");
+                        AkSoundEngine.PostEvent("Play_Hit", gameObject);
+                        CombatManager.playerMeleeAttack(100);
+                        hitIndex++;
+                    }
+
+                }
+                else if (error <= (leniency / 3) * 2) //Great Hit
+                {
+                    if (hitIndex < CueObjects.Count){CueObjects[hitIndex].GetComponent<Image>().color = new Color32(255,255,0,255);}
+
+                    if (Input.GetKeyDown("space"))
+                    {
+                        AkSoundEngine.PostEvent("Play_Hit", gameObject);
+                        Debug.Log("Great Hit");
+                        CombatManager.playerMeleeAttack(10);
+                        hitIndex++;
+                    }
+                }
+            else
+            {
+                if (hitIndex < CueObjects.Count) { CueObjects[hitIndex].GetComponent<Image>().color = new Color32(255, 100, 0, 255); }
+                if (Input.GetKeyDown("space"))
+                {
+                    AkSoundEngine.PostEvent("Play_Hit", gameObject);
+                    CombatManager.playerMeleeAttack(1);
+                    hitIndex++;
+                    Debug.Log("Ok Hit");
+                }
+            }
+        }
+        
+        if (error > leniency && error < leniency*3) // Player hits too early but not too far
+        {
+            if (hitIndex < CueObjects.Count){CueObjects[hitIndex].GetComponent<Image>().color = new Color32(255,0,0,255);}
+
+            if (Input.GetKeyDown("space"))
+            {
+                Debug.Log("Miss Hit");
+                CombatManager.playerMeleeMiss();
+                hitIndex++;
+            }
+        }
+    }
+    
 
     void MusicCallbackFunction(object in_cookie, AkCallbackType in_type, AkCallbackInfo in_info)
   {
@@ -141,10 +193,9 @@ public class MusicManager : MonoBehaviour
     }
   }
 
-    public void PlayerSequenceStart()
+    private void PlayerSequenceStart()
     {
-        CombatManager.hitsRemaining = CueTimes.Count;
-        playerAttackStarted=true;
+        
     }
     
     public void CustomCues(string cueName, AkMusicSyncCallbackInfo _musicInfo)
@@ -169,6 +220,7 @@ public class MusicManager : MonoBehaviour
     public void NoteSpawner()
     {
         GameObject ourCircle = Instantiate(beatCircle);
+        CueObjects.Add(ourCircle);
         BeatEntity ourEntity = ourCircle.GetComponent<BeatEntity>();
         ourCircle.transform.SetParent(RhythmUI.transform);
         ourEntity.indexNumber = cueIndex;

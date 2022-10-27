@@ -53,7 +53,7 @@ public class CombatManager : MonoBehaviour
         ourSpawnPoints = gameObject.transform.GetChild(2).gameObject.GetComponent<SpawnPoints>();
         ourPlayer = GameObject.Find("Player").GetComponent<PlayerScript>();
         ourMusicManager = GameObject.Find("WwiseGlobal").GetComponent<MusicManager>();
-        hitsRemaining = ourPlayer.hitsMax;
+        hitsRemaining = 0;
     }
     
 
@@ -93,16 +93,6 @@ public class CombatManager : MonoBehaviour
                 if (ourMusicManager.attackInProgress == true) //Start once our sequence begins
                 {
                     UIManager.ourButton.SetActive(true);
-                    if (Input.GetKeyDown("space"))
-                    {
-                        playerMeleeAttack(1);
-                    }
-
-                    if (Input.GetKeyUp("space"))
-                    {
-                        Animator ourButtonAnim = UIManager.ourButton.transform.GetChild(0).transform.gameObject.GetComponent<Animator>();
-                        ourButtonAnim.Play("ButtonRise");
-                    }
                 }
 
                 break;
@@ -135,16 +125,37 @@ public class CombatManager : MonoBehaviour
         enemyCount = encounterEnemies.transform.childCount;
     }
 
+    public static void Reset()
+    {
+        hitsRemaining = ourPlayer.hitsMax;
+    }
+
+    public static void playerMeleeMiss()
+    {
+        
+        //Feedbacks
+        GameObject monsterGFX = UIManager.selectedMonster.transform.GetChild(0).gameObject;
+        MMF_Player targetFeedback = monsterGFX.transform.GetChild(6).GetComponent<MMF_Player>();
+        targetFeedback.ResetFeedbacks();
+        targetFeedback.PlayFeedbacks();
+        //Button Down
+        Animator ourButtonAnim = UIManager.ourButton.transform.GetChild(0).transform.gameObject.GetComponent<Animator>();
+        ourButtonAnim.Play("ButtonHeld");
+        hitsRemaining -= 1;
+    }
+    
     public static void playerMeleeAttack(int damageMultiplier)
     {
         Debug.Log("Hits Remaining: "+hitsRemaining);
         int generatedDamage = UnityEngine.Random.Range(ourPlayer.attackMin, ourPlayer.attackMax) * damageMultiplier;
         DamageMonsterLimb(UIManager.selectedMonster,(int) ourUI.menuNavigation.y, generatedDamage);
+        
         hitsRemaining -= 1;
         //Button Down
         Animator ourButtonAnim = UIManager.ourButton.transform.GetChild(0).transform.gameObject.GetComponent<Animator>();
         ourButtonAnim.Play("ButtonHeld");
     }
+
 
     public void SpawnEnemies(int id, int amount)
     {
@@ -186,16 +197,31 @@ public class CombatManager : MonoBehaviour
         //Initialize Variables
         MonsterData ourMonster = Monster.GetComponent<MonsterData>();
         GameObject monsterGFX = Monster.transform.GetChild(0).gameObject;
-        
+        Debug.Log("Hits Remaining: "+hitsRemaining);
 
         
         ourUI.UpdateUI();
+        
+        Debug.Log("Awaiting next hit!");
+        ChangeState(State.AwaitingAttack);
+            
+        //Initialie Feedback
+        MMF_Player targetFeedback = monsterGFX.transform.GetChild(1).GetComponent<MMF_Player>();
+        MMF_FloatingText floatingText = targetFeedback.GetFeedbackOfType<MMF_FloatingText>();
+        targetFeedback.FeedbacksIntensity = 1;
+        floatingText.Value = damage.ToString();
+        //Deal Damage
+        targetFeedback.ResetFeedbacks();
+        targetFeedback.PlayFeedbacks();
+        int newLimbNumber = (int) MathF.Abs(limbNumber);
+        ourMonster.limbHealth[newLimbNumber] -= damage;
+        
+        /*
         if (hitsRemaining <= 0)
         {
             //End Player Turn
             ChangeState(State.MonsterTurn);
             UIManager.ourButton.SetActive(false);
-            hitsRemaining = ourPlayer.hitsMax;
             int enhancedDamage = damage * 2;
             //Initialie Feedback
             MMF_Player targetFeedback = monsterGFX.transform.GetChild(1).GetComponent<MMF_Player>();
@@ -226,7 +252,7 @@ public class CombatManager : MonoBehaviour
             ourMonster.limbHealth[newLimbNumber] -= damage;
         }
 
-
+    */
     }
     public static void CastSpell(GameObject Monster,int damage)
     {
@@ -264,6 +290,11 @@ public class CombatManager : MonoBehaviour
         }
 
 
+    }
+
+    public void SetHitsRemaining(int Hits)
+    {
+        hitsRemaining = Hits;
     }
 
     public static void AwaitAttack()

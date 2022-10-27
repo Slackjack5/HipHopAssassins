@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{95A0C42B-B816-4D7A-B45D-A706AF80C9C5}" SchemaVersion="103">
 	<Switches>
-		<WorkUnit Name="Default Work Unit" ID="{95A0C42B-B816-4D7A-B45D-A706AF80C9C5}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{95A0C42B-B816-4D7A-B45D-A706AF80C9C5}" PersistMode="Standalone">
+			<ChildrenList>
+				<SwitchGroup Name="Weapon" ID="{4378ED48-3955-4FA4-A03F-B33E280A5134}">
+					<ChildrenList>
+						<Switch Name="Sword" ID="{10F2062A-2ECC-4427-A972-ECD514263692}"/>
+					</ChildrenList>
+				</SwitchGroup>
+				<SwitchGroup Name="HitMaterial" ID="{E36B4CEF-DF1A-486A-ABA8-00E7CCB0BBAA}">
+					<ChildrenList>
+						<Switch Name="Cloth" ID="{87E87992-85B2-4673-96EE-0E2863FE3FE7}"/>
+					</ChildrenList>
+				</SwitchGroup>
+			</ChildrenList>
+		</WorkUnit>
 	</Switches>
 </WwiseDocument>

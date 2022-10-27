@@ -14,9 +14,34 @@ namespace AK
     namespace EVENTS
     {
         static const AkUniqueID PLAY_ATTACKSEQUENCES = 399042744U;
+        static const AkUniqueID PLAY_HIT = 2960666077U;
         static const AkUniqueID PLAY_MUSIC_ENVIRONMENT = 2261903105U;
         static const AkUniqueID TRIGGER_ATTACK_85BPM = 992158907U;
     } // namespace EVENTS
+
+    namespace SWITCHES
+    {
+        namespace HITMATERIAL
+        {
+            static const AkUniqueID GROUP = 865309635U;
+
+            namespace SWITCH
+            {
+                static const AkUniqueID CLOTH = 1367384683U;
+            } // namespace SWITCH
+        } // namespace HITMATERIAL
+
+        namespace WEAPON
+        {
+            static const AkUniqueID GROUP = 3893417221U;
+
+            namespace SWITCH
+            {
+                static const AkUniqueID SWORD = 2454616260U;
+            } // namespace SWITCH
+        } // namespace WEAPON
+
+    } // namespace SWITCHES
 
     namespace TRIGGERS
     {

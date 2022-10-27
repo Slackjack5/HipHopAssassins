@@ -14,6 +14,671 @@
 					</ReferenceList>
 					<ObjectLists/>
 				</RandomSequenceContainer>
+				<ActorMixer Name="PlayerHits" ID="{81D12AD5-35BC-4969-86FF-01418E479EFA}" ShortID="897433422">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{84503E06-E5E3-4791-90FB-59A960C5BF47}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5654E9D6-D042-445E-A033-8936641BAF3D}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<SwitchContainer Name="Weapon" ID="{5333CF6E-5E29-4127-9767-15DE37941A93}" ShortID="949184573">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{84503E06-E5E3-4791-90FB-59A960C5BF47}"/>
+								</Reference>
+								<Reference Name="DefaultSwitchOrState">
+									<ObjectRef Name="Sword" ID="{10F2062A-2ECC-4427-A972-ECD514263692}" WorkUnitID="{95A0C42B-B816-4D7A-B45D-A706AF80C9C5}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5654E9D6-D042-445E-A033-8936641BAF3D}"/>
+								</Reference>
+								<Reference Name="SwitchGroupOrStateGroup">
+									<ObjectRef Name="Weapon" ID="{4378ED48-3955-4FA4-A03F-B33E280A5134}" WorkUnitID="{95A0C42B-B816-4D7A-B45D-A706AF80C9C5}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<RandomSequenceContainer Name="Sword2" ID="{24E2E720-AB38-435B-B153-F797F7C9AE62}" ShortID="504501942">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{84503E06-E5E3-4791-90FB-59A960C5BF47}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5654E9D6-D042-445E-A033-8936641BAF3D}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="WEAPSwrd_Sword Schwing Slice Strong High 3_PSE_BR-C_yADCQ" ID="{EA494A97-A621-4B79-A899-ADF50D593034}" ShortID="92903923">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{84503E06-E5E3-4791-90FB-59A960C5BF47}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5654E9D6-D042-445E-A033-8936641BAF3D}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="WEAPSwrd_Sword Schwing Slice Strong High 3_PSE_BR-C_yADCQ" ID="{E28C860D-C3B2-4E7F-BCA8-B84451AC8555}">
+													<PropertyList>
+														<Property Name="FadeInDuration" Type="Real64" Value="0.0823778920308483"/>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.659023136246787"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.14487146529563"/>
+														<Property Name="TrimEnd" Type="Real64" Value="1.32656812339332"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>WEAPSwrd_Sword Schwing Slice Strong High 3_PSE_BR-C_yADCQ.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="324849763"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="WEAPSwrd_Sword Schwing Slice Strong High 3_PSE_BR-C_yADCQ" ID="{E28C860D-C3B2-4E7F-BCA8-B84451AC8555}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="WEAPSwrd_Sword Schwing Slice Strong 5_PSE_BR-C_ZGRQh" ID="{85A1A058-129C-4550-92A6-AE1F28240206}" ShortID="655109547">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{84503E06-E5E3-4791-90FB-59A960C5BF47}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5654E9D6-D042-445E-A033-8936641BAF3D}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="WEAPSwrd_Sword Schwing Slice Strong 5_PSE_BR-C_ZGRQh" ID="{2810DD94-2F90-454C-BB10-8CAE1502B31F}">
+													<PropertyList>
+														<Property Name="FadeInDuration" Type="Real64" Value="0.0868251928020565"/>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.674755784061697"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.178611825192802"/>
+														<Property Name="TrimEnd" Type="Real64" Value="1.43633676092545"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>WEAPSwrd_Sword Schwing Slice Strong 5_PSE_BR-C_ZGRQh.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="51441483"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="WEAPSwrd_Sword Schwing Slice Strong 5_PSE_BR-C_ZGRQh" ID="{2810DD94-2F90-454C-BB10-8CAE1502B31F}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="WEAPSwrd_Sword Schwing Slice Strong High 2_PSE_BR-C_EDMvF" ID="{FD19B7C6-BBEF-44FF-9030-1646BB1CDE1E}" ShortID="246154667">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{84503E06-E5E3-4791-90FB-59A960C5BF47}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5654E9D6-D042-445E-A033-8936641BAF3D}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="WEAPSwrd_Sword Schwing Slice Strong High 2_PSE_BR-C_EDMvF" ID="{CD4C6765-8639-469B-8858-71AF54850FF3}">
+													<PropertyList>
+														<Property Name="FadeInDuration" Type="Real64" Value="0.0706812339331619"/>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.428598971722365"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.0827120822622108"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.801555269922879"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>WEAPSwrd_Sword Schwing Slice Strong High 2_PSE_BR-C_EDMvF.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1007253360"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="WEAPSwrd_Sword Schwing Slice Strong High 2_PSE_BR-C_EDMvF" ID="{CD4C6765-8639-469B-8858-71AF54850FF3}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="WEAPSwrd_Sword Schwing Slice Strong 3_PSE_BR-C_Yfp42" ID="{E484BD86-3A08-4E47-99F5-7FBB9E698717}" ShortID="188686187">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{84503E06-E5E3-4791-90FB-59A960C5BF47}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5654E9D6-D042-445E-A033-8936641BAF3D}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="WEAPSwrd_Sword Schwing Slice Strong 3_PSE_BR-C_Yfp42" ID="{794118B3-73D6-4A99-A290-C51DBBFA3677}">
+													<PropertyList>
+														<Property Name="FadeInDuration" Type="Real64" Value="0.165192802056555"/>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.595179948586117"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.191915167095116"/>
+														<Property Name="TrimEnd" Type="Real64" Value="1.07375321336761"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>WEAPSwrd_Sword Schwing Slice Strong 3_PSE_BR-C_Yfp42.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="156050262"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="WEAPSwrd_Sword Schwing Slice Strong 3_PSE_BR-C_Yfp42" ID="{794118B3-73D6-4A99-A290-C51DBBFA3677}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="WEAPSwrd_Sword Schwing Slice Strong 2_PSE_BR-C_NUgQH" ID="{F94C89E4-6B38-4F20-A6C7-9FA5655FBCC0}" ShortID="858100262">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{84503E06-E5E3-4791-90FB-59A960C5BF47}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5654E9D6-D042-445E-A033-8936641BAF3D}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="WEAPSwrd_Sword Schwing Slice Strong 2_PSE_BR-C_NUgQH" ID="{F06AE977-985C-47C5-8874-207CDAC3AC9F}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="1.62570694087404"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.062159383033419"/>
+														<Property Name="TrimEnd" Type="Real64" Value="1.74046272493573"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>WEAPSwrd_Sword Schwing Slice Strong 2_PSE_BR-C_NUgQH.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1025786517"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="WEAPSwrd_Sword Schwing Slice Strong 2_PSE_BR-C_NUgQH" ID="{F06AE977-985C-47C5-8874-207CDAC3AC9F}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="WEAPSwrd_Sword Schwing Slice Strong High 1_PSE_BR-C_Eg7mK" ID="{7CEEF362-9BC4-4157-894A-F0F955799F5B}" ShortID="361033655">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{84503E06-E5E3-4791-90FB-59A960C5BF47}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5654E9D6-D042-445E-A033-8936641BAF3D}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="WEAPSwrd_Sword Schwing Slice Strong High 1_PSE_BR-C_Eg7mK" ID="{C01C980A-C89B-4C4C-B49A-D02CE0160815}">
+													<PropertyList>
+														<Property Name="FadeInDuration" Type="Real64" Value="0.114755784061697"/>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.651516709511568"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.0629305912596401"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.90879177377892"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>WEAPSwrd_Sword Schwing Slice Strong High 1_PSE_BR-C_Eg7mK.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="389204222"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="WEAPSwrd_Sword Schwing Slice Strong High 1_PSE_BR-C_Eg7mK" ID="{C01C980A-C89B-4C4C-B49A-D02CE0160815}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists/>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="Sword" ID="{3CDEE048-E4E9-442F-BB1F-C5C3147D07E1}" ShortID="395460616">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{84503E06-E5E3-4791-90FB-59A960C5BF47}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5654E9D6-D042-445E-A033-8936641BAF3D}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="WEAPSwrd_Sword Schwing Fast Thin 3_PSE_BR-C_d6hQ3" ID="{45E390CD-DD27-4B06-85E6-2300B2493C48}" ShortID="682770706">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{84503E06-E5E3-4791-90FB-59A960C5BF47}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5654E9D6-D042-445E-A033-8936641BAF3D}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="WEAPSwrd_Sword Schwing Fast Thin 3_PSE_BR-C_d6hQ3" ID="{F89C089A-65A0-43A1-BCDB-C0E6A7653026}">
+													<PropertyList>
+														<Property Name="FadeInDuration" Type="Real64" Value="0.109895163881748"/>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.502587216152528"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.105499357326478"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.930445720865467"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>WEAPSwrd_Sword Schwing Fast Thin 3_PSE_BR-C_d6hQ3.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="639003464"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="WEAPSwrd_Sword Schwing Fast Thin 3_PSE_BR-C_d6hQ3" ID="{F89C089A-65A0-43A1-BCDB-C0E6A7653026}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="WEAPSwrd_Sword Schwing Fast Thin 4_PSE_BR-C_7Bl1C" ID="{A7F47FA7-1903-4864-8389-41E9580ECB26}" ShortID="1046208969">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{84503E06-E5E3-4791-90FB-59A960C5BF47}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5654E9D6-D042-445E-A033-8936641BAF3D}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="WEAPSwrd_Sword Schwing Fast Thin 4_PSE_BR-C_7Bl1C" ID="{03790929-9EE8-46DB-B9DF-8AA700F0A4DA}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.534823130891175"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.0322359147386461"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.82055055698372"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>WEAPSwrd_Sword Schwing Fast Thin 4_PSE_BR-C_7Bl1C.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1017388319"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="WEAPSwrd_Sword Schwing Fast Thin 4_PSE_BR-C_7Bl1C" ID="{03790929-9EE8-46DB-B9DF-8AA700F0A4DA}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="WEAPSwrd_Sword Schwing Fast Jolted_PSE_BR-C_KB8EW" ID="{18B66946-B5B4-4223-93FC-E1515269A37D}" ShortID="797610370">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{84503E06-E5E3-4791-90FB-59A960C5BF47}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5654E9D6-D042-445E-A033-8936641BAF3D}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="WEAPSwrd_Sword Schwing Fast Jolted_PSE_BR-C_KB8EW" ID="{C966C257-FBDA-44BB-A881-7AD7A113084F}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.95"/>
+														<Property Name="LoopBegin" Type="Real64" Value="0"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>WEAPSwrd_Sword Schwing Fast Jolted_PSE_BR-C_KB8EW.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="149223926"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="WEAPSwrd_Sword Schwing Fast Jolted_PSE_BR-C_KB8EW" ID="{C966C257-FBDA-44BB-A881-7AD7A113084F}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="WEAPSwrd_Sword Schwing Fast Ringy 2_PSE_BR-C_yYD9n" ID="{201C0652-4BE9-48A1-9F3A-9B87E895D14B}" ShortID="997744923">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{84503E06-E5E3-4791-90FB-59A960C5BF47}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5654E9D6-D042-445E-A033-8936641BAF3D}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="WEAPSwrd_Sword Schwing Fast Ringy 2_PSE_BR-C_yYD9n" ID="{171B9FC1-4379-44CD-8438-6EA6E2936946}">
+													<PropertyList>
+														<Property Name="FadeInDuration" Type="Real64" Value="0.0620308483290487"/>
+														<Property Name="FadeOutDuration" Type="Real64" Value="1.28632390745501"/>
+														<Property Name="LoopBegin" Type="Real64" Value="0.187941391941392"/>
+														<Property Name="LoopEnd" Type="Real64" Value="1.42017994858612"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.143650385604113"/>
+														<Property Name="TrimEnd" Type="Real64" Value="1.42997429305913"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>WEAPSwrd_Sword Schwing Fast Ringy 2_PSE_BR-C_yYD9n.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="698423701"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="WEAPSwrd_Sword Schwing Fast Ringy 2_PSE_BR-C_yYD9n" ID="{171B9FC1-4379-44CD-8438-6EA6E2936946}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="WEAPSwrd_Sword Schwing Fast Thin 1_PSE_BR-C_8rZUK" ID="{48F41D32-4A89-484D-AB78-F6C0F2E0E246}" ShortID="77654044">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{84503E06-E5E3-4791-90FB-59A960C5BF47}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5654E9D6-D042-445E-A033-8936641BAF3D}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="WEAPSwrd_Sword Schwing Fast Thin 1_PSE_BR-C_8rZUK" ID="{C31C3964-F2BA-49B3-A989-88A119D4B5FC}">
+													<PropertyList>
+														<Property Name="FadeInDuration" Type="Real64" Value="0.0292030848329048"/>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.547557840616967"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.0620565552699229"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.85784061696658"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>WEAPSwrd_Sword Schwing Fast Thin 1_PSE_BR-C_8rZUK.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="822703750"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="WEAPSwrd_Sword Schwing Fast Thin 1_PSE_BR-C_8rZUK" ID="{C31C3964-F2BA-49B3-A989-88A119D4B5FC}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="WEAPSwrd_Sword Schwing Fast Thin 2_PSE_BR-C_KNaCq" ID="{9F148154-AE0B-4779-BF32-956AAE23F67E}" ShortID="219353316">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{84503E06-E5E3-4791-90FB-59A960C5BF47}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5654E9D6-D042-445E-A033-8936641BAF3D}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="WEAPSwrd_Sword Schwing Fast Thin 2_PSE_BR-C_KNaCq" ID="{F8C72625-FC9B-4A12-B45E-B2F0E9CD2553}">
+													<PropertyList>
+														<Property Name="FadeInDuration" Type="Real64" Value="0.040539845758355"/>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.742519280205657"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.0661439588688946"/>
+														<Property Name="TrimEnd" Type="Real64" Value="1.02843187660668"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>WEAPSwrd_Sword Schwing Fast Thin 2_PSE_BR-C_KNaCq.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="286449293"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="WEAPSwrd_Sword Schwing Fast Thin 2_PSE_BR-C_KNaCq" ID="{F8C72625-FC9B-4A12-B45E-B2F0E9CD2553}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists/>
+								</RandomSequenceContainer>
+							</ChildrenList>
+							<ObjectLists/>
+							<GroupingInfo>
+								<GroupingBehaviorList>
+									<GroupingBehavior>
+										<ItemRef Name="Sword2" ID="{24E2E720-AB38-435B-B153-F797F7C9AE62}"/>
+									</GroupingBehavior>
+									<GroupingBehavior>
+										<ItemRef Name="Sword" ID="{3CDEE048-E4E9-442F-BB1F-C5C3147D07E1}"/>
+									</GroupingBehavior>
+								</GroupingBehaviorList>
+								<GroupingList>
+									<Grouping>
+										<SwitchRef Name="Sword" ID="{10F2062A-2ECC-4427-A972-ECD514263692}"/>
+										<ItemList>
+											<ItemRef Name="Sword" ID="{3CDEE048-E4E9-442F-BB1F-C5C3147D07E1}"/>
+											<ItemRef Name="Sword2" ID="{24E2E720-AB38-435B-B153-F797F7C9AE62}"/>
+										</ItemList>
+									</Grouping>
+								</GroupingList>
+							</GroupingInfo>
+						</SwitchContainer>
+						<SwitchContainer Name="HitMaterial" ID="{1B046C7D-0EB7-4453-87E8-CCB53142E936}" ShortID="780428781">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>2</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{84503E06-E5E3-4791-90FB-59A960C5BF47}"/>
+								</Reference>
+								<Reference Name="DefaultSwitchOrState">
+									<ObjectRef Name="Cloth" ID="{87E87992-85B2-4673-96EE-0E2863FE3FE7}" WorkUnitID="{95A0C42B-B816-4D7A-B45D-A706AF80C9C5}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5654E9D6-D042-445E-A033-8936641BAF3D}"/>
+								</Reference>
+								<Reference Name="SwitchGroupOrStateGroup">
+									<ObjectRef Name="HitMaterial" ID="{E36B4CEF-DF1A-486A-ABA8-00E7CCB0BBAA}" WorkUnitID="{95A0C42B-B816-4D7A-B45D-A706AF80C9C5}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<RandomSequenceContainer Name="Cloth" ID="{18AE501C-5ED6-42A8-BF12-300F542ABB1F}" ShortID="147449242">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{9D1CBD60-73B5-4975-8095-A66D5E7D8D6E}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="100"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-6</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{84503E06-E5E3-4791-90FB-59A960C5BF47}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5654E9D6-D042-445E-A033-8936641BAF3D}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="CLOTHRip_Cloth Rip_PSE_BW-BD3HL_Aj7bF" ID="{004ED41A-804C-4EF2-9290-94933D56C73E}" ShortID="342134267">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{84503E06-E5E3-4791-90FB-59A960C5BF47}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5654E9D6-D042-445E-A033-8936641BAF3D}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="CLOTHRip_Cloth Rip_PSE_BW-BD3HL_Aj7bF" ID="{BA91FC33-FA70-4F30-BC9B-47F4196C9EBD}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.459966032026564"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.478603229434447"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>CLOTHRip_Cloth Rip_PSE_BW-BD3HL_Aj7bF.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="351625911"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="CLOTHRip_Cloth Rip_PSE_BW-BD3HL_Aj7bF" ID="{BA91FC33-FA70-4F30-BC9B-47F4196C9EBD}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="CLOTHRip_Cloth Rip_PSE_BW-BD3HL_ahXO0" ID="{CE30569B-6EC5-4935-B93D-500FD5F69625}" ShortID="390957298">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{84503E06-E5E3-4791-90FB-59A960C5BF47}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5654E9D6-D042-445E-A033-8936641BAF3D}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="CLOTHRip_Cloth Rip_PSE_BW-BD3HL_ahXO0" ID="{809A8E65-8BFC-4196-AD97-9224F4A11878}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.344473007712082"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.401028277634961"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>CLOTHRip_Cloth Rip_PSE_BW-BD3HL_ahXO0.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="23017733"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="CLOTHRip_Cloth Rip_PSE_BW-BD3HL_ahXO0" ID="{809A8E65-8BFC-4196-AD97-9224F4A11878}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="CLOTHRip_Cloth Rip_PSE_BW-BD3HL_ZJqg7" ID="{536BF470-F233-4EC4-BFF6-49339D234BC3}" ShortID="228638220">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{2BE6756F-5EE7-4EF8-A324-142F4344D3BA}">
+																<PropertyList>
+																	<Property Name="Max" Type="Real64" Value="100"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{84503E06-E5E3-4791-90FB-59A960C5BF47}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5654E9D6-D042-445E-A033-8936641BAF3D}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="CLOTHRip_Cloth Rip_PSE_BW-BD3HL_ZJqg7" ID="{5BA9962E-260F-4FF2-8ABB-76ACD356939E}">
+													<PropertyList>
+														<Property Name="FadeInDuration" Type="Real64" Value="0.0895629820051414"/>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.286735218508997"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.0895629820051414"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.491928020565553"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>CLOTHRip_Cloth Rip_PSE_BW-BD3HL_ZJqg7.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="224626504"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="CLOTHRip_Cloth Rip_PSE_BW-BD3HL_ZJqg7" ID="{5BA9962E-260F-4FF2-8ABB-76ACD356939E}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="CLOTHRip_Cloth Rip_PSE_BW-BD3HL_76hmS" ID="{F90016D7-BB4A-49EE-A142-41F85BB04001}" ShortID="808357709">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{84503E06-E5E3-4791-90FB-59A960C5BF47}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5654E9D6-D042-445E-A033-8936641BAF3D}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="CLOTHRip_Cloth Rip_PSE_BW-BD3HL_76hmS" ID="{D4BBA815-5FC3-4E13-AC87-A93B09E23C29}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.316709511568123"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.36987146529563"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>CLOTHRip_Cloth Rip_PSE_BW-BD3HL_76hmS.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1023737149"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="CLOTHRip_Cloth Rip_PSE_BW-BD3HL_76hmS" ID="{D4BBA815-5FC3-4E13-AC87-A93B09E23C29}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="CLOTHRip_Cloth Rip_PSE_BW-BD3HL_QOV1P" ID="{604D79A4-715E-478C-A917-F14B2039233D}" ShortID="938269110">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{84503E06-E5E3-4791-90FB-59A960C5BF47}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5654E9D6-D042-445E-A033-8936641BAF3D}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="CLOTHRip_Cloth Rip_PSE_BW-BD3HL_QOV1P" ID="{C0AF9B98-4640-4F3D-8759-E98703DD2030}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.346889460154242"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.346889460154242"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>CLOTHRip_Cloth Rip_PSE_BW-BD3HL_QOV1P.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="337634573"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="CLOTHRip_Cloth Rip_PSE_BW-BD3HL_QOV1P" ID="{C0AF9B98-4640-4F3D-8759-E98703DD2030}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists/>
+								</RandomSequenceContainer>
+							</ChildrenList>
+							<ObjectLists/>
+							<GroupingInfo>
+								<GroupingBehaviorList>
+									<GroupingBehavior>
+										<ItemRef Name="Cloth" ID="{18AE501C-5ED6-42A8-BF12-300F542ABB1F}"/>
+									</GroupingBehavior>
+								</GroupingBehaviorList>
+								<GroupingList>
+									<Grouping>
+										<SwitchRef Name="Cloth" ID="{87E87992-85B2-4673-96EE-0E2863FE3FE7}"/>
+										<ItemList>
+											<ItemRef Name="Cloth" ID="{18AE501C-5ED6-42A8-BF12-300F542ABB1F}"/>
+										</ItemList>
+									</Grouping>
+								</GroupingList>
+							</GroupingInfo>
+						</SwitchContainer>
+					</ChildrenList>
+					<ObjectLists/>
+				</ActorMixer>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

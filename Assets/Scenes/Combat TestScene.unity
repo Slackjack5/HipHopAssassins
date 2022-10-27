@@ -2858,6 +2858,9 @@ MonoBehaviour:
   sequenceSecondsPerBar: 0
   sequenceSecondsPerBeat: 0
   CueTimes: []
+  CueObjects: []
+  hitIndex: 0
+  leniency: 0.2
   playheadPosition: 0
   playingID: 0
   TravelTime: 0
