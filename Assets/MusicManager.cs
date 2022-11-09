@@ -77,8 +77,10 @@ public class MusicManager : MonoBehaviour
         }
         if (!sequenceInProgress && preparingSequence)
         {
-            if (nextBar == GlobalVariables.currentBar)
+            if (GlobalVariables.currentBeat == 1 && GlobalVariables.currentBar%4 == 0) //Have the Sequence start on the Final Bar
             {
+                Debug.Log("Starting NEW Attack Sequence");
+                //Debug.Break();
                 AkSoundEngine.PostEvent("Play_AttackSequences", gameObject);
                 playingID = OurEvent.Post(gameObject,(uint) (AkCallbackType.AK_MusicSyncAll | AkCallbackType.AK_EnableGetMusicPlayPosition), MusicCallbackFunction);
 
@@ -87,12 +89,12 @@ public class MusicManager : MonoBehaviour
                 attackInProgress = true; //Let everyone know we are commencing our attack
             }
         }
-        if (cueIndex < CueTimes.Count && playheadPosition >= CueTimes[cueIndex]+(sequenceSecondsPerBar-TravelTime)) //Spawn Beat Circle , 1 Beat ahead of time
+        if (cueIndex < CueTimes.Count && playheadPosition >= CueTimes[cueIndex]+((sequenceSecondsPerBeat*4)-TravelTime)) //Spawn Beat Circle , 4 Beats ahead of time
         {
             NoteSpawner();
         }
         
-        if (hitIndex < CueTimes.Count && playheadPosition >= (CueTimes[hitIndex]+sequenceSecondsPerBar)) //If we go over our next Cue Time
+        if (hitIndex < CueTimes.Count && playheadPosition >= (CueTimes[hitIndex]+sequenceSecondsPerBeat*4)) //If we go over our next Cue Time
         {
             if (hitIndex < CueObjects.Count){CueObjects[hitIndex].GetComponent<Image>().color = new Color32(255,255,255,255);}
             CombatManager.playerMeleeMiss();
@@ -180,7 +182,7 @@ public class MusicManager : MonoBehaviour
         case AkCallbackType.AK_MusicSyncEntry:
             sequenceSecondsPerBar = _musicInfo.segmentInfo_fBarDuration;
             sequenceSecondsPerBeat = _musicInfo.segmentInfo_fBeatDuration;
-            TravelTime = sequenceSecondsPerBeat;
+            TravelTime = sequenceSecondsPerBeat*4;
             break;
         case AkCallbackType.AK_MusicSyncUserCue:
             Debug.Log(sequenceSecondsPerBar);

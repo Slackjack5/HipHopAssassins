@@ -19,10 +19,10 @@
 				</Event>
 				<Event Name="Play_Music_Environment" ID="{3EB1B858-66F4-4E6B-917C-AF2D6DCB1A25}">
 					<ChildrenList>
-						<Action Name="" ID="{48DA28A6-7739-49D2-A1B6-6B7E8B3EC4FB}" ShortID="566603674">
+						<Action Name="" ID="{47EFAF9A-A561-40D9-9AAA-EFD3786DBEC9}" ShortID="151571045">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Music Environment" ID="{99CFD1FE-E25F-47FB-9EEC-6410EB2ABD62}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
+									<ObjectRef Name="TestingSong#172" ID="{9B3A8754-227D-437D-BDCB-85CE573B400E}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -30,10 +30,10 @@
 				</Event>
 				<Event Name="Play_AttackSequences" ID="{10775F3D-CBCB-40BC-BC0C-471704B3EB1F}">
 					<ChildrenList>
-						<Action Name="" ID="{B5638254-02FC-43D0-88A3-65A7EDFC2F69}" ShortID="378954487">
+						<Action Name="" ID="{8D8C071A-42C2-4ADB-AFEE-90600A7EE48C}" ShortID="608570274">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="AttackSequences" ID="{8F0A64D4-328D-46E3-8A68-7ABB0B88F517}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
+									<ObjectRef Name="AttackSequences(172BPM)" ID="{AAF29B00-F7A8-4EBD-90CD-633E92C35CB2}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
