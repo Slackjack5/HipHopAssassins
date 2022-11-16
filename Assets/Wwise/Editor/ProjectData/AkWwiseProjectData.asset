@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: d48f69856955d54c95226e947abebbff
     GuidInternal: 
-    m_lastTime: -8585347553450687673
+    m_lastTime: -8585330194562386935
     List:
     - name: Environment
       guid: 3039fc54f4dbe84fa5eebe1ebad2abaf
@@ -94,7 +94,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: acc6a2fb7d38a941a3202be7b4b7e5ca
     GuidInternal: 
-    m_lastTime: -8585330298505625591
+    m_lastTime: -8585330194562266963
     List:
     - name: Play_AttackSequences
       guid: 3d5f7710cbcbbc40bc0c471704b3eb1f
@@ -110,6 +110,23 @@ MonoBehaviour:
         ObjectType: 3
         guid: 3d5f7710cbcbbc40bc0c471704b3eb1f
       Path: Events\Default Work Unit\Play_AttackSequences
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_AttackTrack172BPM
+      guid: 1f9e7e7af726fc41834d57fdf0e81202
+      id: 1240998114
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: acc6a2fb7d38a941a3202be7b4b7e5ca
+      - ElementName: Play_AttackTrack172BPM
+        ObjectType: 3
+        guid: 1f9e7e7af726fc41834d57fdf0e81202
+      Path: Events\Default Work Unit\Play_AttackTrack172BPM
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -144,6 +161,23 @@ MonoBehaviour:
         ObjectType: 3
         guid: 58b8b13ef4666b4e917caf2d6dcb1a25
       Path: Events\Default Work Unit\Play_Music_Environment
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Stop_AttackSequences
+      guid: 899f77550d28624b8a1797f16178f3b2
+      id: 3102099450
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: acc6a2fb7d38a941a3202be7b4b7e5ca
+      - ElementName: Stop_AttackSequences
+        ObjectType: 3
+        guid: 899f77550d28624b8a1797f16178f3b2
+      Path: Events\Default Work Unit\Stop_AttackSequences
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1

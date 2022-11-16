@@ -11,20 +11,36 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1229948536" Language="SFX" Hash="166000430">
+		<SoundBank Id="1229948536" Language="SFX" Hash="3443948309">
 			<ObjectPath>\SoundBanks\Default Work Unit\Environment</ObjectPath>
 			<ShortName>Environment</ShortName>
 			<Path>Environment.bnk</Path>
 			<IncludedEvents>
 				<Event Id="399042744" Name="Play_AttackSequences" ObjectPath="\Events\Default Work Unit\Play_AttackSequences">
 					<IncludedMemoryFiles>
+						<File Id="17586182" Language="SFX">
+							<ShortName>Sequence#2(172BPM)(Setup).wav</ShortName>
+							<Path>SFX\Sequence#2(172BPM)(Setup)_D79FB2B7.wem</Path>
+						</File>
 						<File Id="344663117" Language="SFX">
 							<ShortName>Sequence#1(172BPM)(Setup).wav</ShortName>
 							<Path>SFX\Sequence#1(172BPM)(Setup)_D79FB2B7.wem</Path>
 						</File>
+						<File Id="733186397" Language="SFX">
+							<ShortName>Sequence#2(172BPM)(Success).wav</ShortName>
+							<Path>SFX\Sequence#2(172BPM)(Success)_D79FB2B7.wem</Path>
+						</File>
 						<File Id="885610134" Language="SFX">
 							<ShortName>Sequence#1(172BPM)(Success).wav</ShortName>
 							<Path>SFX\Sequence#1(172BPM)(Success)_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1240998114" Name="Play_AttackTrack172BPM" ObjectPath="\Events\Default Work Unit\Play_AttackTrack172BPM">
+					<IncludedMemoryFiles>
+						<File Id="344663117" Language="SFX">
+							<ShortName>Sequence#1(172BPM)(Setup).wav</ShortName>
+							<Path>SFX\Sequence#1(172BPM)(Setup)_D79FB2B7.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -44,6 +60,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="3102099450" Name="Stop_AttackSequences" ObjectPath="\Events\Default Work Unit\Stop_AttackSequences"/>
 				<Event Id="992158907" Name="Trigger_Attack_85BPM" ObjectPath="\Events\Default Work Unit\Trigger_Attack_85BPM">
 					<ActionTrigger>
 						<ActionTriggerEntry Id="925647048" Name="Attack_85BPM" ObjectPath="\Triggers\Default Work Unit\Attack_85BPM"/>

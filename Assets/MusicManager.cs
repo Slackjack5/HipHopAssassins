@@ -10,6 +10,7 @@ public class MusicManager : MonoBehaviour
     public bool preparingSequence=false;
     private bool sequenceInProgress=false;
     public AK.Wwise.Event OurEvent;
+    public AK.Wwise.Event OurTrack;
     public bool attackInProgress;
     public int nextBar;
     //Sequence Data
@@ -28,7 +29,12 @@ public class MusicManager : MonoBehaviour
     private AkSegmentInfo currentSegment;
     public float playheadPosition;
     //id of the wwise event - using this to get the playback position
+    public uint playingIDGlobal;
     public uint playingID;
+    public uint playingID2;
+    public uint playingID3;
+    public uint playingID4;
+    public int Lane = 1;
     
     //Notes
     public float TravelTime;
@@ -38,6 +44,9 @@ public class MusicManager : MonoBehaviour
     //Managers
     private CombatManager ourCombatManager;
     
+    //Public
+    public int AttackCounter;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +54,7 @@ public class MusicManager : MonoBehaviour
         ourCombatManager = GameObject.Find("CombatManager").GetComponent<CombatManager>();
         //Set Hit Leniency
         lateBound = leniency * 2 / 3;
+        Lane = 1;
     }
     
     public void CommenceAttackEvent()
@@ -55,6 +65,7 @@ public class MusicManager : MonoBehaviour
 
     public void ResetVariables()
     {
+        AkSoundEngine.PostEvent("Stop_AttackSequences", gameObject);
         sequenceInProgress=false;
         preparingSequence = false;
         attackInProgress = false;
@@ -66,13 +77,14 @@ public class MusicManager : MonoBehaviour
         CueObjects.Clear();
     }
     
+    
     // Update is called once per frame
     void Update()
     {
         //Update our Playhead
         if (playingID != 0)
         {
-            AkSoundEngine.GetPlayingSegmentInfo(playingID, currentSegment);
+            AkSoundEngine.GetPlayingSegmentInfo(playingIDGlobal, currentSegment);
             playheadPosition = (currentSegment.iCurrentPosition) / 1000f;
         }
         if (!sequenceInProgress && preparingSequence)
@@ -81,8 +93,8 @@ public class MusicManager : MonoBehaviour
             {
                 Debug.Log("Starting NEW Attack Sequence");
                 //Debug.Break();
-                AkSoundEngine.PostEvent("Play_AttackSequences", gameObject);
-                playingID = OurEvent.Post(gameObject,(uint) (AkCallbackType.AK_MusicSyncAll | AkCallbackType.AK_EnableGetMusicPlayPosition), MusicCallbackFunction);
+                AkSoundEngine.PostEvent("Play_AttackTrack172BPM", gameObject);
+                playingIDGlobal = OurTrack.Post(gameObject,(uint) (AkCallbackType.AK_MusicSyncAll | AkCallbackType.AK_EnableGetMusicPlayPosition), MusicCallbackFunction);
 
                 sequenceInProgress=true;
                 preparingSequence = false;
@@ -193,12 +205,24 @@ public class MusicManager : MonoBehaviour
             TravelTime = sequenceSecondsPerBeat*4;
             break;
         case AkCallbackType.AK_MusicSyncUserCue:
-            Debug.Log(sequenceSecondsPerBar);
-        CustomCues(_musicInfo.userCueName, _musicInfo);
+            CustomCues(_musicInfo.userCueName, _musicInfo);
         break;
         case AkCallbackType.AK_MusicSyncExit:
-            ResetVariables();
-            CombatManager.SkipPlayerTurn();
+            if (AttackCounter <= 0)
+            {
+                ResetVariables();
+                CombatManager.SkipPlayerTurn();
+            }
+
+            if (AttackCounter > 0)
+            {
+                AttackCounter--;
+            }
+            else
+            {
+                AttackCounter = 0;
+            }
+            
             break;
     }
   }
@@ -226,9 +250,21 @@ public class MusicManager : MonoBehaviour
             case "PS4":
                 addTime(playheadPosition);
                 break;
+            case "Next":
+                if (AttackCounter > 0)
+                {
+                    AkSoundEngine.PostEvent("Play_AttackSequences", gameObject);
+                    playingID2 = OurEvent.Post(gameObject,
+                            (uint) (AkCallbackType.AK_MusicSyncAll | AkCallbackType.AK_EnableGetMusicPlayPosition),
+                            MusicCallbackFunction);
+                }
+
+                break;
             case "Start":
-                Debug.Log("Player Start!");
-                PlayerSequenceStart();
+                AkSoundEngine.PostEvent("Play_AttackSequences", gameObject);
+                playingID = OurEvent.Post(gameObject,
+                    (uint) (AkCallbackType.AK_MusicSyncAll | AkCallbackType.AK_EnableGetMusicPlayPosition),
+                    MusicCallbackFunction);
                 break;
             default:
                 break;

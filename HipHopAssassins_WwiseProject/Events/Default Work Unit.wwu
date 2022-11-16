@@ -50,6 +50,42 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Stop_AttackSequences" ID="{55779F89-280D-4B62-8A17-97F16178F3B2}">
+					<ChildrenList>
+						<Action Name="" ID="{5B7AB41A-D450-4172-B0D7-A89C29EFE973}" ShortID="630514892">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AttackSequences(172BPM)" ID="{AAF29B00-F7A8-4EBD-90CD-633E92C35CB2}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{F6184E19-B65A-400D-8A8A-4FACF0586C9B}" ShortID="570407901">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AttackTrack(172)" ID="{19A218FE-9738-4870-BACF-9B9DE7FCC547}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_AttackTrack172BPM" ID="{7A7E9E1F-26F7-41FC-834D-57FDF0E81202}">
+					<ChildrenList>
+						<Action Name="" ID="{2D9C6271-D335-4A4E-B81E-C75DEFDA2B85}" ShortID="475405411">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AttackTrack(172)" ID="{19A218FE-9738-4870-BACF-9B9DE7FCC547}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

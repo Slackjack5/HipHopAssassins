@@ -14,8 +14,10 @@ namespace AK
     namespace EVENTS
     {
         static const AkUniqueID PLAY_ATTACKSEQUENCES = 399042744U;
+        static const AkUniqueID PLAY_ATTACKTRACK172BPM = 1240998114U;
         static const AkUniqueID PLAY_HIT = 2960666077U;
         static const AkUniqueID PLAY_MUSIC_ENVIRONMENT = 2261903105U;
+        static const AkUniqueID STOP_ATTACKSEQUENCES = 3102099450U;
         static const AkUniqueID TRIGGER_ATTACK_85BPM = 992158907U;
     } // namespace EVENTS
 

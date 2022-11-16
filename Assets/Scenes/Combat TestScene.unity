@@ -2853,6 +2853,10 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: f40696a0fd9d9274ab7f11f7efb31df1, type: 2}
+  OurTrack:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 428aacbdab17380429e60c42af610f4b, type: 2}
   attackInProgress: 0
   nextBar: 0
   sequenceSecondsPerBar: 0
@@ -2862,10 +2866,16 @@ MonoBehaviour:
   hitIndex: 0
   leniency: 0.1
   playheadPosition: 0
+  playingIDGlobal: 0
   playingID: 0
+  playingID2: 0
+  playingID3: 0
+  playingID4: 0
+  Lane: 0
   TravelTime: 0
   beatCircle: {fileID: 4444640655078736742, guid: a2317e5362dd9d047bd231866291ecba, type: 3}
   RhythmUI: {fileID: 268613347}
+  AttackCounter: 1
 --- !u!1 &530379528
 GameObject:
   m_ObjectHideFlags: 0
