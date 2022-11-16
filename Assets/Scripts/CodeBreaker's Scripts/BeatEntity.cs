@@ -13,10 +13,14 @@ public class BeatEntity : MonoBehaviour
   private bool reachedMiddle;
 
   private bool attackUsed;
+  private RectTransform ring;
+  private Vector3 strartingSize;
 
   private void Start()
   {
     Debug.Log(("Entity Travel Time" + travelTime));
+    ring = transform.GetChild(0).GetComponent<RectTransform>();
+    strartingSize = ring.transform.localScale;
   }
 
   private void Update()
@@ -26,6 +30,11 @@ public class BeatEntity : MonoBehaviour
       transform.position = reachedMiddle
         ? Vector2.Lerp(centerPos.position, endPos.position, currentTime / travelTime)
         : Vector2.Lerp(spawnerPos.position, centerPos.position, currentTime / travelTime);
+
+      if (!reachedMiddle)
+      {
+        ring.localScale = Vector3.Lerp(strartingSize, new Vector3(1,1,1), currentTime / travelTime);
+      }
 
       if (indexNumber == MusicManager.cueIndex-1)
       {

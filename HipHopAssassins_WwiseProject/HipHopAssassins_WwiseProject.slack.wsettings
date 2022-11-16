@@ -6,6 +6,7 @@
 				<Property Name="AudioFilesImporter\Path" Type="string" Value="G:\HipHopAssassins\SFX\SwingSeqeunce(172BPM)\"/>
 				<Property Name="Event Action List\{053A132E-754F-42A5-A878-9FB377AF5C27}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{10775F3D-CBCB-40BC-BC0C-471704B3EB1F}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{3642DE5A-3E30-4767-80F6-8E91EAC76AB2}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{3EB1B858-66F4-4E6B-917C-AF2D6DCB1A25}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{469D2483-737E-4186-8E4D-363468D5BA19}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{703CB925-CDD6-4170-8DE1-78D5709998D8}\x64_Expand States" Type="string" Value=""/>
@@ -44,6 +45,7 @@
 				<Property Name="Interactive Music\x64_{BC1D60C7-82D9-4E59-BE06-F6C4CCE8AE3F} - SegmentEditorZoomInfo" Type="string" Value="AAAAAAAA8D8AAAAAAADwP3AQJwVX8R1AAAAAAAAA8D8AAAAAAAAAAAAAAAAAAAAA"/>
 				<Property Name="Interactive Music\x64_{C4B5188A-6530-4546-B873-36F806F73B05} - SegmentEditorZoomInfo" Type="string" Value="AAAAAAAA8D8AAAAAAADwPwAAAAAAAHBAAAAAAAAA8D8AAAAAAAAAAAAAAAAAAAAA"/>
 				<Property Name="Interactive Music\x64_{DF93CFD4-AD3B-46E5-875F-D156B68D4880} - SegmentEditorZoomInfo" Type="string" Value="AAAAAAAA8D8AAAAAAADwPxDkZX6ZrWJAAAAAAAAA8D8AAAAAAAAAAAAAAAAAAAAA"/>
+				<Property Name="Interactive Music\x64_{E2F4D2FD-2639-4F8D-B643-7492215E96A5} - SegmentEditorZoomInfo" Type="string" Value="AAAAAAAA8D8ZXXTRRRftPwAAAAAAGGpAAAAAAAAA8D8AAAAAAAAAAAAAAAAAAAAA"/>
 				<Property Name="MeterView\LastObject1" Type="string" Value="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"/>
 				<Property Name="MeterView\MeterMode1" Type="int32" Value="1"/>
 				<Property Name="MeterView\MeterMode1Viewpoint0" Type="int32" Value="1"/>

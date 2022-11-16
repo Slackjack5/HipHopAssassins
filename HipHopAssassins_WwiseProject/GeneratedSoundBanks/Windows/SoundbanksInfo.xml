@@ -11,122 +11,30 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1229948536" Language="SFX" Hash="3196682422">
+		<SoundBank Id="1229948536" Language="SFX" Hash="166000430">
 			<ObjectPath>\SoundBanks\Default Work Unit\Environment</ObjectPath>
 			<ShortName>Environment</ShortName>
 			<Path>Environment.bnk</Path>
 			<IncludedEvents>
 				<Event Id="399042744" Name="Play_AttackSequences" ObjectPath="\Events\Default Work Unit\Play_AttackSequences">
 					<IncludedMemoryFiles>
-						<File Id="387783696" Language="SFX">
-							<ShortName>172 BPM Physical Attack Workshop.wav</ShortName>
-							<Path>SFX\172 BPM Physical Attack Workshop_D79FB2B7.wem</Path>
+						<File Id="344663117" Language="SFX">
+							<ShortName>Sequence#1(172BPM)(Setup).wav</ShortName>
+							<Path>SFX\Sequence#1(172BPM)(Setup)_D79FB2B7.wem</Path>
 						</File>
-						<File Id="965799483" Language="SFX">
-							<ShortName>AttackSequence1(172BPM).wav</ShortName>
-							<Path>SFX\AttackSequence1(172BPM)_D79FB2B7.wem</Path>
+						<File Id="885610134" Language="SFX">
+							<ShortName>Sequence#1(172BPM)(Success).wav</ShortName>
+							<Path>SFX\Sequence#1(172BPM)(Success)_D79FB2B7.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
 				<Event Id="2960666077" Name="Play_Hit" ObjectPath="\Events\Default Work Unit\Play_Hit">
 					<IncludedMemoryFiles>
-						<File Id="23017733" Language="SFX">
-							<ShortName>CLOTHRip_Cloth Rip_PSE_BW-BD3HL_ahXO0.wav</ShortName>
-							<Path>SFX\CLOTHRip_Cloth Rip_PSE_BW-BD3HL_ahXO0_72DAECF6.wem</Path>
-						</File>
-						<File Id="51441483" Language="SFX">
-							<ShortName>WEAPSwrd_Sword Schwing Slice Strong 5_PSE_BR-C_ZGRQh.wav</ShortName>
-							<Path>SFX\WEAPSwrd_Sword Schwing Slice Strong 5_PSE_BR-C_ZGRQh_A2346159.wem</Path>
-						</File>
-						<File Id="149223926" Language="SFX">
-							<ShortName>WEAPSwrd_Sword Schwing Fast Jolted_PSE_BR-C_KB8EW.wav</ShortName>
-							<Path>SFX\WEAPSwrd_Sword Schwing Fast Jolted_PSE_BR-C_KB8EW_6A932674.wem</Path>
-						</File>
-						<File Id="156050262" Language="SFX">
-							<ShortName>WEAPSwrd_Sword Schwing Slice Strong 3_PSE_BR-C_Yfp42.wav</ShortName>
-							<Path>SFX\WEAPSwrd_Sword Schwing Slice Strong 3_PSE_BR-C_Yfp42_FFC9D535.wem</Path>
-						</File>
-						<File Id="224626504" Language="SFX">
-							<ShortName>CLOTHRip_Cloth Rip_PSE_BW-BD3HL_ZJqg7.wav</ShortName>
-							<Path>SFX\CLOTHRip_Cloth Rip_PSE_BW-BD3HL_ZJqg7_9030F47D.wem</Path>
-						</File>
-						<File Id="286449293" Language="SFX">
-							<ShortName>WEAPSwrd_Sword Schwing Fast Thin 2_PSE_BR-C_KNaCq.wav</ShortName>
-							<Path>SFX\WEAPSwrd_Sword Schwing Fast Thin 2_PSE_BR-C_KNaCq_D3216FA3.wem</Path>
-						</File>
-						<File Id="324849763" Language="SFX">
-							<ShortName>WEAPSwrd_Sword Schwing Slice Strong High 3_PSE_BR-C_yADCQ.wav</ShortName>
-							<Path>SFX\WEAPSwrd_Sword Schwing Slice Strong High 3_PSE_BR-C_yADCQ_87493972.wem</Path>
-						</File>
-						<File Id="337634573" Language="SFX">
-							<ShortName>CLOTHRip_Cloth Rip_PSE_BW-BD3HL_QOV1P.wav</ShortName>
-							<Path>SFX\CLOTHRip_Cloth Rip_PSE_BW-BD3HL_QOV1P_3E023FD3.wem</Path>
-						</File>
-						<File Id="351625911" Language="SFX">
-							<ShortName>CLOTHRip_Cloth Rip_PSE_BW-BD3HL_Aj7bF.wav</ShortName>
-							<Path>SFX\CLOTHRip_Cloth Rip_PSE_BW-BD3HL_Aj7bF_00240ED7.wem</Path>
-						</File>
-						<File Id="389204222" Language="SFX">
-							<ShortName>WEAPSwrd_Sword Schwing Slice Strong High 1_PSE_BR-C_Eg7mK.wav</ShortName>
-							<Path>SFX\WEAPSwrd_Sword Schwing Slice Strong High 1_PSE_BR-C_Eg7mK_66954224.wem</Path>
-						</File>
-						<File Id="639003464" Language="SFX">
-							<ShortName>WEAPSwrd_Sword Schwing Fast Thin 3_PSE_BR-C_d6hQ3.wav</ShortName>
-							<Path>SFX\WEAPSwrd_Sword Schwing Fast Thin 3_PSE_BR-C_d6hQ3_1E44D80D.wem</Path>
-						</File>
-						<File Id="698423701" Language="SFX">
-							<ShortName>WEAPSwrd_Sword Schwing Fast Ringy 2_PSE_BR-C_yYD9n.wav</ShortName>
-							<Path>SFX\WEAPSwrd_Sword Schwing Fast Ringy 2_PSE_BR-C_yYD9n_DCCE111C.wem</Path>
-						</File>
-						<File Id="822703750" Language="SFX">
-							<ShortName>WEAPSwrd_Sword Schwing Fast Thin 1_PSE_BR-C_8rZUK.wav</ShortName>
-							<Path>SFX\WEAPSwrd_Sword Schwing Fast Thin 1_PSE_BR-C_8rZUK_85D31288.wem</Path>
-						</File>
-						<File Id="1007253360" Language="SFX">
-							<ShortName>WEAPSwrd_Sword Schwing Slice Strong High 2_PSE_BR-C_EDMvF.wav</ShortName>
-							<Path>SFX\WEAPSwrd_Sword Schwing Slice Strong High 2_PSE_BR-C_EDMvF_3E06AD1E.wem</Path>
-						</File>
-						<File Id="1017388319" Language="SFX">
-							<ShortName>WEAPSwrd_Sword Schwing Fast Thin 4_PSE_BR-C_7Bl1C.wav</ShortName>
-							<Path>SFX\WEAPSwrd_Sword Schwing Fast Thin 4_PSE_BR-C_7Bl1C_CEC2B836.wem</Path>
-						</File>
-						<File Id="1023737149" Language="SFX">
-							<ShortName>CLOTHRip_Cloth Rip_PSE_BW-BD3HL_76hmS.wav</ShortName>
-							<Path>SFX\CLOTHRip_Cloth Rip_PSE_BW-BD3HL_76hmS_A462A490.wem</Path>
-						</File>
-						<File Id="1025786517" Language="SFX">
-							<ShortName>WEAPSwrd_Sword Schwing Slice Strong 2_PSE_BR-C_NUgQH.wav</ShortName>
-							<Path>SFX\WEAPSwrd_Sword Schwing Slice Strong 2_PSE_BR-C_NUgQH_FD371AAA.wem</Path>
+						<File Id="95432837" Language="SFX">
+							<ShortName>UIBeep.wav</ShortName>
+							<Path>SFX\UIBeep_DD8763BE.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
-					<DefaultSwitchValue>{87E87992-85B2-4673-96EE-0E2863FE3FE7}</DefaultSwitchValue>
-					<SwitchContainers>
-						<SwitchContainer SwitchValue="{10F2062A-2ECC-4427-A972-ECD514263692}">
-							<Media>
-								<File Id="51441483"/>
-								<File Id="149223926"/>
-								<File Id="156050262"/>
-								<File Id="286449293"/>
-								<File Id="324849763"/>
-								<File Id="389204222"/>
-								<File Id="639003464"/>
-								<File Id="698423701"/>
-								<File Id="822703750"/>
-								<File Id="1007253360"/>
-								<File Id="1017388319"/>
-								<File Id="1025786517"/>
-							</Media>
-						</SwitchContainer>
-						<SwitchContainer SwitchValue="{87E87992-85B2-4673-96EE-0E2863FE3FE7}">
-							<Media>
-								<File Id="23017733"/>
-								<File Id="224626504"/>
-								<File Id="337634573"/>
-								<File Id="351625911"/>
-								<File Id="1023737149"/>
-							</Media>
-						</SwitchContainer>
-					</SwitchContainers>
 				</Event>
 				<Event Id="2261903105" Name="Play_Music_Environment" ObjectPath="\Events\Default Work Unit\Play_Music_Environment">
 					<IncludedMemoryFiles>
@@ -142,18 +50,6 @@
 					</ActionTrigger>
 				</Event>
 			</IncludedEvents>
-			<SwitchGroups>
-				<SwitchGroup Id="865309635" Name="HitMaterial" ObjectPath="\Switches\Default Work Unit\HitMaterial" GUID="{E36B4CEF-DF1A-486A-ABA8-00E7CCB0BBAA}">
-					<Switches>
-						<Switch Id="1367384683" Name="Cloth" ObjectPath="\Switches\Default Work Unit\HitMaterial\Cloth" GUID="{87E87992-85B2-4673-96EE-0E2863FE3FE7}"/>
-					</Switches>
-				</SwitchGroup>
-				<SwitchGroup Id="3893417221" Name="Weapon" ObjectPath="\Switches\Default Work Unit\Weapon" GUID="{4378ED48-3955-4FA4-A03F-B33E280A5134}">
-					<Switches>
-						<Switch Id="2454616260" Name="Sword" ObjectPath="\Switches\Default Work Unit\Weapon\Sword" GUID="{10F2062A-2ECC-4427-A972-ECD514263692}"/>
-					</Switches>
-				</SwitchGroup>
-			</SwitchGroups>
 			<Triggers>
 				<Trigger Id="925647048" Name="Attack_85BPM" ObjectPath="\Triggers\Default Work Unit\Attack_85BPM"/>
 			</Triggers>

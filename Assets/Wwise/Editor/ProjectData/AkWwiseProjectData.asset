@@ -94,7 +94,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: acc6a2fb7d38a941a3202be7b4b7e5ca
     GuidInternal: 
-    m_lastTime: -8585336498584230703
+    m_lastTime: -8585330298505625591
     List:
     - name: Play_AttackSequences
       guid: 3d5f7710cbcbbc40bc0c471704b3eb1f
@@ -303,7 +303,7 @@ MonoBehaviour:
         guid: cc7027b07e13514abf419be2c9343431
       Path: Triggers\Default Work Unit\Attack_85BPM
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 
+  ExpandedWaapiItemIds: 0500000006000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

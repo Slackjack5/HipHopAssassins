@@ -41,17 +41,10 @@
 				</Event>
 				<Event Name="Play_Hit" ID="{9A6AE7A9-9EC5-4977-912A-C58629CE4A77}">
 					<ChildrenList>
-						<Action Name="" ID="{DFE16DD9-E298-4C66-8500-52DAA3C75FFA}" ShortID="318537324">
+						<Action Name="" ID="{341A1012-1731-4E58-BF9A-E47585927300}" ShortID="739431742">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Weapon" ID="{5333CF6E-5E29-4127-9767-15DE37941A93}" WorkUnitID="{E29BF403-8290-4B74-867D-242CA3E79BE3}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-						<Action Name="" ID="{C03A5BE7-1A26-4151-A2B3-7A093E204AE6}" ShortID="355030420">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="HitMaterial" ID="{1B046C7D-0EB7-4453-87E8-CCB53142E936}" WorkUnitID="{E29BF403-8290-4B74-867D-242CA3E79BE3}"/>
+									<ObjectRef Name="UIHit" ID="{BEBF7782-8B66-4E82-9839-0F7A8ADF04E8}" WorkUnitID="{E29BF403-8290-4B74-867D-242CA3E79BE3}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

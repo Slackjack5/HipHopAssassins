@@ -89,11 +89,11 @@ public class MusicManager : MonoBehaviour
                 attackInProgress = true; //Let everyone know we are commencing our attack
             }
         }
-        if (cueIndex < CueTimes.Count && playheadPosition >= CueTimes[cueIndex]+((sequenceSecondsPerBeat*4)-TravelTime)) //Spawn Beat Circle , 4 Beats ahead of time
+        if (cueIndex < CueTimes.Count && playheadPosition >= CueTimes[cueIndex]+((sequenceSecondsPerBeat*1)-TravelTime)) //Spawn Beat Circle , 4 Beats ahead of time
         {
             NoteSpawner();
         }
-        
+        /*
         if (hitIndex < CueTimes.Count && playheadPosition >= (CueTimes[hitIndex]+sequenceSecondsPerBeat*4)) //If we go over our next Cue Time
         {
             if (hitIndex < CueObjects.Count){CueObjects[hitIndex].GetComponent<Image>().color = new Color32(255,255,255,255);}
@@ -101,6 +101,7 @@ public class MusicManager : MonoBehaviour
             hitIndex++;
             Debug.Log("Hitting Miss");
         }
+        */
         if (hitIndex < CueTimes.Count) // Check if Player Hit In Time
         {
             CheckHit(playheadPosition);
@@ -160,7 +161,7 @@ public class MusicManager : MonoBehaviour
             }
         }
         
-        if (error > leniency && error < leniency*3) // Player hits too early but not too far
+        if (error > leniency && error < leniency*2) // Player hits too early but not too far
         {
             if (hitIndex < CueObjects.Count){CueObjects[hitIndex].GetComponent<Image>().color = new Color32(255,0,0,255);}
 
@@ -170,6 +171,13 @@ public class MusicManager : MonoBehaviour
                 CombatManager.playerMeleeMiss();
                 hitIndex++;
             }
+        }
+
+        if (error < (-leniency/4)) //If player goes over time
+        {
+            if (hitIndex < CueObjects.Count){CueObjects[hitIndex].GetComponent<Image>().color = new Color32(25,144,144,255);}
+            hitIndex++;
+            CombatManager.playerMeleeMiss();
         }
     }
     
@@ -206,9 +214,17 @@ public class MusicManager : MonoBehaviour
         {
             case "Example Case":
                 break;
-            case "Q":
-                Debug.Log(playheadPosition); 
-                CueTimes.Add(playheadPosition);
+            case "PS1":
+                addTime(playheadPosition);
+                break;
+            case "PS2":
+                addTime(playheadPosition);
+                break;
+            case "PS3":
+                addTime(playheadPosition);
+                break;
+            case "PS4":
+                addTime(playheadPosition);
                 break;
             case "Start":
                 Debug.Log("Player Start!");
@@ -217,6 +233,11 @@ public class MusicManager : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    private void addTime(float playheadPosition)
+    {
+        CueTimes.Add(playheadPosition);
     }
 
     public void NoteSpawner()
