@@ -46,6 +46,7 @@ public class MusicManager : MonoBehaviour
     
     //Public
     public int AttackCounter;
+    private ActionSlotManager ourActionSlotManager;
     
     // Start is called before the first frame update
     void Start()
@@ -55,12 +56,15 @@ public class MusicManager : MonoBehaviour
         //Set Hit Leniency
         lateBound = leniency * 2 / 3;
         Lane = 1;
+        ourActionSlotManager = GameObject.Find("ActionSlotManager").GetComponent<ActionSlotManager>();
     }
     
     public void CommenceAttackEvent()
     {
         Debug.Log("Doing CommenceAttackEvent Function");
         preparingSequence = true;
+        //Update Attack Counter
+        AttackCounter = ourActionSlotManager.Actions.Count-1;
     }
 
     public void ResetVariables()
@@ -105,19 +109,12 @@ public class MusicManager : MonoBehaviour
         {
             NoteSpawner();
         }
-        /*
-        if (hitIndex < CueTimes.Count && playheadPosition >= (CueTimes[hitIndex]+sequenceSecondsPerBeat*4)) //If we go over our next Cue Time
-        {
-            if (hitIndex < CueObjects.Count){CueObjects[hitIndex].GetComponent<Image>().color = new Color32(255,255,255,255);}
-            CombatManager.playerMeleeMiss();
-            hitIndex++;
-            Debug.Log("Hitting Miss");
-        }
-        */
+
         if (hitIndex < CueTimes.Count) // Check if Player Hit In Time
         {
             CheckHit(playheadPosition);
         }
+        
         
         if(nextBar == GlobalVariables.currentBar) {nextBar = GlobalVariables.currentBar+1;}
     }

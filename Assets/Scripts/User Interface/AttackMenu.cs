@@ -10,6 +10,7 @@ public class AttackMenu : MonoBehaviour
     //Callable Objects
     protected GameObject limbCanvas;
     protected GameObject userInterface;
+    public ActionSlotManager ourActionSlotManager;
     //State
     [SerializeField] public State MenuState;
     private UIManager ourUI;
@@ -29,6 +30,7 @@ public class AttackMenu : MonoBehaviour
         userInterface = GameObject.Find("UserInterface");
         limbCanvas = userInterface.transform.GetChild(1).gameObject;
         ourUI = gameObject.GetComponent<UIManager>();
+        ourActionSlotManager = GameObject.Find("ActionSlotManager").GetComponent<ActionSlotManager>();
     }
 
     // Update is called once per frame
@@ -86,11 +88,11 @@ public class AttackMenu : MonoBehaviour
             ourUI.actionBlock.transform.GetChild(4).GetComponent<Image>().color = Color.red;
         }
 
-        if (Input.GetKeyDown("space")) 
+        if (Input.GetKeyDown("space")) //Create Action 
         {
-            CombatManager.AwaitAttack();
+            //CombatManager.AwaitAttack(); //Start Attack
+            CreateAction(UIManager.selectedMonster,ourUI.menuNavigation.y);
             ChangeState(State.Inactive);
-            ourUI.resetBlocks();
             HideLimbs();
         }
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -104,6 +106,13 @@ public class AttackMenu : MonoBehaviour
         }
         
     }
+
+        public void CreateAction(GameObject SelectedMonster, float SelectedLimb)
+        {
+            ourActionSlotManager.SpawnAttackAction(SelectedMonster,SelectedLimb);
+            ourUI.resetBlocks();
+            ourUI.RestartMenu();
+        }
         
     private Vector2 NewNavigationLimit()
     {

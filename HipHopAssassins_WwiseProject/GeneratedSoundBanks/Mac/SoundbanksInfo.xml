@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1229948536" Language="SFX" Hash="3443948309">
+		<SoundBank Id="1229948536" Language="SFX" Hash="399038191">
 			<ObjectPath>\SoundBanks\Default Work Unit\Environment</ObjectPath>
 			<ShortName>Environment</ShortName>
 			<Path>Environment.bnk</Path>
@@ -26,9 +26,25 @@
 							<ShortName>Sequence#1(172BPM)(Setup).wav</ShortName>
 							<Path>SFX\Sequence#1(172BPM)(Setup)_D79FB2B7.wem</Path>
 						</File>
+						<File Id="539025387" Language="SFX">
+							<ShortName>Sequence#4(172BPM)(Success).wav</ShortName>
+							<Path>SFX\Sequence#4(172BPM)(Success)_D79FB2B7.wem</Path>
+						</File>
+						<File Id="672421818" Language="SFX">
+							<ShortName>Sequence#3(172BPM)(Setup).wav</ShortName>
+							<Path>SFX\Sequence#3(172BPM)(Setup)_D79FB2B7.wem</Path>
+						</File>
 						<File Id="733186397" Language="SFX">
 							<ShortName>Sequence#2(172BPM)(Success).wav</ShortName>
 							<Path>SFX\Sequence#2(172BPM)(Success)_D79FB2B7.wem</Path>
+						</File>
+						<File Id="746452018" Language="SFX">
+							<ShortName>Sequence#3(172BPM)(Success).wav</ShortName>
+							<Path>SFX\Sequence#3(172BPM)(Success)_D79FB2B7.wem</Path>
+						</File>
+						<File Id="875592206" Language="SFX">
+							<ShortName>Sequence#4(172BPM).wav</ShortName>
+							<Path>SFX\Sequence#4(172BPM)_D79FB2B7.wem</Path>
 						</File>
 						<File Id="885610134" Language="SFX">
 							<ShortName>Sequence#1(172BPM)(Success).wav</ShortName>
@@ -48,7 +64,7 @@
 					<IncludedMemoryFiles>
 						<File Id="95432837" Language="SFX">
 							<ShortName>UIBeep.wav</ShortName>
-							<Path>SFX\UIBeep_DD8763BE.wem</Path>
+							<Path>SFX\UIBeep_D8B6DDD4.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

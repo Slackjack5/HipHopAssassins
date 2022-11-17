@@ -34,7 +34,7 @@ public class UIManager : MonoBehaviour
     //Spells
     private SpellDictionary ourSpellDictionary;
     private Spell selectedSpell;
-    
+    private static ActionSlotManager ourActionSlotManager;
     public enum State
     {
         Home,
@@ -43,6 +43,7 @@ public class UIManager : MonoBehaviour
         Items,
         Flee,
         EnemyTurn,
+        Disabled,
         SelectMonster,
     }
     protected enum PreviousState
@@ -53,6 +54,7 @@ public class UIManager : MonoBehaviour
         Items,
         Flee,
         EnemyTurn,
+        Disabled,
         SelectMonster,
     }
  
@@ -68,7 +70,7 @@ public class UIManager : MonoBehaviour
         encounteredEnemies = combatManager.transform.GetChild(0).gameObject;
         actionBlock = gameObject;
         ourButton = userInterface.transform.GetChild(5).transform.gameObject;
-
+        ourActionSlotManager = GameObject.Find("ActionSlotManager").GetComponent<ActionSlotManager>();
         //Variables
         menuNavigation.x = 0;
     }
@@ -139,8 +141,36 @@ public class UIManager : MonoBehaviour
     
     public void RestartMenu()
     {
-        userInterface.transform.GetChild(0).gameObject.SetActive(true); //Enable Home UI
+        userInterface.transform.GetChild(0).gameObject.SetActive(true);
+        //Enable Home UI
         ChangeState(State.Home);
+        userInterface.SetActive(true);
+    }
+    
+    public void ResetMenu()
+    {
+        userInterface.transform.GetChild(0).gameObject.SetActive(true);
+        //Enable Home UI
+        ChangeState(State.Home);
+        userInterface.SetActive(true);
+        ourActionSlotManager.WipeActions();
+    }
+
+    public void DisableMenu()
+    {
+        ChangeState(State.Disabled);
+        userInterface.SetActive(false);
+    }
+
+    private void AwaitingStart()
+    {
+        //For TESTING
+        if (Input.GetKeyDown("r") && ourActionSlotManager.Actions.Count>0) //Create Action 
+        {
+            CombatManager.AwaitAttack();
+            resetBlocks();
+            DisableMenu();
+        }
     }
 
     protected virtual void Update()
@@ -163,6 +193,7 @@ public class UIManager : MonoBehaviour
                 NavigationLimit = new Vector3(3, 0,0);
                 //On Hover Effect
                 actionBlock.transform.GetChild((int) menuNavigation.x).GetComponent<Image>().color=Color.red;
+                AwaitingStart();
                 break;
             case State.Attack:
                 maneuverMenu();
@@ -181,6 +212,9 @@ public class UIManager : MonoBehaviour
                 maneuverMenu();
                 break;
             case State.EnemyTurn:
+
+                break;
+            case State.Disabled:
 
                 break;
             case State.SelectMonster:

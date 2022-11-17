@@ -14,6 +14,7 @@ public class CombatManager : MonoBehaviour
 
     private GameObject encounterEnemies;
     private GameObject enemyDictionary;
+    private GameObject actionSlotManager;
     private static PlayerScript ourPlayer;
     private bool enemiesSpawned;
     protected static State currentTurn;
@@ -29,10 +30,13 @@ public class CombatManager : MonoBehaviour
     private static int ourSetDamage;
 
     private static GameObject ourSeleectedMonster;
+    protected GameObject userInterface;
+    public static int comboPoints;
+    private static ActionSlotManager ourActionSlotManager;
     //Music
+    private static AudioEvents ourAudioEvents;
 
 
-    
     protected enum State
     {
         Prefight,
@@ -53,7 +57,10 @@ public class CombatManager : MonoBehaviour
         ourSpawnPoints = gameObject.transform.GetChild(2).gameObject.GetComponent<SpawnPoints>();
         ourPlayer = GameObject.Find("Player").GetComponent<PlayerScript>();
         ourMusicManager = GameObject.Find("WwiseGlobal").GetComponent<MusicManager>();
+        ourAudioEvents = GameObject.Find("WwiseGlobal").GetComponent<AudioEvents>();
         hitsRemaining = 0;
+        userInterface = GameObject.Find("UserInterface");
+        ourActionSlotManager = GameObject.Find("ActionSlotManager").GetComponent<ActionSlotManager>();
     }
     
 
@@ -71,6 +78,7 @@ public class CombatManager : MonoBehaviour
                 break;
             case State.PlayerTurn:
                 Debug.Log("In Player Turn");
+
                 break;
             case State.MonsterTurn:
                 Debug.Log("In Monster Turn");
@@ -146,14 +154,18 @@ public class CombatManager : MonoBehaviour
     
     public static void playerMeleeAttack(int damageMultiplier)
     {
-        Debug.Log("Hits Remaining: "+hitsRemaining);
-        int generatedDamage = UnityEngine.Random.Range(ourPlayer.attackMin, ourPlayer.attackMax) * damageMultiplier;
-        DamageMonsterLimb(UIManager.selectedMonster,(int) ourUI.menuNavigation.y, generatedDamage);
+        if (ourActionSlotManager.Actions[ourAudioEvents.currentBar-1]!=null)
+        {
+            int generatedDamage = UnityEngine.Random.Range(ourPlayer.attackMin, ourPlayer.attackMax) * damageMultiplier;
+            GameObject newSelectedMonster = ourActionSlotManager.Actions[ourAudioEvents.currentBar-1].GetComponent<AttackAction>().SelectedMonster;
+            float newSelectedLimb = ourActionSlotManager.Actions[ourAudioEvents.currentBar-1].GetComponent<AttackAction>().SelectedLimb;
+            DamageMonsterLimb(newSelectedMonster,(int) newSelectedLimb, generatedDamage);
         
-        hitsRemaining -= 1;
-        //Button Down
-        Animator ourButtonAnim = UIManager.ourButton.transform.GetChild(0).transform.gameObject.GetComponent<Animator>();
-        ourButtonAnim.Play("ButtonHeld");
+            hitsRemaining -= 1;
+            //Button Down
+            Animator ourButtonAnim = UIManager.ourButton.transform.GetChild(0).transform.gameObject.GetComponent<Animator>();
+            ourButtonAnim.Play("ButtonHeld");
+        }
     }
 
 
@@ -215,44 +227,6 @@ public class CombatManager : MonoBehaviour
         targetFeedback.PlayFeedbacks();
         int newLimbNumber = (int) MathF.Abs(limbNumber);
         ourMonster.limbHealth[newLimbNumber] -= damage;
-        
-        /*
-        if (hitsRemaining <= 0)
-        {
-            //End Player Turn
-            ChangeState(State.MonsterTurn);
-            UIManager.ourButton.SetActive(false);
-            int enhancedDamage = damage * 2;
-            //Initialie Feedback
-            MMF_Player targetFeedback = monsterGFX.transform.GetChild(1).GetComponent<MMF_Player>();
-            MMF_FloatingText floatingText = targetFeedback.GetFeedbackOfType<MMF_FloatingText>();
-            floatingText.Value = enhancedDamage.ToString();
-            targetFeedback.FeedbacksIntensity = 3;
-            
-            //Deal Damage
-            targetFeedback.ResetFeedbacks();
-            targetFeedback.PlayFeedbacks();
-            int newLimbNumber = (int) MathF.Abs(limbNumber);
-            ourMonster.limbHealth[newLimbNumber] -= enhancedDamage;
-        }
-        else
-        {
-            Debug.Log("Awaiting next hit!");
-            ChangeState(State.AwaitingAttack);
-            
-            //Initialie Feedback
-            MMF_Player targetFeedback = monsterGFX.transform.GetChild(1).GetComponent<MMF_Player>();
-            MMF_FloatingText floatingText = targetFeedback.GetFeedbackOfType<MMF_FloatingText>();
-            targetFeedback.FeedbacksIntensity = 1;
-            floatingText.Value = damage.ToString();
-            //Deal Damage
-            targetFeedback.ResetFeedbacks();
-            targetFeedback.PlayFeedbacks();
-            int newLimbNumber = (int) MathF.Abs(limbNumber);
-            ourMonster.limbHealth[newLimbNumber] -= damage;
-        }
-
-    */
     }
     public static void CastSpell(GameObject Monster,int damage)
     {
@@ -333,7 +307,7 @@ public class CombatManager : MonoBehaviour
         // suspend execution for 5 seconds
         yield return new WaitForSeconds(2);
         print("Skipping Monster Turn " + Time.time);
-        ourUI.RestartMenu();
+        ourUI.ResetMenu();
         testStarted = false;
         ChangeState(State.PlayerTurn);
     }

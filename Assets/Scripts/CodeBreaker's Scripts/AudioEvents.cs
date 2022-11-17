@@ -174,7 +174,14 @@ public class AudioEvents : MonoBehaviour
 
   private void IncreaseBar()
   {
-    GlobalVariables.currentBar += 1;
+    if (GlobalVariables.currentBar < 4) //Insert Time Signature
+    {
+      GlobalVariables.currentBar += 1;
+    }
+    else
+    {
+      GlobalVariables.currentBar = 1;
+    }
   }
 
   private void IncreaseBeat()
