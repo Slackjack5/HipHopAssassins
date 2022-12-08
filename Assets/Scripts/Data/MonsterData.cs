@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Serialization;
 
 public class MonsterData : MonoBehaviour
 {
@@ -14,8 +15,14 @@ public class MonsterData : MonoBehaviour
     public GameObject monsterCanvas;
     public String[] limbName;
     public int[] limbHealth;
+    public BeatData[] Resistance = new BeatData[4];
     
-
+    [System.Serializable]
+    public class BeatData 
+    {
+        public string name;//Attack Element Resistance Name
+        public bool[] Beat = new bool[4];
+    }
     
 
     public void SetMonsterData(int id, string monsterName, GameObject monster)
@@ -87,3 +94,4 @@ public class MonsterData : MonoBehaviour
         
     }
 }
+

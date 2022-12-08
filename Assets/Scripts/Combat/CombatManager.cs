@@ -206,27 +206,48 @@ public class CombatManager : MonoBehaviour
     }
     public static void DamageMonsterLimb(GameObject Monster, int limbNumber,int damage)
     {
+        
         //Initialize Variables
         MonsterData ourMonster = Monster.GetComponent<MonsterData>();
         GameObject monsterGFX = Monster.transform.GetChild(0).gameObject;
-        Debug.Log("Hits Remaining: "+hitsRemaining);
 
+        if (ourMonster.Resistance[0].Beat[GlobalVariables.currentBar-1] == false)
+        {
+            ourUI.UpdateUI();
         
-        ourUI.UpdateUI();
-        
-        Debug.Log("Awaiting next hit!");
-        ChangeState(State.AwaitingAttack);
+            Debug.Log("Awaiting next hit!");
+            ChangeState(State.AwaitingAttack);
             
-        //Initialie Feedback
-        MMF_Player targetFeedback = monsterGFX.transform.GetChild(1).GetComponent<MMF_Player>();
-        MMF_FloatingText floatingText = targetFeedback.GetFeedbackOfType<MMF_FloatingText>();
-        targetFeedback.FeedbacksIntensity = 1;
-        floatingText.Value = damage.ToString();
-        //Deal Damage
-        targetFeedback.ResetFeedbacks();
-        targetFeedback.PlayFeedbacks();
-        int newLimbNumber = (int) MathF.Abs(limbNumber);
-        ourMonster.limbHealth[newLimbNumber] -= damage;
+            //Initialie Feedback
+            MMF_Player targetFeedback = monsterGFX.transform.GetChild(1).GetComponent<MMF_Player>();
+            MMF_FloatingText floatingText = targetFeedback.GetFeedbackOfType<MMF_FloatingText>();
+            targetFeedback.FeedbacksIntensity = 1;
+            floatingText.Value = damage.ToString();
+            //Deal Damage
+            targetFeedback.ResetFeedbacks();
+            targetFeedback.PlayFeedbacks();
+            int newLimbNumber = (int) MathF.Abs(limbNumber);
+            ourMonster.limbHealth[newLimbNumber] -= damage;
+        }
+        else
+        {
+            ourUI.UpdateUI();
+        
+            Debug.Log("Awaiting next hit!");
+            ChangeState(State.AwaitingAttack);
+            
+            //Initialie Feedback
+            MMF_Player targetFeedback = monsterGFX.transform.GetChild(7).GetComponent<MMF_Player>();
+            MMF_FloatingText floatingText = targetFeedback.GetFeedbackOfType<MMF_FloatingText>();
+            targetFeedback.FeedbacksIntensity = 0.1f;
+            floatingText.Value = "RESIST: "+(damage/3).ToString();
+            //Deal Damage
+            targetFeedback.ResetFeedbacks();
+            targetFeedback.PlayFeedbacks();
+            int newLimbNumber = (int) MathF.Abs(limbNumber);
+            ourMonster.limbHealth[newLimbNumber] -= damage/3;
+        }
+
     }
     public static void CastSpell(GameObject Monster,int damage)
     {

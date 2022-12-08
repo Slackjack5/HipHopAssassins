@@ -140,7 +140,7 @@ public class MusicManager : MonoBehaviour
                     {
                         Debug.Log("Perfect Hit");
                         AkSoundEngine.PostEvent("Play_Hit", gameObject);
-                        CombatManager.playerMeleeAttack(100);
+                        CombatManager.playerMeleeAttack(2);
                         hitIndex++;
                     }
 

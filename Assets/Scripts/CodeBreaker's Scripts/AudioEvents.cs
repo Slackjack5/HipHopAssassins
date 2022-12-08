@@ -67,6 +67,7 @@ public class AudioEvents : MonoBehaviour
   private void Start()
   {
     playingID = rhythmHeckinEvent.Post(gameObject,(uint) (AkCallbackType.AK_MusicSyncAll | AkCallbackType.AK_EnableGetMusicPlayPosition), MusicCallbackFunction);
+    //AkSoundEngine.SetRTPCValue("Intensity", 1);
     currentSegment = new AkSegmentInfo();
     GlobalVariables.songStarted = false;
     isSegmentPositionReady = true;
