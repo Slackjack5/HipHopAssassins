@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1229948536" Language="SFX" Hash="399038191">
+		<SoundBank Id="1229948536" Language="SFX" Hash="457917141">
 			<ObjectPath>\SoundBanks\Default Work Unit\Environment</ObjectPath>
 			<ShortName>Environment</ShortName>
 			<Path>Environment.bnk</Path>
@@ -30,6 +30,10 @@
 							<ShortName>Sequence#4(172BPM)(Success).wav</ShortName>
 							<Path>SFX\Sequence#4(172BPM)(Success)_D79FB2B7.wem</Path>
 						</File>
+						<File Id="583044215" Language="SFX">
+							<ShortName>Sequence#4(172BPM)(Setup).wav</ShortName>
+							<Path>SFX\Sequence#4(172BPM)(Setup)_D79FB2B7.wem</Path>
+						</File>
 						<File Id="672421818" Language="SFX">
 							<ShortName>Sequence#3(172BPM)(Setup).wav</ShortName>
 							<Path>SFX\Sequence#3(172BPM)(Setup)_D79FB2B7.wem</Path>
@@ -41,10 +45,6 @@
 						<File Id="746452018" Language="SFX">
 							<ShortName>Sequence#3(172BPM)(Success).wav</ShortName>
 							<Path>SFX\Sequence#3(172BPM)(Success)_D79FB2B7.wem</Path>
-						</File>
-						<File Id="875592206" Language="SFX">
-							<ShortName>Sequence#4(172BPM).wav</ShortName>
-							<Path>SFX\Sequence#4(172BPM)_D79FB2B7.wem</Path>
 						</File>
 						<File Id="885610134" Language="SFX">
 							<ShortName>Sequence#1(172BPM)(Success).wav</ShortName>
@@ -76,6 +76,22 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="2520504994" Name="Play_PS1" ObjectPath="\Events\Default Work Unit\Play_PS1">
+					<IncludedMemoryFiles>
+						<File Id="16026845" Language="SFX">
+							<ShortName>Hit Success Light.wav</ShortName>
+							<Path>SFX\Hit Success Light_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2520504993" Name="Play_PS2" ObjectPath="\Events\Default Work Unit\Play_PS2">
+					<IncludedMemoryFiles>
+						<File Id="951425931" Language="SFX">
+							<ShortName>Hit Success Heavy.wav</ShortName>
+							<Path>SFX\Hit Success Heavy_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="3102099450" Name="Stop_AttackSequences" ObjectPath="\Events\Default Work Unit\Stop_AttackSequences"/>
 				<Event Id="992158907" Name="Trigger_Attack_85BPM" ObjectPath="\Events\Default Work Unit\Trigger_Attack_85BPM">
 					<ActionTrigger>
@@ -87,7 +103,7 @@
 				<Trigger Id="925647048" Name="Attack_85BPM" ObjectPath="\Triggers\Default Work Unit\Attack_85BPM"/>
 			</Triggers>
 		</SoundBank>
-		<SoundBank Id="1355168291" Language="SFX" Hash="3690994985">
+		<SoundBank Id="1355168291" Language="SFX" Hash="385626986">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>

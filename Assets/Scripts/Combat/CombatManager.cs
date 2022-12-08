@@ -159,7 +159,7 @@ public class CombatManager : MonoBehaviour
             int generatedDamage = UnityEngine.Random.Range(ourPlayer.attackMin, ourPlayer.attackMax) * damageMultiplier;
             GameObject newSelectedMonster = ourActionSlotManager.Actions[ourAudioEvents.currentBar-1].GetComponent<AttackAction>().SelectedMonster;
             float newSelectedLimb = ourActionSlotManager.Actions[ourAudioEvents.currentBar-1].GetComponent<AttackAction>().SelectedLimb;
-            DamageMonsterLimb(newSelectedMonster,(int) newSelectedLimb, generatedDamage);
+            DamageMonsterLimb(newSelectedMonster,(int) newSelectedLimb, generatedDamage, damageMultiplier);
         
             hitsRemaining -= 1;
             //Button Down
@@ -204,7 +204,7 @@ public class CombatManager : MonoBehaviour
     {
         Instantiate(item);
     }
-    public static void DamageMonsterLimb(GameObject Monster, int limbNumber,int damage)
+    public static void DamageMonsterLimb(GameObject Monster, int limbNumber,int damage, int multiplier)
     {
         
         //Initialize Variables
@@ -221,7 +221,7 @@ public class CombatManager : MonoBehaviour
             //Initialie Feedback
             MMF_Player targetFeedback = monsterGFX.transform.GetChild(1).GetComponent<MMF_Player>();
             MMF_FloatingText floatingText = targetFeedback.GetFeedbackOfType<MMF_FloatingText>();
-            targetFeedback.FeedbacksIntensity = 1;
+            targetFeedback.FeedbacksIntensity = multiplier;
             floatingText.Value = damage.ToString();
             //Deal Damage
             targetFeedback.ResetFeedbacks();

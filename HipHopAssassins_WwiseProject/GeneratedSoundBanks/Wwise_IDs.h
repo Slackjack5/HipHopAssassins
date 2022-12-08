@@ -17,6 +17,8 @@ namespace AK
         static const AkUniqueID PLAY_ATTACKTRACK172BPM = 1240998114U;
         static const AkUniqueID PLAY_HIT = 2960666077U;
         static const AkUniqueID PLAY_MUSIC_ENVIRONMENT = 2261903105U;
+        static const AkUniqueID PLAY_PS1 = 2520504994U;
+        static const AkUniqueID PLAY_PS2 = 2520504993U;
         static const AkUniqueID STOP_ATTACKSEQUENCES = 3102099450U;
         static const AkUniqueID TRIGGER_ATTACK_85BPM = 992158907U;
     } // namespace EVENTS
@@ -59,6 +61,8 @@ namespace AK
     namespace BUSSES
     {
         static const AkUniqueID MASTER_AUDIO_BUS = 3803692087U;
+        static const AkUniqueID MUSIC = 3991942870U;
+        static const AkUniqueID PLAYERATTACKS = 3417697001U;
     } // namespace BUSSES
 
     namespace AUDIO_DEVICES

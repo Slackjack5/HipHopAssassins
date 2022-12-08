@@ -18,6 +18,7 @@ public class MusicManager : MonoBehaviour
     public float sequenceSecondsPerBeat;
     private float sequenceDuration;
     public List<float> CueTimes = new List<float>();
+    public List<String> AttackType = new List<String>();
     public List<GameObject> CueObjects = new List<GameObject>();
     public static int cueIndex;
     public int hitIndex;
@@ -59,6 +60,7 @@ public class MusicManager : MonoBehaviour
         ourActionSlotManager = GameObject.Find("ActionSlotManager").GetComponent<ActionSlotManager>();
     }
     
+    
     public void CommenceAttackEvent()
     {
         Debug.Log("Doing CommenceAttackEvent Function");
@@ -78,6 +80,7 @@ public class MusicManager : MonoBehaviour
         hitIndex = 0;
         //Wipe List
         CueTimes.Clear();
+        AttackType.Clear();
         CueObjects.Clear();
     }
     
@@ -139,8 +142,16 @@ public class MusicManager : MonoBehaviour
                     if (Input.GetKeyDown("space"))
                     {
                         Debug.Log("Perfect Hit");
-                        AkSoundEngine.PostEvent("Play_Hit", gameObject);
-                        CombatManager.playerMeleeAttack(2);
+                        if (AttackType[hitIndex] == "PS1")
+                        {
+                            AkSoundEngine.PostEvent("Play_PS1", gameObject);
+                            CombatManager.playerMeleeAttack(1);
+                        }
+                        else if (AttackType[hitIndex] == "PS2")
+                        {
+                            AkSoundEngine.PostEvent("Play_PS2", gameObject);
+                            CombatManager.playerMeleeAttack(2);
+                        }
                         hitIndex++;
                     }
 
@@ -151,9 +162,18 @@ public class MusicManager : MonoBehaviour
 
                     if (Input.GetKeyDown("space"))
                     {
-                        AkSoundEngine.PostEvent("Play_Hit", gameObject);
+                        if (AttackType[hitIndex] == "PS1")
+                        {
+                            AkSoundEngine.PostEvent("Play_PS1", gameObject);
+                            CombatManager.playerMeleeAttack(1);
+                        }
+                        else if (AttackType[hitIndex] == "PS2")
+                        {
+                            AkSoundEngine.PostEvent("Play_PS2", gameObject);
+                            CombatManager.playerMeleeAttack(2);
+                        }
                         Debug.Log("Great Hit");
-                        CombatManager.playerMeleeAttack(10);
+                        
                         hitIndex++;
                     }
                 }
@@ -162,8 +182,16 @@ public class MusicManager : MonoBehaviour
                 if (hitIndex < CueObjects.Count) { CueObjects[hitIndex].GetComponent<Image>().color = new Color32(255, 100, 0, 255); }
                 if (Input.GetKeyDown("space"))
                 {
-                    AkSoundEngine.PostEvent("Play_Hit", gameObject);
-                    CombatManager.playerMeleeAttack(1);
+                    if (AttackType[hitIndex] == "PS1")
+                    {
+                        AkSoundEngine.PostEvent("Play_PS1", gameObject);
+                        CombatManager.playerMeleeAttack(1);
+                    }
+                    else if (AttackType[hitIndex] == "PS2")
+                    {
+                        AkSoundEngine.PostEvent("Play_PS2", gameObject);
+                        CombatManager.playerMeleeAttack(2);
+                    }
                     hitIndex++;
                     Debug.Log("Ok Hit");
                 }
@@ -236,16 +264,16 @@ public class MusicManager : MonoBehaviour
             case "Example Case":
                 break;
             case "PS1":
-                addTime(playheadPosition);
+                addTime(playheadPosition,"PS1");
                 break;
             case "PS2":
-                addTime(playheadPosition);
+                addTime(playheadPosition,"PS2");
                 break;
             case "PS3":
-                addTime(playheadPosition);
+                addTime(playheadPosition,"PS3");
                 break;
             case "PS4":
-                addTime(playheadPosition);
+                addTime(playheadPosition,"PS4");
                 break;
             case "Next":
                 if (AttackCounter > 0)
@@ -268,9 +296,10 @@ public class MusicManager : MonoBehaviour
         }
     }
 
-    private void addTime(float playheadPosition)
+    private void addTime(float playheadPosition, String type)
     {
         CueTimes.Add(playheadPosition);
+        AttackType.Add(type);
     }
 
     public void NoteSpawner()
