@@ -3,12 +3,13 @@
 	<UserProjectSettingsInfo>
 		<UserProjectSettings Name="" ID="{45DE3155-DEE8-4EAD-A03D-0B9CB951102F}">
 			<PropertyList>
-				<Property Name="AudioFilesImporter\Path" Type="string" Value="G:\HipHopAssassins\SFX\SwingSeqeunces(172BPM)\"/>
+				<Property Name="AudioFilesImporter\Path" Type="string" Value="G:\HipHopAssassins\SFX\Celebration or Fail\"/>
 				<Property Name="Event Action List\{053A132E-754F-42A5-A878-9FB377AF5C27}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{10775F3D-CBCB-40BC-BC0C-471704B3EB1F}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{3642DE5A-3E30-4767-80F6-8E91EAC76AB2}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{3EB1B858-66F4-4E6B-917C-AF2D6DCB1A25}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{469D2483-737E-4186-8E4D-363468D5BA19}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{4B06EBB5-CD96-4061-9222-D8C5D9425CE8}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{55779F89-280D-4B62-8A17-97F16178F3B2}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{703CB925-CDD6-4170-8DE1-78D5709998D8}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{7A7E9E1F-26F7-41FC-834D-57FDF0E81202}\x64_Expand States" Type="string" Value=""/>
@@ -17,6 +18,7 @@
 				<Property Name="Event Action List\{C1708D82-70EC-42C7-A119-C566565A134B}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{D3366D8C-2ACA-40B0-8C9E-65E546E56059}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{E801FEC8-846D-4CA6-8134-8A547D318E67}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{EFC92733-4AB4-4838-AE39-3D6C6BEF0F41}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="EventView\FilterMode1" Type="int32" Value="2"/>
 				<Property Name="ExternalSourcesInputPath" Type="string">
 					<ValueList>
@@ -112,7 +114,7 @@
 				<Property Name="ProjectExplorer\FirstVisible_9_1" Type="string" Value="{41093F77-829F-4D88-8601-E8B25F3D4781}"/>
 				<Property Name="ProjectExplorer\x64_Expanded_11_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\x64_Expanded_12_1" Type="string" Value=""/>
-				<Property Name="ProjectExplorer\x64_Expanded_13_1" Type="string" Value="VIc6m30ifUO9y4XOVztADssqgqxjPSBFm5i1BqwsxtjUZAqPjTLjRopoersLiPUX/hiiGTiXcEi6z5ud5/zFR4b9+ZR9gzdLlHoJizJkLanHYB282YJZTr4G9sTM6K4/AJvyqqj3vU6QzWM+ksNcsg=="/>
+				<Property Name="ProjectExplorer\x64_Expanded_13_1" Type="string" Value="/hiiGTiXcEi6z5ud5/zFR4b9+ZR9gzdLlHoJizJkLanHYB282YJZTr4G9sTM6K4/"/>
 				<Property Name="ProjectExplorer\x64_Expanded_14_1" Type="string" Value="6GNpEWktRkek9jHama5bWA=="/>
 				<Property Name="ProjectExplorer\x64_Expanded_15_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\x64_Expanded_16_1" Type="string" Value=""/>
@@ -123,8 +125,8 @@
 				<Property Name="ProjectExplorer\x64_Expanded_20_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\x64_Expanded_21_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\x64_Expanded_22_1" Type="string" Value=""/>
-				<Property Name="ProjectExplorer\x64_Expanded_2_1" Type="string" Value="1ulUVkLQXkSgM4k2ZBuvPQ=="/>
-				<Property Name="ProjectExplorer\x64_Expanded_3_1" Type="string" Value="+dvza1D9+ECV4YiMkiZRzwP0m+KQgnRLhn0kLKPnm+M="/>
+				<Property Name="ProjectExplorer\x64_Expanded_2_1" Type="string" Value="2KQUFaYdKkGhfnXKDCFJ89bpVFZC0F5EoDOJNmQbrz0="/>
+				<Property Name="ProjectExplorer\x64_Expanded_3_1" Type="string" Value="+dvza1D9+ECV4YiMkiZRz9Uq0YG8NWlJhv8BQY5HnvoD9JvikIJ0S4Z9JCyj55vj"/>
 				<Property Name="ProjectExplorer\x64_Expanded_4_1" Type="string" Value="rMai+304qUGjICvntLflyg=="/>
 				<Property Name="ProjectExplorer\x64_Expanded_5_1" Type="string" Value="70xr4xrfakirqADnzLC7qivEoJUWuHpNtF2nBq+AycVI7XhDVTmkT6A/sz4oClE0"/>
 				<Property Name="ProjectExplorer\x64_Expanded_6_1" Type="string" Value="z9wxo/LQ50azafFbEmu6UQ=="/>

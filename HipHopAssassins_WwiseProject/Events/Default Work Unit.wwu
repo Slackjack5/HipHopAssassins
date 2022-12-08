@@ -86,6 +86,28 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_PS1" ID="{EFC92733-4AB4-4838-AE39-3D6C6BEF0F41}">
+					<ChildrenList>
+						<Action Name="" ID="{CC6F44D0-D02F-4045-841C-5868BC9DF1A8}" ShortID="486689660">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="HitPS1" ID="{4526DF76-86AA-483A-AD97-065B9CAD94E4}" WorkUnitID="{E29BF403-8290-4B74-867D-242CA3E79BE3}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_PS2" ID="{4B06EBB5-CD96-4061-9222-D8C5D9425CE8}">
+					<ChildrenList>
+						<Action Name="" ID="{CE0920D2-B956-4FC2-A87E-E36306F6AE64}" ShortID="311388231">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="HitPS2" ID="{E90DE8E7-A06E-49D0-AA77-CA438E17DE45}" WorkUnitID="{E29BF403-8290-4B74-867D-242CA3E79BE3}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

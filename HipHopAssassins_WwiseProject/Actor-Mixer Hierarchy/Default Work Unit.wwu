@@ -20,7 +20,7 @@
 							<PropertyList>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>-8</Value>
+										<Value>2</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -692,6 +692,52 @@
 										</GroupingList>
 									</GroupingInfo>
 								</SwitchContainer>
+								<Sound Name="HitPS2" ID="{E90DE8E7-A06E-49D0-AA77-CA438E17DE45}" ShortID="258204963">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{84503E06-E5E3-4791-90FB-59A960C5BF47}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5654E9D6-D042-445E-A033-8936641BAF3D}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Hit Success Heavy" ID="{19C8EEA8-56B0-472F-83CE-BF368597763A}">
+											<Language>SFX</Language>
+											<AudioFile>Hit Success Heavy.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="951425931"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="Hit Success Heavy" ID="{19C8EEA8-56B0-472F-83CE-BF368597763A}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="HitPS1" ID="{4526DF76-86AA-483A-AD97-065B9CAD94E4}" ShortID="307786812">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{84503E06-E5E3-4791-90FB-59A960C5BF47}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5654E9D6-D042-445E-A033-8936641BAF3D}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Hit Success Light" ID="{6CEDEEFA-F69B-48C3-B0EC-82D23D0E741F}">
+											<Language>SFX</Language>
+											<AudioFile>Hit Success Light.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="16026845"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="Hit Success Light" ID="{6CEDEEFA-F69B-48C3-B0EC-82D23D0E741F}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
 							</ChildrenList>
 							<ObjectLists/>
 						</ActorMixer>
