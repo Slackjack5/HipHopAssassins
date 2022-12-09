@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: d6e9545642d05e44a0338936641baf3d
     GuidInternal: 
-    m_lastTime: -8585387391860218410
+    m_lastTime: -8585311330412874573
     List:
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
@@ -54,6 +54,40 @@ MonoBehaviour:
         ObjectType: 2
         guid: d8a41415a61d2a41a17e75ca0c2149f3
       Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus
+    - name: Music
+      guid: d236c96f38c6d345b2084e9ccbc48eef
+      id: 3991942870
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d6e9545642d05e44a0338936641baf3d
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: Music
+        ObjectType: 2
+        guid: d236c96f38c6d345b2084e9ccbc48eef
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Music
+    - name: PlayerAttacks
+      guid: b47e95a06731e343bd4b6b6524ae74f5
+      id: 3417697001
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d6e9545642d05e44a0338936641baf3d
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: PlayerAttacks
+        ObjectType: 2
+        guid: b47e95a06731e343bd4b6b6524ae74f5
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\PlayerAttacks
   BankWwu:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     PathAndIcons:
@@ -66,7 +100,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: d48f69856955d54c95226e947abebbff
     GuidInternal: 
-    m_lastTime: -8585330194562386935
+    m_lastTime: -8585311330412196696
     List:
     - name: Environment
       guid: 3039fc54f4dbe84fa5eebe1ebad2abaf
@@ -94,7 +128,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: acc6a2fb7d38a941a3202be7b4b7e5ca
     GuidInternal: 
-    m_lastTime: -8585330194562266963
+    m_lastTime: -8585311330412067053
     List:
     - name: Play_AttackSequences
       guid: 3d5f7710cbcbbc40bc0c471704b3eb1f
@@ -161,6 +195,40 @@ MonoBehaviour:
         ObjectType: 3
         guid: 58b8b13ef4666b4e917caf2d6dcb1a25
       Path: Events\Default Work Unit\Play_Music_Environment
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_PS1
+      guid: 3327c9efb44a3848ae393d6c6bef0f41
+      id: 2520504994
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: acc6a2fb7d38a941a3202be7b4b7e5ca
+      - ElementName: Play_PS1
+        ObjectType: 3
+        guid: 3327c9efb44a3848ae393d6c6bef0f41
+      Path: Events\Default Work Unit\Play_PS1
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_PS2
+      guid: b5eb064b96cd61409222d8c5d9425ce8
+      id: 2520504993
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: acc6a2fb7d38a941a3202be7b4b7e5ca
+      - ElementName: Play_PS2
+        ObjectType: 3
+        guid: b5eb064b96cd61409222d8c5d9425ce8
+      Path: Events\Default Work Unit\Play_PS2
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
