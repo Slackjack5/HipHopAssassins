@@ -5,6 +5,7 @@ using MoreMountains.Feedbacks;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine.PlayerLoop;
 using Random = System.Random;
 
@@ -21,7 +22,7 @@ public class UIManager : MonoBehaviour
     //Callable Game Objects
     public GameObject encounteredEnemies;
     protected GameObject userInterface;
-    protected GameObject combatManager;
+    private UserInterface userInterfaceScript;
     public GameObject actionBlock;
     //Menus
     private MagicMenu ourMagicMenu;
@@ -61,15 +62,15 @@ public class UIManager : MonoBehaviour
     protected virtual void Start()
     {
         //GameObjects
-        userInterface = GameObject.Find("UserInterface");
-        combatManager = GameObject.Find("CombatManager");
+        userInterface = UserInterface.singleton_UserInterface.GameObject();
+        userInterfaceScript = userInterface.GetComponent<UserInterface>();
         ourMagicMenu = gameObject.GetComponent<MagicMenu>();
         ourAttackMenu = gameObject.GetComponent<AttackMenu>();
         ourItemMenu = gameObject.GetComponent<ItemMenu>();
         ourFleeMenu = gameObject.GetComponent<FleeMenu>();
-        encounteredEnemies = combatManager.transform.GetChild(0).gameObject;
+        encounteredEnemies = CombatManager.singleton_CombatManager.transform.GetChild(0).gameObject;
         actionBlock = gameObject;
-        ourButton = userInterface.transform.GetChild(5).transform.gameObject;
+        ourButton = userInterfaceScript.Button;
         ourActionSlotManager = GameObject.Find("ActionSlotManager").GetComponent<ActionSlotManager>();
         //Variables
         menuNavigation.x = 0;
@@ -141,7 +142,7 @@ public class UIManager : MonoBehaviour
     
     public void RestartMenu()
     {
-        userInterface.transform.GetChild(0).gameObject.SetActive(true);
+        userInterfaceScript.enableHome();
         //Enable Home UI
         ChangeState(State.Home);
         userInterface.SetActive(true);
@@ -149,7 +150,7 @@ public class UIManager : MonoBehaviour
     
     public void ResetMenu()
     {
-        userInterface.transform.GetChild(0).gameObject.SetActive(true);
+        userInterfaceScript.enableHome();
         //Enable Home UI
         ChangeState(State.Home);
         userInterface.SetActive(true);
@@ -181,10 +182,10 @@ public class UIManager : MonoBehaviour
                 //Change Previous State
                 ChangePreviousState(State.Home);
                 //Set our Action Block to our Home Menu and SetActive
-                actionBlock = userInterface.transform.GetChild(0).gameObject;
-                userInterface.transform.GetChild(0).gameObject.SetActive(true);
+                actionBlock = userInterfaceScript.homeCanvas;
+                userInterfaceScript.enableHome();
                 //Allow Player to Maneuver the menu
-                maneuverMenu();
+                //maneuverMenu(); //Turn Back On When Ready to Test Magic
                 //Reset Size on All Monsters
                 ResetMonsters();
                 //Call Home Menu Function
@@ -197,18 +198,18 @@ public class UIManager : MonoBehaviour
                 break;
             case State.Attack:
                 maneuverMenu();
-                userInterface.transform.GetChild(0).gameObject.SetActive(false);
+                userInterfaceScript.disableHome();
                 break;
             case State.Magic:
-                userInterface.transform.GetChild(0).gameObject.SetActive(false);
+                userInterfaceScript.disableHome();
                 maneuverMenu();
                 break;
             case State.Items:
-                userInterface.transform.GetChild(0).gameObject.SetActive(false);
+                userInterfaceScript.disableHome();
                 maneuverMenu();
                 break;
             case State.Flee:
-                userInterface.transform.GetChild(0).gameObject.SetActive(false);
+                userInterfaceScript.disableHome();
                 maneuverMenu();
                 break;
             case State.EnemyTurn:
@@ -248,8 +249,8 @@ public class UIManager : MonoBehaviour
                 //Change Navigation
                 lastMenuNavigation = menuNavigation;
                 //Set the action block to our Attack Menu & set it active
-                userInterface.transform.GetChild(1).gameObject.SetActive(true);
-                actionBlock = userInterface.transform.GetChild(1).gameObject;
+                userInterfaceScript.enableAttackMenu();
+                actionBlock =  userInterfaceScript.attackCanvas;;
                 //Change the state of our Attack Menu Script
                 ourAttackMenu.ChangeState(AttackMenu.State.SelectMonster);
                 //Change our menu navigation starting point dependent on how many enemies are on screen
@@ -267,8 +268,8 @@ public class UIManager : MonoBehaviour
                 lastMenuNavigation = menuNavigation;
                 menuNavigation.x = 0;
                 //Set the action block to our Magic Menu & set it active
-                actionBlock = userInterface.transform.GetChild(2).gameObject;
-                userInterface.transform.GetChild(2).gameObject.SetActive(true);
+                actionBlock = userInterfaceScript.magicCanvas;
+                userInterfaceScript.enableMagicMenu();
                 //Change the state of our Attack Menu Script
                 ourMagicMenu.ChangeState(MagicMenu.State.SpellList);
             }
@@ -284,8 +285,8 @@ public class UIManager : MonoBehaviour
                 lastMenuNavigation = menuNavigation;
                 menuNavigation.x = 0;
                 //Set the action block to our Item Menu & set it active
-                actionBlock = userInterface.transform.GetChild(3).gameObject;
-                userInterface.transform.GetChild(3).gameObject.SetActive(true);
+                actionBlock = userInterfaceScript.itemCanvas;
+                userInterfaceScript.enableItemMenu();
                 //Change the state of our Item Menu Script
                 ourItemMenu.ChangeState(ItemMenu.State.ItemList);
 
@@ -302,7 +303,7 @@ public class UIManager : MonoBehaviour
                 lastMenuNavigation = menuNavigation;
                 menuNavigation.x = 0;
                 //Set our new action block as active
-                userInterface.transform.GetChild(4).gameObject.SetActive(true);
+                userInterfaceScript.enableConfirmationmMenu();
                 //Change the state of our Item Menu Script
                 ourFleeMenu.ChangeState(FleeMenu.State.Confirm);
             }

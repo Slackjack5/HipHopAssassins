@@ -14,7 +14,6 @@ public class AudioEvents : MonoBehaviour
     public float Value => value;
     public bool IsValid => isValid;
   }
-
   //Wwise
   public AK.Wwise.Event rhythmHeckinEvent;
   public UnityEvent OnLevelEnded;

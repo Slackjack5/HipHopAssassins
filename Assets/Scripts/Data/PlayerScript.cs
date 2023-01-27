@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
+    public static PlayerScript singleton_Player;
+    
     [SerializeField] private int Level;
     [SerializeField] public int Health;
     public int hitsMax;
@@ -11,6 +13,19 @@ public class PlayerScript : MonoBehaviour
     public int attackMax;
     public int[] allocatedSpells;
     public int[] allocatedItems;
+    
+    private void Awake()
+    {
+        if (singleton_Player != null && singleton_Player != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            singleton_Player = this;
+        }
+    }
+    
     // Start is called before the first frame update
     void Start()
     {

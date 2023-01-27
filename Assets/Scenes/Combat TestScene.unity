@@ -665,7 +665,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &168634899
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1359,7 +1359,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 225162136}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38543f84b481b2841a61f9ece95886b7, type: 3}
   m_Name: 
@@ -1386,7 +1386,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 225162136}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf3a1822ce6dcf34cb97bf04b2129228, type: 3}
   m_Name: 
@@ -1399,7 +1399,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 225162136}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9686b65d5084ee44a9843d204d7a8c4, type: 3}
   m_Name: 
@@ -1422,7 +1422,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &227574076
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1500,7 +1500,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &233656547
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3372,7 +3372,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &628578648
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7051,7 +7051,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -285, y: -178}
+  m_AnchoredPosition: {x: -47.5, y: -178}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1396176774
@@ -9162,6 +9162,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1714521835}
+  - component: {fileID: 1714521836}
   m_Layer: 0
   m_Name: UserInterface
   m_TagString: Untagged
@@ -9190,6 +9191,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1714521836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1714521834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3946d4e29c2147546a428eab028a2544, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  homeCanvas: {fileID: 1851908730}
+  attackCanvas: {fileID: 1980548998}
+  magicCanvas: {fileID: 1083966637}
+  itemCanvas: {fileID: 233656546}
+  confirmationCanvas: {fileID: 1448288003}
+  Button: {fileID: 1643241154}
 --- !u!1 &1736858899
 GameObject:
   m_ObjectHideFlags: 0
@@ -10640,6 +10659,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5560447300824190940, guid: b0829f474a07a334899c407a84683e26, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5560447301114659795, guid: b0829f474a07a334899c407a84683e26, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5560447301452900997, guid: b0829f474a07a334899c407a84683e26, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5560447301589134561, guid: b0829f474a07a334899c407a84683e26, type: 3}
       propertyPath: m_Name
       value: ShaderSwaper
@@ -10686,6 +10717,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5560447301589134574, guid: b0829f474a07a334899c407a84683e26, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5560447302268754730, guid: b0829f474a07a334899c407a84683e26, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5560447302716563383, guid: b0829f474a07a334899c407a84683e26, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class MusicManager : MonoBehaviour
 {
+    public static MusicManager singleton_MusicManager;
     public bool preparingSequence=false;
     private bool sequenceInProgress=false;
     public AK.Wwise.Event OurEvent;
@@ -48,6 +49,18 @@ public class MusicManager : MonoBehaviour
     //Public
     public int AttackCounter;
     private ActionSlotManager ourActionSlotManager;
+    
+    private void Awake()
+    {
+        if (singleton_MusicManager != null && singleton_MusicManager != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            singleton_MusicManager = this;
+        }
+    }
     
     // Start is called before the first frame update
     void Start()

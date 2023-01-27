@@ -4,6 +4,7 @@ using MoreMountains.Feedbacks;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class AttackMenu : MonoBehaviour
 {
@@ -11,9 +12,11 @@ public class AttackMenu : MonoBehaviour
     protected GameObject limbCanvas;
     protected GameObject userInterface;
     public ActionSlotManager ourActionSlotManager;
+
+    private UserInterface userInterfaceScript;
     //State
     [SerializeField] public State MenuState;
-    private UIManager ourUI;
+    private UIManager ourUIManager;
     //Bool
     private bool stateGate;
     private bool hoverEffectPlayed;
@@ -27,9 +30,10 @@ public class AttackMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        userInterface = GameObject.Find("UserInterface");
-        limbCanvas = userInterface.transform.GetChild(1).gameObject;
-        ourUI = gameObject.GetComponent<UIManager>();
+        userInterface = UserInterface.singleton_UserInterface.GameObject();
+        userInterfaceScript = userInterface.GetComponent<UserInterface>();
+        limbCanvas = userInterfaceScript.attackCanvas;
+        ourUIManager = gameObject.GetComponent<UIManager>();
         ourActionSlotManager = GameObject.Find("ActionSlotManager").GetComponent<ActionSlotManager>();
     }
 
@@ -43,7 +47,7 @@ public class AttackMenu : MonoBehaviour
                 break;
             case State.LimbList:
                 //Set our Navigation limit to the amount of monster Limbs
-                ourUI.NavigationLimit = new Vector3(0, 0,-1*(UIManager.selectedMonster.GetComponent<MonsterData>().limbHealth.Length-1));
+                ourUIManager.NavigationLimit = new Vector3(0, 0,-1*(UIManager.selectedMonster.GetComponent<MonsterData>().limbHealth.Length-1));
                 DeployAttackMenu();
                 break;
             case State.SelectMonster:
@@ -62,36 +66,36 @@ public class AttackMenu : MonoBehaviour
         public void DeployAttackMenu()
     {
         GenerateLimbs();
-        if (ourUI.menuNavigation.y == 0) //Limb #1
+        if (ourUIManager.menuNavigation.y == 0) //Limb #1
         {
             UIManager.selectedMonster.GetComponent<MonsterData>().ShowLimb(0);
-            ourUI.actionBlock.transform.GetChild(0).GetComponent<Image>().color = Color.red;
+            ourUIManager.actionBlock.transform.GetChild(0).GetComponent<Image>().color = Color.red;
         }
-        else if (ourUI.menuNavigation.y == -1) //Limb #1
+        else if (ourUIManager.menuNavigation.y == -1) //Limb #1
         {
             UIManager.selectedMonster.GetComponent<MonsterData>().ShowLimb(1);
-            ourUI.actionBlock.transform.GetChild(1).GetComponent<Image>().color = Color.red;
+            ourUIManager.actionBlock.transform.GetChild(1).GetComponent<Image>().color = Color.red;
         }
-        else if (ourUI.menuNavigation.y == -2) //Limb #1
+        else if (ourUIManager.menuNavigation.y == -2) //Limb #1
         {
             UIManager.selectedMonster.GetComponent<MonsterData>().ShowLimb(2);
-            ourUI. actionBlock.transform.GetChild(2).GetComponent<Image>().color = Color.red;
+            ourUIManager. actionBlock.transform.GetChild(2).GetComponent<Image>().color = Color.red;
         }
-        else if (ourUI.menuNavigation.y == -3) //Limb #1
+        else if (ourUIManager.menuNavigation.y == -3) //Limb #1
         {
             UIManager.selectedMonster.GetComponent<MonsterData>().ShowLimb(3);
-            ourUI.actionBlock.transform.GetChild(3).GetComponent<Image>().color = Color.red;
+            ourUIManager.actionBlock.transform.GetChild(3).GetComponent<Image>().color = Color.red;
         }
-        else if (ourUI.menuNavigation.y == -4) //Limb #1
+        else if (ourUIManager.menuNavigation.y == -4) //Limb #1
         {
             UIManager.selectedMonster.GetComponent<MonsterData>().ShowLimb(4);
-            ourUI.actionBlock.transform.GetChild(4).GetComponent<Image>().color = Color.red;
+            ourUIManager.actionBlock.transform.GetChild(4).GetComponent<Image>().color = Color.red;
         }
 
         if (Input.GetKeyDown("space")) //Create Action 
         {
             //CombatManager.AwaitAttack(); //Start Attack
-            CreateAction(UIManager.selectedMonster,ourUI.menuNavigation.y);
+            CreateAction(UIManager.selectedMonster,ourUIManager.menuNavigation.y);
             ChangeState(State.Inactive);
             HideLimbs();
         }
@@ -99,10 +103,10 @@ public class AttackMenu : MonoBehaviour
         {
             HideLimbs();
             ChangeState(State.SelectMonster);
-            ourUI.resetBlocks();
-            ourUI.NavigationLimit = NewNavigationLimit();
-            ourUI.menuNavigation = ourUI.lastMenuNavigation;
-            //ourUI.lastMenuNavigation.x = 0;
+            ourUIManager.resetBlocks();
+            ourUIManager.NavigationLimit = NewNavigationLimit();
+            ourUIManager.menuNavigation = ourUIManager.lastMenuNavigation;
+            //ourUIManager.lastMenuNavigation.x = 0;
         }
         
     }
@@ -110,8 +114,8 @@ public class AttackMenu : MonoBehaviour
         public void CreateAction(GameObject SelectedMonster, float SelectedLimb)
         {
             ourActionSlotManager.SpawnAttackAction(SelectedMonster,SelectedLimb);
-            ourUI.resetBlocks();
-            ourUI.RestartMenu();
+            ourUIManager.resetBlocks();
+            ourUIManager.RestartMenu();
         }
         
     private Vector2 NewNavigationLimit()
@@ -164,7 +168,7 @@ public class AttackMenu : MonoBehaviour
                 tempLimb.SetActive(false);
             }
             selectedData.HideLimbs();
-            ourUI.actionBlock.SetActive(false);
+            ourUIManager.actionBlock.SetActive(false);
         }
     }
     
@@ -174,13 +178,13 @@ public class AttackMenu : MonoBehaviour
         int hoveredMonster = 0; 
         if (CombatManager.enemyCount <= 1) //If only 1 enemy on screen
         {
-            ourUI.NavigationLimit = new Vector3(0, 0,0); //Change our navigation limit
+            ourUIManager.NavigationLimit = new Vector3(0, 0,0); //Change our navigation limit
             hoveredMonster = 0; //Change our hovered monster int
         }
         else if (CombatManager.enemyCount == 2) //If two enemies on Screen
         {
-            ourUI.NavigationLimit = new Vector3(1, 0,0);
-            if (ourUI.menuNavigation.x == 0)
+            ourUIManager.NavigationLimit = new Vector3(1, 0,0);
+            if (ourUIManager.menuNavigation.x == 0)
             {
                 hoveredMonster = 0;
             }
@@ -191,16 +195,16 @@ public class AttackMenu : MonoBehaviour
         }
         else if (CombatManager.enemyCount == 3) //If three enemies on Screen
         {
-            ourUI.NavigationLimit = new Vector3(2, 0,0);
-            if (ourUI.menuNavigation.x == 1)
+            ourUIManager.NavigationLimit = new Vector3(2, 0,0);
+            if (ourUIManager.menuNavigation.x == 1)
             {
                 hoveredMonster = 0;
             }
-            else if (ourUI.menuNavigation.x == 2)
+            else if (ourUIManager.menuNavigation.x == 2)
             {
                 hoveredMonster = 2;
             }
-            else if (ourUI.menuNavigation.x == 0)
+            else if (ourUIManager.menuNavigation.x == 0)
             {
                 hoveredMonster = 1;
             }
@@ -211,15 +215,15 @@ public class AttackMenu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             //Reset Monsters
-            ourUI.ResetMonsters();
+            ourUIManager.ResetMonsters();
             //Return to previous state
             ChangeState(State.Inactive);
             //Reset values and return to home menu
-            ourUI.RestartMenu();
-            ourUI.ChangeState(UIManager.State.Home);
-            ourUI.NavigationLimit = new Vector3(3, 0,0);
-            ourUI.menuNavigation.x = 0;
-            ourUI.resetBlocks();
+            ourUIManager.RestartMenu();
+            ourUIManager.ChangeState(UIManager.State.Home);
+            ourUIManager.NavigationLimit = new Vector3(3, 0,0);
+            ourUIManager.menuNavigation.x = 0;
+            ourUIManager.resetBlocks();
             hoverEffectPlayed = false;
 
         }
@@ -230,18 +234,18 @@ public class AttackMenu : MonoBehaviour
     private void PrepareMonster(int hoveredMonster)
     {
         //Change Navigation Limit to amount of enemies on screen
-        ourUI.NavigationLimit = new Vector3(ourUI.encounteredEnemies.transform.childCount-1, 0,-1);
+        ourUIManager.NavigationLimit = new Vector3(ourUIManager.encounteredEnemies.transform.childCount-1, 0,-1);
         //If hovering over a monster do on screen effect (Enlarge Them)
-        for (int i = 0; i < ourUI.encounteredEnemies.transform.childCount; i++)
+        for (int i = 0; i < ourUIManager.encounteredEnemies.transform.childCount; i++)
         {
             if (i != hoveredMonster) //Hover Exit
             {
-                MMF_Player ourJuice = ourUI.encounteredEnemies.transform.GetChild(i).transform.GetChild(0).transform.GetChild(3).GetComponent<MMF_Player>();
+                MMF_Player ourJuice = ourUIManager.encounteredEnemies.transform.GetChild(i).transform.GetChild(0).transform.GetChild(3).GetComponent<MMF_Player>();
                 ourJuice.PlayFeedbacks();
             }
             else //Hover Enter
             {
-                MMF_Player ourJuice = ourUI.encounteredEnemies.transform.GetChild(i).transform.GetChild(0).transform.GetChild(2).GetComponent<MMF_Player>();
+                MMF_Player ourJuice = ourUIManager.encounteredEnemies.transform.GetChild(i).transform.GetChild(0).transform.GetChild(2).GetComponent<MMF_Player>();
                 if(!hoverEffectPlayed) { ourJuice.PlayFeedbacks(); hoverEffectPlayed = true;}
             }
         }
@@ -254,14 +258,14 @@ public class AttackMenu : MonoBehaviour
         if (Input.GetKeyDown("space")) //If player presses space, select that monster
         {
             //Change Selected Monster
-            UIManager.selectedMonster = ourUI.encounteredEnemies.transform.GetChild(hoveredMonster).gameObject;
+            UIManager.selectedMonster = ourUIManager.encounteredEnemies.transform.GetChild(hoveredMonster).gameObject;
             //Reset Monster Sizes
-            ourUI.ResetMonsters();
+            ourUIManager.ResetMonsters();
             hoverEffectPlayed = false;
             //Change State
             ChangeState(State.LimbList);
             //Change Previous Navigation
-            ourUI.lastMenuNavigation = ourUI.menuNavigation;
+            ourUIManager.lastMenuNavigation = ourUIManager.menuNavigation;
         }
         
     }

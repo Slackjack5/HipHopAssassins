@@ -18,6 +18,8 @@ public class MagicMenu : MonoBehaviour
     private Spell selectedSpell;
     //GameObjects
     private GameObject ourMagicMenu;
+    //Scripts
+    private UserInterface userInterfaceScript;
     //Bool
     private bool stateGate;
     private GameObject ourPlayer;
@@ -34,6 +36,7 @@ public class MagicMenu : MonoBehaviour
     void Start()
     {
         ourUI = gameObject.GetComponent<UIManager>();
+        userInterfaceScript = UserInterface.singleton_UserInterface.GetComponent<UserInterface>();
         ourSpellDictionary = GameObject.Find("SpellDictionary").GetComponent<SpellDictionary>();
         ourMagicMenu = GameObject.Find("UserInterface").transform.GetChild(2).GameObject();
         ourPlayer = GameObject.Find("Player");

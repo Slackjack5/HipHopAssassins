@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ActionSlotManager : MonoBehaviour
 {
+    public static ActionSlotManager singleton_ActionSlotManager;
     public List<AttackAction> Actions = new List<AttackAction>();
 
     public GameObject AttackGameObject;
@@ -12,6 +13,20 @@ public class ActionSlotManager : MonoBehaviour
     private GameObject actionGrid;
 
     private int nextSlot;
+    
+    private void Awake()
+    {
+        if (singleton_ActionSlotManager != null && singleton_ActionSlotManager != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            singleton_ActionSlotManager = this;
+        }
+    }
+
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +58,7 @@ public class ActionSlotManager : MonoBehaviour
             Debug.Log("Action Slots Full");
         }
     }
+    
 
     private void HighlightCurrentBar()
     {
