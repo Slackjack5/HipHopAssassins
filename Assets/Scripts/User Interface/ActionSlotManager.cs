@@ -7,6 +7,7 @@ public class ActionSlotManager : MonoBehaviour
 {
     public static ActionSlotManager singleton_ActionSlotManager;
     public List<AttackAction> Actions = new List<AttackAction>();
+    
 
     public GameObject AttackGameObject;
 
@@ -46,9 +47,17 @@ public class ActionSlotManager : MonoBehaviour
             Debug.Log("Spawning Attack Action");
             nextSlot = Actions.Count;
             GameObject ourNewAction = Instantiate(AttackGameObject); //Spawn Object
+            AttackAction ourAttackAction = ourNewAction.GetComponent<AttackAction>();
+            if (PlayerScript.singleton_Player.actionPoints >= ourAttackAction.actionCost)
+            {
+                
+            }
+            else
+            {
+                ourAttackAction.RiskyAttack = true;
+            }
             ourNewAction.transform.SetParent(actionGrid.transform.GetChild(nextSlot)); //Set Parent
             ourNewAction.GetComponent<Image>().rectTransform.localPosition = new Vector3(0, 0, 0); //Set Position
-            AttackAction ourAttackAction = ourNewAction.GetComponent<AttackAction>();
             ourAttackAction.SelectedMonster = SelectedMonster;
             ourAttackAction.SelectedLimb = SelectedLimb;
             Actions.Add(ourAttackAction);

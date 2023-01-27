@@ -91,5 +91,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackType: Physical
   SelectedMonster: {fileID: 0}
+  actionCost: 25
+  RiskyAttack: 0
   SelectedLimb: 0
   SelectedAction: {fileID: 0}
+  ourIcon: {fileID: 175053181409590451}

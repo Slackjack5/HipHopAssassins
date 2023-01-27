@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using Unity.VisualScripting;
 
 public class UserInterface : MonoBehaviour
 {
@@ -11,6 +13,9 @@ public class UserInterface : MonoBehaviour
     public GameObject itemCanvas;
     public GameObject confirmationCanvas;
     public GameObject Button;
+    public GameObject ActionPointCanvas;
+    public GameObject StrikeOutCanvas;
+    
 
     private void Awake()
     {
@@ -78,12 +83,19 @@ public class UserInterface : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
         
+        
+        //Update our amount of Action Points
+
+        GameObject textObject = ActionPointCanvas.transform.GetChild(0).GameObject();
+        TextMeshProUGUI textmeshPro = textObject.GetComponent<TextMeshProUGUI>();
+        textmeshPro.SetText("Action Points: "+PlayerScript.singleton_Player.actionPoints+" / " + PlayerScript.singleton_Player.actionPointMax);
+        //textObject.transform.GetComponent<TextMeshPro>().text = "Hello It Works";
     }
 }

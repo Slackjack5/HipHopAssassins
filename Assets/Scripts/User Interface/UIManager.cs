@@ -117,8 +117,10 @@ public class UIManager : MonoBehaviour
         
     }
 
+    
     public void resetBlocks()
     {
+        /*
         for (int i = 0; i < userInterface.transform.childCount; i++)
         {
             foreach (Transform child in userInterface.transform.GetChild(i).transform)
@@ -126,6 +128,7 @@ public class UIManager : MonoBehaviour
                 child.GetComponent<Image>().color = Color.white;
             }
         }
+        */
 
         if (selectedMonster!=null){selectedMonster.GetComponent<MonsterData>().HideLimbs();}
     }

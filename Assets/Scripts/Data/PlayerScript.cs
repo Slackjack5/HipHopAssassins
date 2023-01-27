@@ -8,6 +8,8 @@ public class PlayerScript : MonoBehaviour
     
     [SerializeField] private int Level;
     [SerializeField] public int Health;
+    public int actionPoints;
+    public int actionPointMax=100;
     public int hitsMax;
     public int attackMin;
     public int attackMax;

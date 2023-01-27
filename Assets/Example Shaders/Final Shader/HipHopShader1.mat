@@ -22,7 +22,7 @@ Material:
     m_TexEnvs:
     - _Texture:
         m_Texture: {fileID: 2800000, guid: 5efa846b99d062b4697c4435215cb0fe, type: 3}
-        m_Scale: {x: 4, y: 4}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2:
         m_Texture: {fileID: 2800000, guid: 0bdb020a90b5f5247ab5695053e84e11, type: 3}
@@ -34,9 +34,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Amplitude: 0.562
-    - _Frequency: 2.53
-    - _Scale: 0.321
+    - _Amplitude: 0.56
+    - _Frequency: 3.1
+    - _Scale: 0.2
     - _hour: 0
     - _minute: 0
     - _second: 0
