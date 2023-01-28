@@ -21,7 +21,7 @@ public class MusicManager : MonoBehaviour
     public List<float> CueTimes = new List<float>();
     public List<String> AttackType = new List<String>();
     public List<GameObject> CueObjects = new List<GameObject>();
-    public static int cueIndex;
+    public int cueIndex;
     public int hitIndex;
     
     //Data
@@ -103,6 +103,11 @@ public class MusicManager : MonoBehaviour
         cueIndex = 0;
         playingID = 0;
         hitIndex = 0;
+        //Destroy All Queue Circles
+        foreach (GameObject CueObject in CueObjects)
+        {
+            Destroy(CueObject);
+        }
         //Wipe List
         CueTimes.Clear();
         AttackType.Clear();
@@ -171,13 +176,16 @@ public class MusicManager : MonoBehaviour
                         {
                             AkSoundEngine.PostEvent("Play_PS1", gameObject);
                             CombatManager.playerMeleeAttack(1);
+                            PlayerScript.singleton_Player.GainActionPoints(PlayerScript.singleton_Player.APHit*3);
                         }
                         else if (AttackType[hitIndex] == "PS2")
                         {
                             AkSoundEngine.PostEvent("Play_PS2", gameObject);
                             CombatManager.playerMeleeAttack(2);
+                            PlayerScript.singleton_Player.GainActionPoints(PlayerScript.singleton_Player.APHit*3);
                         }
-                        hitIndex++;
+                        NextInLine();
+                        //hitIndex++;
                     }
 
                 }
@@ -191,15 +199,18 @@ public class MusicManager : MonoBehaviour
                         {
                             AkSoundEngine.PostEvent("Play_PS1", gameObject);
                             CombatManager.playerMeleeAttack(1);
+                            PlayerScript.singleton_Player.GainActionPoints(PlayerScript.singleton_Player.APHit*2);
                         }
                         else if (AttackType[hitIndex] == "PS2")
                         {
                             AkSoundEngine.PostEvent("Play_PS2", gameObject);
                             CombatManager.playerMeleeAttack(2);
+                            PlayerScript.singleton_Player.GainActionPoints(PlayerScript.singleton_Player.APHit*2);
                         }
                         Debug.Log("Great Hit");
                         
-                        hitIndex++;
+                        NextInLine();
+                        //hitIndex++;
                     }
                 }
             else
@@ -211,13 +222,16 @@ public class MusicManager : MonoBehaviour
                     {
                         AkSoundEngine.PostEvent("Play_PS1", gameObject);
                         CombatManager.playerMeleeAttack(1);
+                        PlayerScript.singleton_Player.GainActionPoints(PlayerScript.singleton_Player.APHit*1);
                     }
                     else if (AttackType[hitIndex] == "PS2")
                     {
                         AkSoundEngine.PostEvent("Play_PS2", gameObject);
                         CombatManager.playerMeleeAttack(2);
+                        PlayerScript.singleton_Player.GainActionPoints(PlayerScript.singleton_Player.APHit*1);
                     }
-                    hitIndex++;
+                    NextInLine();
+                    //hitIndex++;
                     Debug.Log("Ok Hit");
                 }
             }
@@ -231,16 +245,26 @@ public class MusicManager : MonoBehaviour
             {
                 Debug.Log("Miss Hit");
                 CombatManager.playerMeleeMiss();
-                hitIndex++;
+                NextInLine();
+                //hitIndex++;
             }
         }
 
         if (error < (-leniency/4)) //If player goes over time
         {
             if (hitIndex < CueObjects.Count){CueObjects[hitIndex].GetComponent<Image>().color = new Color32(25,144,144,255);}
-            hitIndex++;
+            NextInLine();
+            //hitIndex++;
             CombatManager.playerMeleeMiss();
         }
+    }
+
+    private void NextInLine()
+    {
+        hitIndex++;
+        //CueObjects.RemoveAt(hitIndex);
+        //CueTimes.RemoveAt(hitIndex);
+        //AttackType.RemoveAt(hitIndex);
     }
     
 

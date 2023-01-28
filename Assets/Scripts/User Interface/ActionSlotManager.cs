@@ -55,8 +55,9 @@ public class ActionSlotManager : MonoBehaviour
             Actions.Add(ourAttackAction);
             //Edit Cost
             Actions[0].actionCost = 0; //Make the First Attack Action Free
+            CalculateSequenceCost();
             //Allocate Resources
-            if (PlayerScript.singleton_Player.actionPoints >= ourAttackAction.actionCost) //If Player assigns and has enough.
+            if (PlayerScript.singleton_Player.actionPoints >= SequenceCost) //If Player assigns and has enough.
             {
                 
             }
@@ -68,8 +69,6 @@ public class ActionSlotManager : MonoBehaviour
             //Move Object
             ourNewAction.transform.SetParent(actionGrid.transform.GetChild(nextSlot)); //Set Parent
             ourNewAction.GetComponent<Image>().rectTransform.localPosition = new Vector3(0, 0, 0); //Set Position
-
-            CalculateSequenceCost();
         }
         else
         {
@@ -114,7 +113,7 @@ public class ActionSlotManager : MonoBehaviour
     public void SubtractActionCost()
     {
         //Subtract the amount of actions points equal to the action on our current bar
-        PlayerScript.singleton_Player.actionPoints -= Actions[GlobalVariables.currentBar - 1].actionCost;
+        PlayerScript.singleton_Player.SubtractActionPoints(Actions[GlobalVariables.currentBar - 1].actionCost);
     }
 
     private void CalculateSequenceCost()

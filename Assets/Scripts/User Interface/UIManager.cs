@@ -156,14 +156,15 @@ public class UIManager : MonoBehaviour
         userInterfaceScript.enableHome();
         //Enable Home UI
         ChangeState(State.Home);
-        userInterface.SetActive(true);
+        userInterface.transform.GetChild(0).gameObject.SetActive(true);
         ourActionSlotManager.WipeActions();
     }
 
     public void DisableMenu()
     {
         ChangeState(State.Disabled);
-        userInterface.SetActive(false);
+        userInterface.transform.GetChild(0).gameObject.SetActive(false);
+        //Disable Certain Features
     }
 
     private void AwaitingStart()

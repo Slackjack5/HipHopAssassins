@@ -100,7 +100,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: d48f69856955d54c95226e947abebbff
     GuidInternal: 
-    m_lastTime: -8585311330412196696
+    m_lastTime: -8585267152587831028
     List:
     - name: Environment
       guid: 3039fc54f4dbe84fa5eebe1ebad2abaf
@@ -128,8 +128,25 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: acc6a2fb7d38a941a3202be7b4b7e5ca
     GuidInternal: 
-    m_lastTime: -8585311330412067053
+    m_lastTime: -8585267152587365886
     List:
+    - name: Play_AttackLockOut
+      guid: 9c724fc879f1034887c25ac5830397c1
+      id: 3088888349
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: acc6a2fb7d38a941a3202be7b4b7e5ca
+      - ElementName: Play_AttackLockOut
+        ObjectType: 3
+        guid: 9c724fc879f1034887c25ac5830397c1
+      Path: Events\Default Work Unit\Play_AttackLockOut
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: Play_AttackSequences
       guid: 3d5f7710cbcbbc40bc0c471704b3eb1f
       id: 399042744
@@ -161,6 +178,23 @@ MonoBehaviour:
         ObjectType: 3
         guid: 1f9e7e7af726fc41834d57fdf0e81202
       Path: Events\Default Work Unit\Play_AttackTrack172BPM
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_CancleAttackLockout
+      guid: 30bdbda67813e24896ce4a03a42a1862
+      id: 505022273
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: acc6a2fb7d38a941a3202be7b4b7e5ca
+      - ElementName: Play_CancleAttackLockout
+        ObjectType: 3
+        guid: 30bdbda67813e24896ce4a03a42a1862
+      Path: Events\Default Work Unit\Play_CancleAttackLockout
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -246,6 +280,23 @@ MonoBehaviour:
         ObjectType: 3
         guid: 899f77550d28624b8a1797f16178f3b2
       Path: Events\Default Work Unit\Stop_AttackSequences
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Stop_Sequence
+      guid: 258c6497b2949b41a46bcc9b51fa2d70
+      id: 3211527319
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: acc6a2fb7d38a941a3202be7b4b7e5ca
+      - ElementName: Stop_Sequence
+        ObjectType: 3
+        guid: 258c6497b2949b41a46bcc9b51fa2d70
+      Path: Events\Default Work Unit\Stop_Sequence
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1

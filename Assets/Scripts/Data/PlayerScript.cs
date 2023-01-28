@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,8 +9,10 @@ public class PlayerScript : MonoBehaviour
     
     [SerializeField] private int Level;
     [SerializeField] public int Health;
-    public int actionPoints;
-    public int actionPointMax=100;
+    public float actionPoints;
+    public float APHit = 2;
+    public float APRegen = 1f;
+    public float actionPointMax=100;
     public int Strikes;
     public int hitsMax;
     public int attackMin;
@@ -35,6 +38,16 @@ public class PlayerScript : MonoBehaviour
         
     }
 
+    public void GainActionPoints(float amount)
+    {
+        actionPoints += amount;
+    }
+    
+    public void SubtractActionPoints(float amount)
+    {
+        actionPoints -= amount;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -42,5 +55,18 @@ public class PlayerScript : MonoBehaviour
         {
             CombatManager.singleton_CombatManager.LockOut();
         }
+    }
+    
+    
+
+    void FixedUpdate()
+    {
+        //Generate Action Points Passively
+        RegenerateAP();
+    }
+
+    private void RegenerateAP()
+    {
+        GainActionPoints(APRegen);
     }
 }

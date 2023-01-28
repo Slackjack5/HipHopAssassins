@@ -40,9 +40,9 @@ public class BeatEntity : MonoBehaviour
         ring.localScale = Vector3.Lerp(strartingSize, new Vector3(1,1,1), currentTime / travelTime);
       }
 
-      if (indexNumber == MusicManager.cueIndex-1)
+      if (indexNumber == MusicManager.singleton_MusicManager.cueIndex-1)
       {
-        Debug.Log("Current Index: "+indexNumber + " musicManager index: "+MusicManager.cueIndex);
+        Debug.Log("Current Index: "+indexNumber + " musicManager index: "+ MusicManager.singleton_MusicManager.cueIndex);
       }
       currentTime += Time.deltaTime;
     }
@@ -51,13 +51,13 @@ public class BeatEntity : MonoBehaviour
       if (reachedMiddle)
       {
         // Reached the end of the track, so destroy this object.
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        gameObject.SetActive(false);
       }
       else
       {
         if (!attackUsed) //If we reach the middle, Whiff an Attack
         {
-
           attackUsed=true;
         }
         reachedMiddle = true;
