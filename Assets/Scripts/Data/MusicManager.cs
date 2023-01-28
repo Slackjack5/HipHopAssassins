@@ -255,6 +255,7 @@ public class MusicManager : MonoBehaviour
             if (AttackCounter > 0)
             {
                 AttackCounter--;
+                ourActionSlotManager.SubtractActionCost();
             }
             else
             {

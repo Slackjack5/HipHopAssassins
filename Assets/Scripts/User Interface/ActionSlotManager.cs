@@ -10,6 +10,7 @@ public class ActionSlotManager : MonoBehaviour
     
 
     public GameObject AttackGameObject;
+    public int SequenceCost;
 
     private GameObject actionGrid;
 
@@ -44,23 +45,31 @@ public class ActionSlotManager : MonoBehaviour
     {
         if (Actions.Count < 4)
         {
-            Debug.Log("Spawning Attack Action");
+            //Prepare 
             nextSlot = Actions.Count;
             GameObject ourNewAction = Instantiate(AttackGameObject); //Spawn Object
             AttackAction ourAttackAction = ourNewAction.GetComponent<AttackAction>();
-            if (PlayerScript.singleton_Player.actionPoints >= ourAttackAction.actionCost)
-            {
-                
-            }
-            else
-            {
-                ourAttackAction.RiskyAttack = true;
-            }
-            ourNewAction.transform.SetParent(actionGrid.transform.GetChild(nextSlot)); //Set Parent
-            ourNewAction.GetComponent<Image>().rectTransform.localPosition = new Vector3(0, 0, 0); //Set Position
+            //Add Action to List
             ourAttackAction.SelectedMonster = SelectedMonster;
             ourAttackAction.SelectedLimb = SelectedLimb;
             Actions.Add(ourAttackAction);
+            //Edit Cost
+            Actions[0].actionCost = 0; //Make the First Attack Action Free
+            //Allocate Resources
+            if (PlayerScript.singleton_Player.actionPoints >= ourAttackAction.actionCost) //If Player assigns and has enough.
+            {
+                
+            }
+            else //If player assigns action but doesnt have enough
+            {
+                ourAttackAction.RiskyAttack = true;
+            }
+            
+            //Move Object
+            ourNewAction.transform.SetParent(actionGrid.transform.GetChild(nextSlot)); //Set Parent
+            ourNewAction.GetComponent<Image>().rectTransform.localPosition = new Vector3(0, 0, 0); //Set Position
+
+            CalculateSequenceCost();
         }
         else
         {
@@ -102,6 +111,34 @@ public class ActionSlotManager : MonoBehaviour
         
     }
 
+    public void SubtractActionCost()
+    {
+        //Subtract the amount of actions points equal to the action on our current bar
+        PlayerScript.singleton_Player.actionPoints -= Actions[GlobalVariables.currentBar - 1].actionCost;
+        
+    }
+
+    private void CalculateSequenceCost()
+    {
+        int sum=0;
+        foreach (AttackAction action in Actions)
+        {
+            sum += action.actionCost;
+        }
+
+        SequenceCost = sum;
+    }
+
+    public void ErasePreviousAction()
+    {
+        GameObject previousAction = Actions[Actions.Count-1].gameObject; //Find the Game Object of Our Action
+        AttackAction Action = Actions[Actions.Count - 1]; //Find the Script of said Action
+        SequenceCost -= Action.actionCost; //Subtract its cost from the Sum
+        //Remove said action from list and destroy
+        Actions.Remove(Action);
+        Destroy(previousAction);
+    }
+
     public void WipeActions()
     {
         for (int i = 0; i < Actions.Count; i++)
@@ -110,5 +147,8 @@ public class ActionSlotManager : MonoBehaviour
             Destroy(currentAction);
         }
         Actions.Clear();
+        //Wipe Sequence Cost
+        SequenceCost = 0;
     }
+    
 }

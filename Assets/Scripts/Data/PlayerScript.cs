@@ -10,6 +10,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] public int Health;
     public int actionPoints;
     public int actionPointMax=100;
+    public int Strikes;
     public int hitsMax;
     public int attackMin;
     public int attackMax;
@@ -37,6 +38,9 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (actionPoints < 0)
+        {
+            CombatManager.singleton_CombatManager.LockOut();
+        }
     }
 }

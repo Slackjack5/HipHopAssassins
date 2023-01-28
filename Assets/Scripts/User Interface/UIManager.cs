@@ -175,6 +175,11 @@ public class UIManager : MonoBehaviour
             resetBlocks();
             DisableMenu();
         }
+        
+        if (Input.GetKeyDown("e") && ourActionSlotManager.Actions.Count>0) //Create Action 
+        {
+            ActionSlotManager.singleton_ActionSlotManager.ErasePreviousAction();
+        }
     }
 
     protected virtual void Update()
@@ -197,6 +202,8 @@ public class UIManager : MonoBehaviour
                 NavigationLimit = new Vector3(3, 0,0);
                 //On Hover Effect
                 actionBlock.transform.GetChild((int) menuNavigation.x).GetComponent<Image>().color=Color.red;
+                //Allow Player to erase Previous action
+                
                 AwaitingStart();
                 break;
             case State.Attack:

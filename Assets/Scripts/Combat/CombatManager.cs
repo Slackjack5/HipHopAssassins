@@ -92,7 +92,7 @@ public class CombatManager : MonoBehaviour
                     break;
                 case State.PlayerTurn:
                     Debug.Log("In Player Turn");
-
+                    
                     break;
                 case State.MonsterTurn:
                     Debug.Log("In Monster Turn");
@@ -208,6 +208,13 @@ public class CombatManager : MonoBehaviour
         public static void DamageMonsterHealth(MonsterData ourMonster, String DamageType, int damage)
         {
 
+        }
+
+        public void LockOut() //If The Player spends more then they have action points for, They get locked out and gain a strike.
+        {
+            //Set Player AP to 0
+            PlayerScript.singleton_Player.actionPoints = 0;
+            PlayerScript.singleton_Player.Strikes += 1;
         }
 
         public static void HealPlayer(int healAmount)

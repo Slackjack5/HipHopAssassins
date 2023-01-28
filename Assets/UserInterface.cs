@@ -14,6 +14,7 @@ public class UserInterface : MonoBehaviour
     public GameObject confirmationCanvas;
     public GameObject Button;
     public GameObject ActionPointCanvas;
+    public GameObject SequenceCostCanvas;
     public GameObject StrikeOutCanvas;
     
 
@@ -92,10 +93,17 @@ public class UserInterface : MonoBehaviour
         
         
         //Update our amount of Action Points
-
-        GameObject textObject = ActionPointCanvas.transform.GetChild(0).GameObject();
-        TextMeshProUGUI textmeshPro = textObject.GetComponent<TextMeshProUGUI>();
+        GameObject actionpointText = ActionPointCanvas.transform.GetChild(0).GameObject();
+        TextMeshProUGUI textmeshPro = actionpointText.GetComponent<TextMeshProUGUI>();
         textmeshPro.SetText("Action Points: "+PlayerScript.singleton_Player.actionPoints+" / " + PlayerScript.singleton_Player.actionPointMax);
+        //Update our amount of Sequence Cost
+        GameObject SequenceCostText = SequenceCostCanvas.transform.GetChild(0).GameObject();
+        TextMeshProUGUI textmeshPro2 = SequenceCostText.GetComponent<TextMeshProUGUI>();
+        textmeshPro2.SetText("Sequence Cost: "+ActionSlotManager.singleton_ActionSlotManager.SequenceCost+" / " + PlayerScript.singleton_Player.actionPointMax);
+        //Update our amount of Strikes
+        GameObject StrikesText = StrikeOutCanvas.transform.GetChild(0).GameObject();
+        TextMeshProUGUI textmeshPro3 = StrikesText.GetComponent<TextMeshProUGUI>();
+        textmeshPro3.SetText("Strikes: "+PlayerScript.singleton_Player.Strikes+" / " + "3");
         //textObject.transform.GetComponent<TextMeshPro>().text = "Hello It Works";
     }
 }
