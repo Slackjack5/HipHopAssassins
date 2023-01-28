@@ -81,10 +81,22 @@ public class MusicManager : MonoBehaviour
         //Update Attack Counter
         AttackCounter = ourActionSlotManager.Actions.Count-1;
     }
-
+    
+    public void EnableQTELockout()
+    {
+        foreach (GameObject QTE in CueObjects)
+        {
+            QTE.GetComponent<BeatEntity>().EnableLockout();
+        }
+        
+        //Turn Off Attack Sequence
+        AkSoundEngine.PostEvent("Play_AttackLockout", gameObject);
+    }
     public void ResetVariables()
     {
         AkSoundEngine.PostEvent("Stop_AttackSequences", gameObject);
+        AkSoundEngine.PostEvent("Play_CancleAttackLockout", gameObject);
+        CombatManager.singleton_CombatManager.LockedOut = false;
         sequenceInProgress=false;
         preparingSequence = false;
         attackInProgress = false;
@@ -125,8 +137,8 @@ public class MusicManager : MonoBehaviour
         {
             NoteSpawner();
         }
-
-        if (hitIndex < CueTimes.Count) // Check if Player Hit In Time
+        
+        if (hitIndex < CueTimes.Count && !CombatManager.singleton_CombatManager.LockedOut) // Check if Player Hit In Time
         {
             CheckHit(playheadPosition);
         }
@@ -255,7 +267,10 @@ public class MusicManager : MonoBehaviour
             if (AttackCounter > 0)
             {
                 AttackCounter--;
-                ourActionSlotManager.SubtractActionCost();
+                if (CombatManager.singleton_CombatManager.LockedOut == false)
+                {
+                    ourActionSlotManager.SubtractActionCost();
+                }
             }
             else
             {
@@ -290,6 +305,7 @@ public class MusicManager : MonoBehaviour
                 addTime(playheadPosition,"PS4");
                 break;
             case "Next":
+                Debug.Log("Next Called");
                 if (AttackCounter > 0)
                 {
                     AkSoundEngine.PostEvent("Play_AttackSequences", gameObject);
@@ -297,7 +313,6 @@ public class MusicManager : MonoBehaviour
                             (uint) (AkCallbackType.AK_MusicSyncAll | AkCallbackType.AK_EnableGetMusicPlayPosition),
                             MusicCallbackFunction);
                 }
-
                 break;
             case "Start":
                 AkSoundEngine.PostEvent("Play_AttackSequences", gameObject);
@@ -321,6 +336,7 @@ public class MusicManager : MonoBehaviour
         GameObject ourCircle = Instantiate(beatCircle);
         CueObjects.Add(ourCircle);
         BeatEntity ourEntity = ourCircle.GetComponent<BeatEntity>();
+        if(CombatManager.singleton_CombatManager.LockedOut){ourEntity.EnableLockout();}
         ourCircle.transform.SetParent(RhythmUI.transform);
         ourEntity.indexNumber = cueIndex;
         ourEntity.spawnerPos = RhythmUI.transform.GetChild(0).GetComponent<RectTransform>().transform;

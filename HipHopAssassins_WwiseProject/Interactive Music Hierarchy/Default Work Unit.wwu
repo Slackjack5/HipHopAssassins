@@ -1807,6 +1807,7 @@
 						<MusicPlaylistItem Name="" ID="{AA0DF95C-568F-438E-BBAD-0044FCB282C7}" ShortID="451715769">
 							<PropertyList>
 								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+								<Property Name="PlayMode" Type="int16" Value="1"/>
 							</PropertyList>
 							<ChildrenList>
 								<MusicPlaylistItem Name="" ID="{CCACADB8-7BF6-455B-AF98-BAB4EC604E4B}" ShortID="467137397">

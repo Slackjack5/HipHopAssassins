@@ -7,8 +7,11 @@
 					<ObjectInclusionList>
 						<ObjectRef Name="Play_PS2" ID="{4B06EBB5-CD96-4061-9222-D8C5D9425CE8}" WorkUnitID="{FBA2C6AC-387D-41A9-A320-2BE7B4B7E5CA}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_AttackSequences" ID="{10775F3D-CBCB-40BC-BC0C-471704B3EB1F}" WorkUnitID="{FBA2C6AC-387D-41A9-A320-2BE7B4B7E5CA}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Stop_Sequence" ID="{97648C25-94B2-419B-A46B-CC9B51FA2D70}" WorkUnitID="{FBA2C6AC-387D-41A9-A320-2BE7B4B7E5CA}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_AttackTrack172BPM" ID="{7A7E9E1F-26F7-41FC-834D-57FDF0E81202}" WorkUnitID="{FBA2C6AC-387D-41A9-A320-2BE7B4B7E5CA}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_AttackLockOut" ID="{C84F729C-F179-4803-87C2-5AC5830397C1}" WorkUnitID="{FBA2C6AC-387D-41A9-A320-2BE7B4B7E5CA}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_PS1" ID="{EFC92733-4AB4-4838-AE39-3D6C6BEF0F41}" WorkUnitID="{FBA2C6AC-387D-41A9-A320-2BE7B4B7E5CA}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_CancleAttackLockout" ID="{A6BDBD30-1378-48E2-96CE-4A03A42A1862}" WorkUnitID="{FBA2C6AC-387D-41A9-A320-2BE7B4B7E5CA}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Hit" ID="{9A6AE7A9-9EC5-4977-912A-C58629CE4A77}" WorkUnitID="{FBA2C6AC-387D-41A9-A320-2BE7B4B7E5CA}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Stop_AttackSequences" ID="{55779F89-280D-4B62-8A17-97F16178F3B2}" WorkUnitID="{FBA2C6AC-387D-41A9-A320-2BE7B4B7E5CA}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Trigger_Attack_85BPM" ID="{E801FEC8-846D-4CA6-8134-8A547D318E67}" WorkUnitID="{FBA2C6AC-387D-41A9-A320-2BE7B4B7E5CA}" Origin="Manual" Filter="7"/>

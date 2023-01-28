@@ -14,7 +14,10 @@ public class BeatEntity : MonoBehaviour
 
   private bool attackUsed;
   private RectTransform ring;
+  public GameObject LockOutX;
   private Vector3 strartingSize;
+
+  public bool LockedOut;
 
   private void Start()
   {
@@ -25,6 +28,7 @@ public class BeatEntity : MonoBehaviour
 
   private void Update()
   {
+
     if (currentTime < travelTime)
     {
       transform.position = reachedMiddle
@@ -60,5 +64,12 @@ public class BeatEntity : MonoBehaviour
         currentTime = 0;
       }
     }
+  }
+
+  public void EnableLockout()
+  {
+    LockedOut = true; //Enable Lockout for BeatEntity
+    LockOutX.SetActive(true); //Turn On X
+    transform.GetChild(0).gameObject.SetActive(false); //Turn Off Ring
   }
 }

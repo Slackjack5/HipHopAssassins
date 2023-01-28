@@ -13,13 +13,16 @@ namespace AK
 {
     namespace EVENTS
     {
+        static const AkUniqueID PLAY_ATTACKLOCKOUT = 3088888349U;
         static const AkUniqueID PLAY_ATTACKSEQUENCES = 399042744U;
         static const AkUniqueID PLAY_ATTACKTRACK172BPM = 1240998114U;
+        static const AkUniqueID PLAY_CANCLEATTACKLOCKOUT = 505022273U;
         static const AkUniqueID PLAY_HIT = 2960666077U;
         static const AkUniqueID PLAY_MUSIC_ENVIRONMENT = 2261903105U;
         static const AkUniqueID PLAY_PS1 = 2520504994U;
         static const AkUniqueID PLAY_PS2 = 2520504993U;
         static const AkUniqueID STOP_ATTACKSEQUENCES = 3102099450U;
+        static const AkUniqueID STOP_SEQUENCE = 3211527319U;
         static const AkUniqueID TRIGGER_ATTACK_85BPM = 992158907U;
     } // namespace EVENTS
 

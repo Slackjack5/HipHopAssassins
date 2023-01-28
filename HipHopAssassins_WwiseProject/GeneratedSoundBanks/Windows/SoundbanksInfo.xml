@@ -11,11 +11,12 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1229948536" Language="SFX" Hash="457917141">
+		<SoundBank Id="1229948536" Language="SFX" Hash="3432999377">
 			<ObjectPath>\SoundBanks\Default Work Unit\Environment</ObjectPath>
 			<ShortName>Environment</ShortName>
 			<Path>Environment.bnk</Path>
 			<IncludedEvents>
+				<Event Id="3088888349" Name="Play_AttackLockOut" ObjectPath="\Events\Default Work Unit\Play_AttackLockOut"/>
 				<Event Id="399042744" Name="Play_AttackSequences" ObjectPath="\Events\Default Work Unit\Play_AttackSequences">
 					<IncludedMemoryFiles>
 						<File Id="17586182" Language="SFX">
@@ -60,6 +61,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="505022273" Name="Play_CancleAttackLockout" ObjectPath="\Events\Default Work Unit\Play_CancleAttackLockout"/>
 				<Event Id="2960666077" Name="Play_Hit" ObjectPath="\Events\Default Work Unit\Play_Hit">
 					<IncludedMemoryFiles>
 						<File Id="95432837" Language="SFX">
@@ -93,6 +95,7 @@
 					</IncludedMemoryFiles>
 				</Event>
 				<Event Id="3102099450" Name="Stop_AttackSequences" ObjectPath="\Events\Default Work Unit\Stop_AttackSequences"/>
+				<Event Id="3211527319" Name="Stop_Sequence" ObjectPath="\Events\Default Work Unit\Stop_Sequence"/>
 				<Event Id="992158907" Name="Trigger_Attack_85BPM" ObjectPath="\Events\Default Work Unit\Trigger_Attack_85BPM">
 					<ActionTrigger>
 						<ActionTriggerEntry Id="925647048" Name="Attack_85BPM" ObjectPath="\Triggers\Default Work Unit\Attack_85BPM"/>

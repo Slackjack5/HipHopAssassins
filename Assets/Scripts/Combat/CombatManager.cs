@@ -28,6 +28,7 @@ public class CombatManager : MonoBehaviour
     
 
     private static int ourSetDamage;
+    public bool LockedOut;
 
     private static GameObject ourSeleectedMonster;
     protected GameObject userInterface;
@@ -212,9 +213,15 @@ public class CombatManager : MonoBehaviour
 
         public void LockOut() //If The Player spends more then they have action points for, They get locked out and gain a strike.
         {
+            
             //Set Player AP to 0
             PlayerScript.singleton_Player.actionPoints = 0;
             PlayerScript.singleton_Player.Strikes += 1;
+            //Enable LockedOut
+            LockedOut = true;
+            //Destroy All On-Screen QTE's & Reset Music Manager
+            MusicManager.singleton_MusicManager.EnableQTELockout();
+            
         }
 
         public static void HealPlayer(int healAmount)
@@ -334,6 +341,7 @@ public class CombatManager : MonoBehaviour
         {
             // suspend execution for 5 seconds
             yield return new WaitForSeconds(2);
+            LockedOut = false;
             print("Skipping Monster Turn " + Time.time);
             ourUI.ResetMenu();
             testStarted = false;

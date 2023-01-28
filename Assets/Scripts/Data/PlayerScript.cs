@@ -38,7 +38,7 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (actionPoints < 0)
+        if (actionPoints < 0 && CombatManager.singleton_CombatManager.LockedOut==false)
         {
             CombatManager.singleton_CombatManager.LockOut();
         }

@@ -115,7 +115,6 @@ public class ActionSlotManager : MonoBehaviour
     {
         //Subtract the amount of actions points equal to the action on our current bar
         PlayerScript.singleton_Player.actionPoints -= Actions[GlobalVariables.currentBar - 1].actionCost;
-        
     }
 
     private void CalculateSequenceCost()

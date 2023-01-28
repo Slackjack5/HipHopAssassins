@@ -108,6 +108,52 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_AttackLockOut" ID="{C84F729C-F179-4803-87C2-5AC5830397C1}">
+					<ChildrenList>
+						<Action Name="" ID="{01D75C4F-0E3D-481E-8225-C7C39AC3CB07}" ShortID="1054576416">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="12"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.1"/>
+								<Property Name="Volume" Type="Real64" Value="-96"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AttackSequences(172BPM)" ID="{AAF29B00-F7A8-4EBD-90CD-633E92C35CB2}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_Sequence" ID="{97648C25-94B2-419B-A46B-CC9B51FA2D70}">
+					<ChildrenList>
+						<Action Name="" ID="{576CED6D-F374-47D1-8D6F-09B2273F35EE}" ShortID="873158591">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AttackSequences(172BPM)" ID="{AAF29B00-F7A8-4EBD-90CD-633E92C35CB2}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_CancleAttackLockout" ID="{A6BDBD30-1378-48E2-96CE-4A03A42A1862}">
+					<ChildrenList>
+						<Action Name="" ID="{3FE301C7-69C6-4943-8B9C-DF54EB9BD150}" ShortID="250197001">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="12"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AttackSequences(172BPM)" ID="{AAF29B00-F7A8-4EBD-90CD-633E92C35CB2}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
