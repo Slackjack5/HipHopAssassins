@@ -100,7 +100,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: d48f69856955d54c95226e947abebbff
     GuidInternal: 
-    m_lastTime: -8585267152587831028
+    m_lastTime: -8585266370948789036
     List:
     - name: Environment
       guid: 3039fc54f4dbe84fa5eebe1ebad2abaf
@@ -128,7 +128,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: acc6a2fb7d38a941a3202be7b4b7e5ca
     GuidInternal: 
-    m_lastTime: -8585267152587365886
+    m_lastTime: -8585266370949342356
     List:
     - name: Play_AttackLockOut
       guid: 9c724fc879f1034887c25ac5830397c1
@@ -144,6 +144,74 @@ MonoBehaviour:
         ObjectType: 3
         guid: 9c724fc879f1034887c25ac5830397c1
       Path: Events\Default Work Unit\Play_AttackLockOut
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_AttackSequence1TEST
+      guid: 3b5c92d8ef09f743ab94ee3abd13f411
+      id: 434006994
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: acc6a2fb7d38a941a3202be7b4b7e5ca
+      - ElementName: Play_AttackSequence1TEST
+        ObjectType: 3
+        guid: 3b5c92d8ef09f743ab94ee3abd13f411
+      Path: Events\Default Work Unit\Play_AttackSequence1TEST
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_AttackSequence2TEST
+      guid: de2f02d3f97a0d44bbb6c62da7e0830c
+      id: 2365990517
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: acc6a2fb7d38a941a3202be7b4b7e5ca
+      - ElementName: Play_AttackSequence2TEST
+        ObjectType: 3
+        guid: de2f02d3f97a0d44bbb6c62da7e0830c
+      Path: Events\Default Work Unit\Play_AttackSequence2TEST
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_AttackSequence3TEST
+      guid: cdd71edf08721b47aeb8ec0205aa5d54
+      id: 1605712836
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: acc6a2fb7d38a941a3202be7b4b7e5ca
+      - ElementName: Play_AttackSequence3TEST
+        ObjectType: 3
+        guid: cdd71edf08721b47aeb8ec0205aa5d54
+      Path: Events\Default Work Unit\Play_AttackSequence3TEST
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_AttackSequence4TEST
+      guid: 4ce0d1422cde0d4ba3ff1b93708b2cc1
+      id: 512230335
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: acc6a2fb7d38a941a3202be7b4b7e5ca
+      - ElementName: Play_AttackSequence4TEST
+        ObjectType: 3
+        guid: 4ce0d1422cde0d4ba3ff1b93708b2cc1
+      Path: Events\Default Work Unit\Play_AttackSequence4TEST
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -266,6 +334,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: Reset_AttackSequences
+      guid: 2350946311554444aad4a7207b4bd800
+      id: 1510522953
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: acc6a2fb7d38a941a3202be7b4b7e5ca
+      - ElementName: Reset_AttackSequences
+        ObjectType: 3
+        guid: 2350946311554444aad4a7207b4bd800
+      Path: Events\Default Work Unit\Reset_AttackSequences
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: Stop_AttackSequences
       guid: 899f77550d28624b8a1797f16178f3b2
       id: 3102099450
@@ -343,7 +428,7 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: cfdc31a3f2d0e746b369f15b126bba51
     GuidInternal: 
-    m_lastTime: -8585353807185198034
+    m_lastTime: -8585266528164050187
     List: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
@@ -357,7 +442,7 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: 2bc4a09516b87a4db45da706af80c9c5
     GuidInternal: 
-    m_lastTime: -8585347578017479595
+    m_lastTime: -8585266386916193116
     List:
     - name: HitMaterial
       guid: ef4c6be31adf6a48aba800e7ccb0bbaa
@@ -390,6 +475,88 @@ MonoBehaviour:
         - ElementName: Cloth
           ObjectType: 10
           guid: 9279e887b285734696ee0e2863fe3fe7
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
+    - name: SequenceNumber
+      guid: 6b5a5f628f9fb94dab5d23805cf30504
+      id: 3907006593
+      PathAndIcons:
+      - ElementName: Switches
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 2bc4a09516b87a4db45da706af80c9c5
+      - ElementName: SequenceNumber
+        ObjectType: 11
+        guid: 6b5a5f628f9fb94dab5d23805cf30504
+      Path: Switches\Default Work Unit\SequenceNumber
+      values:
+      - name: Sequence1
+        guid: 783684183b1c924ba0e484b927cf3e8c
+        id: 3139267479
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 2bc4a09516b87a4db45da706af80c9c5
+        - ElementName: SequenceNumber
+          ObjectType: 11
+          guid: 6b5a5f628f9fb94dab5d23805cf30504
+        - ElementName: Sequence1
+          ObjectType: 10
+          guid: 783684183b1c924ba0e484b927cf3e8c
+      - name: Sequence2
+        guid: d8e87cecdd3d154899cb674b9c69f744
+        id: 3139267476
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 2bc4a09516b87a4db45da706af80c9c5
+        - ElementName: SequenceNumber
+          ObjectType: 11
+          guid: 6b5a5f628f9fb94dab5d23805cf30504
+        - ElementName: Sequence2
+          ObjectType: 10
+          guid: d8e87cecdd3d154899cb674b9c69f744
+      - name: Sequence3
+        guid: 66dcd57fb18bc74189d4cfcf74d222ee
+        id: 3139267477
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 2bc4a09516b87a4db45da706af80c9c5
+        - ElementName: SequenceNumber
+          ObjectType: 11
+          guid: 6b5a5f628f9fb94dab5d23805cf30504
+        - ElementName: Sequence3
+          ObjectType: 10
+          guid: 66dcd57fb18bc74189d4cfcf74d222ee
+      - name: Sequence4
+        guid: 2b608e0fdfbad741b6d22707201a4c2b
+        id: 3139267474
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 2bc4a09516b87a4db45da706af80c9c5
+        - ElementName: SequenceNumber
+          ObjectType: 11
+          guid: 6b5a5f628f9fb94dab5d23805cf30504
+        - ElementName: Sequence4
+          ObjectType: 10
+          guid: 2b608e0fdfbad741b6d22707201a4c2b
       ValueGuids: []
       ValueIcons: []
       valuesInternal: []
@@ -456,7 +623,7 @@ MonoBehaviour:
         guid: cc7027b07e13514abf419be2c9343431
       Path: Triggers\Default Work Unit\Attack_85BPM
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 0200000003000000050000000600000007000000
+  ExpandedWaapiItemIds: 0500000006000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

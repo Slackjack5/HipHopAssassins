@@ -14,6 +14,10 @@ namespace AK
     namespace EVENTS
     {
         static const AkUniqueID PLAY_ATTACKLOCKOUT = 3088888349U;
+        static const AkUniqueID PLAY_ATTACKSEQUENCE1TEST = 434006994U;
+        static const AkUniqueID PLAY_ATTACKSEQUENCE2TEST = 2365990517U;
+        static const AkUniqueID PLAY_ATTACKSEQUENCE3TEST = 1605712836U;
+        static const AkUniqueID PLAY_ATTACKSEQUENCE4TEST = 512230335U;
         static const AkUniqueID PLAY_ATTACKSEQUENCES = 399042744U;
         static const AkUniqueID PLAY_ATTACKTRACK172BPM = 1240998114U;
         static const AkUniqueID PLAY_CANCLEATTACKLOCKOUT = 505022273U;
@@ -37,6 +41,19 @@ namespace AK
                 static const AkUniqueID CLOTH = 1367384683U;
             } // namespace SWITCH
         } // namespace HITMATERIAL
+
+        namespace SEQUENCENUMBER
+        {
+            static const AkUniqueID GROUP = 3907006593U;
+
+            namespace SWITCH
+            {
+                static const AkUniqueID SEQUENCE1 = 3139267479U;
+                static const AkUniqueID SEQUENCE2 = 3139267476U;
+                static const AkUniqueID SEQUENCE3 = 3139267477U;
+                static const AkUniqueID SEQUENCE4 = 3139267474U;
+            } // namespace SWITCH
+        } // namespace SEQUENCENUMBER
 
         namespace WEAPON
         {

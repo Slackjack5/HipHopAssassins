@@ -11,22 +11,50 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1229948536" Language="SFX" Hash="3432999377">
+		<SoundBank Id="1229948536" Language="SFX" Hash="1703890546">
 			<ObjectPath>\SoundBanks\Default Work Unit\Environment</ObjectPath>
 			<ShortName>Environment</ShortName>
 			<Path>Environment.bnk</Path>
 			<IncludedEvents>
 				<Event Id="3088888349" Name="Play_AttackLockOut" ObjectPath="\Events\Default Work Unit\Play_AttackLockOut"/>
-				<Event Id="399042744" Name="Play_AttackSequences" ObjectPath="\Events\Default Work Unit\Play_AttackSequences">
+				<Event Id="434006994" Name="Play_AttackSequence1TEST" ObjectPath="\Events\Default Work Unit\Play_AttackSequence1TEST">
+					<IncludedMemoryFiles>
+						<File Id="344663117" Language="SFX">
+							<ShortName>Sequence#1(172BPM)(Setup).wav</ShortName>
+							<Path>SFX\Sequence#1(172BPM)(Setup)_D79FB2B7.wem</Path>
+						</File>
+						<File Id="885610134" Language="SFX">
+							<ShortName>Sequence#1(172BPM)(Success).wav</ShortName>
+							<Path>SFX\Sequence#1(172BPM)(Success)_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2365990517" Name="Play_AttackSequence2TEST" ObjectPath="\Events\Default Work Unit\Play_AttackSequence2TEST">
 					<IncludedMemoryFiles>
 						<File Id="17586182" Language="SFX">
 							<ShortName>Sequence#2(172BPM)(Setup).wav</ShortName>
 							<Path>SFX\Sequence#2(172BPM)(Setup)_D79FB2B7.wem</Path>
 						</File>
-						<File Id="344663117" Language="SFX">
-							<ShortName>Sequence#1(172BPM)(Setup).wav</ShortName>
-							<Path>SFX\Sequence#1(172BPM)(Setup)_D79FB2B7.wem</Path>
+						<File Id="733186397" Language="SFX">
+							<ShortName>Sequence#2(172BPM)(Success).wav</ShortName>
+							<Path>SFX\Sequence#2(172BPM)(Success)_D79FB2B7.wem</Path>
 						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1605712836" Name="Play_AttackSequence3TEST" ObjectPath="\Events\Default Work Unit\Play_AttackSequence3TEST">
+					<IncludedMemoryFiles>
+						<File Id="672421818" Language="SFX">
+							<ShortName>Sequence#3(172BPM)(Setup).wav</ShortName>
+							<Path>SFX\Sequence#3(172BPM)(Setup)_D79FB2B7.wem</Path>
+						</File>
+						<File Id="746452018" Language="SFX">
+							<ShortName>Sequence#3(172BPM)(Success).wav</ShortName>
+							<Path>SFX\Sequence#3(172BPM)(Success)_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="512230335" Name="Play_AttackSequence4TEST" ObjectPath="\Events\Default Work Unit\Play_AttackSequence4TEST">
+					<IncludedMemoryFiles>
 						<File Id="539025387" Language="SFX">
 							<ShortName>Sequence#4(172BPM)(Success).wav</ShortName>
 							<Path>SFX\Sequence#4(172BPM)(Success)_D79FB2B7.wem</Path>
@@ -35,24 +63,9 @@
 							<ShortName>Sequence#4(172BPM)(Setup).wav</ShortName>
 							<Path>SFX\Sequence#4(172BPM)(Setup)_D79FB2B7.wem</Path>
 						</File>
-						<File Id="672421818" Language="SFX">
-							<ShortName>Sequence#3(172BPM)(Setup).wav</ShortName>
-							<Path>SFX\Sequence#3(172BPM)(Setup)_D79FB2B7.wem</Path>
-						</File>
-						<File Id="733186397" Language="SFX">
-							<ShortName>Sequence#2(172BPM)(Success).wav</ShortName>
-							<Path>SFX\Sequence#2(172BPM)(Success)_D79FB2B7.wem</Path>
-						</File>
-						<File Id="746452018" Language="SFX">
-							<ShortName>Sequence#3(172BPM)(Success).wav</ShortName>
-							<Path>SFX\Sequence#3(172BPM)(Success)_D79FB2B7.wem</Path>
-						</File>
-						<File Id="885610134" Language="SFX">
-							<ShortName>Sequence#1(172BPM)(Success).wav</ShortName>
-							<Path>SFX\Sequence#1(172BPM)(Success)_D79FB2B7.wem</Path>
-						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="399042744" Name="Play_AttackSequences" ObjectPath="\Events\Default Work Unit\Play_AttackSequences"/>
 				<Event Id="1240998114" Name="Play_AttackTrack172BPM" ObjectPath="\Events\Default Work Unit\Play_AttackTrack172BPM">
 					<IncludedMemoryFiles>
 						<File Id="344663117" Language="SFX">
@@ -102,6 +115,16 @@
 					</ActionTrigger>
 				</Event>
 			</IncludedEvents>
+			<SwitchGroups>
+				<SwitchGroup Id="3907006593" Name="SequenceNumber" ObjectPath="\Switches\Default Work Unit\SequenceNumber" GUID="{625F5A6B-9F8F-4DB9-AB5D-23805CF30504}">
+					<Switches>
+						<Switch Id="3139267479" Name="Sequence1" ObjectPath="\Switches\Default Work Unit\SequenceNumber\Sequence1" GUID="{18843678-1C3B-4B92-A0E4-84B927CF3E8C}"/>
+						<Switch Id="3139267476" Name="Sequence2" ObjectPath="\Switches\Default Work Unit\SequenceNumber\Sequence2" GUID="{EC7CE8D8-3DDD-4815-99CB-674B9C69F744}"/>
+						<Switch Id="3139267477" Name="Sequence3" ObjectPath="\Switches\Default Work Unit\SequenceNumber\Sequence3" GUID="{7FD5DC66-8BB1-41C7-89D4-CFCF74D222EE}"/>
+						<Switch Id="3139267474" Name="Sequence4" ObjectPath="\Switches\Default Work Unit\SequenceNumber\Sequence4" GUID="{0F8E602B-BADF-41D7-B6D2-2707201A4C2B}"/>
+					</Switches>
+				</SwitchGroup>
+			</SwitchGroups>
 			<Triggers>
 				<Trigger Id="925647048" Name="Attack_85BPM" ObjectPath="\Triggers\Default Work Unit\Attack_85BPM"/>
 			</Triggers>

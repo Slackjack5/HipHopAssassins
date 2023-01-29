@@ -1,9 +1,13 @@
 Event	ID	Name			Wwise Object Path	Notes
 	399042744	Play_AttackSequences			\Default Work Unit\Play_AttackSequences	
+	434006994	Play_AttackSequence1TEST			\Default Work Unit\Play_AttackSequence1TEST	
 	505022273	Play_CancleAttackLockout			\Default Work Unit\Play_CancleAttackLockout	
+	512230335	Play_AttackSequence4TEST			\Default Work Unit\Play_AttackSequence4TEST	
 	992158907	Trigger_Attack_85BPM			\Default Work Unit\Trigger_Attack_85BPM	
 	1240998114	Play_AttackTrack172BPM			\Default Work Unit\Play_AttackTrack172BPM	
+	1605712836	Play_AttackSequence3TEST			\Default Work Unit\Play_AttackSequence3TEST	
 	2261903105	Play_Music_Environment			\Default Work Unit\Play_Music_Environment	
+	2365990517	Play_AttackSequence2TEST			\Default Work Unit\Play_AttackSequence2TEST	
 	2520504993	Play_PS2			\Default Work Unit\Play_PS2	
 	2520504994	Play_PS1			\Default Work Unit\Play_PS1	
 	2960666077	Play_Hit			\Default Work Unit\Play_Hit	
@@ -11,17 +15,26 @@ Event	ID	Name			Wwise Object Path	Notes
 	3102099450	Stop_AttackSequences			\Default Work Unit\Stop_AttackSequences	
 	3211527319	Stop_Sequence			\Default Work Unit\Stop_Sequence	
 
+Switch Group	ID	Name			Wwise Object Path	Notes
+	3907006593	SequenceNumber			\Default Work Unit\SequenceNumber	
+
+Switch	ID	Name	Switch Group			Notes
+	3139267474	Sequence4	SequenceNumber			
+	3139267476	Sequence2	SequenceNumber			
+	3139267477	Sequence3	SequenceNumber			
+	3139267479	Sequence1	SequenceNumber			
+
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	16026845	HitPS1	G:\HipHopAssassins\AssassinGit2\HipHopAssassins\HipHopAssassins_WwiseProject\.cache\Mac\SFX\Hit Success Light_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\HitSFX\PlayerHits\HitPS1		60604
-	17586182	Sequence#2(172BPM)(Setup)	G:\HipHopAssassins\AssassinGit2\HipHopAssassins\HipHopAssassins_WwiseProject\.cache\Mac\SFX\Sequence#2(172BPM)(Setup)_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\AttackSequences(172BPM)\AttackSequence#2\Sequence#2(172BPM)(Setup)		535880
+	17586182	Sequence#2(172BPM)(Setup)	G:\HipHopAssassins\AssassinGit2\HipHopAssassins\HipHopAssassins_WwiseProject\.cache\Mac\SFX\Sequence#2(172BPM)(Setup)_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\AttackSequencesTest\AttackSequence2\AttackSequence#2_01\Sequence#2(172BPM)(Setup)		535880
 	95432837	UIHit	G:\HipHopAssassins\AssassinGit2\HipHopAssassins\HipHopAssassins_WwiseProject\.cache\Mac\SFX\UIBeep_D8B6DDD4.wem		\Actor-Mixer Hierarchy\Default Work Unit\HitSFX\UIHit		61148
 	338171476	BladeGame (TESTERSONG)	G:\HipHopAssassins\AssassinGit2\HipHopAssassins\HipHopAssassins_WwiseProject\.cache\Mac\SFX\BladeGame (TESTERSONG)_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MusicEnvironment(172 BPM)\TestingSong#172\BladeGame (TESTERSONG)\BladeGame (TESTERSONG)		21365648
 	344663117	New Music Track	G:\HipHopAssassins\AssassinGit2\HipHopAssassins\HipHopAssassins_WwiseProject\.cache\Mac\SFX\Sequence#1(172BPM)(Setup)_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\AttackTrack(172)\AttackLength\New Music Track		535880
-	539025387	Sequence#4(172BPM)(Success)	G:\HipHopAssassins\AssassinGit2\HipHopAssassins\HipHopAssassins_WwiseProject\.cache\Mac\SFX\Sequence#4(172BPM)(Success)_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\AttackSequences(172BPM)\AttackSequence#4\Sequence#4(172BPM)(Success)		535880
-	583044215	Sequence#4(172BPM)	G:\HipHopAssassins\AssassinGit2\HipHopAssassins\HipHopAssassins_WwiseProject\.cache\Mac\SFX\Sequence#4(172BPM)(Setup)_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\AttackSequences(172BPM)\AttackSequence#4\Sequence#4(172BPM)		535880
-	672421818	Sequence#3(172BPM)(Setup)	G:\HipHopAssassins\AssassinGit2\HipHopAssassins\HipHopAssassins_WwiseProject\.cache\Mac\SFX\Sequence#3(172BPM)(Setup)_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\AttackSequences(172BPM)\AttackSequence#3\Sequence#3(172BPM)(Setup)		535880
-	733186397	Sequence#2(172BPM)(Success)	G:\HipHopAssassins\AssassinGit2\HipHopAssassins\HipHopAssassins_WwiseProject\.cache\Mac\SFX\Sequence#2(172BPM)(Success)_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\AttackSequences(172BPM)\AttackSequence#2\Sequence#2(172BPM)(Success)		535880
-	746452018	Sequence#3(172BPM)(Success)	G:\HipHopAssassins\AssassinGit2\HipHopAssassins\HipHopAssassins_WwiseProject\.cache\Mac\SFX\Sequence#3(172BPM)(Success)_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\AttackSequences(172BPM)\AttackSequence#3\Sequence#3(172BPM)(Success)		535880
-	885610134	Sequence#1(172BPM)(Success)	G:\HipHopAssassins\AssassinGit2\HipHopAssassins\HipHopAssassins_WwiseProject\.cache\Mac\SFX\Sequence#1(172BPM)(Success)_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\AttackSequences(172BPM)\AttackSequence#1\Sequence#1(172BPM)(Success)		535880
+	539025387	Sequence#4(172BPM)(Success)	G:\HipHopAssassins\AssassinGit2\HipHopAssassins\HipHopAssassins_WwiseProject\.cache\Mac\SFX\Sequence#4(172BPM)(Success)_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\AttackSequencesTest\AttackSequence4\AttackSequence#4_01\Sequence#4(172BPM)(Success)		535880
+	583044215	Sequence#4(172BPM)	G:\HipHopAssassins\AssassinGit2\HipHopAssassins\HipHopAssassins_WwiseProject\.cache\Mac\SFX\Sequence#4(172BPM)(Setup)_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\AttackSequencesTest\AttackSequence4\AttackSequence#4_01\Sequence#4(172BPM)		535880
+	672421818	Sequence#3(172BPM)(Setup)	G:\HipHopAssassins\AssassinGit2\HipHopAssassins\HipHopAssassins_WwiseProject\.cache\Mac\SFX\Sequence#3(172BPM)(Setup)_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\AttackSequencesTest\AttackSequence3\AttackSequence#3_01\Sequence#3(172BPM)(Setup)		535880
+	733186397	Sequence#2(172BPM)(Success)	G:\HipHopAssassins\AssassinGit2\HipHopAssassins\HipHopAssassins_WwiseProject\.cache\Mac\SFX\Sequence#2(172BPM)(Success)_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\AttackSequencesTest\AttackSequence2\AttackSequence#2_01\Sequence#2(172BPM)(Success)		535880
+	746452018	Sequence#3(172BPM)(Success)	G:\HipHopAssassins\AssassinGit2\HipHopAssassins\HipHopAssassins_WwiseProject\.cache\Mac\SFX\Sequence#3(172BPM)(Success)_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\AttackSequencesTest\AttackSequence3\AttackSequence#3_01\Sequence#3(172BPM)(Success)		535880
+	885610134	Sequence#1(172BPM)(Success)	G:\HipHopAssassins\AssassinGit2\HipHopAssassins\HipHopAssassins_WwiseProject\.cache\Mac\SFX\Sequence#1(172BPM)(Success)_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\AttackSequencesTest\AttackSequence1\AttackSequence#1_01\Sequence#1(172BPM)(Success)		535880
 	951425931	HitPS2	G:\HipHopAssassins\AssassinGit2\HipHopAssassins\HipHopAssassins_WwiseProject\.cache\Mac\SFX\Hit Success Heavy_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\HitSFX\PlayerHits\HitPS2		535880
 

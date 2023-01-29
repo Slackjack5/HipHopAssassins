@@ -26,6 +26,7 @@
 					<CurrentStateList ShowAll="true"/>
 					<CurrentSwitchList ShowAll="true">
 						<CurrentSwitchRef Name="Cloth" ID="{87E87992-85B2-4673-96EE-0E2863FE3FE7}"/>
+						<CurrentSwitchRef Name="Sequence2" ID="{EC7CE8D8-3DDD-4815-99CB-674B9C69F744}"/>
 						<CurrentSwitchRef Name="Sword" ID="{10F2062A-2ECC-4427-A972-ECD514263692}"/>
 					</CurrentSwitchList>
 				</SoundcasterSession>

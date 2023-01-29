@@ -13,6 +13,14 @@
 						<Switch Name="Cloth" ID="{87E87992-85B2-4673-96EE-0E2863FE3FE7}"/>
 					</ChildrenList>
 				</SwitchGroup>
+				<SwitchGroup Name="SequenceNumber" ID="{625F5A6B-9F8F-4DB9-AB5D-23805CF30504}">
+					<ChildrenList>
+						<Switch Name="Sequence1" ID="{18843678-1C3B-4B92-A0E4-84B927CF3E8C}"/>
+						<Switch Name="Sequence2" ID="{EC7CE8D8-3DDD-4815-99CB-674B9C69F744}"/>
+						<Switch Name="Sequence3" ID="{7FD5DC66-8BB1-41C7-89D4-CFCF74D222EE}"/>
+						<Switch Name="Sequence4" ID="{0F8E602B-BADF-41D7-B6D2-2707201A4C2B}"/>
+					</ChildrenList>
+				</SwitchGroup>
 			</ChildrenList>
 		</WorkUnit>
 	</Switches>

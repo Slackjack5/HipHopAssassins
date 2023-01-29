@@ -31,9 +31,23 @@
 				<Event Name="Play_AttackSequences" ID="{10775F3D-CBCB-40BC-BC0C-471704B3EB1F}">
 					<ChildrenList>
 						<Action Name="" ID="{8D8C071A-42C2-4ADB-AFEE-90600A7EE48C}" ShortID="608570274">
+							<PropertyList>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="AttackSequences(172BPM)" ID="{AAF29B00-F7A8-4EBD-90CD-633E92C35CB2}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{DF59E7FC-3512-453D-8607-4F6FA2816BE0}" ShortID="67931797">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="TestMusicSwitch" ID="{6D679154-8FE1-45D6-B184-E9918621F487}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -59,7 +73,7 @@
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="AttackSequences(172BPM)" ID="{AAF29B00-F7A8-4EBD-90CD-633E92C35CB2}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
+									<ObjectRef Name="TestMusicSwitch" ID="{6D679154-8FE1-45D6-B184-E9918621F487}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -149,6 +163,60 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="AttackSequences(172BPM)" ID="{AAF29B00-F7A8-4EBD-90CD-633E92C35CB2}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Reset_AttackSequences" ID="{63945023-5511-4444-AAD4-A7207B4BD800}">
+					<ChildrenList>
+						<Action Name="" ID="{40748F46-6352-454A-ABF5-3BC8DAA8F047}" ShortID="204071873">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="42"/>
+							</PropertyList>
+							<ReferenceList/>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_AttackSequence1TEST" ID="{D8925C3B-09EF-43F7-AB94-EE3ABD13F411}">
+					<ChildrenList>
+						<Action Name="" ID="{1FC83D53-CEC9-4854-93B1-AC3D953D4843}" ShortID="1063309803">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AttackSequence1" ID="{7602F21C-3E73-4608-99A0-2F456394C13D}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_AttackSequence2TEST" ID="{D3022FDE-7AF9-440D-BBB6-C62DA7E0830C}">
+					<ChildrenList>
+						<Action Name="" ID="{21289393-B74E-49B3-8E6C-B73FBCBE907F}" ShortID="885332936">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AttackSequence2" ID="{84891EFC-EF36-40A4-8DD2-0311909D4A8E}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_AttackSequence3TEST" ID="{DF1ED7CD-7208-471B-AEB8-EC0205AA5D54}">
+					<ChildrenList>
+						<Action Name="" ID="{635171E8-C8C6-4048-8CD3-F15F4B2C4F9B}" ShortID="636179209">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AttackSequence3" ID="{5B64C3D7-896D-4956-A5C0-CAB1E7D52C48}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_AttackSequence4TEST" ID="{42D1E04C-DE2C-4B0D-A3FF-1B93708B2CC1}">
+					<ChildrenList>
+						<Action Name="" ID="{1A904E6C-7AE5-427D-AC30-78872343DDA0}" ShortID="199556994">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AttackSequence4" ID="{BC6AC594-26DD-444E-B3CD-A95D467B33B2}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

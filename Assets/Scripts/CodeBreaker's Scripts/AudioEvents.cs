@@ -19,8 +19,9 @@ public class AudioEvents : MonoBehaviour
   public UnityEvent OnLevelEnded;
   public static float secondsPerBeat;
   public static float secondsPerBar;
-
   public static float bpm;
+
+  
 
   //Unity Events
   public UnityEvent OnEveryGrid;

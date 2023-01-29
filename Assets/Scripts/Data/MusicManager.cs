@@ -11,6 +11,12 @@ public class MusicManager : MonoBehaviour
     public bool preparingSequence=false;
     private bool sequenceInProgress=false;
     public AK.Wwise.Event OurEvent;
+    
+    public AK.Wwise.Event AttackSequence1;
+    public AK.Wwise.Event AttackSequence2;
+    public AK.Wwise.Event AttackSequence3;
+    public AK.Wwise.Event AttackSequence4;
+    
     public AK.Wwise.Event OurTrack;
     public bool attackInProgress;
     public int nextBar;
@@ -49,6 +55,7 @@ public class MusicManager : MonoBehaviour
     //Public
     public int AttackCounter;
     private ActionSlotManager ourActionSlotManager;
+    public GameObject musichandler;
     
     private void Awake()
     {
@@ -65,6 +72,7 @@ public class MusicManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        AkSoundEngine.SetSwitch("SequenceNumber", "Sequence1", gameObject);
         currentSegment = new AkSegmentInfo();
         ourCombatManager = GameObject.Find("CombatManager").GetComponent<CombatManager>();
         //Set Hit Leniency
@@ -328,19 +336,45 @@ public class MusicManager : MonoBehaviour
             case "PS4":
                 addTime(playheadPosition,"PS4");
                 break;
-            case "Next":
+            case "Next1":
                 Debug.Log("Next Called");
                 if (AttackCounter > 0)
                 {
                     AkSoundEngine.PostEvent("Play_AttackSequences", gameObject);
-                    playingID2 = OurEvent.Post(gameObject,
+                    
+                    playingID2 = AttackSequence2.Post(gameObject,
                             (uint) (AkCallbackType.AK_MusicSyncAll | AkCallbackType.AK_EnableGetMusicPlayPosition),
                             MusicCallbackFunction);
+                            
+                }
+                break;
+            case "Next2":
+                Debug.Log("Next Called");
+                if (AttackCounter > 0)
+                {
+                    AkSoundEngine.PostEvent("Play_AttackSequences", gameObject);
+                    
+                    playingID2 = AttackSequence3.Post(gameObject,
+                        (uint) (AkCallbackType.AK_MusicSyncAll | AkCallbackType.AK_EnableGetMusicPlayPosition),
+                        MusicCallbackFunction);
+                            
+                }
+                break;
+            case "Next3":
+                Debug.Log("Next Called");
+                if (AttackCounter > 0)
+                {
+                    AkSoundEngine.PostEvent("Play_AttackSequences", gameObject);
+                    
+                    playingID2 = AttackSequence4.Post(gameObject,
+                        (uint) (AkCallbackType.AK_MusicSyncAll | AkCallbackType.AK_EnableGetMusicPlayPosition),
+                        MusicCallbackFunction);
+                            
                 }
                 break;
             case "Start":
                 AkSoundEngine.PostEvent("Play_AttackSequences", gameObject);
-                playingID = OurEvent.Post(gameObject,
+                playingID = AttackSequence1.Post(gameObject,
                     (uint) (AkCallbackType.AK_MusicSyncAll | AkCallbackType.AK_EnableGetMusicPlayPosition),
                     MusicCallbackFunction);
                 break;
