@@ -1059,7 +1059,7 @@
 									</Reference>
 									<Reference>
 										<Local>
-											<MusicCue Name="PS1" ID="{B27FADE1-33B4-45AA-A1A2-339F01959A9D}">
+											<MusicCue Name="PS2" ID="{B27FADE1-33B4-45AA-A1A2-339F01959A9D}">
 												<PropertyList>
 													<Property Name="CueType" Type="int16" Value="2"/>
 													<Property Name="TimeMs" Type="Real64" Value="1220.93023255814"/>
@@ -1288,7 +1288,7 @@
 									</Reference>
 									<Reference>
 										<Local>
-											<MusicCue Name="PS1" ID="{798F67DF-F781-40E0-87AC-A61C5654E755}">
+											<MusicCue Name="PS2" ID="{798F67DF-F781-40E0-87AC-A61C5654E755}">
 												<PropertyList>
 													<Property Name="CueType" Type="int16" Value="2"/>
 													<Property Name="TimeMs" Type="Real64" Value="872.093023255814"/>
@@ -1530,7 +1530,7 @@
 									</Reference>
 									<Reference>
 										<Local>
-											<MusicCue Name="PS1" ID="{E64882E9-2F74-4F4D-8ADC-A6CFF847D36D}">
+											<MusicCue Name="PS2" ID="{E64882E9-2F74-4F4D-8ADC-A6CFF847D36D}">
 												<PropertyList>
 													<Property Name="CueType" Type="int16" Value="2"/>
 													<Property Name="TimeMs" Type="Real64" Value="872.093023255814"/>
@@ -1768,7 +1768,7 @@
 									</Reference>
 									<Reference>
 										<Local>
-											<MusicCue Name="PS2" ID="{38A7965B-3B36-4473-B630-2E23066C5863}">
+											<MusicCue Name="PS3" ID="{38A7965B-3B36-4473-B630-2E23066C5863}">
 												<PropertyList>
 													<Property Name="CueType" Type="int16" Value="2"/>
 												</PropertyList>
@@ -2343,7 +2343,7 @@
 											</Reference>
 											<Reference>
 												<Local>
-													<MusicCue Name="PS1" ID="{08758576-B7A4-4387-9E93-F18DCE407C18}">
+													<MusicCue Name="PS2" ID="{08758576-B7A4-4387-9E93-F18DCE407C18}">
 														<PropertyList>
 															<Property Name="CueType" Type="int16" Value="2"/>
 															<Property Name="TimeMs" Type="Real64" Value="1220.93023255814"/>
@@ -2638,7 +2638,7 @@
 											</Reference>
 											<Reference>
 												<Local>
-													<MusicCue Name="PS2" ID="{DA9DB254-79A1-4DBF-8650-56931086A7A4}">
+													<MusicCue Name="PS3" ID="{DA9DB254-79A1-4DBF-8650-56931086A7A4}">
 														<PropertyList>
 															<Property Name="CueType" Type="int16" Value="2"/>
 														</PropertyList>
@@ -2913,7 +2913,7 @@
 											</Reference>
 											<Reference>
 												<Local>
-													<MusicCue Name="PS1" ID="{BEF08950-B2F1-489B-9286-41E1BB6C1A5B}">
+													<MusicCue Name="PS2" ID="{BEF08950-B2F1-489B-9286-41E1BB6C1A5B}">
 														<PropertyList>
 															<Property Name="CueType" Type="int16" Value="2"/>
 															<Property Name="TimeMs" Type="Real64" Value="872.093023255814"/>
@@ -3202,7 +3202,7 @@
 											</Reference>
 											<Reference>
 												<Local>
-													<MusicCue Name="PS1" ID="{116E6DED-13E8-4C4E-B035-67ABDCA045D5}">
+													<MusicCue Name="PS2" ID="{116E6DED-13E8-4C4E-B035-67ABDCA045D5}">
 														<PropertyList>
 															<Property Name="CueType" Type="int16" Value="2"/>
 															<Property Name="TimeMs" Type="Real64" Value="872.093023255814"/>

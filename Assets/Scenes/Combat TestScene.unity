@@ -9757,14 +9757,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Level: 0
   Health: 50
-  actionPoints: 100
+  actionPoints: 0
   APHit: 3
   APRegen: 0.01
   actionPointMax: 100
   Strikes: 0
-  hitsMax: 3
   attackMin: 1
   attackMax: 7
+  CriticalStrikeChance: 0.1
   allocatedSpells: 0100000000000000000000000000000000000000000000000000000000000000
   allocatedItems: 0000000001000000000000000000000000000000000000000000000000000000
 --- !u!4 &1711365896

@@ -1,115 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="140">
 	<RootPaths>
-		<ProjectRoot>G:\HipHopAssassins\AssassinGit2\HipHopAssassins\HipHopAssassins_WwiseProject\</ProjectRoot>
-		<SourceFilesRoot>G:\HipHopAssassins\AssassinGit2\HipHopAssassins\HipHopAssassins_WwiseProject\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>G:\HipHopAssassins\AssassinGit2\HipHopAssassins\HipHopAssassins_WwiseProject\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ProjectRoot>/Users/nycelly/Library/Application Support/Wwise2019/Bottles/Wwise2019x64/dosdevices/z:/Volumes/Not Case Sensitive/Unity Projects/HipHopAssassins/HipHopAssassins_WwiseProject/</ProjectRoot>
+		<SourceFilesRoot>/Users/nycelly/Library/Application Support/Wwise2019/Bottles/Wwise2019x64/dosdevices/z:/Volumes/Not Case Sensitive/Unity Projects/HipHopAssassins/HipHopAssassins_WwiseProject/.cache/Windows/</SourceFilesRoot>
+		<SoundBanksRoot>/Users/nycelly/Library/Application Support/Wwise2019/Bottles/Wwise2019x64/dosdevices/z:/Volumes/Not Case Sensitive/Unity Projects/HipHopAssassins/HipHopAssassins_WwiseProject/GeneratedSoundBanks/Windows/</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>G:\HipHopAssassins\AssassinGit2\HipHopAssassins\HipHopAssassins_WwiseProject\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>/Users/nycelly/Library/Application Support/Wwise2019/Bottles/Wwise2019x64/dosdevices/z:/Volumes/Not Case Sensitive/Unity Projects/HipHopAssassins/HipHopAssassins_WwiseProject/GeneratedSoundBanks/Windows</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1229948536" Language="SFX" Hash="1703890546">
+		<SoundBank Id="1229948536" Language="SFX" Hash="885917918">
 			<ObjectPath>\SoundBanks\Default Work Unit\Environment</ObjectPath>
 			<ShortName>Environment</ShortName>
 			<Path>Environment.bnk</Path>
 			<IncludedEvents>
-				<Event Id="3088888349" Name="Play_AttackLockOut" ObjectPath="\Events\Default Work Unit\Play_AttackLockOut"/>
-				<Event Id="434006994" Name="Play_AttackSequence1TEST" ObjectPath="\Events\Default Work Unit\Play_AttackSequence1TEST">
+				<Event Id="3088888349" Name="Play_AttackLockOut" ObjectPath="\Events\Default Work Unit\Play_AttackLockOut" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="434006994" Name="Play_AttackSequence1TEST" ObjectPath="\Events\Default Work Unit\Play_AttackSequence1TEST" DurationType="OneShot" DurationMin="2.790708" DurationMax="2.790708">
 					<IncludedMemoryFiles>
 						<File Id="344663117" Language="SFX">
 							<ShortName>Sequence#1(172BPM)(Setup).wav</ShortName>
-							<Path>SFX\Sequence#1(172BPM)(Setup)_D79FB2B7.wem</Path>
+							<Path>SFX/Sequence#1(172BPM)(Setup)_D79FB2B7.wem</Path>
 						</File>
 						<File Id="885610134" Language="SFX">
 							<ShortName>Sequence#1(172BPM)(Success).wav</ShortName>
-							<Path>SFX\Sequence#1(172BPM)(Success)_D79FB2B7.wem</Path>
+							<Path>SFX/Sequence#1(172BPM)(Success)_D79FB2B7.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2365990517" Name="Play_AttackSequence2TEST" ObjectPath="\Events\Default Work Unit\Play_AttackSequence2TEST">
+				<Event Id="2365990517" Name="Play_AttackSequence2TEST" ObjectPath="\Events\Default Work Unit\Play_AttackSequence2TEST" DurationType="OneShot" DurationMin="2.790708" DurationMax="2.790708">
 					<IncludedMemoryFiles>
 						<File Id="17586182" Language="SFX">
 							<ShortName>Sequence#2(172BPM)(Setup).wav</ShortName>
-							<Path>SFX\Sequence#2(172BPM)(Setup)_D79FB2B7.wem</Path>
+							<Path>SFX/Sequence#2(172BPM)(Setup)_D79FB2B7.wem</Path>
 						</File>
 						<File Id="733186397" Language="SFX">
 							<ShortName>Sequence#2(172BPM)(Success).wav</ShortName>
-							<Path>SFX\Sequence#2(172BPM)(Success)_D79FB2B7.wem</Path>
+							<Path>SFX/Sequence#2(172BPM)(Success)_D79FB2B7.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1605712836" Name="Play_AttackSequence3TEST" ObjectPath="\Events\Default Work Unit\Play_AttackSequence3TEST">
+				<Event Id="1605712836" Name="Play_AttackSequence3TEST" ObjectPath="\Events\Default Work Unit\Play_AttackSequence3TEST" DurationType="OneShot" DurationMin="2.790708" DurationMax="2.790708">
 					<IncludedMemoryFiles>
 						<File Id="672421818" Language="SFX">
 							<ShortName>Sequence#3(172BPM)(Setup).wav</ShortName>
-							<Path>SFX\Sequence#3(172BPM)(Setup)_D79FB2B7.wem</Path>
+							<Path>SFX/Sequence#3(172BPM)(Setup)_D79FB2B7.wem</Path>
 						</File>
 						<File Id="746452018" Language="SFX">
 							<ShortName>Sequence#3(172BPM)(Success).wav</ShortName>
-							<Path>SFX\Sequence#3(172BPM)(Success)_D79FB2B7.wem</Path>
+							<Path>SFX/Sequence#3(172BPM)(Success)_D79FB2B7.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="512230335" Name="Play_AttackSequence4TEST" ObjectPath="\Events\Default Work Unit\Play_AttackSequence4TEST">
+				<Event Id="512230335" Name="Play_AttackSequence4TEST" ObjectPath="\Events\Default Work Unit\Play_AttackSequence4TEST" DurationType="OneShot" DurationMin="2.790708" DurationMax="2.790708">
 					<IncludedMemoryFiles>
 						<File Id="539025387" Language="SFX">
 							<ShortName>Sequence#4(172BPM)(Success).wav</ShortName>
-							<Path>SFX\Sequence#4(172BPM)(Success)_D79FB2B7.wem</Path>
+							<Path>SFX/Sequence#4(172BPM)(Success)_D79FB2B7.wem</Path>
 						</File>
 						<File Id="583044215" Language="SFX">
 							<ShortName>Sequence#4(172BPM)(Setup).wav</ShortName>
-							<Path>SFX\Sequence#4(172BPM)(Setup)_D79FB2B7.wem</Path>
+							<Path>SFX/Sequence#4(172BPM)(Setup)_D79FB2B7.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="399042744" Name="Play_AttackSequences" ObjectPath="\Events\Default Work Unit\Play_AttackSequences"/>
-				<Event Id="1240998114" Name="Play_AttackTrack172BPM" ObjectPath="\Events\Default Work Unit\Play_AttackTrack172BPM">
+				<Event Id="399042744" Name="Play_AttackSequences" ObjectPath="\Events\Default Work Unit\Play_AttackSequences" DurationType="Infinite"/>
+				<Event Id="1240998114" Name="Play_AttackTrack172BPM" ObjectPath="\Events\Default Work Unit\Play_AttackTrack172BPM" DurationType="OneShot" DurationMin="6.976744" DurationMax="6.976744">
 					<IncludedMemoryFiles>
 						<File Id="344663117" Language="SFX">
 							<ShortName>Sequence#1(172BPM)(Setup).wav</ShortName>
-							<Path>SFX\Sequence#1(172BPM)(Setup)_D79FB2B7.wem</Path>
+							<Path>SFX/Sequence#1(172BPM)(Setup)_D79FB2B7.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="505022273" Name="Play_CancleAttackLockout" ObjectPath="\Events\Default Work Unit\Play_CancleAttackLockout"/>
-				<Event Id="2960666077" Name="Play_Hit" ObjectPath="\Events\Default Work Unit\Play_Hit">
+				<Event Id="505022273" Name="Play_CancleAttackLockout" ObjectPath="\Events\Default Work Unit\Play_CancleAttackLockout" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="2960666077" Name="Play_Hit" ObjectPath="\Events\Default Work Unit\Play_Hit" DurationType="OneShot" DurationMin="0.318146" DurationMax="0.318146">
 					<IncludedMemoryFiles>
 						<File Id="95432837" Language="SFX">
 							<ShortName>UIBeep.wav</ShortName>
-							<Path>SFX\UIBeep_D8B6DDD4.wem</Path>
+							<Path>SFX/UIBeep_D8B6DDD4.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2261903105" Name="Play_Music_Environment" ObjectPath="\Events\Default Work Unit\Play_Music_Environment">
+				<Event Id="2261903105" Name="Play_Music_Environment" ObjectPath="\Events\Default Work Unit\Play_Music_Environment" DurationType="Infinite">
 					<IncludedMemoryFiles>
 						<File Id="338171476" Language="SFX">
 							<ShortName>BladeGame (TESTERSONG).wav</ShortName>
-							<Path>SFX\BladeGame (TESTERSONG)_D79FB2B7.wem</Path>
+							<Path>SFX/BladeGame (TESTERSONG)_D79FB2B7.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2520504994" Name="Play_PS1" ObjectPath="\Events\Default Work Unit\Play_PS1">
+				<Event Id="2520504994" Name="Play_PS1" ObjectPath="\Events\Default Work Unit\Play_PS1" DurationType="OneShot" DurationMin="0.315313" DurationMax="0.315313">
 					<IncludedMemoryFiles>
 						<File Id="16026845" Language="SFX">
 							<ShortName>Hit Success Light.wav</ShortName>
-							<Path>SFX\Hit Success Light_10C4C929.wem</Path>
+							<Path>SFX/Hit Success Light_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2520504993" Name="Play_PS2" ObjectPath="\Events\Default Work Unit\Play_PS2">
+				<Event Id="2520504993" Name="Play_PS2" ObjectPath="\Events\Default Work Unit\Play_PS2" DurationType="OneShot" DurationMin="2.790708" DurationMax="2.790708">
 					<IncludedMemoryFiles>
 						<File Id="951425931" Language="SFX">
 							<ShortName>Hit Success Heavy.wav</ShortName>
-							<Path>SFX\Hit Success Heavy_10C4C929.wem</Path>
+							<Path>SFX/Hit Success Heavy_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="3102099450" Name="Stop_AttackSequences" ObjectPath="\Events\Default Work Unit\Stop_AttackSequences"/>
-				<Event Id="3211527319" Name="Stop_Sequence" ObjectPath="\Events\Default Work Unit\Stop_Sequence"/>
-				<Event Id="992158907" Name="Trigger_Attack_85BPM" ObjectPath="\Events\Default Work Unit\Trigger_Attack_85BPM">
+				<Event Id="3102099450" Name="Stop_AttackSequences" ObjectPath="\Events\Default Work Unit\Stop_AttackSequences" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="3211527319" Name="Stop_Sequence" ObjectPath="\Events\Default Work Unit\Stop_Sequence" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="992158907" Name="Trigger_Attack_85BPM" ObjectPath="\Events\Default Work Unit\Trigger_Attack_85BPM" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0.">
 					<ActionTrigger>
 						<ActionTriggerEntry Id="925647048" Name="Attack_85BPM" ObjectPath="\Triggers\Default Work Unit\Attack_85BPM"/>
 					</ActionTrigger>

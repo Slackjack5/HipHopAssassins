@@ -78,6 +78,12 @@ public class MonsterData : MonoBehaviour
             monsterCanvas.transform.GetChild(i).gameObject.SetActive(false);
         }
     }
+    
+    
+    public void DamageMonsterLimb(int LimbNumber ,int Damage)
+    {
+        limbHealth[LimbNumber] -= Damage;
+    }
 
 
     

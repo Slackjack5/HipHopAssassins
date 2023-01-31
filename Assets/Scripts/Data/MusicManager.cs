@@ -183,13 +183,19 @@ public class MusicManager : MonoBehaviour
                         if (AttackType[hitIndex] == "PS1")
                         {
                             AkSoundEngine.PostEvent("Play_PS1", gameObject);
-                            CombatManager.playerMeleeAttack(1);
+                            CombatManager.playerMeleeAttack(1,1);
                             PlayerScript.singleton_Player.GainActionPoints(PlayerScript.singleton_Player.APHit*3);
                         }
                         else if (AttackType[hitIndex] == "PS2")
                         {
+                            AkSoundEngine.PostEvent("Play_PS1", gameObject);
+                            CombatManager.playerMeleeAttack(1,5);
+                            PlayerScript.singleton_Player.GainActionPoints(PlayerScript.singleton_Player.APHit*3);
+                        }
+                        else if (AttackType[hitIndex] == "PS3")
+                        {
                             AkSoundEngine.PostEvent("Play_PS2", gameObject);
-                            CombatManager.playerMeleeAttack(2);
+                            CombatManager.playerMeleeAttack(2,5);
                             PlayerScript.singleton_Player.GainActionPoints(PlayerScript.singleton_Player.APHit*3);
                         }
                         NextInLine();
@@ -206,14 +212,20 @@ public class MusicManager : MonoBehaviour
                         if (AttackType[hitIndex] == "PS1")
                         {
                             AkSoundEngine.PostEvent("Play_PS1", gameObject);
-                            CombatManager.playerMeleeAttack(1);
+                            CombatManager.playerMeleeAttack(1,1);
                             PlayerScript.singleton_Player.GainActionPoints(PlayerScript.singleton_Player.APHit*2);
                         }
                         else if (AttackType[hitIndex] == "PS2")
                         {
-                            AkSoundEngine.PostEvent("Play_PS2", gameObject);
-                            CombatManager.playerMeleeAttack(2);
+                            AkSoundEngine.PostEvent("Play_PS1", gameObject);
+                            CombatManager.playerMeleeAttack(1,2);
                             PlayerScript.singleton_Player.GainActionPoints(PlayerScript.singleton_Player.APHit*2);
+                        }
+                        else if (AttackType[hitIndex] == "PS3")
+                        {
+                            AkSoundEngine.PostEvent("Play_PS2", gameObject);
+                            CombatManager.playerMeleeAttack(2,2);
+                            PlayerScript.singleton_Player.GainActionPoints(PlayerScript.singleton_Player.APHit*3);
                         }
                         Debug.Log("Great Hit");
                         
@@ -229,14 +241,20 @@ public class MusicManager : MonoBehaviour
                     if (AttackType[hitIndex] == "PS1")
                     {
                         AkSoundEngine.PostEvent("Play_PS1", gameObject);
-                        CombatManager.playerMeleeAttack(1);
+                        CombatManager.playerMeleeAttack(1,1);
                         PlayerScript.singleton_Player.GainActionPoints(PlayerScript.singleton_Player.APHit*1);
                     }
                     else if (AttackType[hitIndex] == "PS2")
                     {
-                        AkSoundEngine.PostEvent("Play_PS2", gameObject);
-                        CombatManager.playerMeleeAttack(2);
+                        AkSoundEngine.PostEvent("Play_PS1", gameObject);
+                        CombatManager.playerMeleeAttack(2,1);
                         PlayerScript.singleton_Player.GainActionPoints(PlayerScript.singleton_Player.APHit*1);
+                    }
+                    else if (AttackType[hitIndex] == "PS3")
+                    {
+                        AkSoundEngine.PostEvent("Play_PS2", gameObject);
+                        CombatManager.playerMeleeAttack(2,1);
+                        PlayerScript.singleton_Player.GainActionPoints(PlayerScript.singleton_Player.APHit*3);
                     }
                     NextInLine();
                     //hitIndex++;

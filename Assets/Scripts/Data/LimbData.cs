@@ -23,5 +23,6 @@ public class LimbData : MonoBehaviour
         this.limbNumber = limbNumber;
         this.limbHealth = limbHealth;
         this.limbName = limbName;
-    }   
+    }
+
 }

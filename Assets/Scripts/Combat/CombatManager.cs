@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+
 //using System.Collections.Generic;
 using MoreMountains.Feedbacks;
 using MoreMountains.Tools;
@@ -168,7 +170,7 @@ public class CombatManager : MonoBehaviour
             ourButtonAnim.Play("ButtonHeld");
         }
 
-        public static void playerMeleeAttack(int damageMultiplier)
+        public static void playerMeleeAttack(int damageMultiplier, float criticalChanceMultiplier)
         {
             if (ourActionSlotManager.Actions[ourAudioEvents.currentBar - 1] != null)
             {
@@ -178,7 +180,7 @@ public class CombatManager : MonoBehaviour
                     .GetComponent<AttackAction>().SelectedMonster;
                 float newSelectedLimb = ourActionSlotManager.Actions[ourAudioEvents.currentBar - 1]
                     .GetComponent<AttackAction>().SelectedLimb;
-                DamageMonsterLimb(newSelectedMonster, (int) newSelectedLimb, generatedDamage, damageMultiplier);
+                DamageMonsterLimb(newSelectedMonster, (int) newSelectedLimb, generatedDamage, damageMultiplier, criticalChanceMultiplier);
                 
                 //Button Down
                 Animator ourButtonAnim = UIManager.ourButton.transform.GetChild(0).transform.gameObject
@@ -237,13 +239,25 @@ public class CombatManager : MonoBehaviour
             Instantiate(item);
         }
 
-        public static void DamageMonsterLimb(GameObject Monster, int limbNumber, int damage, int multiplier)
+        public static void DamageMonsterLimb(GameObject Monster, int limbNumber, int damage, int multiplier,
+            float critChanceMultiplier)
         {
 
             //Initialize Variables
             MonsterData ourMonster = Monster.GetComponent<MonsterData>();
             GameObject monsterGFX = Monster.transform.GetChild(0).gameObject;
-
+            //Roll to See if Crit
+            bool CriticalStrike = false;
+            float CritRoll = 0;
+            float PlayerCritRoll = 0;
+            PlayerCritRoll = PlayerScript.singleton_Player.CriticalStrikeChance * critChanceMultiplier;
+            CritRoll = UnityEngine.Random.Range(0f, 1f);
+            if(PlayerCritRoll>=CritRoll) //Calculate to see if we Crit
+            {
+                CriticalStrike = true;
+                Debug.Log("Crit: "+ "Player Roll: "+PlayerCritRoll + "> " + "Enemy Roll "+ CritRoll);
+            }
+            
             if (ourMonster.Resistance[0].Beat[GlobalVariables.currentBar - 1] == false)
             {
                 ourUI.UpdateUI();
@@ -251,16 +265,31 @@ public class CombatManager : MonoBehaviour
                 Debug.Log("Awaiting next hit!");
                 ChangeState(State.AwaitingAttack);
 
-                //Initialie Feedback
-                MMF_Player targetFeedback = monsterGFX.transform.GetChild(1).GetComponent<MMF_Player>();
+                //Initialize Feedback
+                MMF_Player targetFeedback;
+                int newLimbNumber = (int) MathF.Abs(limbNumber);
+                //Intensity
+                if (CriticalStrike)
+                {
+                    targetFeedback = monsterGFX.transform.GetChild(8).GetComponent<MMF_Player>();
+                    targetFeedback.FeedbacksIntensity = multiplier*3;
+                    ourMonster.DamageMonsterLimb(newLimbNumber,damage*2);
+                    PlayerScript.singleton_Player.GainActionPoints(PlayerScript.singleton_Player.APHit*3);
+                }
+                else
+                {
+                    targetFeedback = monsterGFX.transform.GetChild(1).GetComponent<MMF_Player>();
+                    targetFeedback.FeedbacksIntensity = multiplier;
+                    ourMonster.DamageMonsterLimb(newLimbNumber,damage);
+                }
                 MMF_FloatingText floatingText = targetFeedback.GetFeedbackOfType<MMF_FloatingText>();
-                targetFeedback.FeedbacksIntensity = multiplier;
                 floatingText.Value = damage.ToString();
                 //Deal Damage
                 targetFeedback.ResetFeedbacks();
                 targetFeedback.PlayFeedbacks();
-                int newLimbNumber = (int) MathF.Abs(limbNumber);
-                ourMonster.limbHealth[newLimbNumber] -= damage;
+                
+                //ourMonster.limbHealth[newLimbNumber] -= damage;
+                
             }
             else
             {

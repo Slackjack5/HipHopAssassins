@@ -14,9 +14,9 @@ public class PlayerScript : MonoBehaviour
     public float APRegen = 1f;
     public float actionPointMax=100;
     public int Strikes;
-    public int hitsMax;
     public int attackMin;
     public int attackMax;
+    public float CriticalStrikeChance;
     public int[] allocatedSpells;
     public int[] allocatedItems;
     
