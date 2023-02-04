@@ -15,6 +15,7 @@ public class MonsterData : MonoBehaviour
     public GameObject monsterCanvas;
     public String[] limbName;
     public int[] limbHealth;
+    public bool[] LimbBroken;
     public BeatData[] Resistance = new BeatData[4];
     
     [System.Serializable]
@@ -36,6 +37,7 @@ public class MonsterData : MonoBehaviour
         {
             setLimbHealth(monsterCanvas.transform.GetChild(i).gameObject,limbHealth[i]);
         }
+        
     }
     
 
@@ -78,11 +80,42 @@ public class MonsterData : MonoBehaviour
             monsterCanvas.transform.GetChild(i).gameObject.SetActive(false);
         }
     }
+
+    public void BreakLimb(int LimbNumber, int damage)
+    {
+        if (LimbBroken[LimbNumber] == false) //If Limb isn't broken, Break it
+        {
+            LimbBroken[LimbNumber] = true;
+            PlayerScript.singleton_Player.actionPoints = PlayerScript.singleton_Player.actionPointMax;
+            PlayerScript.singleton_Player.GainApRegen(PlayerScript.singleton_Player.APRegen*2);
+        }
+        else //else deal fatal damage
+        {
+            monsterHealth -= damage;
+        }
+        
+    }
     
     
     public void DamageMonsterLimb(int LimbNumber ,int Damage)
     {
-        limbHealth[LimbNumber] -= Damage;
+        if (limbHealth[LimbNumber]-Damage > 0)
+        {
+            limbHealth[LimbNumber] -= Damage;
+        }
+        else
+        {
+            if (limbHealth[LimbNumber] > 0)
+            {
+                limbHealth[LimbNumber] -= Damage;
+                BreakLimb(LimbNumber,0);
+            }
+            else
+            {
+                BreakLimb(LimbNumber,Damage);
+            }
+        }
+        
     }
 
 
@@ -92,6 +125,8 @@ public class MonsterData : MonoBehaviour
     {
         //Parent GFX to Game Object
         gameObject.transform.SetParent(gameObject.transform);
+        //Set Broken Limbs to False
+        LimbBroken = new bool[limbHealth.Length];
     }
 
     // Update is called once per frame

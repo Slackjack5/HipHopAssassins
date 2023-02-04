@@ -42,6 +42,11 @@ public class PlayerScript : MonoBehaviour
     {
         actionPoints += amount;
     }
+
+    public void GainApRegen(float amount)
+    {
+        APRegen = amount;
+    }
     
     public void SubtractActionPoints(float amount)
     {
@@ -51,9 +56,15 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //If we run out of action points, Lock the player out
         if (actionPoints < 0 && CombatManager.singleton_CombatManager.LockedOut==false)
         {
             CombatManager.singleton_CombatManager.LockOut();
+        }
+        //Make sure our action points don't go over MAX
+        if (actionPoints >= actionPointMax)
+        {
+            actionPoints = actionPointMax;
         }
     }
     
