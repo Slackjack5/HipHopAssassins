@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1229948536" Language="SFX" Hash="885917918">
+		<SoundBank Id="1229948536" Language="SFX" Hash="3541942013">
 			<ObjectPath>\SoundBanks\Default Work Unit\Environment</ObjectPath>
 			<ShortName>Environment</ShortName>
 			<Path>Environment.bnk</Path>
@@ -108,6 +108,7 @@
 					</IncludedMemoryFiles>
 				</Event>
 				<Event Id="3102099450" Name="Stop_AttackSequences" ObjectPath="\Events\Default Work Unit\Stop_AttackSequences" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="3256669452" Name="Stop_MusicEnvironment" ObjectPath="\Events\Default Work Unit\Stop_MusicEnvironment" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="3211527319" Name="Stop_Sequence" ObjectPath="\Events\Default Work Unit\Stop_Sequence" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="992158907" Name="Trigger_Attack_85BPM" ObjectPath="\Events\Default Work Unit\Trigger_Attack_85BPM" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0.">
 					<ActionTrigger>

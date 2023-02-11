@@ -26,6 +26,7 @@ namespace AK
         static const AkUniqueID PLAY_PS1 = 2520504994U;
         static const AkUniqueID PLAY_PS2 = 2520504993U;
         static const AkUniqueID STOP_ATTACKSEQUENCES = 3102099450U;
+        static const AkUniqueID STOP_MUSICENVIRONMENT = 3256669452U;
         static const AkUniqueID STOP_SEQUENCE = 3211527319U;
         static const AkUniqueID TRIGGER_ATTACK_85BPM = 992158907U;
     } // namespace EVENTS

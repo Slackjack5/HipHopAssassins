@@ -83,7 +83,7 @@
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="AttackTrack(172)" ID="{19A218FE-9738-4870-BACF-9B9DE7FCC547}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
+									<ObjectRef Name="AttackSequenceTest172" ID="{C1364907-FEAF-4316-8B30-EECD2D06446F}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -217,6 +217,22 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="AttackSequence4" ID="{BC6AC594-26DD-444E-B3CD-A95D467B33B2}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_MusicEnvironment" ID="{954163D5-8947-4650-AF71-8435B0CFF305}">
+					<ChildrenList>
+						<Action Name="" ID="{C0F12952-C3E1-4624-A353-E9D7E59AB3D3}" ShortID="797377722">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="2"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MusicEnvironment(172 BPM)" ID="{AC822ACB-3D63-4520-9B98-B506AC2CC6D8}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

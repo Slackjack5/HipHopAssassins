@@ -37,6 +37,7 @@ public class CombatManager : MonoBehaviour
     public static int comboPoints;
 
     private static ActionSlotManager ourActionSlotManager;
+    public bool CombatEnded;
 
     //Music
     private static AudioEvents ourAudioEvents;
@@ -48,6 +49,7 @@ public class CombatManager : MonoBehaviour
         PlayerTurn,
         MonsterTurn,
         Defcon,
+        CombatEnd,
         AwaitingAttack,
         AwaitingMagic,
         Dialogue,
@@ -108,6 +110,13 @@ public class CombatManager : MonoBehaviour
                     break;
                 case State.Defcon:
                     Debug.Log("In Defcon Turn");
+                    break;
+                case State.CombatEnd:
+                    Debug.Log("Ending Combat");
+                    AkSoundEngine.PostEvent("Stop_MusicEnvironment", gameObject);
+                    CombatEnded = true;
+                    UserInterface.singleton_UserInterface.disableHome();
+                    MusicManager.singleton_MusicManager.ResetVariables();
                     break;
                 case State.AwaitingAttack:
                     Debug.Log("In Awaiting Attack Turn");
@@ -211,6 +220,16 @@ public class CombatManager : MonoBehaviour
         public static void DamageMonsterHealth(MonsterData ourMonster, String DamageType, int damage)
         {
 
+        }
+
+        public void KillMonster(GameObject monster)
+        {
+            Destroy(monster);
+            ChangeState(State.CombatEnd);
+
+            if (enemyCount <= 0)
+            {
+            }
         }
 
         public void LockOut() //If The Player spends more then they have action points for, They get locked out and gain a strike.

@@ -2820,6 +2820,7 @@ MonoBehaviour:
   monsterCanvas: {fileID: 0}
   limbName: []
   limbHealth: 
+  LimbBroken: 
   Resistance:
   - name: 
     Beat: 00000000

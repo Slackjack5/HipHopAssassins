@@ -91,9 +91,23 @@ public class MonsterData : MonoBehaviour
         }
         else //else deal fatal damage
         {
+            CheckHealth();
             monsterHealth -= damage;
         }
         
+    }
+
+    public void CheckHealth()
+    {
+        if (monsterHealth <= 0)
+        {
+            MonsterKilled();
+        }
+    }
+
+    public void MonsterKilled()
+    {
+        CombatManager.singleton_CombatManager.KillMonster(gameObject);
     }
     
     
@@ -132,7 +146,7 @@ public class MonsterData : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
 

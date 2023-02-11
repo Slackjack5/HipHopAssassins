@@ -308,7 +308,7 @@ public class MusicManager : MonoBehaviour
             CustomCues(_musicInfo.userCueName, _musicInfo);
         break;
         case AkCallbackType.AK_MusicSyncExit:
-            if (AttackCounter <= 0)
+            if (AttackCounter <= 0 && CombatManager.singleton_CombatManager.CombatEnded==false)
             {
                 ResetVariables();
                 CombatManager.SkipPlayerTurn();

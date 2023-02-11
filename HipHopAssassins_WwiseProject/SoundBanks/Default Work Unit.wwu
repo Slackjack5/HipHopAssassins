@@ -11,6 +11,7 @@
 						<ObjectRef Name="Play_AttackTrack172BPM" ID="{7A7E9E1F-26F7-41FC-834D-57FDF0E81202}" WorkUnitID="{FBA2C6AC-387D-41A9-A320-2BE7B4B7E5CA}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_AttackSequence1TEST" ID="{D8925C3B-09EF-43F7-AB94-EE3ABD13F411}" WorkUnitID="{FBA2C6AC-387D-41A9-A320-2BE7B4B7E5CA}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_AttackSequence2TEST" ID="{D3022FDE-7AF9-440D-BBB6-C62DA7E0830C}" WorkUnitID="{FBA2C6AC-387D-41A9-A320-2BE7B4B7E5CA}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Stop_MusicEnvironment" ID="{954163D5-8947-4650-AF71-8435B0CFF305}" WorkUnitID="{FBA2C6AC-387D-41A9-A320-2BE7B4B7E5CA}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_AttackSequence3TEST" ID="{DF1ED7CD-7208-471B-AEB8-EC0205AA5D54}" WorkUnitID="{FBA2C6AC-387D-41A9-A320-2BE7B4B7E5CA}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_AttackLockOut" ID="{C84F729C-F179-4803-87C2-5AC5830397C1}" WorkUnitID="{FBA2C6AC-387D-41A9-A320-2BE7B4B7E5CA}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_PS1" ID="{EFC92733-4AB4-4838-AE39-3D6C6BEF0F41}" WorkUnitID="{FBA2C6AC-387D-41A9-A320-2BE7B4B7E5CA}" Origin="Manual" Filter="7"/>

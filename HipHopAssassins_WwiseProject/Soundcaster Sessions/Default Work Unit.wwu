@@ -10,6 +10,10 @@
 							<Position X="0" Y="0"/>
 						</Module>
 						<Module>
+							<ObjectRef Name="AttackSequence1" ID="{7602F21C-3E73-4608-99A0-2F456394C13D}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
+							<Position X="0" Y="1"/>
+						</Module>
+						<Module>
 							<ObjectRef Name="Trigger_Attack_85BPM" ID="{E801FEC8-846D-4CA6-8134-8A547D318E67}" WorkUnitID="{FBA2C6AC-387D-41A9-A320-2BE7B4B7E5CA}"/>
 							<Position X="1" Y="0"/>
 						</Module>
@@ -26,7 +30,7 @@
 					<CurrentStateList ShowAll="true"/>
 					<CurrentSwitchList ShowAll="true">
 						<CurrentSwitchRef Name="Cloth" ID="{87E87992-85B2-4673-96EE-0E2863FE3FE7}"/>
-						<CurrentSwitchRef Name="Sequence2" ID="{EC7CE8D8-3DDD-4815-99CB-674B9C69F744}"/>
+						<CurrentSwitchRef Name="Sequence1" ID="{18843678-1C3B-4B92-A0E4-84B927CF3E8C}"/>
 						<CurrentSwitchRef Name="Sword" ID="{10F2062A-2ECC-4427-A972-ECD514263692}"/>
 					</CurrentSwitchList>
 				</SoundcasterSession>
