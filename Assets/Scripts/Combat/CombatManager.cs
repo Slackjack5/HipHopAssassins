@@ -97,7 +97,6 @@ public class CombatManager : MonoBehaviour
                     break;
                 case State.PlayerTurn:
                     Debug.Log("In Player Turn");
-                    
                     break;
                 case State.MonsterTurn:
                     Debug.Log("In Monster Turn");

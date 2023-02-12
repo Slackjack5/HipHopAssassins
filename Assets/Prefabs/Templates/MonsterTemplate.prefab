@@ -554,17 +554,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 268ac4a65dbb2471fbbc9a49aaef0a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterHealth: 5
+  monsterHealth: 25
   monsterGFX: {fileID: 5120150769494284410, guid: 48beaefbcc10b5d429677a06c2db77da, type: 3}
   monsterCanvas: {fileID: 860581857734234074}
   limbName:
   - Head
   - Torso
-  limbHealth: 0500000032000000
+  limbHealth: 1900000032000000
   LimbBroken: 
   Resistance:
   - name: Physical
-    Beat: 00000100
+    Beat: 00000101
   - name: Fire
     Beat: 00000000
   - name: Ice

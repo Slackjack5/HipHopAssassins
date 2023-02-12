@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using MoreMountains.Tools;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -47,6 +48,7 @@ public class MusicManager : MonoBehaviour
     //Notes
     public float TravelTime;
     public GameObject beatCircle;
+    public GameObject beatGrid;
     public GameObject RhythmUI;
     
     //Managers
@@ -421,6 +423,29 @@ public class MusicManager : MonoBehaviour
         ourEntity.travelTime = TravelTime;
         Debug.Log("Spawning Index:"+cueIndex);
         cueIndex++;
+    }
+    
+    public void BarSpawner()
+    {
+        GameObject ourCircle = Instantiate(beatGrid);
+        GridSpawner ourEntity = ourCircle.GetComponent<GridSpawner>();
+        ourCircle.transform.SetParent(RhythmUI.transform);
+        ourEntity.spawnerPos = RhythmUI.transform.GetChild(0).GetComponent<RectTransform>().transform;
+        ourEntity.centerPos = RhythmUI.transform.GetChild(1).GetComponent<RectTransform>().transform;
+        ourEntity.endPos = RhythmUI.transform.GetChild(2).GetComponent<RectTransform>().transform;
+        ourEntity.travelTime = AudioEvents.secondsPerBar;
+    }
+    
+    public void BeatSpawner()
+    {
+        GameObject ourCircle = Instantiate(beatGrid);
+        GridSpawner ourEntity = ourCircle.GetComponent<GridSpawner>();
+        ourCircle.transform.SetParent(RhythmUI.transform);
+        ourCircle.transform.localScale = ourCircle.transform.localScale / 2;
+        ourEntity.spawnerPos = RhythmUI.transform.GetChild(0).GetComponent<RectTransform>().transform;
+        ourEntity.centerPos = RhythmUI.transform.GetChild(1).GetComponent<RectTransform>().transform;
+        ourEntity.endPos = RhythmUI.transform.GetChild(2).GetComponent<RectTransform>().transform;
+        ourEntity.travelTime = AudioEvents.secondsPerBar/4;
     }
 
 

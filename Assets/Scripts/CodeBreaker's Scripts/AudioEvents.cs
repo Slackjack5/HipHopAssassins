@@ -124,7 +124,7 @@ public class AudioEvents : MonoBehaviour
         break;
       case AkCallbackType.AK_MusicSyncBar:
         IncreaseBar();
-
+        //MusicManager.singleton_MusicManager.GridSpawner();
         //I want to make sure that the secondsPerBeat is defined on our first measure.
         if (GlobalVariables.songStarted == false)
         {

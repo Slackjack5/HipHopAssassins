@@ -16,6 +16,7 @@ public class UserInterface : MonoBehaviour
     public GameObject ActionPointCanvas;
     public GameObject SequenceCostCanvas;
     public GameObject StrikeOutCanvas;
+    public GameObject BeatMapCanvas;
     
 
     private void Awake()
@@ -81,6 +82,17 @@ public class UserInterface : MonoBehaviour
     {
         confirmationCanvas.SetActive(false);
     }
+
+    public void enableBeatMap()
+    {
+        BeatMapCanvas.SetActive(true);
+    }
+    
+    public void disableBeatMap()
+    {
+        BeatMapCanvas.SetActive(false);
+    }
+    
     // Start is called before the first frame update
     void Start()
     {
