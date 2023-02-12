@@ -24,7 +24,7 @@ public class CombatManager : MonoBehaviour
 
     private static UIManager ourUI;
     private SpawnPoints ourSpawnPoints;
-    private bool testStarted = false;
+    public bool testStarted = false;
     private ItemDictionary ourItemDictionary;
     private MusicManager ourMusicManager;
     
@@ -97,6 +97,7 @@ public class CombatManager : MonoBehaviour
                     break;
                 case State.PlayerTurn:
                     Debug.Log("In Player Turn");
+                    testStarted = false;
                     break;
                 case State.MonsterTurn:
                     Debug.Log("In Monster Turn");
@@ -391,7 +392,6 @@ public class CombatManager : MonoBehaviour
             LockedOut = false;
             print("Skipping Monster Turn " + Time.time);
             ourUI.ResetMenu();
-            testStarted = false;
             ChangeState(State.PlayerTurn);
         }
 

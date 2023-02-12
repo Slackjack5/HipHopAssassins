@@ -445,7 +445,7 @@ public class MusicManager : MonoBehaviour
         ourEntity.spawnerPos = RhythmUI.transform.GetChild(0).GetComponent<RectTransform>().transform;
         ourEntity.centerPos = RhythmUI.transform.GetChild(1).GetComponent<RectTransform>().transform;
         ourEntity.endPos = RhythmUI.transform.GetChild(2).GetComponent<RectTransform>().transform;
-        ourEntity.travelTime = AudioEvents.secondsPerBar/4;
+        ourEntity.travelTime = AudioEvents.secondsPerBar;
     }
 
 
