@@ -17,6 +17,7 @@ public class UserInterface : MonoBehaviour
     public GameObject SequenceCostCanvas;
     public GameObject StrikeOutCanvas;
     public GameObject BeatMapCanvas;
+    public GameObject BeatCanvas;
     
 
     private void Awake()

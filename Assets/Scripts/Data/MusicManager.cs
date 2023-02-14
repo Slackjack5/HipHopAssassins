@@ -49,8 +49,6 @@ public class MusicManager : MonoBehaviour
     public float TravelTime;
     public GameObject beatCircle;
     public GameObject beatGrid;
-    public GameObject RhythmUI;
-    
     //Managers
     private CombatManager ourCombatManager;
     
@@ -89,7 +87,7 @@ public class MusicManager : MonoBehaviour
         Debug.Log("Doing CommenceAttackEvent Function");
         preparingSequence = true;
         //Update Attack Counter
-        AttackCounter = ourActionSlotManager.Actions.Count-1;
+        AttackCounter = ourActionSlotManager.Actions.Count;
     }
     
     public void EnableQTELockout()
@@ -310,25 +308,13 @@ public class MusicManager : MonoBehaviour
             CustomCues(_musicInfo.userCueName, _musicInfo);
         break;
         case AkCallbackType.AK_MusicSyncExit:
-            if (AttackCounter <= 0 && CombatManager.singleton_CombatManager.CombatEnded==false)
-            {
-                ResetVariables();
-                CombatManager.SkipPlayerTurn();
-            }
-
             if (AttackCounter > 0)
             {
-                AttackCounter--;
                 if (CombatManager.singleton_CombatManager.LockedOut == false)
                 {
                     ourActionSlotManager.SubtractActionCost();
                 }
             }
-            else
-            {
-                AttackCounter = 0;
-            }
-            
             break;
     }
   }
@@ -358,7 +344,7 @@ public class MusicManager : MonoBehaviour
                 break;
             case "Next1":
                 Debug.Log("Next Called");
-                if (AttackCounter > 0)
+                if (AttackCounter > 1)
                 {
                     AkSoundEngine.PostEvent("Play_AttackSequences", gameObject);
                     
@@ -370,7 +356,7 @@ public class MusicManager : MonoBehaviour
                 break;
             case "Next2":
                 Debug.Log("Next Called");
-                if (AttackCounter > 0)
+                if (AttackCounter > 1)
                 {
                     AkSoundEngine.PostEvent("Play_AttackSequences", gameObject);
                     
@@ -382,7 +368,7 @@ public class MusicManager : MonoBehaviour
                 break;
             case "Next3":
                 Debug.Log("Next Called");
-                if (AttackCounter > 0)
+                if (AttackCounter > 1)
                 {
                     AkSoundEngine.PostEvent("Play_AttackSequences", gameObject);
                     
@@ -398,6 +384,15 @@ public class MusicManager : MonoBehaviour
                     (uint) (AkCallbackType.AK_MusicSyncAll | AkCallbackType.AK_EnableGetMusicPlayPosition),
                     MusicCallbackFunction);
                 break;
+            case "End":
+                AttackCounter--;
+            
+                if (AttackCounter == 0 && CombatManager.singleton_CombatManager.CombatEnded==false)
+                {
+                    ResetVariables();
+                    CombatManager.SkipPlayerTurn();
+                }
+                break;
             default:
                 break;
         }
@@ -411,11 +406,12 @@ public class MusicManager : MonoBehaviour
 
     public void NoteSpawner()
     {
+        GameObject RhythmUI = UserInterface.singleton_UserInterface.BeatMapCanvas;
         GameObject ourCircle = Instantiate(beatCircle);
         CueObjects.Add(ourCircle);
         BeatEntity ourEntity = ourCircle.GetComponent<BeatEntity>();
         if(CombatManager.singleton_CombatManager.LockedOut){ourEntity.EnableLockout();}
-        ourCircle.transform.SetParent(RhythmUI.transform);
+        ourCircle.transform.SetParent(UserInterface.singleton_UserInterface.BeatCanvas.transform);
         ourEntity.indexNumber = cueIndex;
         ourEntity.spawnerPos = RhythmUI.transform.GetChild(0).GetComponent<RectTransform>().transform;
         ourEntity.centerPos = RhythmUI.transform.GetChild(1).GetComponent<RectTransform>().transform;
@@ -427,9 +423,10 @@ public class MusicManager : MonoBehaviour
     
     public void BarSpawner()
     {
+        GameObject RhythmUI = UserInterface.singleton_UserInterface.BeatMapCanvas;
         GameObject ourCircle = Instantiate(beatGrid);
         GridSpawner ourEntity = ourCircle.GetComponent<GridSpawner>();
-        ourCircle.transform.SetParent(RhythmUI.transform);
+        ourCircle.transform.SetParent(UserInterface.singleton_UserInterface.BeatCanvas.transform);
         ourEntity.spawnerPos = RhythmUI.transform.GetChild(0).GetComponent<RectTransform>().transform;
         ourEntity.centerPos = RhythmUI.transform.GetChild(1).GetComponent<RectTransform>().transform;
         ourEntity.endPos = RhythmUI.transform.GetChild(2).GetComponent<RectTransform>().transform;
@@ -438,9 +435,10 @@ public class MusicManager : MonoBehaviour
     
     public void BeatSpawner()
     {
+        GameObject RhythmUI = UserInterface.singleton_UserInterface.BeatMapCanvas;
         GameObject ourCircle = Instantiate(beatGrid);
         GridSpawner ourEntity = ourCircle.GetComponent<GridSpawner>();
-        ourCircle.transform.SetParent(RhythmUI.transform);
+        ourCircle.transform.SetParent(UserInterface.singleton_UserInterface.BeatCanvas.transform);
         ourCircle.transform.localScale = ourCircle.transform.localScale / 2;
         ourEntity.spawnerPos = RhythmUI.transform.GetChild(0).GetComponent<RectTransform>().transform;
         ourEntity.centerPos = RhythmUI.transform.GetChild(1).GetComponent<RectTransform>().transform;
