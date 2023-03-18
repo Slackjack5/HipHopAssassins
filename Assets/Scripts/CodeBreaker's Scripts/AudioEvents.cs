@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 public class AudioEvents : MonoBehaviour
 {
+  public static AudioEvents singleton_AudioEvents;
   public class SegmentPosition
   {
     internal float value;
@@ -64,6 +65,18 @@ public class AudioEvents : MonoBehaviour
     // iCurrentPosition is in milliseconds.
     (float) (currentSegment.iCurrentPosition - currentBarStartTime) / 1000;
 
+  private void Awake()
+  {
+    if (singleton_AudioEvents != null && singleton_AudioEvents != this)
+    {
+      Destroy(this);
+    }
+    else
+    {
+      singleton_AudioEvents = this;
+    }
+  }
+
   private void Start()
   {
     playingID = rhythmHeckinEvent.Post(gameObject,(uint) (AkCallbackType.AK_MusicSyncAll | AkCallbackType.AK_EnableGetMusicPlayPosition), MusicCallbackFunction);
@@ -115,6 +128,7 @@ public class AudioEvents : MonoBehaviour
         currentBeatStartTime = currentSegment.iCurrentPosition;
         OnEveryBeat.Invoke();
         isOnEveryOffbeatInvoked = false;
+        
 
         if (GlobalVariables.currentBeat % 2 == 0)
         {
