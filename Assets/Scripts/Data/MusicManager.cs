@@ -439,7 +439,7 @@ public class MusicManager : MonoBehaviour
         GameObject ourCircle = Instantiate(beatGrid);
         GridSpawner ourEntity = ourCircle.GetComponent<GridSpawner>();
         ourCircle.transform.SetParent(UserInterface.singleton_UserInterface.BeatCanvas.transform);
-        ourCircle.transform.localScale = ourCircle.transform.localScale / 2;
+        //ourCircle.transform.localScale = ourCircle.transform.localScale / 2;
         ourEntity.spawnerPos = RhythmUI.transform.GetChild(0).GetComponent<RectTransform>().transform;
         ourEntity.centerPos = RhythmUI.transform.GetChild(1).GetComponent<RectTransform>().transform;
         ourEntity.endPos = RhythmUI.transform.GetChild(2).GetComponent<RectTransform>().transform;

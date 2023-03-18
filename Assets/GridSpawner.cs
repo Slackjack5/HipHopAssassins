@@ -1,6 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
+using UnityEngine.UI;
+using Image = UnityEngine.UI.Image;
+
 
 public class GridSpawner : MonoBehaviour
 {
@@ -10,11 +14,12 @@ public class GridSpawner : MonoBehaviour
   public float travelTime;
   private bool reachedMiddle;
   public float currentTime;
+  public Image sr;
+
   
     // Start is called before the first frame update
     void Start()
     {
-     
     }
 
     // Update is called once per frame
@@ -27,6 +32,8 @@ private void Update()
         ? Vector2.Lerp(centerPos.position, endPos.position, currentTime / travelTime)
         : Vector2.Lerp(spawnerPos.position, centerPos.position, currentTime / travelTime);
       
+      float newAlpha = Mathf.Lerp(spawnerPos.position.x, centerPos.position.x, currentTime / travelTime);
+      sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, newAlpha*255);
       currentTime += Time.deltaTime;
     }
     else
@@ -40,6 +47,7 @@ private void Update()
       else
       {
         reachedMiddle = true;
+        Destroy(gameObject);
         currentTime = 0;
       }
     }
