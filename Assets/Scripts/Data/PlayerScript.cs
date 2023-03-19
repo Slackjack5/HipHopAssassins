@@ -8,7 +8,8 @@ public class PlayerScript : MonoBehaviour
     public static PlayerScript singleton_Player;
     
     [SerializeField] private int Level;
-    [SerializeField] public int Health;
+    [SerializeField] public float Health;
+    [SerializeField] public float HealthMax;
     public float actionPoints;
     public float APHit = 2;
     public float APRegen = 1f;

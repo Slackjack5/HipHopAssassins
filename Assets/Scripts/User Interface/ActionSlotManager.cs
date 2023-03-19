@@ -48,6 +48,7 @@ public class ActionSlotManager : MonoBehaviour
             //Prepare 
             nextSlot = Actions.Count;
             GameObject ourNewAction = Instantiate(AttackGameObject); //Spawn Object
+            //ourNewAction.GetComponent<Image>().SetNativeSize();
             AttackAction ourAttackAction = ourNewAction.GetComponent<AttackAction>();
             //Add Action to List
             ourAttackAction.SelectedMonster = SelectedMonster;

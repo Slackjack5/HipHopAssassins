@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.UI;
 
 public class UserInterface : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class UserInterface : MonoBehaviour
     public GameObject StrikeOutCanvas;
     public GameObject BeatMapCanvas;
     public GameObject BeatCanvas;
+    public Image EnergyBar;
+    public Image TimerBar;
+    public Image HealthBar;
     
 
     private void Awake()
@@ -118,5 +122,14 @@ public class UserInterface : MonoBehaviour
         TextMeshProUGUI textmeshPro3 = StrikesText.GetComponent<TextMeshProUGUI>();
         textmeshPro3.SetText("Strikes: "+PlayerScript.singleton_Player.Strikes+" / " + "3");
         //textObject.transform.GetComponent<TextMeshPro>().text = "Hello It Works";
+        
+        //Update  Energy
+        EnergyBar.fillAmount = PlayerScript.singleton_Player.actionPoints / PlayerScript.singleton_Player.actionPointMax;
+        
+        //Update Timer
+        TimerBar.fillAmount = TimeManager.singleton_TimeManager.TimeRemaining / TimeManager.singleton_TimeManager.TimeMax;
+        
+        //Update Player Health
+        HealthBar.fillAmount = PlayerScript.singleton_Player.Health / PlayerScript.singleton_Player.HealthMax;
     }
 }
