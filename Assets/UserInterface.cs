@@ -22,6 +22,9 @@ public class UserInterface : MonoBehaviour
     public Image EnergyBar;
     public Image TimerBar;
     public Image HealthBar;
+    public Image HealthWhiteBar;
+
+    private float lerpTimer;
     
 
     private void Awake()
@@ -130,6 +133,32 @@ public class UserInterface : MonoBehaviour
         TimerBar.fillAmount = TimeManager.singleton_TimeManager.TimeRemaining / TimeManager.singleton_TimeManager.TimeMax;
         
         //Update Player Health
-        HealthBar.fillAmount = PlayerScript.singleton_Player.Health / PlayerScript.singleton_Player.HealthMax;
+        UpdateHealthUI();
+        
+    }
+
+    public void UpdateHealthUI()
+    {
+        float fillF = HealthBar.fillAmount;
+        float fillB = HealthWhiteBar.fillAmount;
+        float hFraction = PlayerScript.singleton_Player.Health / PlayerScript.singleton_Player.HealthMax;
+        //Lerp Color
+        HealthBar.color = Color.Lerp(Color.red,Color.white, hFraction);
+        if (fillB > hFraction)
+        {
+            HealthBar.fillAmount = PlayerScript.singleton_Player.Health / PlayerScript.singleton_Player.HealthMax;
+            lerpTimer += Time.deltaTime;
+            float percentComplete = lerpTimer / 15f;
+            HealthWhiteBar.fillAmount = Mathf.Lerp(fillB, hFraction, percentComplete);
+        }
+        else
+        {
+            lerpTimer = 0;
+        }
+    }
+
+    public void resetLerp()
+    {
+        lerpTimer = 0;
     }
 }

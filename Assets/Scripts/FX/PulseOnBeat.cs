@@ -15,14 +15,6 @@ public class PulseOnBeat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-
         if (BeatPulse==true)
         {
             AudioEvents.singleton_AudioEvents.OnEveryBeat.AddListener(GrowOnBeat);
@@ -36,6 +28,14 @@ public class PulseOnBeat : MonoBehaviour
             }
             pulseNumber += 1;
         }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+
+
     }
 
     private void FixedUpdate()

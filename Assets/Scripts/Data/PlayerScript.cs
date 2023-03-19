@@ -20,7 +20,9 @@ public class PlayerScript : MonoBehaviour
     public float CriticalStrikeChance;
     public int[] allocatedSpells;
     public int[] allocatedItems;
-    
+
+    private bool lerpingHealth;
+    private float timeElapsed = 0;
     private void Awake()
     {
         if (singleton_Player != null && singleton_Player != this)
@@ -54,9 +56,22 @@ public class PlayerScript : MonoBehaviour
         actionPoints -= amount;
     }
 
+    public void TakeDamage(float amount)
+    {
+        Health -= amount;
+        float timeElapsed = 0;
+        UserInterface.singleton_UserInterface.resetLerp();
+        //StartCoroutine(LerpHealth(1));
+        //if(!lerpingHealth) {StartCoroutine(LerpHealth(1));}
+    }
+
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown("p"))
+        {
+            TakeDamage(20);
+        }
         //If we run out of action points, Lock the player out
         if (actionPoints < 0 && CombatManager.singleton_CombatManager.LockedOut==false)
         {
@@ -81,4 +96,26 @@ public class PlayerScript : MonoBehaviour
     {
         GainActionPoints(APRegen);
     }
+
+    private IEnumerator LerpHealth(float duration)
+    {
+        
+        
+        lerpingHealth = true;
+        
+        while (timeElapsed < duration)
+        {
+            float startingHealth = UserInterface.singleton_UserInterface.HealthWhiteBar.fillAmount;
+            float targetHealth = UserInterface.singleton_UserInterface.HealthBar.fillAmount;
+            float t = timeElapsed / duration;
+            UserInterface.singleton_UserInterface.HealthWhiteBar.fillAmount = Mathf.Lerp(startingHealth,targetHealth, t);
+            timeElapsed+=Time.deltaTime;
+            yield return null;
+        }
+
+        lerpingHealth = false;
+        UserInterface.singleton_UserInterface.HealthWhiteBar.fillAmount = UserInterface.singleton_UserInterface.HealthBar.fillAmount;
+    }
+    
+    
 }
