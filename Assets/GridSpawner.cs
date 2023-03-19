@@ -29,7 +29,7 @@ private void Update()
     if (currentTime < travelTime)
     {
       transform.position = reachedMiddle
-        ? Vector2.Lerp(centerPos.position, endPos.position, currentTime / travelTime)
+        ? Vector2.Lerp(spawnerPos.position, centerPos.position, currentTime / travelTime)
         : Vector2.Lerp(spawnerPos.position, centerPos.position, currentTime / travelTime);
       
       float newAlpha = Mathf.Lerp(spawnerPos.position.x, centerPos.position.x, currentTime / travelTime);

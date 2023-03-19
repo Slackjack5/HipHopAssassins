@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8257903461444791092}
   - component: {fileID: 3717614602273598705}
   - component: {fileID: 8858570247787512070}
+  - component: {fileID: -1311257159586015232}
   m_Layer: 5
   m_Name: BeatGrid
   m_TagString: Untagged
@@ -28,8 +29,8 @@ RectTransform:
   m_GameObject: {fileID: 4444640655078736742}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -84,7 +85,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4444640655078736742}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbdb93a577a1fba4ab3d535b622e7547, type: 3}
   m_Name: 
@@ -95,3 +96,19 @@ MonoBehaviour:
   travelTime: 0
   currentTime: 0
   sr: {fileID: 3717614602273598705}
+--- !u!114 &-1311257159586015232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4444640655078736742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50b8f0221356a404581e0be5ba0cb786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnerPos: {fileID: 0}
+  centerPos: {fileID: 0}
+  travelTime: 5
+  currentTime: 0

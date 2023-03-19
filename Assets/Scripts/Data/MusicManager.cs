@@ -423,14 +423,15 @@ public class MusicManager : MonoBehaviour
     
     public void BarSpawner()
     {
+        /*
         GameObject RhythmUI = UserInterface.singleton_UserInterface.BeatMapCanvas;
-        GameObject ourCircle = Instantiate(beatGrid);
+        GameObject ourCircle = Instantiate(beatGrid,new RectTransform());
         GridSpawner ourEntity = ourCircle.GetComponent<GridSpawner>();
         ourCircle.transform.SetParent(UserInterface.singleton_UserInterface.BeatCanvas.transform);
         ourEntity.spawnerPos = RhythmUI.transform.GetChild(0).GetComponent<RectTransform>().transform;
         ourEntity.centerPos = RhythmUI.transform.GetChild(1).GetComponent<RectTransform>().transform;
-        ourEntity.endPos = RhythmUI.transform.GetChild(2).GetComponent<RectTransform>().transform;
         ourEntity.travelTime = AudioEvents.secondsPerBar;
+        */
     }
     
     public void BeatSpawner()
