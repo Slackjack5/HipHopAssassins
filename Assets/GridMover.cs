@@ -32,6 +32,7 @@ public class GridMover : MonoBehaviour
         }
         else
         {
+            GridDeployer.singleton_GridDeployer.PulseReticle();
             Destroy(gameObject);
         }
         

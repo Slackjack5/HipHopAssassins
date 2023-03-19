@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class GridDeployer : MonoBehaviour
 {
@@ -11,10 +12,24 @@ public class GridDeployer : MonoBehaviour
     public GameObject gridObject;
 
     public GameObject Parent;
+    public UnityEvent m_MyEvent = new UnityEvent();
+    
+    public static GridDeployer singleton_GridDeployer;
+
+    public Animator beatReticleAnim;
     // Start is called before the first frame update
     void Start()
     {
-
+        m_MyEvent.AddListener(PulseReticle);
+        
+        if (singleton_GridDeployer != null && singleton_GridDeployer != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            singleton_GridDeployer = this;
+        }
     }
 
 
@@ -40,5 +55,11 @@ public class GridDeployer : MonoBehaviour
         ourEntity.spawnerPos = startPoint.GetComponent<RectTransform>();
         ourEntity.centerPos = endPoint.GetComponent<RectTransform>();
         ourEntity.travelTime = AudioEvents.secondsPerBar;
+    }
+
+    public void PulseReticle()
+    {
+        beatReticleAnim.Play("BeatReticleAnimation",-1,0f);
+        Debug.Log("Circle Smashed");
     }
 }
