@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7b6f7efb6c460e145a05946967f5e9f4
+guid: 27097f42591fe694b9bb17e3bbd41e08
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,13 +104,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DiscHand_0
+      name: EnergyFrameShadow_0
       rect:
         serializedVersion: 2
-        x: 17
-        y: 0
-        width: 161
-        height: 63
+        x: 245
+        y: 69
+        width: 388
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,8 +118,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba590ad5375284b45a6394a9623ca3a6
-      internalID: -1122149421
+      spriteID: a9c62b612077ac94caceede432619248
+      internalID: -1137910225
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      DiscHand_0: -1122149421
+      EnergyFrameShadow_0: -1137910225
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

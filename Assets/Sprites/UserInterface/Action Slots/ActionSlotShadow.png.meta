@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7b6f7efb6c460e145a05946967f5e9f4
+guid: 15dd4fef23cd52d4b83bd59457e53e71
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,22 +104,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DiscHand_0
+      name: ActionSlotShadow_0
       rect:
         serializedVersion: 2
-        x: 17
-        y: 0
-        width: 161
-        height: 63
+        x: 118
+        y: 274
+        width: 277
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba590ad5375284b45a6394a9623ca3a6
-      internalID: -1122149421
+      spriteID: cabceae695823044992642730d2de937
+      internalID: 2012652936
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      DiscHand_0: -1122149421
+      ActionSlotShadow_5: -696222859
+      ActionSlotShadow_3: 729587229
+      ActionSlotShadow_2: -1893686240
+      ActionSlotShadow_4: 1710852710
+      ActionSlotShadow_6: 1878894408
+      ActionSlotShadow_0: 2012652936
+      ActionSlotShadow_1: -611647984
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7b6f7efb6c460e145a05946967f5e9f4
+guid: 6ebe70561de82dc4abfd4760c6af823a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,13 +104,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DiscHand_0
+      name: TimerShadowl_0
       rect:
         serializedVersion: 2
-        x: 17
-        y: 0
-        width: 161
-        height: 63
+        x: 68
+        y: 322
+        width: 497
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,8 +118,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba590ad5375284b45a6394a9623ca3a6
-      internalID: -1122149421
+      spriteID: 1502e3a3af24ac6418efd420a487853e
+      internalID: 1180339640
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      DiscHand_0: -1122149421
+      TimerShadowl_0: 1180339640
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
