@@ -1,11 +1,14 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BeatEntity : MonoBehaviour
 {
-  [HideInInspector] public Transform spawnerPos;
-  [HideInInspector] public Transform centerPos;
-  [HideInInspector] public Transform endPos;
+  [HideInInspector] public Vector2 spawnerPos;
+  [HideInInspector] public Vector2 centerPos;
+  private float normalizedValue;
+  private RectTransform rectTransform;
+
   [HideInInspector] public float travelTime;
   [HideInInspector] public int indexNumber;
 
@@ -22,13 +25,15 @@ public class BeatEntity : MonoBehaviour
   private void Start()
   {
     Debug.Log(("Entity Travel Time" + travelTime));
+    rectTransform = gameObject.GetComponent<RectTransform>();
     ring = transform.GetChild(0).GetComponent<RectTransform>();
     strartingSize = ring.transform.localScale;
+
   }
 
   private void Update()
   {
-
+  /*
     if (currentTime < travelTime)
     {
       transform.position = reachedMiddle
@@ -64,6 +69,20 @@ public class BeatEntity : MonoBehaviour
         currentTime = 0;
       }
     }
+  */
+  if (currentTime < travelTime)
+  {
+    normalizedValue=currentTime/travelTime;
+            
+    rectTransform.anchoredPosition=Vector3.Lerp(spawnerPos,centerPos, normalizedValue);
+    currentTime += Time.deltaTime; 
+  }
+  else
+  {
+    GridDeployer.singleton_GridDeployer.PulseReticle();
+    Destroy(gameObject);
+  }
+
   }
 
   public void EnableLockout()

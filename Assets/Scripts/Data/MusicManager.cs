@@ -407,17 +407,19 @@ public class MusicManager : MonoBehaviour
     public void NoteSpawner()
     {
         GameObject RhythmUI = UserInterface.singleton_UserInterface.BeatMapCanvas;
+        GridDeployer.singleton_GridDeployer.DeployBeatEntity();
+        /*
         GameObject ourCircle = Instantiate(beatCircle);
         CueObjects.Add(ourCircle);
         BeatEntity ourEntity = ourCircle.GetComponent<BeatEntity>();
         if(CombatManager.singleton_CombatManager.LockedOut){ourEntity.EnableLockout();}
         ourCircle.transform.SetParent(UserInterface.singleton_UserInterface.BeatCanvas.transform);
         ourEntity.indexNumber = cueIndex;
-        ourEntity.spawnerPos = RhythmUI.transform.GetChild(0).GetComponent<RectTransform>().transform;
-        ourEntity.centerPos = RhythmUI.transform.GetChild(1).GetComponent<RectTransform>().transform;
-        ourEntity.endPos = RhythmUI.transform.GetChild(2).GetComponent<RectTransform>().transform;
+        ourEntity.spawnerPos = RhythmUI.transform.GetChild(0).GetComponent<RectTransform>().anchoredPosition;
+        ourEntity.centerPos = RhythmUI.transform.GetChild(1).GetComponent<RectTransform>().anchoredPosition;
         ourEntity.travelTime = TravelTime;
         Debug.Log("Spawning Index:"+cueIndex);
+        */
         cueIndex++;
     }
     

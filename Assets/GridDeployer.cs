@@ -10,6 +10,7 @@ public class GridDeployer : MonoBehaviour
     public GameObject startPoint;
     public GameObject endPoint;
     public GameObject gridObject;
+    public GameObject beatEntity;
 
     public GameObject Parent;
     public UnityEvent m_MyEvent = new UnityEvent();
@@ -54,6 +55,18 @@ public class GridDeployer : MonoBehaviour
         GridMover ourEntity = ourGrid.GetComponent<GridMover>();
         ourEntity.spawnerPos = startPoint.GetComponent<RectTransform>();
         ourEntity.centerPos = endPoint.GetComponent<RectTransform>();
+        ourEntity.travelTime = AudioEvents.secondsPerBar;
+    }
+
+    public void DeployBeatEntity()
+    {
+        GameObject ourGrid = Instantiate(beatEntity);
+        ourGrid.transform.SetParent(Parent.transform);
+        ourGrid.transform.position = startPoint.transform.position;
+        ourGrid.GetComponent<Image>().SetNativeSize();
+        BeatEntity ourEntity = ourGrid.GetComponent<BeatEntity>();
+        ourEntity.spawnerPos = startPoint.GetComponent<RectTransform>().anchoredPosition;
+        ourEntity.centerPos = endPoint.GetComponent<RectTransform>().anchoredPosition;
         ourEntity.travelTime = AudioEvents.secondsPerBar;
     }
 
