@@ -8417,7 +8417,7 @@ Camera:
   far clip plane: 1000.22
   field of view: 60
   orthographic: 1
-  orthographic size: 11.625
+  orthographic size: 8.59375
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -10422,8 +10422,8 @@ MonoBehaviour:
   MutualizeWaitingPools: 1
   PoolCanExpand: 1
   Lifetime: {x: 1, y: 2}
-  SpawnOffsetMin: {x: 2, y: 1, z: 0}
-  SpawnOffsetMax: {x: -2, y: -1, z: 0}
+  SpawnOffsetMin: {x: -5, y: 1, z: 100}
+  SpawnOffsetMax: {x: -8, y: -3, z: 100}
   AnimateMovement: 1
   AnimateX: 0
   RemapXZero: {x: 0, y: 0}
@@ -10454,7 +10454,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   AnimateY: 1
   RemapYZero: {x: 0, y: 0}
-  RemapYOne: {x: 5, y: 5}
+  RemapYOne: {x: 2, y: 2}
   AnimateYCurve:
     serializedVersion: 2
     m_Curve:
@@ -10513,7 +10513,7 @@ MonoBehaviour:
   TargetCamera: {fileID: 0}
   AnimateScale: 1
   RemapScaleZero: {x: 0, y: 0}
-  RemapScaleOne: {x: 1, y: 1}
+  RemapScaleOne: {x: 2, y: 2}
   AnimateScaleCurve:
     serializedVersion: 2
     m_Curve:

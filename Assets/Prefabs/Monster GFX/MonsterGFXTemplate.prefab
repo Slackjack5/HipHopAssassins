@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 868932909630393709}
   - component: {fileID: 5175447722973327645}
   - component: {fileID: 9014361205278038762}
+  - component: {fileID: 4874112772039650868}
   m_Layer: 0
   m_Name: MonsterCanvas
   m_TagString: Untagged
@@ -115,7 +116,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1101, y: 519}
+  m_SizeDelta: {x: 135, y: 225}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &868932909630393709
 Canvas:
@@ -178,6 +179,14 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!222 &4874112772039650868
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034382900046979212}
+  m_CullTransparentMesh: 1
 --- !u!1 &1164741038518926262
 GameObject:
   m_ObjectHideFlags: 0
@@ -1525,7 +1534,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 50
   m_Sprite: {fileID: 21300000, guid: 8d96877ae0a94574f928cbe6bf8f70a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2719,7 +2728,7 @@ MonoBehaviour:
         UniformScaling: 0
         AllowAdditivePlays: 0
         DetermineScaleOnPlay: 0
-        DestinationScale: {x: 0.5, y: 0.5, z: 0.5}
+        DestinationScale: {x: 1.25, y: 1.25, z: 1.25}
         AnimateScaleX:
           serializedVersion: 2
           m_Curve: []
@@ -3044,7 +3053,7 @@ MonoBehaviour:
         UniformScaling: 0
         AllowAdditivePlays: 0
         DetermineScaleOnPlay: 1
-        DestinationScale: {x: 1, y: 1, z: 1}
+        DestinationScale: {x: 0.75, y: 0.75, z: 0.75}
         AnimateScaleX:
           serializedVersion: 2
           m_Curve: []
@@ -3428,6 +3437,7 @@ MonoBehaviour:
   - rid: 290939681433452549
   - rid: 290939684231315463
   - rid: 290940190043930624
+  - rid: 5786042019448356864
   KeepPlayModeChanges: 0
   PerformanceMode: 0
   ForceStopFeedbacksOnDisable: 1
@@ -3469,7 +3479,7 @@ MonoBehaviour:
         RandomDurationMultiplier: {x: 0.5, y: 2}
         Owner: {fileID: 3387650907808707875}
         DebugActive: 0
-        Intensity: 1
+        Intensity: 4
         Value: 100
         UseIntensityAsValue: 0
         ForceColor: 0
@@ -3841,6 +3851,50 @@ MonoBehaviour:
         CreateObjectPool: 0
         ObjectPoolSize: 5
         MutualizePools: 0
+    - rid: 5786042019448356864
+      type: {class: MMF_Flicker, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
+      data:
+        Active: 1
+        UniqueID: -1960077168
+        Label: Flicker
+        Channel: 0
+        Chance: 100
+        DisplayColor: {r: 0, g: 0, b: 0, a: 1}
+        Timing:
+          TimescaleMode: 0
+          ExcludeFromHoldingPauses: 0
+          ContributeToTotalDuration: 1
+          InitialDelay: 0
+          CooldownDuration: 0
+          InterruptsOnStop: 1
+          NumberOfRepeats: 0
+          RepeatForever: 0
+          DelayBetweenRepeats: 1
+          MMFeedbacksDirectionCondition: 0
+          PlayDirection: 0
+          ConstantIntensity: 0
+          UseIntensityInterval: 0
+          IntensityIntervalMin: 0
+          IntensityIntervalMax: 0
+          Sequence: {fileID: 0}
+          TrackID: 0
+          Quantized: 0
+          TargetBPM: 120
+        RandomizeOutput: 0
+        RandomMultiplier: {x: 0.8, y: 1}
+        RandomizeDuration: 0
+        RandomDurationMultiplier: {x: 0.5, y: 2}
+        Owner: {fileID: 3387650907808707875}
+        DebugActive: 0
+        BoundRenderer: {fileID: 8201823983195057033}
+        Mode: 0
+        PropertyName: _Tint
+        FlickerDuration: 0.2
+        FlickerOctave: 0.04
+        FlickerColor: {r: 1, g: 1, b: 1, a: 1}
+        MaterialIndexes: 
+        UseMaterialPropertyBlocks: 0
+        SpriteRendererTextureProperty: _MainTex
 --- !u!1 &7949278102729989956
 GameObject:
   m_ObjectHideFlags: 0
