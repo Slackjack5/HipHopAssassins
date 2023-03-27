@@ -20,9 +20,23 @@
 				<Event Name="Play_Music_Environment" ID="{3EB1B858-66F4-4E6B-917C-AF2D6DCB1A25}">
 					<ChildrenList>
 						<Action Name="" ID="{47EFAF9A-A561-40D9-9AAA-EFD3786DBEC9}" ShortID="151571045">
+							<PropertyList>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="TestingSong#172" ID="{9B3A8754-227D-437D-BDCB-85CE573B400E}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{18ECFBAF-C7D7-4D5E-8AC9-F56A87E13EB5}" ShortID="897644597">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="TrackA" ID="{DF730F2C-C631-41FB-89DE-F1A922760E89}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -87,6 +101,16 @@
 								</Reference>
 							</ReferenceList>
 						</Action>
+						<Action Name="" ID="{427A6480-5EEC-4F57-9F34-B0A4E31273CA}" ShortID="194756061">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AttackSequenceTest85" ID="{F6F1594D-D1CE-4070-A97D-837DE970BCEF}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
 					</ChildrenList>
 				</Event>
 				<Event Name="Play_AttackTrack172BPM" ID="{7A7E9E1F-26F7-41FC-834D-57FDF0E81202}">
@@ -94,7 +118,7 @@
 						<Action Name="" ID="{2D9C6271-D335-4A4E-B81E-C75DEFDA2B85}" ShortID="475405411">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="AttackTrack(172)" ID="{19A218FE-9738-4870-BACF-9B9DE7FCC547}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
+									<ObjectRef Name="AttackTrack(85)" ID="{4817BCFC-8FCD-486F-83B3-ABC01AE0558C}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -151,6 +175,16 @@
 								</Reference>
 							</ReferenceList>
 						</Action>
+						<Action Name="" ID="{0D39AEC7-B544-4305-9476-C475BF12D35C}" ShortID="346689570">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AttackSequences(85BPM)" ID="{8F0A64D4-328D-46E3-8A68-7ABB0B88F517}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
 					</ChildrenList>
 				</Event>
 				<Event Name="Play_CancleAttackLockout" ID="{A6BDBD30-1378-48E2-96CE-4A03A42A1862}">
@@ -181,9 +215,23 @@
 				<Event Name="Play_AttackSequence1TEST" ID="{D8925C3B-09EF-43F7-AB94-EE3ABD13F411}">
 					<ChildrenList>
 						<Action Name="" ID="{1FC83D53-CEC9-4854-93B1-AC3D953D4843}" ShortID="1063309803">
+							<PropertyList>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="AttackSequence1" ID="{7602F21C-3E73-4608-99A0-2F456394C13D}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{46D766F4-7C97-45DA-A246-C5A7098E21C7}" ShortID="246504446">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AttackSequence1_85BPM" ID="{BB1A6646-994A-4468-8045-10081BC757D9}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

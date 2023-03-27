@@ -11,21 +11,21 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1229948536" Language="SFX" Hash="4081402858">
+		<SoundBank Id="1229948536" Language="SFX" Hash="967780992">
 			<ObjectPath>\SoundBanks\Default Work Unit\Environment</ObjectPath>
 			<ShortName>Environment</ShortName>
 			<Path>Environment.bnk</Path>
 			<IncludedEvents>
 				<Event Id="3088888349" Name="Play_AttackLockOut" ObjectPath="\Events\Default Work Unit\Play_AttackLockOut" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="434006994" Name="Play_AttackSequence1TEST" ObjectPath="\Events\Default Work Unit\Play_AttackSequence1TEST" DurationType="OneShot" DurationMin="2.790708" DurationMax="2.790708">
+				<Event Id="434006994" Name="Play_AttackSequence1TEST" ObjectPath="\Events\Default Work Unit\Play_AttackSequence1TEST" DurationType="OneShot" DurationMin="5.647062" DurationMax="5.647062">
 					<IncludedMemoryFiles>
-						<File Id="344663117" Language="SFX">
-							<ShortName>Sequence#1(172BPM)(Setup).wav</ShortName>
-							<Path>SFX/Sequence#1(172BPM)(Setup)_D79FB2B7.wem</Path>
+						<File Id="371503759" Language="SFX">
+							<ShortName>TestAttackSequence85_Success.wav</ShortName>
+							<Path>SFX/TestAttackSequence85_Success_D79FB2B7.wem</Path>
 						</File>
-						<File Id="885610134" Language="SFX">
-							<ShortName>Sequence#1(172BPM)(Success).wav</ShortName>
-							<Path>SFX/Sequence#1(172BPM)(Success)_D79FB2B7.wem</Path>
+						<File Id="574161362" Language="SFX">
+							<ShortName>TestAttackSequence85.wav</ShortName>
+							<Path>SFX/TestAttackSequence85_D79FB2B7.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -66,11 +66,11 @@
 					</IncludedMemoryFiles>
 				</Event>
 				<Event Id="399042744" Name="Play_AttackSequences" ObjectPath="\Events\Default Work Unit\Play_AttackSequences" DurationType="Infinite"/>
-				<Event Id="1240998114" Name="Play_AttackTrack172BPM" ObjectPath="\Events\Default Work Unit\Play_AttackTrack172BPM" DurationType="OneShot" DurationMin="6.976744" DurationMax="6.976744">
+				<Event Id="1240998114" Name="Play_AttackTrack172BPM" ObjectPath="\Events\Default Work Unit\Play_AttackTrack172BPM" DurationType="OneShot" DurationMin="11.294125" DurationMax="11.294125">
 					<IncludedMemoryFiles>
-						<File Id="344663117" Language="SFX">
-							<ShortName>Sequence#1(172BPM)(Setup).wav</ShortName>
-							<Path>SFX/Sequence#1(172BPM)(Setup)_D79FB2B7.wem</Path>
+						<File Id="842254028" Language="SFX">
+							<ShortName>BlankAttackTrack_85BPM.wav</ShortName>
+							<Path>SFX/BlankAttackTrack_85BPM_D79FB2B7.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -85,9 +85,9 @@
 				</Event>
 				<Event Id="2261903105" Name="Play_Music_Environment" ObjectPath="\Events\Default Work Unit\Play_Music_Environment" DurationType="Infinite">
 					<IncludedMemoryFiles>
-						<File Id="338171476" Language="SFX">
-							<ShortName>BladeGame (TESTERSONG).wav</ShortName>
-							<Path>SFX/BladeGame (TESTERSONG)_D79FB2B7.wem</Path>
+						<File Id="997630709" Language="SFX">
+							<ShortName>ForFun-Drums NO ACAPELLA.wav</ShortName>
+							<Path>SFX/ForFun-Drums NO ACAPELLA_D79FB2B7.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
