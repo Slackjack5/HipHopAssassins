@@ -198,6 +198,8 @@ public class MusicManager : MonoBehaviour
                             CombatManager.playerMeleeAttack(2,5);
                             PlayerScript.singleton_Player.GainActionPoints(PlayerScript.singleton_Player.APHit*3);
                         }
+                        //Change Reticle Color and Play Animation
+                        GridDeployer.singleton_GridDeployer.PulseReticleGreen();
                         NextInLine();
                         //hitIndex++;
                     }
@@ -228,7 +230,8 @@ public class MusicManager : MonoBehaviour
                             PlayerScript.singleton_Player.GainActionPoints(PlayerScript.singleton_Player.APHit*3);
                         }
                         Debug.Log("Great Hit");
-                        
+                        //Change Reticle Color and Play Animation
+                        GridDeployer.singleton_GridDeployer.PulseReticleYellow();
                         NextInLine();
                         //hitIndex++;
                     }
@@ -256,6 +259,8 @@ public class MusicManager : MonoBehaviour
                         CombatManager.playerMeleeAttack(2,1);
                         PlayerScript.singleton_Player.GainActionPoints(PlayerScript.singleton_Player.APHit*3);
                     }
+                    //Change Reticle Color and Play Animation
+                    GridDeployer.singleton_GridDeployer.PulseReticleOrange();
                     NextInLine();
                     //hitIndex++;
                     Debug.Log("Ok Hit");
@@ -271,6 +276,8 @@ public class MusicManager : MonoBehaviour
             {
                 Debug.Log("Miss Hit");
                 CombatManager.playerMeleeMiss();
+                //Change Reticle Color and Play Animation
+                GridDeployer.singleton_GridDeployer.PulseReticleRed();
                 NextInLine();
                 //hitIndex++;
             }
@@ -279,6 +286,8 @@ public class MusicManager : MonoBehaviour
         if (error < (-leniency/4)) //If player goes over time
         {
             if (hitIndex < CueObjects.Count){CueObjects[hitIndex].GetComponent<Image>().color = new Color32(25,144,144,255);}
+            //Change Reticle Color and Play Animation
+            GridDeployer.singleton_GridDeployer.PulseReticleRed();
             NextInLine();
             //hitIndex++;
             CombatManager.playerMeleeMiss();

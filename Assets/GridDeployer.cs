@@ -18,11 +18,12 @@ public class GridDeployer : MonoBehaviour
     public static GridDeployer singleton_GridDeployer;
 
     public Animator beatReticleAnim;
+
+    public Image ReticleColor;
     // Start is called before the first frame update
     void Start()
     {
-        m_MyEvent.AddListener(PulseReticle);
-        
+        m_MyEvent.AddListener(PulseReticleWhite);
         if (singleton_GridDeployer != null && singleton_GridDeployer != this)
         {
             Destroy(this);
@@ -62,6 +63,7 @@ public class GridDeployer : MonoBehaviour
     {
         GameObject ourGrid = Instantiate(beatEntity);
         ourGrid.transform.SetParent(Parent.transform);
+        Parent.transform.GetChild(Parent.transform.childCount-2).GetComponent<GridMover>().inactive=true;//Delete the child in front of the Beat
         ourGrid.transform.position = startPoint.transform.position;
         ourGrid.GetComponent<Image>().SetNativeSize();
         BeatEntity ourEntity = ourGrid.GetComponent<BeatEntity>();
@@ -70,9 +72,35 @@ public class GridDeployer : MonoBehaviour
         ourEntity.travelTime = AudioEvents.secondsPerBar;
     }
 
-    public void PulseReticle()
+    public void PulseReticleWhite()
     {
         beatReticleAnim.Play("BeatReticleAnimation",-1,0f);
+        ReticleColor.color = Color.white;
+        Debug.Log("Circle Smashed");
+    }
+    public void PulseReticleRed()
+    {
+        beatReticleAnim.Play("BeatReticleAnimation",-1,0f);
+        ReticleColor.color = Color.red;
+        Debug.Log("Circle Smashed");
+    }
+    public void PulseReticleGreen()
+    {
+        beatReticleAnim.Play("BeatReticleAnimation",-1,0f);
+        ReticleColor.color = Color.green;
+
+        Debug.Log("Circle Smashed");
+    }
+    public void PulseReticleYellow()
+    {
+        beatReticleAnim.Play("BeatReticleAnimation",-1,0f);
+        ReticleColor.color = Color.yellow;
+        Debug.Log("Circle Smashed");
+    }
+    public void PulseReticleOrange()
+    {
+        beatReticleAnim.Play("BeatReticleAnimation",-1,0f);
+        ReticleColor.color = Color.grey;
         Debug.Log("Circle Smashed");
     }
 }

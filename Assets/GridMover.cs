@@ -12,6 +12,7 @@ public class GridMover : MonoBehaviour
     private bool reachedMiddle;
     public float currentTime;
     private RectTransform rectTransform;
+    public bool inactive;
     
     // Start is called before the first frame update
     void Start()
@@ -32,7 +33,7 @@ public class GridMover : MonoBehaviour
         }
         else
         {
-            GridDeployer.singleton_GridDeployer.PulseReticle();
+            if(!inactive){GridDeployer.singleton_GridDeployer.PulseReticleWhite();}
             Destroy(gameObject);
         }
         

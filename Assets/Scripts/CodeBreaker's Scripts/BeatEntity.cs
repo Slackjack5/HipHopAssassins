@@ -79,7 +79,7 @@ public class BeatEntity : MonoBehaviour
   }
   else
   {
-    GridDeployer.singleton_GridDeployer.PulseReticle();
+    //GridDeployer.singleton_GridDeployer.PulseReticleRed();
     Destroy(gameObject);
   }
 
