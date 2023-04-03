@@ -193,7 +193,7 @@ public class AudioEvents : MonoBehaviour
     {
       GlobalVariables.currentBar += 1;
     }
-    else
+    else if (GlobalVariables.currentBar==4)
     {
       GlobalVariables.currentBar = 1;
     }
@@ -205,7 +205,7 @@ public class AudioEvents : MonoBehaviour
     {
       GlobalVariables.currentBeat += 1;
     }
-    else
+    else if (GlobalVariables.currentBeat==4)
     {
       GlobalVariables.currentBeat = 1;
     }
@@ -217,7 +217,7 @@ public class AudioEvents : MonoBehaviour
     {
       GlobalVariables.currentGrid += 1;
     }
-    else
+    else if (GlobalVariables.currentGrid==4)
     {
       GlobalVariables.currentGrid = 1;
     }

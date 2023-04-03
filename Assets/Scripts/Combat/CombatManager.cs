@@ -181,13 +181,13 @@ public class CombatManager : MonoBehaviour
 
         public static void playerMeleeAttack(int damageMultiplier, float criticalChanceMultiplier)
         {
-            if (ourActionSlotManager.Actions[ourAudioEvents.currentBar - 1] != null)
-            {
+            //if (ourActionSlotManager.Actions[ourAudioEvents.currentBar - 1] != null)
+            //{
                 int generatedDamage = UnityEngine.Random.Range(ourPlayer.attackMin, ourPlayer.attackMax) *
                                       damageMultiplier;
-                GameObject newSelectedMonster = ourActionSlotManager.Actions[ourAudioEvents.currentBar - 1]
+                GameObject newSelectedMonster = ourActionSlotManager.Actions[ourActionSlotManager.selectedAction]
                     .GetComponent<AttackAction>().SelectedMonster;
-                float newSelectedLimb = ourActionSlotManager.Actions[ourAudioEvents.currentBar - 1]
+                float newSelectedLimb = ourActionSlotManager.Actions[ourActionSlotManager.selectedAction]
                     .GetComponent<AttackAction>().SelectedLimb;
                 DamageMonsterLimb(newSelectedMonster, (int) newSelectedLimb, generatedDamage, damageMultiplier, criticalChanceMultiplier);
                 
@@ -195,7 +195,7 @@ public class CombatManager : MonoBehaviour
                 Animator ourButtonAnim = UIManager.ourButton.transform.GetChild(0).transform.gameObject
                     .GetComponent<Animator>();
                 ourButtonAnim.Play("ButtonHeld");
-            }
+            //}
         }
 
 
@@ -318,7 +318,7 @@ public class CombatManager : MonoBehaviour
                 ChangeState(State.AwaitingAttack);
 
                 //Initialie Feedback
-                MMF_Player targetFeedback = monsterGFX.transform.GetChild(7).GetComponent<MMF_Player>();
+                MMF_Player targetFeedback = monsterGFX.transform.GetChild(8).GetComponent<MMF_Player>();
                 MMF_FloatingText floatingText = targetFeedback.GetFeedbackOfType<MMF_FloatingText>();
                 targetFeedback.FeedbacksIntensity = 0.1f;
                 floatingText.Value = "RESIST: " + (damage / 3).ToString();

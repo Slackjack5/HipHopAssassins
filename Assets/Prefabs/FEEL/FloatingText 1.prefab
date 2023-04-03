@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 1418480443928390043}
   - component: {fileID: 2580486995947534351}
   m_Layer: 0
-  m_Name: FloatingText
+  m_Name: FloatingText 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,7 +157,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 3
+  m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 8268989050d571f4ca11a8188a7c8605, type: 3}
@@ -190,7 +190,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1418480444232694749}
-  m_Text: 106
+  m_Text: 150
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1

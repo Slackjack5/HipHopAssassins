@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class ActionSlotManager : MonoBehaviour
 {
     public static ActionSlotManager singleton_ActionSlotManager;
-    public List<AttackAction> Actions = new List<AttackAction>();
+    public List<AttackAction> Actions = new List<AttackAction>(4);
     
+    public int selectedAction = 0;
 
     public GameObject AttackGameObject;
     public int SequenceCost;
@@ -86,6 +87,9 @@ public class ActionSlotManager : MonoBehaviour
             actionGrid.transform.GetChild(1).GetComponent<Image>().color=Color.white;
             actionGrid.transform.GetChild(2).GetComponent<Image>().color=Color.white;
             actionGrid.transform.GetChild(3).GetComponent<Image>().color=Color.white;
+            
+            //Selected action
+            selectedAction = 0;
         }
         else if (GlobalVariables.currentBar == 2)
         {
@@ -93,6 +97,21 @@ public class ActionSlotManager : MonoBehaviour
             actionGrid.transform.GetChild(1).GetComponent<Image>().color=Color.green;
             actionGrid.transform.GetChild(2).GetComponent<Image>().color=Color.white;
             actionGrid.transform.GetChild(3).GetComponent<Image>().color=Color.white;
+            
+            //Selected action
+            //Selected action
+         
+                if (Actions.Count >= 2)
+                {
+                    if (Actions[1] != null)
+                    {
+                        selectedAction = 1;
+                    }
+                    else
+                    {
+                        selectedAction = 0;
+                    }
+                }
         }
         else if (GlobalVariables.currentBar == 3)
         {
@@ -100,6 +119,19 @@ public class ActionSlotManager : MonoBehaviour
             actionGrid.transform.GetChild(1).GetComponent<Image>().color=Color.white;
             actionGrid.transform.GetChild(2).GetComponent<Image>().color=Color.green;
             actionGrid.transform.GetChild(3).GetComponent<Image>().color=Color.white;
+            
+            //Selected action
+            if (Actions.Count >= 3)
+            {
+                if (Actions[2] != null)
+                {
+                    selectedAction = 2;
+                }
+                else
+                {
+                    selectedAction = 0;
+                }
+            }
         }
         else if (GlobalVariables.currentBar == 4)
         {
@@ -107,6 +139,19 @@ public class ActionSlotManager : MonoBehaviour
             actionGrid.transform.GetChild(1).GetComponent<Image>().color=Color.white;
             actionGrid.transform.GetChild(2).GetComponent<Image>().color=Color.white;
             actionGrid.transform.GetChild(3).GetComponent<Image>().color=Color.green;
+            
+            //Selected action
+            if (Actions.Count >= 4)
+            {
+                if (Actions[3] != null)
+                {
+                    selectedAction = 3;
+                }
+                else
+                {
+                    selectedAction = 0;
+                }
+            }
         }
         
     }
@@ -114,7 +159,7 @@ public class ActionSlotManager : MonoBehaviour
     public void SubtractActionCost()
     {
         //Subtract the amount of actions points equal to the action on our current bar
-        PlayerScript.singleton_Player.SubtractActionPoints(Actions[GlobalVariables.currentBar - 1].actionCost);
+        PlayerScript.singleton_Player.SubtractActionPoints(Actions[singleton_ActionSlotManager.selectedAction].actionCost);
     }
 
     private void CalculateSequenceCost()
