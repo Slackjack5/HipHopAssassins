@@ -128,7 +128,7 @@ MonoBehaviour:
     ParentPath: Events/Default Work Unit
     guid: acc6a2fb7d38a941a3202be7b4b7e5ca
     GuidInternal: 
-    m_lastTime: -8585217047492082904
+    m_lastTime: -8585211170404906689
     List:
     - name: Play_AttackLockOut
       guid: 9c724fc879f1034887c25ac5830397c1
@@ -162,8 +162,8 @@ MonoBehaviour:
         guid: 3b5c92d8ef09f743ab94ee3abd13f411
       Path: Events/Default Work Unit/Play_AttackSequence1TEST
       maxAttenuation: 0
-      maxDuration: 5.647062
-      minDuration: 5.647062
+      maxDuration: 14.117667
+      minDuration: 14.117667
     - name: Play_AttackSequence2TEST
       guid: de2f02d3f97a0d44bbb6c62da7e0830c
       id: 2365990517
@@ -179,8 +179,8 @@ MonoBehaviour:
         guid: de2f02d3f97a0d44bbb6c62da7e0830c
       Path: Events/Default Work Unit/Play_AttackSequence2TEST
       maxAttenuation: 0
-      maxDuration: 2.790708
-      minDuration: 2.790708
+      maxDuration: 11.294125
+      minDuration: 11.294125
     - name: Play_AttackSequence3TEST
       guid: cdd71edf08721b47aeb8ec0205aa5d54
       id: 1605712836
@@ -196,8 +196,8 @@ MonoBehaviour:
         guid: cdd71edf08721b47aeb8ec0205aa5d54
       Path: Events/Default Work Unit/Play_AttackSequence3TEST
       maxAttenuation: 0
-      maxDuration: 2.790708
-      minDuration: 2.790708
+      maxDuration: 11.294125
+      minDuration: 11.294125
     - name: Play_AttackSequence4TEST
       guid: 4ce0d1422cde0d4ba3ff1b93708b2cc1
       id: 512230335
@@ -213,8 +213,8 @@ MonoBehaviour:
         guid: 4ce0d1422cde0d4ba3ff1b93708b2cc1
       Path: Events/Default Work Unit/Play_AttackSequence4TEST
       maxAttenuation: 0
-      maxDuration: 2.790708
-      minDuration: 2.790708
+      maxDuration: 14.117654
+      minDuration: 14.117654
     - name: Play_AttackSequences
       guid: 3d5f7710cbcbbc40bc0c471704b3eb1f
       id: 399042744
@@ -247,8 +247,8 @@ MonoBehaviour:
         guid: 1f9e7e7af726fc41834d57fdf0e81202
       Path: Events/Default Work Unit/Play_AttackTrack172BPM
       maxAttenuation: 0
-      maxDuration: 11.294125
-      minDuration: 11.294125
+      maxDuration: 16.941175
+      minDuration: 16.941175
     - name: Play_CancleAttackLockout
       guid: 30bdbda67813e24896ce4a03a42a1862
       id: 505022273
@@ -315,8 +315,8 @@ MonoBehaviour:
         guid: 3327c9efb44a3848ae393d6c6bef0f41
       Path: Events/Default Work Unit/Play_PS1
       maxAttenuation: 0
-      maxDuration: 0.315313
-      minDuration: 0.315313
+      maxDuration: 1.411771
+      minDuration: 1.411771
     - name: Play_PS2
       guid: b5eb064b96cd61409222d8c5d9425ce8
       id: 2520504993
@@ -640,7 +640,7 @@ MonoBehaviour:
         guid: cc7027b07e13514abf419be2c9343431
       Path: Triggers/Default Work Unit/Attack_85BPM
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 
+  ExpandedWaapiItemIds: 010000000500000006000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

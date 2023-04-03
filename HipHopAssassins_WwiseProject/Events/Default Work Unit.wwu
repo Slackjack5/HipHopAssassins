@@ -34,9 +34,12 @@
 							</ReferenceList>
 						</Action>
 						<Action Name="" ID="{18ECFBAF-C7D7-4D5E-8AC9-F56A87E13EB5}" ShortID="897644597">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="TrackA" ID="{DF730F2C-C631-41FB-89DE-F1A922760E89}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
+									<ObjectRef Name="HipHopAssassins_DevTrack_85BPM" ID="{A5C0F214-26EB-45D0-9837-AB532932F275}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -107,7 +110,7 @@
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="AttackSequenceTest85" ID="{F6F1594D-D1CE-4070-A97D-837DE970BCEF}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
+									<ObjectRef Name="AttackSequences_85BPM" ID="{F6F1594D-D1CE-4070-A97D-837DE970BCEF}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -127,9 +130,23 @@
 				<Event Name="Play_PS1" ID="{EFC92733-4AB4-4838-AE39-3D6C6BEF0F41}">
 					<ChildrenList>
 						<Action Name="" ID="{CC6F44D0-D02F-4045-841C-5868BC9DF1A8}" ShortID="486689660">
+							<PropertyList>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="HitPS1" ID="{4526DF76-86AA-483A-AD97-065B9CAD94E4}" WorkUnitID="{E29BF403-8290-4B74-867D-242CA3E79BE3}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{05666C4C-3EE2-4963-9A7A-2D7F9B62FA33}" ShortID="380087071">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="HitPS1_Light" ID="{BE175E7E-DA08-4FEA-9284-67E57FF4EC67}" WorkUnitID="{E29BF403-8290-4B74-867D-242CA3E79BE3}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -141,6 +158,13 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="HitPS2" ID="{E90DE8E7-A06E-49D0-AA77-CA438E17DE45}" WorkUnitID="{E29BF403-8290-4B74-867D-242CA3E79BE3}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{BB872B9F-142D-447E-A66F-C8FE81A041E3}" ShortID="561740778">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="HitPS1_Light" ID="{BE175E7E-DA08-4FEA-9284-67E57FF4EC67}" WorkUnitID="{E29BF403-8290-4B74-867D-242CA3E79BE3}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -242,7 +266,7 @@
 						<Action Name="" ID="{21289393-B74E-49B3-8E6C-B73FBCBE907F}" ShortID="885332936">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="AttackSequence2" ID="{84891EFC-EF36-40A4-8DD2-0311909D4A8E}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
+									<ObjectRef Name="AttackSequence2_85BPM" ID="{935F41CF-2A4E-47ED-9822-C5A1F0524C67}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -253,7 +277,7 @@
 						<Action Name="" ID="{635171E8-C8C6-4048-8CD3-F15F4B2C4F9B}" ShortID="636179209">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="AttackSequence3" ID="{5B64C3D7-896D-4956-A5C0-CAB1E7D52C48}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
+									<ObjectRef Name="AttackSequence3_85BPM" ID="{6CD72E4A-DCDB-46F9-AB94-53C02A8D9086}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -264,7 +288,7 @@
 						<Action Name="" ID="{1A904E6C-7AE5-427D-AC30-78872343DDA0}" ShortID="199556994">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="AttackSequence4" ID="{BC6AC594-26DD-444E-B3CD-A95D467B33B2}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
+									<ObjectRef Name="AttackSequence4_85BPM" ID="{F1563F10-86EC-4E68-B5A6-76A31272D97F}" WorkUnitID="{94F9FD86-837D-4B37-947A-098B32642DA9}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
