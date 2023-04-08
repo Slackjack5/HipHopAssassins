@@ -21,7 +21,7 @@ public class AudioEvents : MonoBehaviour
   public static float secondsPerBeat;
   public static float secondsPerBar;
   public static float bpm;
-
+  public float masterCurrentPosition;
   
 
   //Unity Events
@@ -100,6 +100,13 @@ public class AudioEvents : MonoBehaviour
       OnEveryOffbeat.Invoke();
       isOnEveryOffbeatInvoked = true;
     }
+  }
+
+  private void FixedUpdate()
+  {
+    AkSegmentInfo segmentInfo = new AkSegmentInfo();
+    AkSoundEngine.GetPlayingSegmentInfo(playingID, segmentInfo, true);
+    masterCurrentPosition = (float) segmentInfo.iCurrentPosition/1000f; // --> position in ms
   }
 
   private void OnGUI()

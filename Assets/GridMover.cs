@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,12 +8,16 @@ public class GridMover : MonoBehaviour
 {
     [HideInInspector] public RectTransform spawnerPos;
     [HideInInspector] public RectTransform centerPos;
+    public float arrivalTime;
+    public float t;
+
     public float travelTime;
     private float normalizedValue;
     private bool reachedMiddle;
     public float currentTime;
     private RectTransform rectTransform;
     public bool inactive;
+    public float barPosition;
     
     // Start is called before the first frame update
     void Start()
@@ -23,13 +28,10 @@ public class GridMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (currentTime < travelTime)
+        t = AudioEvents.singleton_AudioEvents.masterCurrentPosition/arrivalTime;
+        if (t < 1)
         {
-            normalizedValue=currentTime/travelTime;
-            
-            rectTransform.anchoredPosition=Vector3.Lerp(spawnerPos.anchoredPosition,centerPos.anchoredPosition, normalizedValue);
-            currentTime += Time.deltaTime; 
+            rectTransform.anchoredPosition=Vector3.Lerp(spawnerPos.anchoredPosition,centerPos.anchoredPosition, t);
         }
         else
         {
@@ -37,5 +39,11 @@ public class GridMover : MonoBehaviour
             Destroy(gameObject);
         }
         
+    }
+
+    private void FixedUpdate()
+    {
+        float fCurrentPosition = AudioEvents.singleton_AudioEvents.masterCurrentPosition;
+        barPosition = fCurrentPosition / (MusicManager.singleton_MusicManager.sequenceSecondsPerBeat*4);
     }
 }

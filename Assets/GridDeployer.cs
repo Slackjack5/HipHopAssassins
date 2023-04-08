@@ -59,6 +59,7 @@ public class GridDeployer : MonoBehaviour
         ourEntity.spawnerPos = startPoint.GetComponent<RectTransform>();
         ourEntity.centerPos = endPoint.GetComponent<RectTransform>();
         ourEntity.travelTime = AudioEvents.secondsPerBar;
+        ourEntity.arrivalTime = (AudioEvents.singleton_AudioEvents.masterCurrentPosition+AudioEvents.secondsPerBar);
     }
 
     public void DeployBeatEntity()
