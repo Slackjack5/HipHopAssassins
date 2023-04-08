@@ -24,6 +24,8 @@ public class MusicManager : MonoBehaviour
     //Sequence Data
     public float sequenceSecondsPerBar;
     public float sequenceSecondsPerBeat;
+    public float SongDuration;
+
     private float sequenceDuration;
     public List<float> CueTimes = new List<float>();
     public List<String> AttackType = new List<String>();
@@ -345,6 +347,7 @@ public class MusicManager : MonoBehaviour
         case AkCallbackType.AK_MusicSyncEntry:
             sequenceSecondsPerBar = _musicInfo.segmentInfo_fBarDuration;
             sequenceSecondsPerBeat = _musicInfo.segmentInfo_fBeatDuration;
+            SongDuration = _musicInfo.segmentInfo_iRemainingLookAheadTime;
             TravelTime = sequenceSecondsPerBeat*4;
             break;
         case AkCallbackType.AK_MusicSyncUserCue:

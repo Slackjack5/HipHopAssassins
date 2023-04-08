@@ -244,7 +244,7 @@
 							<ChildrenList>
 								<MusicSegment Name="HipHopAssassins_DevTestTrack_85BPM" ID="{9E540EDD-5C81-4FAC-877A-60C77233C03E}" ShortID="619426757">
 									<PropertyList>
-										<Property Name="EndPosition" Type="Real64" Value="45176.4791666667"/>
+										<Property Name="EndPosition" Type="Real64" Value="813176.479166667"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -297,6 +297,227 @@
 																				</MusicClip>
 																			</Local>
 																		</Reference>
+																		<Reference>
+																			<Local>
+																				<MusicClip Name="HipHopAssassins_DevTestTrack_85BPM" ID="{15F0A16C-1B37-4329-8DC0-7D904446F3E8}">
+																					<PropertyList>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="45176.4791666667"/>
+																						<Property Name="FadeInMode" Type="int16" Value="0"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																						<Property Name="PlayAt" Type="Real64" Value="45176.4791666667"/>
+																					</PropertyList>
+																					<AudioSourceRef Name="HipHopAssassins_DevTestTrack_85BPM" ID="{EE868975-121E-4CE1-B787-A97D4CC4C9D4}"/>
+																				</MusicClip>
+																			</Local>
+																		</Reference>
+																		<Reference>
+																			<Local>
+																				<MusicClip Name="HipHopAssassins_DevTestTrack_85BPM" ID="{EF27CE70-5A30-4999-8B30-0DBCD62A6D45}">
+																					<PropertyList>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="45176.4791666667"/>
+																						<Property Name="FadeInMode" Type="int16" Value="0"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																						<Property Name="PlayAt" Type="Real64" Value="90352.9583333334"/>
+																					</PropertyList>
+																					<AudioSourceRef Name="HipHopAssassins_DevTestTrack_85BPM" ID="{EE868975-121E-4CE1-B787-A97D4CC4C9D4}"/>
+																				</MusicClip>
+																			</Local>
+																		</Reference>
+																		<Reference>
+																			<Local>
+																				<MusicClip Name="HipHopAssassins_DevTestTrack_85BPM" ID="{133FCDA0-0410-46C6-BF6D-6CA32827D3EE}">
+																					<PropertyList>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="45176.4791666667"/>
+																						<Property Name="FadeInMode" Type="int16" Value="0"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																						<Property Name="PlayAt" Type="Real64" Value="135529.4375"/>
+																					</PropertyList>
+																					<AudioSourceRef Name="HipHopAssassins_DevTestTrack_85BPM" ID="{EE868975-121E-4CE1-B787-A97D4CC4C9D4}"/>
+																				</MusicClip>
+																			</Local>
+																		</Reference>
+																		<Reference>
+																			<Local>
+																				<MusicClip Name="HipHopAssassins_DevTestTrack_85BPM" ID="{020EE4B9-8025-437A-A3E0-CF0BA64035D5}">
+																					<PropertyList>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="45176.4791666667"/>
+																						<Property Name="FadeInMode" Type="int16" Value="0"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																						<Property Name="PlayAt" Type="Real64" Value="180705.916666667"/>
+																					</PropertyList>
+																					<AudioSourceRef Name="HipHopAssassins_DevTestTrack_85BPM" ID="{EE868975-121E-4CE1-B787-A97D4CC4C9D4}"/>
+																				</MusicClip>
+																			</Local>
+																		</Reference>
+																		<Reference>
+																			<Local>
+																				<MusicClip Name="HipHopAssassins_DevTestTrack_85BPM" ID="{FB54B6BB-44C6-4231-AE66-57088B2B1C5B}">
+																					<PropertyList>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="45176.4791666667"/>
+																						<Property Name="FadeInMode" Type="int16" Value="0"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																						<Property Name="PlayAt" Type="Real64" Value="225882.395833334"/>
+																					</PropertyList>
+																					<AudioSourceRef Name="HipHopAssassins_DevTestTrack_85BPM" ID="{EE868975-121E-4CE1-B787-A97D4CC4C9D4}"/>
+																				</MusicClip>
+																			</Local>
+																		</Reference>
+																		<Reference>
+																			<Local>
+																				<MusicClip Name="HipHopAssassins_DevTestTrack_85BPM" ID="{DBD1429D-3B77-48DE-8A6D-E586B880D580}">
+																					<PropertyList>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="45176.4791666667"/>
+																						<Property Name="FadeInMode" Type="int16" Value="0"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																						<Property Name="PlayAt" Type="Real64" Value="271058.875"/>
+																					</PropertyList>
+																					<AudioSourceRef Name="HipHopAssassins_DevTestTrack_85BPM" ID="{EE868975-121E-4CE1-B787-A97D4CC4C9D4}"/>
+																				</MusicClip>
+																			</Local>
+																		</Reference>
+																		<Reference>
+																			<Local>
+																				<MusicClip Name="HipHopAssassins_DevTestTrack_85BPM" ID="{D0A68F2D-3711-424F-856E-526F5C2B62EC}">
+																					<PropertyList>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="45176.4791666667"/>
+																						<Property Name="FadeInMode" Type="int16" Value="0"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																						<Property Name="PlayAt" Type="Real64" Value="316235.354166667"/>
+																					</PropertyList>
+																					<AudioSourceRef Name="HipHopAssassins_DevTestTrack_85BPM" ID="{EE868975-121E-4CE1-B787-A97D4CC4C9D4}"/>
+																				</MusicClip>
+																			</Local>
+																		</Reference>
+																		<Reference>
+																			<Local>
+																				<MusicClip Name="HipHopAssassins_DevTestTrack_85BPM" ID="{27C5C833-1D91-4155-933D-E021C3DFA3D1}">
+																					<PropertyList>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="45176.4791666667"/>
+																						<Property Name="FadeInMode" Type="int16" Value="0"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																						<Property Name="PlayAt" Type="Real64" Value="361411.833333334"/>
+																					</PropertyList>
+																					<AudioSourceRef Name="HipHopAssassins_DevTestTrack_85BPM" ID="{EE868975-121E-4CE1-B787-A97D4CC4C9D4}"/>
+																				</MusicClip>
+																			</Local>
+																		</Reference>
+																		<Reference>
+																			<Local>
+																				<MusicClip Name="HipHopAssassins_DevTestTrack_85BPM" ID="{A6D47CA4-9B42-4EC4-8DBF-AE3EBCAC72EA}">
+																					<PropertyList>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="45176.4791666667"/>
+																						<Property Name="FadeInMode" Type="int16" Value="0"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																						<Property Name="PlayAt" Type="Real64" Value="406588.3125"/>
+																					</PropertyList>
+																					<AudioSourceRef Name="HipHopAssassins_DevTestTrack_85BPM" ID="{EE868975-121E-4CE1-B787-A97D4CC4C9D4}"/>
+																				</MusicClip>
+																			</Local>
+																		</Reference>
+																		<Reference>
+																			<Local>
+																				<MusicClip Name="HipHopAssassins_DevTestTrack_85BPM" ID="{5F939092-040C-47E0-A950-C9D4BE4D4F3C}">
+																					<PropertyList>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="45176.4791666667"/>
+																						<Property Name="FadeInMode" Type="int16" Value="0"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																						<Property Name="PlayAt" Type="Real64" Value="451764.791666667"/>
+																					</PropertyList>
+																					<AudioSourceRef Name="HipHopAssassins_DevTestTrack_85BPM" ID="{EE868975-121E-4CE1-B787-A97D4CC4C9D4}"/>
+																				</MusicClip>
+																			</Local>
+																		</Reference>
+																		<Reference>
+																			<Local>
+																				<MusicClip Name="HipHopAssassins_DevTestTrack_85BPM" ID="{AE3E56B7-DA51-4963-A440-459A693ECBC8}">
+																					<PropertyList>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="45176.4791666667"/>
+																						<Property Name="FadeInMode" Type="int16" Value="0"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																						<Property Name="PlayAt" Type="Real64" Value="496941.270833334"/>
+																					</PropertyList>
+																					<AudioSourceRef Name="HipHopAssassins_DevTestTrack_85BPM" ID="{EE868975-121E-4CE1-B787-A97D4CC4C9D4}"/>
+																				</MusicClip>
+																			</Local>
+																		</Reference>
+																		<Reference>
+																			<Local>
+																				<MusicClip Name="HipHopAssassins_DevTestTrack_85BPM" ID="{045E46ED-1B22-42DC-B405-C4D015944567}">
+																					<PropertyList>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="45176.4791666667"/>
+																						<Property Name="FadeInMode" Type="int16" Value="0"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																						<Property Name="PlayAt" Type="Real64" Value="542117.75"/>
+																					</PropertyList>
+																					<AudioSourceRef Name="HipHopAssassins_DevTestTrack_85BPM" ID="{EE868975-121E-4CE1-B787-A97D4CC4C9D4}"/>
+																				</MusicClip>
+																			</Local>
+																		</Reference>
+																		<Reference>
+																			<Local>
+																				<MusicClip Name="HipHopAssassins_DevTestTrack_85BPM" ID="{03E5DE57-B31E-43BB-ABB0-3ADA4189A572}">
+																					<PropertyList>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="45176.4791666667"/>
+																						<Property Name="FadeInMode" Type="int16" Value="0"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																						<Property Name="PlayAt" Type="Real64" Value="587294.229166667"/>
+																					</PropertyList>
+																					<AudioSourceRef Name="HipHopAssassins_DevTestTrack_85BPM" ID="{EE868975-121E-4CE1-B787-A97D4CC4C9D4}"/>
+																				</MusicClip>
+																			</Local>
+																		</Reference>
+																		<Reference>
+																			<Local>
+																				<MusicClip Name="HipHopAssassins_DevTestTrack_85BPM" ID="{16E9E195-CDDE-4D6A-B1A4-A39F77EF4269}">
+																					<PropertyList>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="45176.4791666667"/>
+																						<Property Name="FadeInMode" Type="int16" Value="0"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																						<Property Name="PlayAt" Type="Real64" Value="632470.708333334"/>
+																					</PropertyList>
+																					<AudioSourceRef Name="HipHopAssassins_DevTestTrack_85BPM" ID="{EE868975-121E-4CE1-B787-A97D4CC4C9D4}"/>
+																				</MusicClip>
+																			</Local>
+																		</Reference>
+																		<Reference>
+																			<Local>
+																				<MusicClip Name="HipHopAssassins_DevTestTrack_85BPM" ID="{91D8DA5F-82EF-41C3-A32F-176202E443E9}">
+																					<PropertyList>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="45176.4791666667"/>
+																						<Property Name="FadeInMode" Type="int16" Value="0"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																						<Property Name="PlayAt" Type="Real64" Value="677647.1875"/>
+																					</PropertyList>
+																					<AudioSourceRef Name="HipHopAssassins_DevTestTrack_85BPM" ID="{EE868975-121E-4CE1-B787-A97D4CC4C9D4}"/>
+																				</MusicClip>
+																			</Local>
+																		</Reference>
+																		<Reference>
+																			<Local>
+																				<MusicClip Name="HipHopAssassins_DevTestTrack_85BPM" ID="{DBBEAEF8-A228-4AC1-AC44-E16F81255302}">
+																					<PropertyList>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="45176.4791666667"/>
+																						<Property Name="FadeInMode" Type="int16" Value="0"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																						<Property Name="PlayAt" Type="Real64" Value="722823.666666667"/>
+																					</PropertyList>
+																					<AudioSourceRef Name="HipHopAssassins_DevTestTrack_85BPM" ID="{EE868975-121E-4CE1-B787-A97D4CC4C9D4}"/>
+																				</MusicClip>
+																			</Local>
+																		</Reference>
+																		<Reference>
+																			<Local>
+																				<MusicClip Name="HipHopAssassins_DevTestTrack_85BPM" ID="{7D0F3EC2-A488-4C66-A3D5-5A16D6935E73}">
+																					<PropertyList>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="45176.4791666667"/>
+																						<Property Name="FadeInMode" Type="int16" Value="0"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																						<Property Name="PlayAt" Type="Real64" Value="768000"/>
+																					</PropertyList>
+																					<AudioSourceRef Name="HipHopAssassins_DevTestTrack_85BPM" ID="{EE868975-121E-4CE1-B787-A97D4CC4C9D4}"/>
+																				</MusicClip>
+																			</Local>
+																		</Reference>
 																	</ObjectList>
 																</ObjectLists>
 															</MusicTrackSequence>
@@ -318,7 +539,7 @@
 													<MusicCue Name="Exit Cue" ID="{62AA4153-8252-4114-8D8F-D7A6AA846293}">
 														<PropertyList>
 															<Property Name="CueType" Type="int16" Value="1"/>
-															<Property Name="TimeMs" Type="Real64" Value="45176.4791666667"/>
+															<Property Name="TimeMs" Type="Real64" Value="361411.764705882"/>
 														</PropertyList>
 													</MusicCue>
 												</Local>

@@ -9,7 +9,7 @@ public class GridMover : MonoBehaviour
     public RectTransform spawnerPos;
     public RectTransform centerPos;
     public float arrivalTime;
-    public float t;
+    private float t;
 
     public float currentTime;
     public float startTime;
