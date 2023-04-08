@@ -75,7 +75,7 @@ public class PlayerScript : MonoBehaviour
         //If we run out of action points, Lock the player out
         if (actionPoints < 0 && CombatManager.singleton_CombatManager.LockedOut==false)
         {
-            CombatManager.singleton_CombatManager.LockOut();
+            //CombatManager.singleton_CombatManager.LockOut();
         }
         //Make sure our action points don't go over MAX
         if (actionPoints >= actionPointMax)

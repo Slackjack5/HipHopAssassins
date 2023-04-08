@@ -64,7 +64,6 @@ public class GridDeployer : MonoBehaviour
     {
         GameObject ourGrid = Instantiate(beatEntity);
         ourGrid.transform.SetParent(Parent.transform);
-        //Parent.transform.GetChild(Parent.transform.childCount-2).GetComponent<GridMover>().inactive=true;//Delete the child in front of the Beat
         ourGrid.transform.position = startPoint.transform.position;
         GatherBeatData(ourGrid.GetComponent<GridMover>());
 

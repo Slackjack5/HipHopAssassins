@@ -130,26 +130,14 @@ public class MusicManager : MonoBehaviour
         if (playingID != 0)
         {
             AkSoundEngine.GetPlayingSegmentInfo(playingIDGlobal, currentSegment);
-            playheadPosition = (currentSegment.iCurrentPosition) / 1000f;
+            playheadPosition = AudioEvents.singleton_AudioEvents.masterCurrentPosition;
         }
-        if (!sequenceInProgress && preparingSequence)
-        {
-            if (GlobalVariables.currentBeat == 1 && GlobalVariables.currentBar%4 == 0) //Have the Sequence start on the Final Bar
-            {
-                Debug.Log("Starting NEW Attack Sequence");
-                //Debug.Break();
-                AkSoundEngine.PostEvent("Play_AttackTrack172BPM", gameObject);
-                playingIDGlobal = OurTrack.Post(gameObject,(uint) (AkCallbackType.AK_MusicSyncAll | AkCallbackType.AK_EnableGetMusicPlayPosition), MusicCallbackFunction);
-
-                sequenceInProgress=true;
-                preparingSequence = false;
-                attackInProgress = true; //Let everyone know we are commencing our attack
-            }
-        }
+        /*
         if (cueIndex < CueTimes.Count && playheadPosition >= CueTimes[cueIndex]+((sequenceSecondsPerBeat*1)-TravelTime)) //Spawn Beat Circle , 4 Beats ahead of time
         {
             NoteSpawner();
         }
+        */
         
         if (hitIndex < CueTimes.Count && !CombatManager.singleton_CombatManager.LockedOut) // Check if Player Hit In Time
         {
@@ -158,6 +146,23 @@ public class MusicManager : MonoBehaviour
         
         
         if(nextBar == GlobalVariables.currentBar) {nextBar = GlobalVariables.currentBar+1;}
+    }
+
+    public void BeginSequence()
+    {
+        if (!sequenceInProgress && preparingSequence)
+        {
+            if (GlobalVariables.currentBar == 4) //Have the Sequence start on the Final Bar
+            {
+                Debug.Log("Starting NEW Attack Sequence");
+                //AkSoundEngine.PostEvent("Play_AttackTrack172BPM", gameObject);
+                playingIDGlobal = OurTrack.Post(gameObject,(uint) (AkCallbackType.AK_MusicSyncAll | AkCallbackType.AK_EnableGetMusicPlayPosition), MusicCallbackFunction);
+
+                sequenceInProgress=true;
+                preparingSequence = false;
+                attackInProgress = true; //Let everyone know we are commencing our attack
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -411,24 +416,12 @@ public class MusicManager : MonoBehaviour
     {
         CueTimes.Add(playheadPosition);
         AttackType.Add(type);
+        NoteSpawner();
     }
 
     public void NoteSpawner()
     {
-        GameObject RhythmUI = UserInterface.singleton_UserInterface.BeatMapCanvas;
         GridDeployer.singleton_GridDeployer.DeployBeatEntity();
-        /*
-        GameObject ourCircle = Instantiate(beatCircle);
-        CueObjects.Add(ourCircle);
-        BeatEntity ourEntity = ourCircle.GetComponent<BeatEntity>();
-        if(CombatManager.singleton_CombatManager.LockedOut){ourEntity.EnableLockout();}
-        ourCircle.transform.SetParent(UserInterface.singleton_UserInterface.BeatCanvas.transform);
-        ourEntity.indexNumber = cueIndex;
-        ourEntity.spawnerPos = RhythmUI.transform.GetChild(0).GetComponent<RectTransform>().anchoredPosition;
-        ourEntity.centerPos = RhythmUI.transform.GetChild(1).GetComponent<RectTransform>().anchoredPosition;
-        ourEntity.travelTime = TravelTime;
-        Debug.Log("Spawning Index:"+cueIndex);
-        */
         cueIndex++;
     }
     

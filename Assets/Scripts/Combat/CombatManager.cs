@@ -232,6 +232,7 @@ public class CombatManager : MonoBehaviour
             }
         }
 
+        /*
         public void LockOut() //If The Player spends more then they have action points for, They get locked out and gain a strike.
         {
             
@@ -244,6 +245,7 @@ public class CombatManager : MonoBehaviour
             MusicManager.singleton_MusicManager.EnableQTELockout();
             
         }
+        */
 
         public static void HealPlayer(int healAmount)
         {
