@@ -6,18 +6,24 @@ using UnityEngine.UI;
 
 public class GridMover : MonoBehaviour
 {
-    [HideInInspector] public RectTransform spawnerPos;
-    [HideInInspector] public RectTransform centerPos;
+    public RectTransform spawnerPos;
+    public RectTransform centerPos;
     public float arrivalTime;
     public float t;
 
-    public float travelTime;
+    public float currentTime;
+    public float startTime;
     private float normalizedValue;
     private bool reachedMiddle;
-    public float currentTime;
     private RectTransform rectTransform;
     public bool inactive;
     public float barPosition;
+    
+    //Beat Entity
+    private bool beatEntity;
+
+    //Lock-Out
+    public bool LockedOut;
     
     // Start is called before the first frame update
     void Start()
@@ -28,7 +34,15 @@ public class GridMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        t = AudioEvents.singleton_AudioEvents.masterCurrentPosition/arrivalTime;
+        currentTime = AudioEvents.singleton_AudioEvents.masterCurrentPosition;
+        t = Mathf.InverseLerp(startTime, arrivalTime, currentTime); //currentTime2/arrivalTime;
+    }
+
+    private void FixedUpdate()
+    {
+        float fCurrentPosition = AudioEvents.singleton_AudioEvents.masterCurrentPosition;
+        barPosition = fCurrentPosition / (MusicManager.singleton_MusicManager.sequenceSecondsPerBeat*4);
+        
         if (t < 1)
         {
             rectTransform.anchoredPosition=Vector3.Lerp(spawnerPos.anchoredPosition,centerPos.anchoredPosition, t);
@@ -38,12 +52,13 @@ public class GridMover : MonoBehaviour
             if(!inactive){GridDeployer.singleton_GridDeployer.PulseReticleWhite();}
             Destroy(gameObject);
         }
-        
-    }
 
-    private void FixedUpdate()
+    }
+    
+    public void EnableLockout()
     {
-        float fCurrentPosition = AudioEvents.singleton_AudioEvents.masterCurrentPosition;
-        barPosition = fCurrentPosition / (MusicManager.singleton_MusicManager.sequenceSecondsPerBeat*4);
+        LockedOut = true; //Enable Lockout for BeatEntity
+        //LockOutX.SetActive(true); //Turn On X
+        transform.GetChild(0).gameObject.SetActive(false); //Turn Off Ring
     }
 }

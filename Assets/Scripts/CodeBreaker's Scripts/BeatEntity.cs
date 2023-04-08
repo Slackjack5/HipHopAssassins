@@ -4,91 +4,55 @@ using UnityEngine.UI;
 
 public class BeatEntity : MonoBehaviour
 {
-  [HideInInspector] public Vector2 spawnerPos;
-  [HideInInspector] public Vector2 centerPos;
+  /*
+  [HideInInspector] public RectTransform spawnerPos;
+  [HideInInspector] public RectTransform centerPos;
   private float normalizedValue;
-  private RectTransform rectTransform;
 
   [HideInInspector] public float travelTime;
   [HideInInspector] public int indexNumber;
 
+  //Time
   private float currentTime;
+  public float startTime;
+  public float arrivalTime;
+  public float t;
   private bool reachedMiddle;
+*/
+  private RectTransform rectTransform;
 
-  private bool attackUsed;
+  //private bool attackUsed;
   private RectTransform ring;
   public GameObject LockOutX;
   private Vector3 strartingSize;
 
-  public bool LockedOut;
+  
 
   private void Start()
   {
-    Debug.Log(("Entity Travel Time" + travelTime));
     rectTransform = gameObject.GetComponent<RectTransform>();
     ring = transform.GetChild(0).GetComponent<RectTransform>();
     strartingSize = ring.transform.localScale;
 
   }
-
-  private void Update()
+/*
+  void Update()
   {
-  /*
-    if (currentTime < travelTime)
+    currentTime = AudioEvents.singleton_AudioEvents.masterCurrentPosition;
+    t = Mathf.InverseLerp(startTime, arrivalTime, currentTime); //currentTime2/arrivalTime;
+  }
+
+  private void FixedUpdate()
+  {
+    if (t < 1)
     {
-      transform.position = reachedMiddle
-        ? Vector2.Lerp(centerPos.position, endPos.position, currentTime / travelTime)
-        : Vector2.Lerp(spawnerPos.position, centerPos.position, currentTime / travelTime);
-
-      if (!reachedMiddle)
-      {
-        ring.localScale = Vector3.Lerp(strartingSize, new Vector3(1,1,1), currentTime / travelTime);
-      }
-
-      if (indexNumber == MusicManager.singleton_MusicManager.cueIndex-1)
-      {
-        Debug.Log("Current Index: "+indexNumber + " musicManager index: "+ MusicManager.singleton_MusicManager.cueIndex);
-      }
-      currentTime += Time.deltaTime;
+      rectTransform.anchoredPosition=Vector3.Lerp(spawnerPos.anchoredPosition,centerPos.anchoredPosition, t);
     }
     else
     {
-      if (reachedMiddle)
-      {
-        // Reached the end of the track, so destroy this object.
-        //Destroy(gameObject);
-        gameObject.SetActive(false);
-      }
-      else
-      {
-        if (!attackUsed) //If we reach the middle, Whiff an Attack
-        {
-          attackUsed=true;
-        }
-        reachedMiddle = true;
-        currentTime = 0;
-      }
+      Destroy(gameObject);
     }
-  */
-  if (currentTime < travelTime)
-  {
-    normalizedValue=currentTime/travelTime;
-            
-    rectTransform.anchoredPosition=Vector3.Lerp(spawnerPos,centerPos, normalizedValue);
-    currentTime += Time.deltaTime; 
-  }
-  else
-  {
-    //GridDeployer.singleton_GridDeployer.PulseReticleRed();
-    Destroy(gameObject);
-  }
 
   }
-
-  public void EnableLockout()
-  {
-    LockedOut = true; //Enable Lockout for BeatEntity
-    LockOutX.SetActive(true); //Turn On X
-    transform.GetChild(0).gameObject.SetActive(false); //Turn Off Ring
-  }
+*/
 }

@@ -4129,6 +4129,10 @@ MonoBehaviour:
   OnLevelEnded:
     m_PersistentCalls:
       m_Calls: []
+  secondsPerBeat: 0
+  secondsPerBar: 0
+  barAheadTime: 0
+  masterCurrentPosition: 0
   OnEveryGrid:
     m_PersistentCalls:
       m_Calls: []
@@ -4741,6 +4745,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Actions: []
+  selectedAction: 0
   AttackGameObject: {fileID: 2686197594750476979, guid: f2098ff31c105fc42beef2dd8a88e163, type: 3}
   SequenceCost: 0
 --- !u!1 &620519492
@@ -5615,7 +5620,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 328.4, y: -138}
+  m_AnchoredPosition: {x: 349, y: -138}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &747523837
@@ -7195,15 +7200,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPoint: {fileID: 734499953}
   endPoint: {fileID: 2129855341}
-  gridObject: {fileID: 4444640655078736742, guid: 90a6b4408d2b26342a94b410378d75c7, type: 3}
-  beatEntity: {fileID: 4444640655078736742, guid: a2317e5362dd9d047bd231866291ecba, type: 3}
-  halfBeatGridObject: {fileID: 4444640655078736742, guid: f878f6187a240af4ba9813b01436e561, type: 3}
+  gridObject: {fileID: 5034724931661325428, guid: 4321cbbd0a27f481d88856274f5f60b3, type: 3}
+  beatEntity: {fileID: 5034724931661325428, guid: bfeb17542e250446ab595ba2ef3addcf, type: 3}
+  halfBeatGridObject: {fileID: 5034724931661325428, guid: 70c8d30b6f02e481a95bf001dbe76082, type: 3}
   Parent: {fileID: 101682158}
   m_MyEvent:
     m_PersistentCalls:
       m_Calls: []
   beatReticleAnim: {fileID: 1713155482}
   ReticleColor: {fileID: 1713155479}
+  GridSprites: {fileID: 0}
 --- !u!1 &950432584
 GameObject:
   m_ObjectHideFlags: 0
@@ -8857,7 +8863,7 @@ Camera:
   far clip plane: 1000.22
   field of view: 60
   orthographic: 1
-  orthographic size: 11.25
+  orthographic size: 11.671875
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

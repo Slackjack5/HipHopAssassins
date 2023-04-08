@@ -94,7 +94,7 @@ public class MusicManager : MonoBehaviour
     {
         foreach (GameObject QTE in CueObjects)
         {
-            QTE.GetComponent<BeatEntity>().EnableLockout();
+            //QTE.GetComponent<BeatEntity>().EnableLockout();
         }
         
         //Turn Off Attack Sequence
@@ -455,7 +455,7 @@ public class MusicManager : MonoBehaviour
         ourEntity.spawnerPos = RhythmUI.transform.GetChild(0).GetComponent<RectTransform>().transform;
         ourEntity.centerPos = RhythmUI.transform.GetChild(1).GetComponent<RectTransform>().transform;
         ourEntity.endPos = RhythmUI.transform.GetChild(2).GetComponent<RectTransform>().transform;
-        ourEntity.travelTime = AudioEvents.secondsPerBar;
+        //ourEntity.travelTime = AudioEvents.secondsPerBar;
     }
 
 

@@ -18,8 +18,9 @@ public class AudioEvents : MonoBehaviour
   //Wwise
   public AK.Wwise.Event rhythmHeckinEvent;
   public UnityEvent OnLevelEnded;
-  public static float secondsPerBeat;
-  public static float secondsPerBar;
+  public float secondsPerBeat;
+  public float secondsPerBar;
+  public float barAheadTime;
   public static float bpm;
   public float masterCurrentPosition;
   
@@ -95,6 +96,7 @@ public class AudioEvents : MonoBehaviour
 
     AkSoundEngine.GetPlayingSegmentInfo(playingID, currentSegment);
     Debug.Log(secondsPerBeat);
+    barAheadTime = masterCurrentPosition + secondsPerBar;
     if (!isOnEveryOffbeatInvoked && currentSegment.iCurrentPosition >= currentBeatStartTime + secondsPerBeat * 1000 / 2)
     {
       OnEveryOffbeat.Invoke();

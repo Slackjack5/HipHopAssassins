@@ -22,6 +22,8 @@ public class GridDeployer : MonoBehaviour
     public Animator beatReticleAnim;
 
     public Image ReticleColor;
+    //Beat Images
+    public Sprite GridSprites;
     // Start is called before the first frame update
     void Start()
     {
@@ -54,12 +56,8 @@ public class GridDeployer : MonoBehaviour
         GameObject ourGrid = Instantiate(gridObject);
         ourGrid.transform.SetParent(Parent.transform);
         ourGrid.transform.position = startPoint.transform.position;
-        ourGrid.GetComponent<Image>().SetNativeSize();
-        GridMover ourEntity = ourGrid.GetComponent<GridMover>();
-        ourEntity.spawnerPos = startPoint.GetComponent<RectTransform>();
-        ourEntity.centerPos = endPoint.GetComponent<RectTransform>();
-        ourEntity.travelTime = AudioEvents.secondsPerBar;
-        ourEntity.arrivalTime = (AudioEvents.singleton_AudioEvents.masterCurrentPosition+AudioEvents.secondsPerBar);
+        GatherBeatData(ourGrid.GetComponent<GridMover>());
+
     }
 
     public void DeployBeatEntity()
@@ -68,11 +66,8 @@ public class GridDeployer : MonoBehaviour
         ourGrid.transform.SetParent(Parent.transform);
         //Parent.transform.GetChild(Parent.transform.childCount-2).GetComponent<GridMover>().inactive=true;//Delete the child in front of the Beat
         ourGrid.transform.position = startPoint.transform.position;
-        ourGrid.GetComponent<Image>().SetNativeSize();
-        BeatEntity ourEntity = ourGrid.GetComponent<BeatEntity>();
-        ourEntity.spawnerPos = startPoint.GetComponent<RectTransform>().anchoredPosition;
-        ourEntity.centerPos = endPoint.GetComponent<RectTransform>().anchoredPosition;
-        ourEntity.travelTime = AudioEvents.secondsPerBar;
+        GatherBeatData(ourGrid.GetComponent<GridMover>());
+
     }
     
     public void DeployHalfBeatGrid()
@@ -80,11 +75,15 @@ public class GridDeployer : MonoBehaviour
         GameObject ourGrid = Instantiate(halfBeatGridObject);
         ourGrid.transform.SetParent(Parent.transform);
         ourGrid.transform.position = startPoint.transform.position;
-        ourGrid.GetComponent<Image>().SetNativeSize();
-        GridMover ourEntity = ourGrid.GetComponent<GridMover>();
+        GatherBeatData(ourGrid.GetComponent<GridMover>());
+    }
+
+    public void GatherBeatData(GridMover ourEntity)
+    {
         ourEntity.spawnerPos = startPoint.GetComponent<RectTransform>();
         ourEntity.centerPos = endPoint.GetComponent<RectTransform>();
-        ourEntity.travelTime = AudioEvents.secondsPerBar;
+        ourEntity.arrivalTime = (AudioEvents.singleton_AudioEvents.barAheadTime);
+        ourEntity.startTime = AudioEvents.singleton_AudioEvents.masterCurrentPosition;
     }
 
     public void PulseReticleWhite()
