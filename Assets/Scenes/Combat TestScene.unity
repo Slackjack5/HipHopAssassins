@@ -4252,7 +4252,7 @@ MonoBehaviour:
   CueObjects: []
   cueIndex: 0
   hitIndex: 0
-  leniency: 0.1
+  leniency: 0.2
   playheadPosition: 0
   playingIDGlobal: 0
   playingID: 0

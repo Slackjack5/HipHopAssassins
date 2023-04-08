@@ -148,21 +148,50 @@ public class MusicManager : MonoBehaviour
         if(nextBar == GlobalVariables.currentBar) {nextBar = GlobalVariables.currentBar+1;}
     }
 
-    public void BeginSequence()
+    public void BeginSequence() //Wait for the perfect time to begin the attack sequence
     {
         if (!sequenceInProgress && preparingSequence)
         {
-            if (GlobalVariables.currentBar == 4) //Have the Sequence start on the Final Bar
+            if (ourActionSlotManager.Actions.Count == 1)
             {
-                Debug.Log("Starting NEW Attack Sequence");
-                //AkSoundEngine.PostEvent("Play_AttackTrack172BPM", gameObject);
-                playingIDGlobal = OurTrack.Post(gameObject,(uint) (AkCallbackType.AK_MusicSyncAll | AkCallbackType.AK_EnableGetMusicPlayPosition), MusicCallbackFunction);
-
-                sequenceInProgress=true;
-                preparingSequence = false;
-                attackInProgress = true; //Let everyone know we are commencing our attack
+                if (GlobalVariables.currentBeat == 1) //Have the Sequence start on the Final Bar
+                {
+                    StartAttack();
+                }
             }
+            else if (ourActionSlotManager.Actions.Count == 2)
+            {
+                if ((GlobalVariables.currentBeat == 1 && GlobalVariables.currentBar == 1) || (GlobalVariables.currentBeat == 1 && GlobalVariables.currentBar == 3) || GlobalVariables.currentBeat == 1 && GlobalVariables.currentBar == 4) //Have the Sequence start on the Final Bar
+                {
+                    StartAttack();
+                }
+            }
+            else if (ourActionSlotManager.Actions.Count == 3)
+            {
+                if ((GlobalVariables.currentBeat == 1 && GlobalVariables.currentBar == 1) || GlobalVariables.currentBeat == 1 && GlobalVariables.currentBar == 4) //Have the Sequence start on the Final Bar
+                {
+                    StartAttack();
+                }
+            }
+            else if (ourActionSlotManager.Actions.Count == 4)
+            {
+                if (GlobalVariables.currentBeat == 1 && GlobalVariables.currentBar == 4) //Have the Sequence start on the Final Bar
+                {
+                    StartAttack();
+                }
+            }
+ 
         }
+    }
+
+    private void StartAttack()
+    {
+        AkSoundEngine.PostEvent("Play_AttackTrack172BPM", gameObject);
+        playingIDGlobal = OurTrack.Post(gameObject,(uint) (AkCallbackType.AK_MusicSyncAll | AkCallbackType.AK_EnableGetMusicPlayPosition), MusicCallbackFunction);
+
+        sequenceInProgress=true;
+        preparingSequence = false;
+        attackInProgress = true; //Let everyone know we are commencing our attack
     }
 
     private void FixedUpdate()
