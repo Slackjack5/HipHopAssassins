@@ -9,12 +9,13 @@ public class PulseOnBeat : MonoBehaviour
     public float spinSpeed=1;
     public bool BeatPulse;
     public bool BeatPulseEveryOther;
-    private Vector3 StartingSize = new Vector3(1, 1, 1);
+    private Vector3 StartingSize;
     private int pulseNumber;
     
     // Start is called before the first frame update
     void Start()
     {
+        StartingSize = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
         if (BeatPulse==true)
         {
             AudioEvents.singleton_AudioEvents.OnEveryBeat.AddListener(GrowOnBeat);
@@ -54,7 +55,7 @@ public class PulseOnBeat : MonoBehaviour
 
     public void GrowOnBeat()
     {
-        gameObject.transform.localScale = new Vector3(1.15f, 1.15f, 1.15f);
+        gameObject.transform.localScale = new Vector3(StartingSize.x+0.15f, StartingSize.y+0.15f, StartingSize.z+0.15f);
         pulseNumber = 0;
     }
 }
