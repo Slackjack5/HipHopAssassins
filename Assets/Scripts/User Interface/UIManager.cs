@@ -266,6 +266,8 @@ public class UIManager : MonoBehaviour
                 ourAttackMenu.ChangeState(AttackMenu.State.SelectMonster);
                 //Change our menu navigation starting point dependent on how many enemies are on screen
                 MenuStartingPoint();
+                //Play Feedbacks
+                SelectionAlbumManager.singleton_AlbumManager.SelectAttackAction();
             }
         }
         else if (menuNavigation.x==1) //Magic

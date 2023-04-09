@@ -102,13 +102,19 @@ public class AttackMenu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             HideLimbs();
-            ChangeState(State.SelectMonster);
+            //Reset Monsters
+            ourUIManager.ResetMonsters();
+            //Return to previous state
+            ChangeState(State.Inactive);
+            //Reset values and return to home menu
+            ourUIManager.RestartMenu();
+            ourUIManager.ChangeState(UIManager.State.Home);
+            ourUIManager.NavigationLimit = new Vector3(3, 0,0);
+            ourUIManager.menuNavigation.x = 0;
             ourUIManager.resetBlocks();
-            ourUIManager.NavigationLimit = NewNavigationLimit();
-            ourUIManager.menuNavigation = ourUIManager.lastMenuNavigation;
-            //ourUIManager.lastMenuNavigation.x = 0;
+            hoverEffectPlayed = false;
         }
-        
+
     }
 
         public void CreateAction(GameObject SelectedMonster, float SelectedLimb)
@@ -211,7 +217,7 @@ public class AttackMenu : MonoBehaviour
         }
 
         PrepareMonster(hoveredMonster);
-
+/*
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             //Reset Monsters
@@ -227,12 +233,13 @@ public class AttackMenu : MonoBehaviour
             hoverEffectPlayed = false;
 
         }
-        
+        */
     }
     
         
     private void PrepareMonster(int hoveredMonster)
     {
+        /*
         //Change Navigation Limit to amount of enemies on screen
         ourUIManager.NavigationLimit = new Vector3(ourUIManager.encounteredEnemies.transform.childCount-1, 0,-1);
         //If hovering over a monster do on screen effect (Enlarge Them)
@@ -255,8 +262,9 @@ public class AttackMenu : MonoBehaviour
         {
             hoverEffectPlayed = false;
         }
-        if (Input.GetKeyDown("space")) //If player presses space, select that monster
-        {
+        */
+        //if (Input.GetKeyDown("space")) //If player presses space, select that monster
+        //{
             //Change Selected Monster
             UIManager.selectedMonster = ourUIManager.encounteredEnemies.transform.GetChild(hoveredMonster).gameObject;
             //Reset Monster Sizes
@@ -266,7 +274,7 @@ public class AttackMenu : MonoBehaviour
             ChangeState(State.LimbList);
             //Change Previous Navigation
             ourUIManager.lastMenuNavigation = ourUIManager.menuNavigation;
-        }
+        //}
         
     }
 
