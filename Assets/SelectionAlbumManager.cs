@@ -30,6 +30,14 @@ public class SelectionAlbumManager : MonoBehaviour
     {
         //Play the Selection Feedback effects
         ourAttackAlbum.ActionSelected.PlayFeedbacks();
-        
+    }
+    
+    public void PrimaryAlbumAttack()
+    {
+        //Play the Selection Feedback effects
+        //ourAttackAlbum.ResetDisc.PlayFeedbacks();
+        ourAttackAlbum.ShowAlbum.PlayFeedbacks();
+        ourAttackAlbum.PrimaryAlbum.PlayFeedbacks();
+        ourAttackAlbum.DiscSpin.StopFeedbacks();
     }
 }

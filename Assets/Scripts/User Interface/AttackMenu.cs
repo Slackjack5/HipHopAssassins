@@ -102,6 +102,8 @@ public class AttackMenu : MonoBehaviour
             ourUIManager.menuNavigation.x = 0;
             ourUIManager.resetBlocks();
             hoverEffectPlayed = false;
+            //Effects
+            SelectionAlbumManager.singleton_AlbumManager.PrimaryAlbumAttack();
         }
 
     }

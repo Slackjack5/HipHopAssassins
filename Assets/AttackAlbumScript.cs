@@ -7,6 +7,14 @@ public class AttackAlbumScript : MonoBehaviour
 {
 
     public MMF_Player ActionSelected;
+    public MMF_Player PrimaryAlbum;
+    public MMF_Player SecondaryAlbum;
+    public MMF_Player ShowAlbum;
+    public MMF_Player HideAlbum;
+    public MMF_Player DiscSpin;
+    public MMF_Player ResetDisc;
+
+    
     // Start is called before the first frame update
     void Start()
     {
