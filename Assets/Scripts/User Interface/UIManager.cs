@@ -200,9 +200,9 @@ public class UIManager : MonoBehaviour
                 //Call Home Menu Function
                 DeployHomeMenu();
                 //Change our Navigation Limit
-                NavigationLimit = new Vector3(3, 0,0);
+                NavigationLimit = new Vector3(0, 0,0);
                 //On Hover Effect
-                actionBlock.transform.GetChild((int) menuNavigation.x).GetComponent<Image>().color=Color.red;
+                //actionBlock.transform.GetChild((int) menuNavigation.x).GetComponent<Image>().color=Color.red;
                 //Allow Player to erase Previous action
                 
                 AwaitingStart();
@@ -261,7 +261,7 @@ public class UIManager : MonoBehaviour
                 lastMenuNavigation = menuNavigation;
                 //Set the action block to our Attack Menu & set it active
                 userInterfaceScript.enableAttackMenu();
-                actionBlock =  userInterfaceScript.attackCanvas;;
+                actionBlock =  userInterfaceScript.BodyPartText;;
                 //Change the state of our Attack Menu Script
                 ourAttackMenu.ChangeState(AttackMenu.State.SelectMonster);
                 //Change our menu navigation starting point dependent on how many enemies are on screen

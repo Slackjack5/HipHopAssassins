@@ -69,9 +69,9 @@ public class MonsterData : MonoBehaviour
         }
     }
 
-    public void ShowLimb(int LimbNumber)
+    public void ShowLimb()
     {
-        monsterCanvas.transform.GetChild(LimbNumber).gameObject.SetActive(true);
+        monsterCanvas.transform.GetChild(0).gameObject.SetActive(true);
     }
     public void HideLimbs()
     {

@@ -558,8 +558,8 @@ MonoBehaviour:
   monsterGFX: {fileID: 5120150769494284410, guid: 48beaefbcc10b5d429677a06c2db77da, type: 3}
   monsterCanvas: {fileID: 860581857734234074}
   limbName:
-  - Head
-  - Torso
+  - 01. HEAD honcho
+  - 02. TORSO trickster
   limbHealth: 1900000032000000
   LimbBroken: 
   Resistance:

@@ -9,7 +9,7 @@ public class UserInterface : MonoBehaviour
 {
     public static UserInterface singleton_UserInterface;
     public GameObject homeCanvas;
-    public GameObject attackCanvas;
+    public GameObject BodyPartText;
     public GameObject magicCanvas;
     public GameObject itemCanvas;
     public GameObject confirmationCanvas;
@@ -51,12 +51,12 @@ public class UserInterface : MonoBehaviour
     //Attack Menu Actions
     public void enableAttackMenu()
     {
-        attackCanvas.SetActive(true);
+        BodyPartText.SetActive(true);
     }
     
     public void disableAttackMenu()
     {
-        attackCanvas.SetActive(false);
+        BodyPartText.SetActive(false);
     }
     //Magic Menu Actions
     public void enableMagicMenu()

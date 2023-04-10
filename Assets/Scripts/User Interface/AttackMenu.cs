@@ -32,7 +32,7 @@ public class AttackMenu : MonoBehaviour
     {
         userInterface = UserInterface.singleton_UserInterface.GameObject();
         userInterfaceScript = userInterface.GetComponent<UserInterface>();
-        limbCanvas = userInterfaceScript.attackCanvas;
+        limbCanvas = userInterfaceScript.BodyPartText;
         ourUIManager = gameObject.GetComponent<UIManager>();
         ourActionSlotManager = GameObject.Find("ActionSlotManager").GetComponent<ActionSlotManager>();
     }
@@ -46,8 +46,6 @@ public class AttackMenu : MonoBehaviour
                 stateGate = false;
                 break;
             case State.LimbList:
-                //Set our Navigation limit to the amount of monster Limbs
-                ourUIManager.NavigationLimit = new Vector3(0, 0,-1*(UIManager.selectedMonster.GetComponent<MonsterData>().limbHealth.Length-1));
                 DeployAttackMenu();
                 break;
             case State.SelectMonster:
@@ -65,37 +63,28 @@ public class AttackMenu : MonoBehaviour
     
         public void DeployAttackMenu()
     {
+        MonsterData selectedData = UIManager.selectedMonster.GetComponent<MonsterData>();
+
         GenerateLimbs();
-        if (ourUIManager.menuNavigation.y == 0) //Limb #1
+        //Set our Navigation limit to the amount of monster Limbs
+        ourUIManager.NavigationLimit = new Vector3(selectedData.limbName.Length-1, 0,0);
+        if (ourUIManager.menuNavigation.x == 0) //Limb #1
         {
-            UIManager.selectedMonster.GetComponent<MonsterData>().ShowLimb(0);
-            ourUIManager.actionBlock.transform.GetChild(0).GetComponent<Image>().color = Color.red;
+
+            UIManager.selectedMonster.GetComponent<MonsterData>().ShowLimb();
+            limbCanvas.GetComponent<TextMeshProUGUI>().text = selectedData.limbName[0];
         }
-        else if (ourUIManager.menuNavigation.y == -1) //Limb #1
+        if (ourUIManager.menuNavigation.x == 1) //Limb #1
         {
-            UIManager.selectedMonster.GetComponent<MonsterData>().ShowLimb(1);
-            ourUIManager.actionBlock.transform.GetChild(1).GetComponent<Image>().color = Color.red;
-        }
-        else if (ourUIManager.menuNavigation.y == -2) //Limb #1
-        {
-            UIManager.selectedMonster.GetComponent<MonsterData>().ShowLimb(2);
-            ourUIManager. actionBlock.transform.GetChild(2).GetComponent<Image>().color = Color.red;
-        }
-        else if (ourUIManager.menuNavigation.y == -3) //Limb #1
-        {
-            UIManager.selectedMonster.GetComponent<MonsterData>().ShowLimb(3);
-            ourUIManager.actionBlock.transform.GetChild(3).GetComponent<Image>().color = Color.red;
-        }
-        else if (ourUIManager.menuNavigation.y == -4) //Limb #1
-        {
-            UIManager.selectedMonster.GetComponent<MonsterData>().ShowLimb(4);
-            ourUIManager.actionBlock.transform.GetChild(4).GetComponent<Image>().color = Color.red;
+            UIManager.selectedMonster.GetComponent<MonsterData>().ShowLimb();
+            limbCanvas.GetComponent<TextMeshProUGUI>().text = selectedData.limbName[1];
         }
 
         if (Input.GetKeyDown("space")) //Create Action 
         {
             //CombatManager.AwaitAttack(); //Start Attack
-            CreateAction(UIManager.selectedMonster,ourUIManager.menuNavigation.y);
+            ourUIManager.menuNavigation = new Vector3(0, 0, 0);
+            CreateAction(UIManager.selectedMonster,ourUIManager.menuNavigation.x); //Set Action based on Navigation
             ChangeState(State.Inactive);
             HideLimbs();
         }
@@ -109,7 +98,7 @@ public class AttackMenu : MonoBehaviour
             //Reset values and return to home menu
             ourUIManager.RestartMenu();
             ourUIManager.ChangeState(UIManager.State.Home);
-            ourUIManager.NavigationLimit = new Vector3(3, 0,0);
+            //ourUIManager.NavigationLimit = new Vector3(3, 0,0);
             ourUIManager.menuNavigation.x = 0;
             ourUIManager.resetBlocks();
             hoverEffectPlayed = false;
@@ -148,12 +137,14 @@ public class AttackMenu : MonoBehaviour
         MonsterData selectedData = UIManager.selectedMonster.GetComponent<MonsterData>();
         int limbCount = selectedData.limbHealth.Length;
         
+        /*
         for (int i = 0; i < limbCount; i++)
         {
             GameObject tempLimb = limbCanvas.transform.GetChild(i).gameObject;
             tempLimb.SetActive(true);
             tempLimb.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = selectedData.limbName[i];
         }
+        */
         
         limbCanvas.SetActive(true);
     }
@@ -167,13 +158,16 @@ public class AttackMenu : MonoBehaviour
             MonsterData selectedData = UIManager.selectedMonster.GetComponent<MonsterData>();
         
             int limbCount = selectedData.limbHealth.Length;
+            /*
             //Disable Limb Selection
             for (int i = 0; i < limbCount; i++)
             {
                 GameObject tempLimb = limbCanvas.transform.GetChild(i).gameObject;
                 tempLimb.SetActive(false);
             }
+            */
             selectedData.HideLimbs();
+            limbCanvas.SetActive(false);
             ourUIManager.actionBlock.SetActive(false);
         }
     }
