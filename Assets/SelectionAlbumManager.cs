@@ -7,6 +7,12 @@ public class SelectionAlbumManager : MonoBehaviour
     public static SelectionAlbumManager singleton_AlbumManager;
     public AttackAlbumScript ourAttackAlbum;
 
+    public Transform PrimarySlot;
+    public Transform SecondarySlot;
+    public Transform ThirdSlot;
+    public Transform FourthSlot;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,9 +41,27 @@ public class SelectionAlbumManager : MonoBehaviour
     public void PrimaryAlbumAttack()
     {
         //Play the Selection Feedback effects
-        //ourAttackAlbum.ResetDisc.PlayFeedbacks();
         ourAttackAlbum.ShowAlbum.PlayFeedbacks();
         ourAttackAlbum.PrimaryAlbum.PlayFeedbacks();
         ourAttackAlbum.DiscSpin.StopFeedbacks();
+        ourAttackAlbum.ResetDisc.PlayFeedbacks();
     }
+    
+    public void SecondaryAlbumAttack()
+    {
+        //Play the Selection Feedback effects
+        ourAttackAlbum.SecondaryAlbum.PlayFeedbacks();
+    }
+    public void ThirdAlbumAttack()
+    {
+        //Play the Selection Feedback effects
+        ourAttackAlbum.ThirdAlbum.PlayFeedbacks();
+    }
+    public void FourthAlbumAttack()
+    {
+        //Play the Selection Feedback effects
+        ourAttackAlbum.FourthAlbum.PlayFeedbacks();
+    }
+    
+    
 }

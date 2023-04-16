@@ -91,30 +91,29 @@ public class UIManager : MonoBehaviour
         {
             menuNavigation.x -= 1;
             resetBlocks();
+            RepositionAlbums();
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             menuNavigation.x += 1;
             resetBlocks();
+            RepositionAlbums();
+
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             menuNavigation.y += 1;
             resetBlocks();
+            RepositionAlbums();
+
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             menuNavigation.y -= 1;
             resetBlocks();
+            RepositionAlbums();
+
         }
-        
-        //Set for a Max size of 2
-        if (menuNavigation.x > NavigationLimit.x) { menuNavigation.x = NavigationLimit.x; Debug.Log("Breached Navigation Limit");}
-        else if (menuNavigation.x < 0) { menuNavigation.x = 0; Debug.Log("Breached Navigation Limit");}
-        
-        if (menuNavigation.y > NavigationLimit.y) { menuNavigation.y = NavigationLimit.y; Debug.Log("Breached Navigation Limit");}
-        else if (menuNavigation.y < NavigationLimit.z) { menuNavigation.y = NavigationLimit.z; Debug.Log("Breached Navigation Limit");}
-        
     }
 
     
@@ -194,13 +193,13 @@ public class UIManager : MonoBehaviour
                 actionBlock = userInterfaceScript.homeCanvas;
                 userInterfaceScript.enableHome();
                 //Allow Player to Maneuver the menu
-                //maneuverMenu(); //Turn Back On When Ready to Test Magic
+                maneuverMenu(); //Turn Back On When Ready to Test Magic
                 //Reset Size on All Monsters
                 ResetMonsters();
                 //Call Home Menu Function
                 DeployHomeMenu();
                 //Change our Navigation Limit
-                NavigationLimit = new Vector3(0, 0,0);
+                NavigationLimit = new Vector3(3, 0,0);
                 //On Hover Effect
                 //actionBlock.transform.GetChild((int) menuNavigation.x).GetComponent<Image>().color=Color.red;
                 //Allow Player to erase Previous action
@@ -336,6 +335,39 @@ public class UIManager : MonoBehaviour
         else if (CombatManager.enemyCount == 3)
         {
             menuNavigation = new Vector3(1, 0,0);
+        }
+    }
+
+    public void CheckNavigationLimits()
+    {
+                
+        //Set for a Max size of 2
+        if (menuNavigation.x > NavigationLimit.x) { menuNavigation.x = 0; Debug.Log("Breached Navigation Limit");}
+        else if (menuNavigation.x < 0) { menuNavigation.x = NavigationLimit.x; Debug.Log("Breached Navigation Limit");}
+        
+        if (menuNavigation.y > NavigationLimit.y) { menuNavigation.y = NavigationLimit.y; Debug.Log("Breached Navigation Limit");}
+        else if (menuNavigation.y < NavigationLimit.z) { menuNavigation.y = NavigationLimit.z; Debug.Log("Breached Navigation Limit");}
+
+    }
+
+    public void RepositionAlbums()
+    {
+        CheckNavigationLimits();
+        if (menuNavigation.x == 0) //Attack Album Hovered
+        {
+            SelectionAlbumManager.singleton_AlbumManager.PrimaryAlbumAttack();
+        }
+        if (menuNavigation.x == 1) //Attack Album Hovered
+        {
+            SelectionAlbumManager.singleton_AlbumManager.SecondaryAlbumAttack();
+        }
+        if (menuNavigation.x == 2) //Attack Album Hovered
+        {
+            SelectionAlbumManager.singleton_AlbumManager.FourthAlbumAttack();
+        }
+        if (menuNavigation.x == 3) //Attack Album Hovered
+        {
+            SelectionAlbumManager.singleton_AlbumManager.ThirdAlbumAttack();
         }
     }
 }

@@ -9,6 +9,9 @@ public class AttackAlbumScript : MonoBehaviour
     public MMF_Player ActionSelected;
     public MMF_Player PrimaryAlbum;
     public MMF_Player SecondaryAlbum;
+    public MMF_Player ThirdAlbum;
+    public MMF_Player FourthAlbum;
+
     public MMF_Player ShowAlbum;
     public MMF_Player HideAlbum;
     public MMF_Player DiscSpin;
