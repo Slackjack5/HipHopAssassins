@@ -103,7 +103,7 @@ public class AttackMenu : MonoBehaviour
             ourUIManager.resetBlocks();
             hoverEffectPlayed = false;
             //Effects
-            SelectionAlbumManager.singleton_AlbumManager.PrimaryAlbumAttack();
+            SelectionAlbumManager.singleton_AlbumManager.MovePrimaryAlbum(SelectionAlbumManager.singleton_AlbumManager.attackAlbumTransform);
         }
 
     }

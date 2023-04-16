@@ -353,21 +353,35 @@ public class UIManager : MonoBehaviour
     public void RepositionAlbums()
     {
         CheckNavigationLimits();
+        Transform ourAttackAlbumTransform = SelectionAlbumManager.singleton_AlbumManager.attackAlbumTransform;
+        Transform ourMagicAlbumTransform = SelectionAlbumManager.singleton_AlbumManager.magicAlbumTransform;
+
+        Transform ourItemAlbumTransform = SelectionAlbumManager.singleton_AlbumManager.itemAlbumTransform;
+        Transform ourEscapeAlbumTransform = SelectionAlbumManager.singleton_AlbumManager.escapeAlbumTransform;
+
         if (menuNavigation.x == 0) //Attack Album Hovered
         {
-            SelectionAlbumManager.singleton_AlbumManager.PrimaryAlbumAttack();
+            SelectionAlbumManager.singleton_AlbumManager.MovePrimaryAlbum(ourAttackAlbumTransform);
+            SelectionAlbumManager.singleton_AlbumManager.MoveThirdAlbum(ourMagicAlbumTransform);
+
         }
-        if (menuNavigation.x == 1) //Attack Album Hovered
+        if (menuNavigation.x == 1) //Magic Album Hovered
         {
-            SelectionAlbumManager.singleton_AlbumManager.SecondaryAlbumAttack();
+            SelectionAlbumManager.singleton_AlbumManager.MoveSecondaryAlbum(ourAttackAlbumTransform);
+            SelectionAlbumManager.singleton_AlbumManager.MovePrimaryAlbum(ourMagicAlbumTransform);
+
         }
-        if (menuNavigation.x == 2) //Attack Album Hovered
+        if (menuNavigation.x == 2) //Escape Album Hovered
         {
-            SelectionAlbumManager.singleton_AlbumManager.FourthAlbumAttack();
+            SelectionAlbumManager.singleton_AlbumManager.MoveFourthAlbum(ourAttackAlbumTransform);
+            SelectionAlbumManager.singleton_AlbumManager.MoveSecondaryAlbum(ourMagicAlbumTransform);
+
         }
-        if (menuNavigation.x == 3) //Attack Album Hovered
+        if (menuNavigation.x == 3) //Item Album Hovered
         {
-            SelectionAlbumManager.singleton_AlbumManager.ThirdAlbumAttack();
+            SelectionAlbumManager.singleton_AlbumManager.MoveThirdAlbum(ourAttackAlbumTransform);
+            SelectionAlbumManager.singleton_AlbumManager.MoveFourthAlbum(ourMagicAlbumTransform);
+
         }
     }
 }

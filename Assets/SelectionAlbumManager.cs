@@ -1,16 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
+using MoreMountains.Feedbacks;
 using UnityEngine;
 
 public class SelectionAlbumManager : MonoBehaviour
 {
     public static SelectionAlbumManager singleton_AlbumManager;
-    public AttackAlbumScript ourAttackAlbum;
+    public AlbumScript ourAttackAlbum;
+    //Albums
+    public Transform attackAlbumTransform;
+    public Transform magicAlbumTransform;
+    public Transform itemAlbumTransform;
+    public Transform escapeAlbumTransform;
 
+
+    
+    //Parent Slots
     public Transform PrimarySlot;
     public Transform SecondarySlot;
     public Transform ThirdSlot;
     public Transform FourthSlot;
+    
+    //Locations
+    public Transform PrimaryPosition;
+    public Transform SecondaryPosition;
+    public Transform ThirdPosition;
+    public Transform FourthPosition;
+    
+    //Effects
+    public MMF_Player PrimaryAlbum;
+    public MMF_Player SecondaryAlbum;
+    public MMF_Player ThirdAlbum;
+    public MMF_Player FourthAlbum;
+    
 
 
     // Start is called before the first frame update
@@ -38,29 +60,58 @@ public class SelectionAlbumManager : MonoBehaviour
         ourAttackAlbum.ActionSelected.PlayFeedbacks();
     }
     
-    public void PrimaryAlbumAttack()
+    public void MovePrimaryAlbum(Transform target)
     {
+        //Define Variables
+        AlbumScript targetScript = target.gameObject.GetComponent<AlbumScript>();
+        //Set Targets
+        PrimaryAlbum.GetFeedbackOfType<MMF_DestinationTransform>().TargetTransform = target;
+        //Change Parent
+        target.parent = PrimarySlot;
         //Play the Selection Feedback effects
-        ourAttackAlbum.ShowAlbum.PlayFeedbacks();
-        ourAttackAlbum.PrimaryAlbum.PlayFeedbacks();
-        ourAttackAlbum.DiscSpin.StopFeedbacks();
-        ourAttackAlbum.ResetDisc.PlayFeedbacks();
+        PrimaryAlbum.PlayFeedbacks();
+        targetScript.ShowDisc.PlayFeedbacks();
+        targetScript.DiscSpin.StopFeedbacks();
+        targetScript.ResetDisc.PlayFeedbacks();
     }
     
-    public void SecondaryAlbumAttack()
+    public void MoveSecondaryAlbum(Transform target)
     {
+        //Set Destinations
+        AlbumScript targetScript = target.gameObject.GetComponent<AlbumScript>();
+
+        SecondaryAlbum.GetFeedbackOfType<MMF_DestinationTransform>().TargetTransform = target;
+        //Change Parent
+        target.parent = SecondarySlot;
         //Play the Selection Feedback effects
-        ourAttackAlbum.SecondaryAlbum.PlayFeedbacks();
+        SecondaryAlbum.PlayFeedbacks();
+        targetScript.HideDisc.PlayFeedbacks();
     }
-    public void ThirdAlbumAttack()
+    public void MoveThirdAlbum(Transform target)
     {
+        //Set Destinations
+        AlbumScript targetScript = target.gameObject.GetComponent<AlbumScript>();
+
+        ThirdAlbum.GetFeedbackOfType<MMF_DestinationTransform>().TargetTransform = target;
+        //Change Parent
+        target.parent = ThirdSlot;
         //Play the Selection Feedback effects
-        ourAttackAlbum.ThirdAlbum.PlayFeedbacks();
+        ThirdAlbum.PlayFeedbacks();
+        targetScript.HideDisc.PlayFeedbacks();
+
     }
-    public void FourthAlbumAttack()
+    public void MoveFourthAlbum(Transform target)
     {
+        //Set Destinations
+        AlbumScript targetScript = target.gameObject.GetComponent<AlbumScript>();
+
+        FourthAlbum.GetFeedbackOfType<MMF_DestinationTransform>().TargetTransform = target;
+        //Change Parent
+        target.parent = FourthSlot;
         //Play the Selection Feedback effects
-        ourAttackAlbum.FourthAlbum.PlayFeedbacks();
+        FourthAlbum.PlayFeedbacks();
+        targetScript.HideDisc.PlayFeedbacks();
+
     }
     
     

@@ -3,17 +3,12 @@ using System.Collections.Generic;
 using MoreMountains.Feedbacks;
 using UnityEngine;
 
-public class AttackAlbumScript : MonoBehaviour
+public class AlbumScript : MonoBehaviour
 {
 
     public MMF_Player ActionSelected;
-    public MMF_Player PrimaryAlbum;
-    public MMF_Player SecondaryAlbum;
-    public MMF_Player ThirdAlbum;
-    public MMF_Player FourthAlbum;
-
-    public MMF_Player ShowAlbum;
-    public MMF_Player HideAlbum;
+    public MMF_Player ShowDisc;
+    public MMF_Player HideDisc;
     public MMF_Player DiscSpin;
     public MMF_Player ResetDisc;
 
