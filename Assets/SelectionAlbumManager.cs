@@ -33,6 +33,9 @@ public class SelectionAlbumManager : MonoBehaviour
     public MMF_Player ThirdAlbum;
     public MMF_Player FourthAlbum;
     
+    //Animation
+    public Animator ourAnimation;
+    
 
 
     // Start is called before the first frame update
@@ -114,6 +117,19 @@ public class SelectionAlbumManager : MonoBehaviour
         targetScript.HideDisc.PlayFeedbacks();
 
     }
+
+    public void PlayAnimation_SpinForward()
+    {
+        ourAnimation.enabled = true;
+        ourAnimation.Play("RingSpin");
+    }
+
+    public void PlayAnimation_SpinBackward()
+    {
+        ourAnimation.enabled = true;
+        ourAnimation.Play("RingSpinBack");
+    }
+
     
     
 }

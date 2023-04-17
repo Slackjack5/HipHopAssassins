@@ -30,10 +30,9 @@ public class AttackMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        userInterface = UserInterface.singleton_UserInterface.GameObject();
-        userInterfaceScript = userInterface.GetComponent<UserInterface>();
+        userInterfaceScript = UserInterface.singleton_UserInterface;
+        ourUIManager = UIManager.singleton_UIManager;
         limbCanvas = userInterfaceScript.BodyPartText;
-        ourUIManager = gameObject.GetComponent<UIManager>();
         ourActionSlotManager = GameObject.Find("ActionSlotManager").GetComponent<ActionSlotManager>();
     }
 
@@ -67,7 +66,7 @@ public class AttackMenu : MonoBehaviour
 
         GenerateLimbs();
         //Set our Navigation limit to the amount of monster Limbs
-        ourUIManager.NavigationLimit = new Vector3(selectedData.limbName.Length-1, 0,0);
+        UIManager.singleton_UIManager.NavigationLimit = new Vector3(selectedData.limbName.Length-1, 0,0);
         if (ourUIManager.menuNavigation.x == 0) //Limb #1
         {
 

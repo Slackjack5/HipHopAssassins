@@ -12,6 +12,8 @@ using Random = System.Random;
 
 public class UIManager : MonoBehaviour
 {
+    //Singleton
+    public static UIManager singleton_UIManager;
     //State
     [SerializeField] public State currentMenu;
     [SerializeField] public State previousMenu;
@@ -60,6 +62,18 @@ public class UIManager : MonoBehaviour
         Disabled,
         SelectMonster,
     }
+    
+    private void Awake()
+    {
+        if (singleton_UIManager != null && singleton_UIManager != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            singleton_UIManager = this;
+        }
+    }
  
     protected virtual void Start()
     {
@@ -94,23 +108,34 @@ public class UIManager : MonoBehaviour
         {
             menuNavigation.x -= 1;
             resetBlocks();
+            CheckNavigationLimits();
+
             if(currentMenu==State.Home) {RepositionAlbums();}
+            //Play Animation
+            SelectionAlbumManager.singleton_AlbumManager.PlayAnimation_SpinBackward();
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             menuNavigation.x += 1;
             resetBlocks();
+            CheckNavigationLimits();
+
             if(currentMenu==State.Home) {RepositionAlbums();}
+            //Play Animation
+            SelectionAlbumManager.singleton_AlbumManager.PlayAnimation_SpinForward();
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             menuNavigation.y += 1;
+            CheckNavigationLimits();
+
             resetBlocks();
             if(currentMenu==State.Home) {RepositionAlbums();}
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             menuNavigation.y -= 1;
+            CheckNavigationLimits();
             resetBlocks();
             if(currentMenu==State.Home) {RepositionAlbums();}
         }
@@ -359,7 +384,6 @@ public class UIManager : MonoBehaviour
 
     public void RepositionAlbums()
     {
-        CheckNavigationLimits();
         navigationOnCooldown = true;
         StartCoroutine(NavigationCooldown(.25f)); //Navigation Speed
         Transform ourAttackAlbumTransform = SelectionAlbumManager.singleton_AlbumManager.attackAlbumTransform;
