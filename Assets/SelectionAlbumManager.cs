@@ -58,6 +58,7 @@ public class SelectionAlbumManager : MonoBehaviour
     {
         //Play the Selection Feedback effects
         ourAttackAlbum.ActionSelected.PlayFeedbacks();
+        ourAttackAlbum.ShowDisc.PlayFeedbacks();
     }
     
     public void MovePrimaryAlbum(Transform target)
@@ -70,7 +71,7 @@ public class SelectionAlbumManager : MonoBehaviour
         target.parent = PrimarySlot;
         //Play the Selection Feedback effects
         PrimaryAlbum.PlayFeedbacks();
-        targetScript.ShowDisc.PlayFeedbacks();
+        targetScript.HideDisc.PlayFeedbacks();
         targetScript.DiscSpin.StopFeedbacks();
         targetScript.ResetDisc.PlayFeedbacks();
     }

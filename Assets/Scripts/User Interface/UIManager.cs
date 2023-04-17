@@ -36,6 +36,8 @@ public class UIManager : MonoBehaviour
     private SpellDictionary ourSpellDictionary;
     private Spell selectedSpell;
     private static ActionSlotManager ourActionSlotManager;
+    //Bools
+    private bool navigationOnCooldown;
     public enum State
     {
         Home,
@@ -74,6 +76,7 @@ public class UIManager : MonoBehaviour
         ourActionSlotManager = GameObject.Find("ActionSlotManager").GetComponent<ActionSlotManager>();
         //Variables
         menuNavigation.x = 0;
+        
     }
 
     public void ChangeState(State state)
@@ -91,28 +94,25 @@ public class UIManager : MonoBehaviour
         {
             menuNavigation.x -= 1;
             resetBlocks();
-            RepositionAlbums();
+            if(currentMenu==State.Home) {RepositionAlbums();}
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             menuNavigation.x += 1;
             resetBlocks();
-            RepositionAlbums();
-
+            if(currentMenu==State.Home) {RepositionAlbums();}
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             menuNavigation.y += 1;
             resetBlocks();
-            RepositionAlbums();
-
+            if(currentMenu==State.Home) {RepositionAlbums();}
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             menuNavigation.y -= 1;
             resetBlocks();
-            RepositionAlbums();
-
+            if(currentMenu==State.Home) {RepositionAlbums();}
         }
     }
 
@@ -193,7 +193,12 @@ public class UIManager : MonoBehaviour
                 actionBlock = userInterfaceScript.homeCanvas;
                 userInterfaceScript.enableHome();
                 //Allow Player to Maneuver the menu
-                maneuverMenu(); //Turn Back On When Ready to Test Magic
+                if (navigationOnCooldown == false)
+                {
+                    maneuverMenu();
+                } 
+                //Turn Back On When Ready to Test Magic
+
                 //Reset Size on All Monsters
                 ResetMonsters();
                 //Call Home Menu Function
@@ -269,6 +274,7 @@ public class UIManager : MonoBehaviour
                 SelectionAlbumManager.singleton_AlbumManager.SelectAttackAction();
             }
         }
+        /*
         else if (menuNavigation.x==1) //Magic
         {
             if (Input.GetKeyDown("space")) 
@@ -319,8 +325,9 @@ public class UIManager : MonoBehaviour
                 //Change the state of our Item Menu Script
                 ourFleeMenu.ChangeState(FleeMenu.State.Confirm);
             }
+            
         }
-
+        */
     }
     public void MenuStartingPoint() //Changes menu navigation dependent on enemy count
     {
@@ -353,6 +360,8 @@ public class UIManager : MonoBehaviour
     public void RepositionAlbums()
     {
         CheckNavigationLimits();
+        navigationOnCooldown = true;
+        StartCoroutine(NavigationCooldown(.25f)); //Navigation Speed
         Transform ourAttackAlbumTransform = SelectionAlbumManager.singleton_AlbumManager.attackAlbumTransform;
         Transform ourMagicAlbumTransform = SelectionAlbumManager.singleton_AlbumManager.magicAlbumTransform;
 
@@ -363,25 +372,39 @@ public class UIManager : MonoBehaviour
         {
             SelectionAlbumManager.singleton_AlbumManager.MovePrimaryAlbum(ourAttackAlbumTransform);
             SelectionAlbumManager.singleton_AlbumManager.MoveThirdAlbum(ourMagicAlbumTransform);
-
+            SelectionAlbumManager.singleton_AlbumManager.MoveSecondaryAlbum(ourItemAlbumTransform);
+            SelectionAlbumManager.singleton_AlbumManager.MoveFourthAlbum(ourEscapeAlbumTransform);
         }
         if (menuNavigation.x == 1) //Magic Album Hovered
         {
             SelectionAlbumManager.singleton_AlbumManager.MoveSecondaryAlbum(ourAttackAlbumTransform);
             SelectionAlbumManager.singleton_AlbumManager.MovePrimaryAlbum(ourMagicAlbumTransform);
+            SelectionAlbumManager.singleton_AlbumManager.MoveFourthAlbum(ourItemAlbumTransform);
+            SelectionAlbumManager.singleton_AlbumManager.MoveThirdAlbum(ourEscapeAlbumTransform);
 
         }
         if (menuNavigation.x == 2) //Escape Album Hovered
         {
             SelectionAlbumManager.singleton_AlbumManager.MoveFourthAlbum(ourAttackAlbumTransform);
             SelectionAlbumManager.singleton_AlbumManager.MoveSecondaryAlbum(ourMagicAlbumTransform);
+            SelectionAlbumManager.singleton_AlbumManager.MoveThirdAlbum(ourItemAlbumTransform);
+            SelectionAlbumManager.singleton_AlbumManager.MovePrimaryAlbum(ourEscapeAlbumTransform);
+
 
         }
         if (menuNavigation.x == 3) //Item Album Hovered
         {
             SelectionAlbumManager.singleton_AlbumManager.MoveThirdAlbum(ourAttackAlbumTransform);
             SelectionAlbumManager.singleton_AlbumManager.MoveFourthAlbum(ourMagicAlbumTransform);
+            SelectionAlbumManager.singleton_AlbumManager.MovePrimaryAlbum(ourItemAlbumTransform);
+            SelectionAlbumManager.singleton_AlbumManager.MoveSecondaryAlbum(ourEscapeAlbumTransform);
 
         }
+    }
+
+    public IEnumerator NavigationCooldown(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        navigationOnCooldown = false;
     }
 }
