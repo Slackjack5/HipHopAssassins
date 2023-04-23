@@ -34,12 +34,14 @@ public class GridMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentTime = AudioEvents.singleton_AudioEvents.masterCurrentPosition;
-        t = Mathf.InverseLerp(startTime, arrivalTime, currentTime); //currentTime2/arrivalTime;
+        
     }
 
     private void FixedUpdate()
     {
+        currentTime = AudioEvents.singleton_AudioEvents.masterCurrentPosition;
+        t = Mathf.InverseLerp(startTime, arrivalTime, currentTime); //currentTime2/arrivalTime;
+        
         float fCurrentPosition = AudioEvents.singleton_AudioEvents.masterCurrentPosition;
         barPosition = fCurrentPosition / (MusicManager.singleton_MusicManager.sequenceSecondsPerBeat*4);
         

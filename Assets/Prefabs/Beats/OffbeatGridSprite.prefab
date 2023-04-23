@@ -105,9 +105,8 @@ MonoBehaviour:
   spawnerPos: {fileID: 0}
   centerPos: {fileID: 0}
   arrivalTime: 0
-  t: 0
   currentTime: 0
   startTime: 0
-  inactive: 0
+  inactive: 1
   barPosition: 0
   LockedOut: 0

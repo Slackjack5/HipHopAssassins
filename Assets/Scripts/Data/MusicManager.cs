@@ -74,6 +74,7 @@ public class MusicManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Application.targetFrameRate = 60;
         AkSoundEngine.SetSwitch("SequenceNumber", "Sequence1", gameObject);
         currentSegment = new AkSegmentInfo();
         ourCombatManager = GameObject.Find("CombatManager").GetComponent<CombatManager>();
@@ -134,19 +135,12 @@ public class MusicManager : MonoBehaviour
             AkSoundEngine.GetPlayingSegmentInfo(playingIDGlobal, currentSegment);
             playheadPosition = AudioEvents.singleton_AudioEvents.masterCurrentPosition;
         }
-        /*
-        if (cueIndex < CueTimes.Count && playheadPosition >= CueTimes[cueIndex]+((sequenceSecondsPerBeat*1)-TravelTime)) //Spawn Beat Circle , 4 Beats ahead of time
-        {
-            NoteSpawner();
-        }
-        */
-        
+
         if (hitIndex < CueTimes.Count && !CombatManager.singleton_CombatManager.LockedOut) // Check if Player Hit In Time
         {
             CheckHit(playheadPosition);
         }
-        
-        
+
         if(nextBar == GlobalVariables.currentBar) {nextBar = GlobalVariables.currentBar+1;}
     }
 

@@ -564,7 +564,7 @@ MonoBehaviour:
   LimbBroken: 
   Resistance:
   - name: Physical
-    Beat: 00000101
+    Beat: 00000000
   - name: Fire
     Beat: 00000000
   - name: Ice

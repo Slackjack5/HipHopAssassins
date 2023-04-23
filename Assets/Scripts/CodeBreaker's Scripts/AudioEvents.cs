@@ -90,12 +90,7 @@ public class AudioEvents : MonoBehaviour
 
   private void Update()
   {
-    currentBar = GlobalVariables.currentBar;
-    currentBeat = GlobalVariables.currentBeat;
-    currentGrid = GlobalVariables.currentGrid;
 
-    AkSoundEngine.GetPlayingSegmentInfo(playingID, currentSegment);
-    Debug.Log(secondsPerBeat);
     barAheadTime = masterCurrentPosition + secondsPerBar;
     if (!isOnEveryOffbeatInvoked && currentSegment.iCurrentPosition >= currentBeatStartTime + secondsPerBeat * 1000 / 2)
     {
@@ -106,9 +101,17 @@ public class AudioEvents : MonoBehaviour
 
   private void FixedUpdate()
   {
+    AkSoundEngine.GetPlayingSegmentInfo(playingID, currentSegment);
+    Debug.Log(secondsPerBeat);
+    //Segment Info
     AkSegmentInfo segmentInfo = new AkSegmentInfo();
     AkSoundEngine.GetPlayingSegmentInfo(playingID, segmentInfo, true);
     masterCurrentPosition = (float) segmentInfo.iCurrentPosition/1000f; // --> position in ms
+    
+    currentBar = GlobalVariables.currentBar;
+    currentBeat = GlobalVariables.currentBeat;
+    currentGrid = GlobalVariables.currentGrid;
+
   }
 
   private void OnGUI()

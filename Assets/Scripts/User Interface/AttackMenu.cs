@@ -82,10 +82,10 @@ public class AttackMenu : MonoBehaviour
         if (Input.GetKeyDown("space")) //Create Action 
         {
             //CombatManager.AwaitAttack(); //Start Attack
-            ourUIManager.menuNavigation = new Vector3(0, 0, 0);
             CreateAction(UIManager.selectedMonster,ourUIManager.menuNavigation.x); //Set Action based on Navigation
             ChangeState(State.Inactive);
             HideLimbs();
+            ourUIManager.menuNavigation = new Vector3(0, 0, 0);
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
