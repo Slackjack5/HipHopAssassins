@@ -71,6 +71,12 @@ public class ActionSlotManager : MonoBehaviour
             //Move Object
             ourNewAction.transform.SetParent(actionGrid.transform.GetChild(nextSlot)); //Set Parent
             ourNewAction.GetComponent<Image>().rectTransform.localPosition = new Vector3(0, 0, 0); //Set Position
+            
+            //Play Sound
+            AkSoundEngine.PostEvent("Play_ActionCreated", gameObject);
+            //Return
+            UIManager.singleton_UIManager.menuNavigation = new Vector3(0, 0, 0);
+            UIManager.singleton_UIManager.RepositionAlbums();
         }
         else
         {

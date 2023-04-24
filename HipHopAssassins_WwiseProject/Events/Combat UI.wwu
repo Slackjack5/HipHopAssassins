@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{AA9189A1-A095-4BD7-A510-342A1125D6BE}" SchemaVersion="103">
+	<Events>
+		<WorkUnit Name="Combat UI" ID="{AA9189A1-A095-4BD7-A510-342A1125D6BE}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="Play_AttackSelectedVO1" ID="{F83DB4BE-4E27-457D-9D93-090556111778}">
+					<ChildrenList>
+						<Action Name="" ID="{2071EA74-FA49-48C2-9921-54BD14E83817}" ShortID="798410682">
+							<PropertyList>
+								<Property Name="Delay" Type="Real64" Value="0.1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AttackSelectedVO1" ID="{7CF5026E-E60C-4BCD-A128-BE96D8A16479}" WorkUnitID="{540501E0-782D-46E5-B5C0-F51385AE59E8}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_ActionSelection" ID="{56B192A9-E808-46D1-9468-56FA14F61595}">
+					<ChildrenList>
+						<Action Name="" ID="{FC7FB860-1874-400C-924A-800F97ADA315}" ShortID="429994114">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ActionSelection" ID="{8C355EA5-99D5-43B1-AB70-CCAD235E048C}" WorkUnitID="{540501E0-782D-46E5-B5C0-F51385AE59E8}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{59AE6259-1718-44B2-97F4-6FDAF97D26BA}" ShortID="335963887">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="41"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Play_ActionHoveredLoop" ID="{DCBDFEA0-61CE-42F2-9D38-653A13F6DF58}" WorkUnitID="{AA9189A1-A095-4BD7-A510-342A1125D6BE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_ActionHoveredLoop" ID="{DCBDFEA0-61CE-42F2-9D38-653A13F6DF58}">
+					<ChildrenList>
+						<Action Name="" ID="{CCB1476F-47CF-4EBE-9CA8-6BC9EEAF9D56}" ShortID="1058662834">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ActionHoveredLoop" ID="{C09CADB1-3ED8-44D9-A41C-CE7B7030F50E}" WorkUnitID="{540501E0-782D-46E5-B5C0-F51385AE59E8}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_ActionCreated" ID="{1579F135-D02A-48D7-9831-9E3B11A0F3B7}">
+					<ChildrenList>
+						<Action Name="" ID="{1ECCF427-855F-4007-8ABC-7BABF11DAE1C}" ShortID="533208536">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ActionCreated" ID="{1EB3C8B2-6EA5-4943-8A66-71AE50D401F6}" WorkUnitID="{540501E0-782D-46E5-B5C0-F51385AE59E8}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_ActionExit" ID="{F59AF563-48EB-433C-96B2-C14528D48955}">
+					<ChildrenList>
+						<Action Name="" ID="{A259672C-82C9-4739-8A59-F49FD67F3E1B}" ShortID="977308988">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ActionExit" ID="{4803A856-F20A-4F6E-9445-72EB03EF6D76}" WorkUnitID="{540501E0-782D-46E5-B5C0-F51385AE59E8}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_ActionHoveredLoop" ID="{307E5F16-401B-4FCE-8F51-A354EFE9D7D0}">
+					<ChildrenList>
+						<Action Name="" ID="{A460DBDE-B860-4285-8568-37ED58A6D984}" ShortID="646690301">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ActionHoveredLoop" ID="{C09CADB1-3ED8-44D9-A41C-CE7B7030F50E}" WorkUnitID="{540501E0-782D-46E5-B5C0-F51385AE59E8}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_NavigationTurn" ID="{9CD5B2F5-BF06-4055-A05B-8938E8345462}">
+					<ChildrenList>
+						<Action Name="" ID="{FC078A29-3506-4B98-8310-3BB754EA117F}" ShortID="647415198">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="NavigationTurn" ID="{CBDC1ADA-A077-4878-AC3B-94E5051033E7}" WorkUnitID="{540501E0-782D-46E5-B5C0-F51385AE59E8}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

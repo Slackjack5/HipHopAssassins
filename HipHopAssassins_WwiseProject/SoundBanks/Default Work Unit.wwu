@@ -25,6 +25,19 @@
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
 				</SoundBank>
+				<SoundBank Name="Combat_UI" ID="{6335323A-BF3E-472F-BAD3-FB7A34393352}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Play_NavigationTurn" ID="{9CD5B2F5-BF06-4055-A05B-8938E8345462}" WorkUnitID="{AA9189A1-A095-4BD7-A510-342A1125D6BE}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_ActionHoveredLoop" ID="{DCBDFEA0-61CE-42F2-9D38-653A13F6DF58}" WorkUnitID="{AA9189A1-A095-4BD7-A510-342A1125D6BE}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_ActionExit" ID="{F59AF563-48EB-433C-96B2-C14528D48955}" WorkUnitID="{AA9189A1-A095-4BD7-A510-342A1125D6BE}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_AttackSelectedVO1" ID="{F83DB4BE-4E27-457D-9D93-090556111778}" WorkUnitID="{AA9189A1-A095-4BD7-A510-342A1125D6BE}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_ActionSelection" ID="{56B192A9-E808-46D1-9468-56FA14F61595}" WorkUnitID="{AA9189A1-A095-4BD7-A510-342A1125D6BE}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_ActionCreated" ID="{1579F135-D02A-48D7-9831-9E3B11A0F3B7}" WorkUnitID="{AA9189A1-A095-4BD7-A510-342A1125D6BE}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Stop_ActionHoveredLoop" ID="{307E5F16-401B-4FCE-8F51-A354EFE9D7D0}" WorkUnitID="{AA9189A1-A095-4BD7-A510-342A1125D6BE}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
 			</ChildrenList>
 		</WorkUnit>
 	</SoundBanks>

@@ -13,7 +13,12 @@ namespace AK
 {
     namespace EVENTS
     {
+        static const AkUniqueID PLAY_ACTIONCREATED = 2875075948U;
+        static const AkUniqueID PLAY_ACTIONEXIT = 4060490692U;
+        static const AkUniqueID PLAY_ACTIONHOVEREDLOOP = 1323622583U;
+        static const AkUniqueID PLAY_ACTIONSELECTION = 1630862982U;
         static const AkUniqueID PLAY_ATTACKLOCKOUT = 3088888349U;
+        static const AkUniqueID PLAY_ATTACKSELECTEDVO1 = 2623818793U;
         static const AkUniqueID PLAY_ATTACKSEQUENCE1TEST = 434006994U;
         static const AkUniqueID PLAY_ATTACKSEQUENCE2TEST = 2365990517U;
         static const AkUniqueID PLAY_ATTACKSEQUENCE3TEST = 1605712836U;
@@ -23,8 +28,10 @@ namespace AK
         static const AkUniqueID PLAY_CANCLEATTACKLOCKOUT = 505022273U;
         static const AkUniqueID PLAY_HIT = 2960666077U;
         static const AkUniqueID PLAY_MUSIC_ENVIRONMENT = 2261903105U;
+        static const AkUniqueID PLAY_NAVIGATIONTURN = 4067037041U;
         static const AkUniqueID PLAY_PS1 = 2520504994U;
         static const AkUniqueID PLAY_PS2 = 2520504993U;
+        static const AkUniqueID STOP_ACTIONHOVEREDLOOP = 981020425U;
         static const AkUniqueID STOP_ATTACKSEQUENCES = 3102099450U;
         static const AkUniqueID STOP_MUSICENVIRONMENT = 3256669452U;
         static const AkUniqueID STOP_SEQUENCE = 3211527319U;
@@ -76,6 +83,7 @@ namespace AK
     namespace BANKS
     {
         static const AkUniqueID INIT = 1355168291U;
+        static const AkUniqueID COMBAT_UI = 2268849070U;
         static const AkUniqueID ENVIRONMENT = 1229948536U;
     } // namespace BANKS
 

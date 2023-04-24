@@ -7726,6 +7726,7 @@ GameObject:
   - component: {fileID: 510630692}
   - component: {fileID: 510630695}
   - component: {fileID: 510630696}
+  - component: {fileID: 510630701}
   - component: {fileID: 510630698}
   - component: {fileID: 510630699}
   - component: {fileID: 510630700}
@@ -7978,6 +7979,30 @@ MonoBehaviour:
   beatGrid: {fileID: 4444640655078736742, guid: 90a6b4408d2b26342a94b410378d75c7, type: 3}
   AttackCounter: 0
   musichandler: {fileID: 1301170215}
+--- !u!114 &510630701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510630691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fad810a7edf7244d1823d183c512c6e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: dfbd8292609394eeebcd1b7363088d3f, type: 2}
+  decodeBank: 0
+  loadAsynchronous: 0
+  saveDecodedBank: 0
+  unloadTriggerList: 958ca0ea
+  bankNameInternal: 
+  valueGuidInternal: 
 --- !u!1 &529942573
 GameObject:
   m_ObjectHideFlags: 0

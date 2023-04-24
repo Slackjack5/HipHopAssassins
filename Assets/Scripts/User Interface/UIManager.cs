@@ -384,6 +384,8 @@ public class UIManager : MonoBehaviour
 
     public void RepositionAlbums()
     {
+        //Play Sound
+ 
         navigationOnCooldown = true;
         StartCoroutine(NavigationCooldown(.25f)); //Navigation Speed
         Transform ourAttackAlbumTransform = SelectionAlbumManager.singleton_AlbumManager.attackAlbumTransform;

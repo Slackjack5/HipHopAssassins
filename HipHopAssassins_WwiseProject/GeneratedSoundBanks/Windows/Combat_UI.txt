@@ -1,0 +1,17 @@
+Event	ID	Name			Wwise Object Path	Notes
+	981020425	Stop_ActionHoveredLoop			\Combat UI\Stop_ActionHoveredLoop	
+	1323622583	Play_ActionHoveredLoop			\Combat UI\Play_ActionHoveredLoop	
+	1630862982	Play_ActionSelection			\Combat UI\Play_ActionSelection	
+	2623818793	Play_AttackSelectedVO1			\Combat UI\Play_AttackSelectedVO1	
+	2875075948	Play_ActionCreated			\Combat UI\Play_ActionCreated	
+	4060490692	Play_ActionExit			\Combat UI\Play_ActionExit	
+	4067037041	Play_NavigationTurn			\Combat UI\Play_NavigationTurn	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	117621158	ActionExit	Z:\Volumes\Not Case Sensitive\Unity Projects\HipHopAssassins\HipHopAssassins_WwiseProject\.cache\Windows\SFX\ActionExit_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Combat UI SFX\ActionExit		768064
+	128018761	ActionCreated	Z:\Volumes\Not Case Sensitive\Unity Projects\HipHopAssassins\HipHopAssassins_WwiseProject\.cache\Windows\SFX\ActionCreated_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Combat UI SFX\ActionCreated		384064
+	138268010	ActionHoveredLoop	Z:\Volumes\Not Case Sensitive\Unity Projects\HipHopAssassins\HipHopAssassins_WwiseProject\.cache\Windows\SFX\ActionHoveredLoop_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\Combat UI SFX\ActionHoveredLoop		1344064
+	584344612	ActionSelection	Z:\Volumes\Not Case Sensitive\Unity Projects\HipHopAssassins\HipHopAssassins_WwiseProject\.cache\Windows\SFX\ActionSelection_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Combat UI SFX\ActionSelection		792064
+	772074067	AttackSelectedVO1	Z:\Volumes\Not Case Sensitive\Unity Projects\HipHopAssassins\HipHopAssassins_WwiseProject\.cache\Windows\SFX\AttackSelectedVO1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Combat UI SFX\AttackSelectedVO1		768064
+	843889853	NavigationTurn	Z:\Volumes\Not Case Sensitive\Unity Projects\HipHopAssassins\HipHopAssassins_WwiseProject\.cache\Windows\SFX\NavigationTurn_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Combat UI SFX\NavigationTurn		498064
+

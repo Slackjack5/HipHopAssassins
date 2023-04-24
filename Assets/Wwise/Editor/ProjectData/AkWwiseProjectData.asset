@@ -100,8 +100,22 @@ MonoBehaviour:
     ParentPath: SoundBanks/Default Work Unit
     guid: d48f69856955d54c95226e947abebbff
     GuidInternal: 
-    m_lastTime: -8585254594727222037
+    m_lastTime: -8585192884202169597
     List:
+    - name: Combat_UI
+      guid: 3a3235633ebf2f47bad3fb7a34393352
+      id: 2268849070
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d48f69856955d54c95226e947abebbff
+      - ElementName: Combat_UI
+        ObjectType: 7
+        guid: 3a3235633ebf2f47bad3fb7a34393352
+      Path: SoundBanks/Default Work Unit/Combat_UI
     - name: Environment
       guid: 3039fc54f4dbe84fa5eebe1ebad2abaf
       id: 1229948536
@@ -117,6 +131,138 @@ MonoBehaviour:
         guid: 3039fc54f4dbe84fa5eebe1ebad2abaf
       Path: SoundBanks/Default Work Unit/Environment
   EventWwu:
+  - PhysicalPath: Events/Combat UI.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Combat UI
+      ObjectType: 12
+      guid: a18991aa95a0d74ba510342a1125d6be
+    ParentPath: Events/Combat UI
+    guid: a18991aa95a0d74ba510342a1125d6be
+    GuidInternal: 
+    m_lastTime: -8585192884200812124
+    List:
+    - name: Play_ActionCreated
+      guid: 35f179152ad0d74898319e3b11a0f3b7
+      id: 2875075948
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Combat UI
+        ObjectType: 12
+        guid: a18991aa95a0d74ba510342a1125d6be
+      - ElementName: Play_ActionCreated
+        ObjectType: 3
+        guid: 35f179152ad0d74898319e3b11a0f3b7
+      Path: Events/Combat UI/Play_ActionCreated
+      maxAttenuation: 0
+      maxDuration: 2
+      minDuration: 2
+    - name: Play_ActionExit
+      guid: 63f59af5eb483c4396b2c14528d48955
+      id: 4060490692
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Combat UI
+        ObjectType: 12
+        guid: a18991aa95a0d74ba510342a1125d6be
+      - ElementName: Play_ActionExit
+        ObjectType: 3
+        guid: 63f59af5eb483c4396b2c14528d48955
+      Path: Events/Combat UI/Play_ActionExit
+      maxAttenuation: 0
+      maxDuration: 4
+      minDuration: 4
+    - name: Play_ActionHoveredLoop
+      guid: a0febddcce61f2429d38653a13f6df58
+      id: 1323622583
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Combat UI
+        ObjectType: 12
+        guid: a18991aa95a0d74ba510342a1125d6be
+      - ElementName: Play_ActionHoveredLoop
+        ObjectType: 3
+        guid: a0febddcce61f2429d38653a13f6df58
+      Path: Events/Combat UI/Play_ActionHoveredLoop
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_ActionSelection
+      guid: a992b15608e8d146946856fa14f61595
+      id: 1630862982
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Combat UI
+        ObjectType: 12
+        guid: a18991aa95a0d74ba510342a1125d6be
+      - ElementName: Play_ActionSelection
+        ObjectType: 3
+        guid: a992b15608e8d146946856fa14f61595
+      Path: Events/Combat UI/Play_ActionSelection
+      maxAttenuation: 0
+      maxDuration: 4.125
+      minDuration: 4.125
+    - name: Play_AttackSelectedVO1
+      guid: beb43df8274e7d459d93090556111778
+      id: 2623818793
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Combat UI
+        ObjectType: 12
+        guid: a18991aa95a0d74ba510342a1125d6be
+      - ElementName: Play_AttackSelectedVO1
+        ObjectType: 3
+        guid: beb43df8274e7d459d93090556111778
+      Path: Events/Combat UI/Play_AttackSelectedVO1
+      maxAttenuation: 0
+      maxDuration: 4.1
+      minDuration: 4.1
+    - name: Play_NavigationTurn
+      guid: f5b2d59c06bf5540a05b8938e8345462
+      id: 4067037041
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Combat UI
+        ObjectType: 12
+        guid: a18991aa95a0d74ba510342a1125d6be
+      - ElementName: Play_NavigationTurn
+        ObjectType: 3
+        guid: f5b2d59c06bf5540a05b8938e8345462
+      Path: Events/Combat UI/Play_NavigationTurn
+      maxAttenuation: 0
+      maxDuration: 2.59375
+      minDuration: 2.59375
+    - name: Stop_ActionHoveredLoop
+      guid: 165f7e301b40ce4f8f51a354efe9d7d0
+      id: 981020425
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Combat UI
+        ObjectType: 12
+        guid: a18991aa95a0d74ba510342a1125d6be
+      - ElementName: Stop_ActionHoveredLoop
+        ObjectType: 3
+        guid: 165f7e301b40ce4f8f51a354efe9d7d0
+      Path: Events/Combat UI/Stop_ActionHoveredLoop
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
   - PhysicalPath: Events/Default Work Unit.wwu
     PathAndIcons:
     - ElementName: Events
@@ -128,7 +274,7 @@ MonoBehaviour:
     ParentPath: Events/Default Work Unit
     guid: acc6a2fb7d38a941a3202be7b4b7e5ca
     GuidInternal: 
-    m_lastTime: -8585211170404906689
+    m_lastTime: -8585192898023826735
     List:
     - name: Play_AttackLockOut
       guid: 9c724fc879f1034887c25ac5830397c1
@@ -640,7 +786,7 @@ MonoBehaviour:
         guid: cc7027b07e13514abf419be2c9343431
       Path: Triggers/Default Work Unit/Attack_85BPM
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 
+  ExpandedWaapiItemIds: 2200000023000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

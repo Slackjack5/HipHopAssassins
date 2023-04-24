@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using MoreMountains.Feedbacks;
@@ -51,6 +52,10 @@ public class SelectionAlbumManager : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -62,6 +67,9 @@ public class SelectionAlbumManager : MonoBehaviour
         //Play the Selection Feedback effects
         ourAttackAlbum.ActionSelected.PlayFeedbacks();
         ourAttackAlbum.ShowDisc.PlayFeedbacks();
+        //Play Sound
+        AkSoundEngine.PostEvent("Play_ActionSelection", gameObject);
+        AkSoundEngine.PostEvent("Play_AttackSelectedVO1", gameObject);
     }
     
     public void MovePrimaryAlbum(Transform target)
@@ -77,6 +85,8 @@ public class SelectionAlbumManager : MonoBehaviour
         targetScript.HideDisc.PlayFeedbacks();
         targetScript.DiscSpin.StopFeedbacks();
         targetScript.ResetDisc.PlayFeedbacks();
+        //Play Sound
+        AkSoundEngine.PostEvent("Stop_ActionHoveredLoop", gameObject);
     }
     
     public void MoveSecondaryAlbum(Transform target)
@@ -120,12 +130,18 @@ public class SelectionAlbumManager : MonoBehaviour
 
     public void PlayAnimation_SpinForward()
     {
+        //Play Sound
+        AkSoundEngine.PostEvent("Play_NavigationTurn", gameObject);
+        
         ourAnimation.enabled = true;
         ourAnimation.Play("RingSpin");
     }
 
     public void PlayAnimation_SpinBackward()
     {
+        //Play Sound
+        AkSoundEngine.PostEvent("Play_NavigationTurn", gameObject);
+        
         ourAnimation.enabled = true;
         ourAnimation.Play("RingSpinBack");
     }

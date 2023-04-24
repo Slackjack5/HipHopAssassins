@@ -105,7 +105,7 @@ public class MusicManager : MonoBehaviour
     }
     public void ResetVariables()
     {
-        AkSoundEngine.PostEvent("Stop_AttackSequences", gameObject);
+        //AkSoundEngine.PostEvent("Stop_AttackSequences", gameObject);
         AkSoundEngine.PostEvent("Play_CancleAttackLockout", gameObject);
         CombatManager.singleton_CombatManager.LockedOut = false;
         sequenceInProgress=false;

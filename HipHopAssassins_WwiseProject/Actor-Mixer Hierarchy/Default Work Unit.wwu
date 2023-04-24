@@ -898,6 +898,7 @@
 						</Sound>
 					</ChildrenList>
 				</Folder>
+				<WorkUnit Name="Combat UI SFX" ID="{540501E0-782D-46E5-B5C0-F51385AE59E8}" PersistMode="Reference"/>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

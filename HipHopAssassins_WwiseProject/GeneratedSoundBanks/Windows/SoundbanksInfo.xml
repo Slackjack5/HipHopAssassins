@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1229948536" Language="SFX" Hash="4881358">
+		<SoundBank Id="1229948536" Language="SFX" Hash="1550035756">
 			<ObjectPath>\SoundBanks\Default Work Unit\Environment</ObjectPath>
 			<ShortName>Environment</ShortName>
 			<Path>Environment.bnk</Path>
@@ -146,6 +146,65 @@
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
+		</SoundBank>
+		<SoundBank Id="2268849070" Language="SFX" Hash="1229612023">
+			<ObjectPath>\SoundBanks\Default Work Unit\Combat_UI</ObjectPath>
+			<ShortName>Combat_UI</ShortName>
+			<Path>Combat_UI.bnk</Path>
+			<IncludedEvents>
+				<Event Id="2875075948" Name="Play_ActionCreated" ObjectPath="\Events\Combat UI\Play_ActionCreated" DurationType="OneShot" DurationMin="2." DurationMax="2.">
+					<IncludedMemoryFiles>
+						<File Id="128018761" Language="SFX">
+							<ShortName>ActionCreated.wav</ShortName>
+							<Path>SFX/ActionCreated_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4060490692" Name="Play_ActionExit" ObjectPath="\Events\Combat UI\Play_ActionExit" DurationType="OneShot" DurationMin="4." DurationMax="4.">
+					<IncludedMemoryFiles>
+						<File Id="117621158" Language="SFX">
+							<ShortName>ActionExit.wav</ShortName>
+							<Path>SFX/ActionExit_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1323622583" Name="Play_ActionHoveredLoop" ObjectPath="\Events\Combat UI\Play_ActionHoveredLoop" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="138268010" Language="SFX">
+							<ShortName>ActionHoveredLoop.wav</ShortName>
+							<Path>SFX/ActionHoveredLoop_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1630862982" Name="Play_ActionSelection" ObjectPath="\Events\Combat UI\Play_ActionSelection" DurationType="OneShot" DurationMin="4.125" DurationMax="4.125">
+					<IncludedMemoryFiles>
+						<File Id="584344612" Language="SFX">
+							<ShortName>ActionSelection.wav</ShortName>
+							<Path>SFX/ActionSelection_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+					<ActionPostEvent>
+						<ActionPostEventEntry Id="1323622583" Name="Play_ActionHoveredLoop" ObjectPath="\Events\Combat UI\Play_ActionHoveredLoop"/>
+					</ActionPostEvent>
+				</Event>
+				<Event Id="2623818793" Name="Play_AttackSelectedVO1" ObjectPath="\Events\Combat UI\Play_AttackSelectedVO1" DurationType="OneShot" DurationMin="4.1" DurationMax="4.1">
+					<IncludedMemoryFiles>
+						<File Id="772074067" Language="SFX">
+							<ShortName>AttackSelectedVO1.wav</ShortName>
+							<Path>SFX/AttackSelectedVO1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4067037041" Name="Play_NavigationTurn" ObjectPath="\Events\Combat UI\Play_NavigationTurn" DurationType="OneShot" DurationMin="2.59375" DurationMax="2.59375">
+					<IncludedMemoryFiles>
+						<File Id="843889853" Language="SFX">
+							<ShortName>NavigationTurn.wav</ShortName>
+							<Path>SFX/NavigationTurn_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="981020425" Name="Stop_ActionHoveredLoop" ObjectPath="\Events\Combat UI\Stop_ActionHoveredLoop" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+			</IncludedEvents>
 		</SoundBank>
 	</SoundBanks>
 </SoundBanksInfo>
